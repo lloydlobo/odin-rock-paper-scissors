@@ -1,8 +1,7 @@
-// computerPlay function to generate a random selection of the gameArray
+// function to generate a random selection of the gameArray
 function computerPlay() {
   let gameArray = ["Rock", "Paper", "Scissors"];
 
-  // setting time
   let today = new Date();
   let updateTime = `${today.getHours()}:${today.getMinutes()}:${today.getSeconds()}`;
 
@@ -10,25 +9,14 @@ function computerPlay() {
   let randomGameSelection =
     gameArray[Math.floor(Math.random() * gameArray.length)];
   let computerPlayChoice = `${updateTime} | Computer played ${randomGameSelection}`;
+
   computerPlayChoice = computerPlayChoice.toLowerCase();
 
-  // return the computer selection
   return randomGameSelection;
 }
 
-// function declaration
-// its hoisted. can call function above function definition
-computerPlay();
-
-// console.log(computerPlay());
-
-// * set the logic of the game
-
-// Rock beats Scissors
-// Paper beats Rock
-// Scissors beats Paper
-// If the same, then it's a tie
-// If the user enters something other than Rock, Paper, or Scissors, then it's an invalid entry
+// hoisted function declaration
+computerPlay(); /* can call function above function definition */
 
 // function that plays a single round of the game
 function playRound(playerSelection, computerSelection) {
@@ -36,19 +24,21 @@ function playRound(playerSelection, computerSelection) {
 
   // playerSelection prompts the user to enter a selection
   playerSelectionPrompt = prompt("Rock, Paper, or Scissors?");
+
+  // alert the user about their selections
   alert(`You chose ${playerSelectionPrompt}`);
   alert(
     `Computer chose ${computerSelection[0].toUpperCase()}${computerSelection.slice(
       1
-    )}`
+    )}` /* convert the first string letter to uppercase */
   );
 
-  // convert toLowerCase first
   playerSelection = playerSelectionPrompt.toLowerCase();
-  // computerSelection.toLowerCase;
+
+  playRoundResult = `[${playerSelection}, ${computerSelection}]`; /* array generated at each round */
+
   // return the results of the playRound functions call
-  // return playRound(playerSelection, computerSelection);
-  // return `${playerSelection} vs ${computerSelection}`;
+  return playRoundResult;
 }
 
 // playRound(playerSelection, computerSelection);
@@ -77,3 +67,9 @@ function game() {
   // https://developer.mozilla.org/en-US/docs/Web/API/Window/prompt
   // * Feel free to create more “helper” functions if you think it would be useful.
 }
+
+// Rock beats Scissors
+// Paper beats Rock
+// Scissors beats Paper
+// If the same, then it's a tie
+// If the user enters something other than Rock, Paper, or Scissors, then it's an invalid entry
