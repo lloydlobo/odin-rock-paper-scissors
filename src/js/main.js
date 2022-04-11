@@ -12,9 +12,12 @@ function computerPlay() {
   let computerPlayChoice = `${updateTime} | Computer played ${randomGameSelection}`;
   computerPlayChoice = computerPlayChoice.toLowerCase();
 
+  // return the computer selection
   return randomGameSelection;
 }
-// remember to uncomment here
+
+// function declaration
+// its hoisted. can call function above function definition
 computerPlay();
 
 // console.log(computerPlay());
@@ -29,23 +32,30 @@ computerPlay();
 
 // function that plays a single round of the game
 function playRound(playerSelection, computerSelection) {
-  // write your code here...
-  computerSelection = computerPlay();
-  console.log(computerSelection);
+  computerSelection = computerPlay().toLowerCase();
+
   // playerSelection prompts the user to enter a selection
   playerSelectionPrompt = prompt("Rock, Paper, or Scissors?");
   alert(`You chose ${playerSelectionPrompt}`);
-  playerSelectionPrompt =
-    playerSelectionPrompt.toLowerCase(); /* ? is making it lower case -> case insensitive */
-  console.log(`Player chose: ${playerSelectionPrompt}`);
-  alert(`Computer chose ${computerSelection}`);
+  alert(
+    `Computer chose ${computerSelection[0].toUpperCase()}${computerSelection.slice(
+      1
+    )}`
+  );
 
-  // return the results of this functions call
-
-  // it then returns a string to declare a winner of the round
-  let statementSuccess = `You had a better hand than the computer!\n${"Paper"} beats ${"Rock"}!`;
-  let statementFailure = `The computer had a better hand!\n${"Paper"} beats ${"Rock"}!`;
+  // convert toLowerCase first
+  playerSelection = playerSelectionPrompt.toLowerCase();
+  // computerSelection.toLowerCase;
+  // return the results of the playRound functions call
+  // return playRound(playerSelection, computerSelection);
+  // return `${playerSelection} vs ${computerSelection}`;
 }
+
+// playRound(playerSelection, computerSelection);
+
+// it then returns a string to declare a winner of the round
+let statementSuccess = `You had a better hand than the computer!\n${"Paper"} beats ${"Rock"}!`;
+let statementFailure = `The computer had a better hand!\n${"Paper"} beats ${"Rock"}!`;
 
 const playerSelection =
   "rock"; /* make this case-insensitive  users can input rock, ROCK, RocK or any variations */
