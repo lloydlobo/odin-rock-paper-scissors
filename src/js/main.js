@@ -37,15 +37,47 @@ function playRound(playerSelection, computerSelection) {
 
   playRoundResult = `[${playerSelection}, ${computerSelection}]`; /* array generated at each round */
 
+  // it then returns a string to declare a winner of the round
+  let statementSuccess = `You had a better hand than the computer!\n${playerSelection} beats ${computerSelection}!`;
+  let statementFailure = `The computer had a better hand!\n${playerSelection} beats ${computerSelection}!`;
+
+  const rockBeatsScissors = ["rock", "scissors"];
+  const paperBeatsRock = ["paper", "rock"];
+  const scissorsBeatsPaper = ["scissors", "paper"];
+
+  // add game logic here...
+  if (playerSelection === computerSelection) {
+    // return "It's a tie!";
+    alert("It's a tie!");
+  }
+  //  else if (playerSelection === rock && computerSelection === scissors) {
+  //   // return statementSuccess;
+  //   alert(`${statementSuccess}`); }
+  else if (
+    JSON.stringify(playRoundResult) === JSON.stringify(rockBeatsScissors)
+  ) {
+    // return statementSuccess;
+    alert(`${statementSuccess}`);
+  } else if (
+    JSON.stringify(playRoundResult) === JSON.stringify(paperBeatsRock)
+  ) {
+    // return statementSuccess;
+    alert(`${statementSuccess}`);
+  } else if (
+    JSON.stringify(playRoundResult) === JSON.stringify(scissorsBeatsPaper)
+  ) {
+    // return statementSuccess;
+    alert(`${statementSuccess}`);
+  } else {
+    // return statementFailure;
+    alert(`${statementFailure}`);
+  }
+
   // return the results of the playRound functions call
-  return playRoundResult;
+  // return playRoundResult;
 }
 
 // playRound(playerSelection, computerSelection);
-
-// it then returns a string to declare a winner of the round
-let statementSuccess = `You had a better hand than the computer!\n${"Paper"} beats ${"Rock"}!`;
-let statementFailure = `The computer had a better hand!\n${"Paper"} beats ${"Rock"}!`;
 
 const playerSelection =
   "rock"; /* make this case-insensitive  users can input rock, ROCK, RocK or any variations */
