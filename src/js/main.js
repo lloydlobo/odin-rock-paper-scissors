@@ -1,13 +1,23 @@
 // computerPlay function to generate a random selection of the gameArray
 function computerPlay() {
   let gameArray = ["Rock", "Paper", "Scissors"];
-  let randomGameSelection =
-    gameArray[Math.floor(Math.random() * gameArray.length)];
+
+  // setting time
   let today = new Date();
   let updateTime = `${today.getHours()}:${today.getMinutes()}:${today.getSeconds()}`;
-  // console.log(`Computer chose: ${randomGameSelection}\nTime: ${updateTime}`);
+
+  // random number generator to select the index of the gameArray
+  let randomGameSelection =
+    gameArray[Math.floor(Math.random() * gameArray.length)];
+  let computerPlayChoice = `${updateTime} | Computer played ${randomGameSelection}`;
+  computerPlayChoice = computerPlayChoice.toLowerCase();
+
+  return randomGameSelection;
 }
-// computerPlay();
+// remember to uncomment here
+computerPlay();
+
+// console.log(computerPlay());
 
 // * set the logic of the game
 
@@ -20,6 +30,15 @@ function computerPlay() {
 // function that plays a single round of the game
 function playRound(playerSelection, computerSelection) {
   // write your code here...
+  computerSelection = computerPlay();
+  console.log(computerSelection);
+  // playerSelection prompts the user to enter a selection
+  playerSelectionPrompt = prompt("Rock, Paper, or Scissors?");
+  alert(`You chose ${playerSelectionPrompt}`);
+  playerSelectionPrompt =
+    playerSelectionPrompt.toLowerCase(); /* ? is making it lower case -> case insensitive */
+  console.log(`Player chose: ${playerSelectionPrompt}`);
+  alert(`Computer chose ${computerSelection}`);
 
   // return the results of this functions call
 
