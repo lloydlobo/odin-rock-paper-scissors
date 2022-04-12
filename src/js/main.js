@@ -27,15 +27,16 @@ function playRound(playerSelection, computerSelection) {
   playerSelectionPrompt;
 
   // alert the user about their selections
-  console.log(`You chose ${playerSelectionPrompt}`);
+  console.log(`You chose ${playerSelectionPrompt}.`);
   console.log(
     `Computer chose ${computerSelection[0].toUpperCase()}${computerSelection.slice(
       1
-    )}` /* convert the first string letter to uppercase */
+    )}.` /* convert the first string letter to uppercase */
   );
 
   // make playerSelection to lower case
   playerSelection = playerSelectionPrompt.toLowerCase();
+
   const playRoundResult = `${playerSelection}, ${computerSelection}`; /* string generated at each round */
 
   // it then returns a string to declare a winner of the round
@@ -48,14 +49,10 @@ function playRound(playerSelection, computerSelection) {
   const paperBeatsRock = "paper, rock";
   const scissorsBeatsPaper = "scissors, paper";
 
-  rockBeatsScissors;
-  paperBeatsRock;
-  scissorsBeatsPaper;
-
   // add game logic here...
   if (playerSelection === computerSelection) {
     // return statementTie;
-    console.log(statementTie);
+    console.log(`${statementTie}`);
   } else if (playRoundResult === rockBeatsScissors) {
     // return statementSuccess;
     console.log(`${statementSuccess}`);
@@ -74,28 +71,79 @@ function playRound(playerSelection, computerSelection) {
   return playRoundResult; /* typeof string  */
 }
 
-// playRound(playerSelection, computerSelection);
-
-const playerSelection =
-  "rock"; /* make this case-insensitive  users can input rock, ROCK, RocK or any variations */
-const computerSelection = computerPlay();
-console.log(playRound(playerSelection, computerSelection));
+playRound(); /* // declare and hoist the function to let a single-round run */
 
 // function that plays a single round of the game
 
-function game() {
-  // play a five round game with playRound function
-  for (let i = 0; i < 5; i++) {
-    // add your code here...
-  }
+// function game(rounds) {
+// }
+// game();
 
-  // display console.log statements to show the results of each round
-  // also with it display winner at the end of the game
-
-  // use prompt() to get input from the user.
-  // https://developer.mozilla.org/en-US/docs/Web/API/Window/prompt
-  // * Feel free to create more “helper” functions if you think it would be useful.
+for (round = 0; round < 5; round++) {
+  console.log(`Round no.: ${round + 1}`);
 }
+
+for (let score = 0; score < 5; score++) {
+  console.log(`Score: ${score}`);
+}
+
+const playerScore = 0;
+const computerScore = 0;
+
+if (playerScore > computerScore) {
+  console.log("You won!");
+} else if (playerScore < computerScore) {
+  console.log("You lost!");
+} else if (playerScore === computerScore) {
+  console.log("It's a tie! Everyone wins!");
+}
+// throw an else error
+else {
+  throw new Error("Something went wrong!");
+}
+
+// ////////////
+// ////////////
+// ////////////
+// ////////////
+// ////////////
+// ////////////
+// ////////////
+// ////////////
+// ////////////
+// ////////////
+// ////////////
+// ////////////
+// ////////////
+// ////////////
+// ////////////
+// ////////////
+// ////////////
+// ////////////
+// ////////////
+// ////////////
+// ////////////
+// ////////////
+// ////////////
+// ////////////
+// ////////////
+// ////////////
+// ////////////
+// ////////////
+// ////////////
+// ////////////
+// ////////////
+// play a five round game with playRound function
+// for (let i = 0; i < 5; i++) {
+// add your code here...
+
+// display console.log statements to show the results of each round
+
+// also with it display winner at the end of the game
+
+// use prompt() to get input from the user.
+// https://developer.mozilla.org/en-US/docs/Web/API/Window/prompt
+// * Feel free to create more “helper” functions if you think it would be useful.
 
 // Rock beats Scissors
 // Paper beats Rock
