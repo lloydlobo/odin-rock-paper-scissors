@@ -10,32 +10,28 @@ function computerPlay() {
 computerPlay();
 
 // function to prompt the player to select Rock, Paper, or Scissors
-function promptPlayer() {
-  let playerSelectionPrompt = prompt("Rock, Paper, or Scissors?");
+function playRound(playerSelection, computerSelection) {
+  computerSelection = computerPlay().toLowerCase();
+  playerSelectionPrompt = prompt("Rock, Paper, or Scissors?");
   // console.log(`Player Selection: ${playerSelectionPrompt}`);
-  return playerSelectionPrompt;
+  playerSelection = playerSelectionPrompt.toLowerCase();
+  result = `${playerSelection}, ${computerSelection}`;
+  console.log(`result is ${result}`);
+  return result;
 }
 // promptPlayer(); /* if you run a function here and elsewhere you get it two times+ */
 
 // console.log("🚀 ~ file: main.js ~ line 18 ~ promptPlayer", promptPlayer());
 
 // function to compare the player and computer selections
-function fiveRoundGame() {
+function game() {
+  scorePlayer = 0;
+  scoreComputer = 0;
+  round = 0;
   for (let i = 0; i < 5; i++) {
-    promptPlayer();
+    playRound();
+    round++;
+    console.log(`Round: ${round}`);
   }
 }
-fiveRoundGame();
-
-// function playRound(playerSelection, computerSelection) {
-//   const computerSelection = computerPlay();
-//   console.log(`Computer Selection: ${computerSelection}`);
-//   playerSelection = JSON.stringify.promptPlayer();
-//   return [playerSelection, computerSelection];
-// }
-
-// function game() {
-//   for (let i = 0; i < 5; i++) {
-//     playRound();
-//   }
-// }
+game();
