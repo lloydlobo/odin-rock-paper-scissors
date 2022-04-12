@@ -26,55 +26,57 @@ function playRound(playerSelection, computerSelection) {
   playerSelectionPrompt = prompt("Rock, Paper, or Scissors?");
 
   // alert the user about their selections
-  alert(`You chose ${playerSelectionPrompt}`);
-  alert(
+  console.log(`You chose ${playerSelectionPrompt}`);
+  console.log(
     `Computer chose ${computerSelection[0].toUpperCase()}${computerSelection.slice(
       1
     )}` /* convert the first string letter to uppercase */
   );
 
   playerSelection = playerSelectionPrompt.toLowerCase();
+  console.log(
+    "🚀 ~ file: main.js ~ line 37 ~ playRound ~ playerSelection",
+    playerSelection
+  );
 
-  playRoundResult = `[${playerSelection}, ${computerSelection}]`; /* array generated at each round */
+  playRoundResult = `${playerSelection}, ${computerSelection}`; /* array generated at each round */
+  console.log(
+    "🚀 ~ file: main.js ~ line 39 ~ playRound ~ playRoundResult",
+    playRoundResult
+  );
 
   // it then returns a string to declare a winner of the round
   let statementSuccess = `You had a better hand than the computer!\n${playerSelection} beats ${computerSelection}!`;
   let statementFailure = `The computer had a better hand!\n${playerSelection} beats ${computerSelection}!`;
 
-  const rockBeatsScissors = ["rock", "scissors"];
-  const paperBeatsRock = ["paper", "rock"];
-  const scissorsBeatsPaper = ["scissors", "paper"];
+  const rockBeatsScissors = "rock, scissors";
+  const paperBeatsRock = "paper, rock";
+  const scissorsBeatsPaper = "scissors, paper";
+  console.log(
+    "🚀 ~ file: main.js ~ line 47 ~ playRound ~ scissorsBeatsPaper",
+    scissorsBeatsPaper
+  );
 
   // add game logic here...
   if (playerSelection === computerSelection) {
     // return "It's a tie!";
-    alert("It's a tie!");
-  }
-  //  else if (playerSelection === rock && computerSelection === scissors) {
-  //   // return statementSuccess;
-  //   alert(`${statementSuccess}`); }
-  else if (
-    JSON.stringify(playRoundResult) === JSON.stringify(rockBeatsScissors)
-  ) {
+    console.log("It's a tie!");
+  } else if (playRoundResult === rockBeatsScissors) {
     // return statementSuccess;
-    alert(`${statementSuccess}`);
-  } else if (
-    JSON.stringify(playRoundResult) === JSON.stringify(paperBeatsRock)
-  ) {
+    console.log(`${statementSuccess}`);
+  } else if (playRoundResult === paperBeatsRock) {
     // return statementSuccess;
-    alert(`${statementSuccess}`);
-  } else if (
-    JSON.stringify(playRoundResult) === JSON.stringify(scissorsBeatsPaper)
-  ) {
+    console.log(`${statementSuccess}`);
+  } else if (playRoundResult === scissorsBeatsPaper) {
     // return statementSuccess;
-    alert(`${statementSuccess}`);
+    console.log(`${statementSuccess}`);
   } else {
     // return statementFailure;
-    alert(`${statementFailure}`);
+    console.log(`${statementFailure}`);
   }
 
   // return the results of the playRound functions call
-  // return playRoundResult;
+  return playRoundResult; /* typeof strin  */
 }
 
 // playRound(playerSelection, computerSelection);
