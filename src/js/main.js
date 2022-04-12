@@ -15,8 +15,8 @@ function playRound(playerSelection, computerSelection) {
   playerSelectionPrompt = prompt("Rock, Paper, or Scissors?");
   // console.log(`Player Selection: ${playerSelectionPrompt}`);
   playerSelection = playerSelectionPrompt.toLowerCase();
-  result = `${playerSelection}, ${computerSelection}`;
-  console.log(`result is ${result}`);
+  result = [playerSelection, computerSelection];
+  // console.log(`result is ${result}`);
   return result;
 }
 // promptPlayer(); /* if you run a function here and elsewhere you get it two times+ */
@@ -29,9 +29,13 @@ function game() {
   scoreComputer = 0;
   round = 0;
   for (let i = 0; i < 5; i++) {
-    playRound();
     round++;
     console.log(`Round: ${round}`);
+    // es6 destructuring of function playRound() to two variables
+    const [playerSelection, computerSelection] = playRound();
+    console.log(
+      `playerSelection: ${playerSelection}\ncomputerSelection: ${computerSelection}`
+    );
   }
 }
 game();
