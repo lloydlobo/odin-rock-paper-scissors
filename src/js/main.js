@@ -51,27 +51,21 @@ function playRound(playerSelection, computerSelection) {
 
   // add game logic here...
   if (playerSelection === computerSelection) {
-    // return statementTie;
     console.log(`${statementTie}`);
-  } else if (playRoundResult === rockBeatsScissors) {
-    // return statementSuccess;
-    console.log(`${statementSuccess}`);
-  } else if (playRoundResult === paperBeatsRock) {
-    // return statementSuccess;
-    console.log(`${statementSuccess}`);
-  } else if (playRoundResult === scissorsBeatsPaper) {
-    // return statementSuccess;
+  } else if (
+    playRoundResult === rockBeatsScissors ||
+    playRoundResult === paperBeatsRock ||
+    playRoundResult === scissorsBeatsPaper
+  ) {
     console.log(`${statementSuccess}`);
   } else {
-    // return statementFailure;
     console.log(`${statementFailure}`);
   }
 
-  // return the results of the playRound functions call
   return playRoundResult; /* typeof string  */
 }
 
-playRound(); /* // declare and hoist the function to let a single-round run */
+playRound();
 
 // function that plays a single round of the game
 
@@ -79,60 +73,13 @@ playRound(); /* // declare and hoist the function to let a single-round run */
 // }
 // game();
 
-for (round = 0; round < 5; round++) {
-  console.log(`Round no.: ${round + 1}`);
-}
-
-for (let score = 0; score < 5; score++) {
-  console.log(`Score: ${score}`);
-}
+// for (let score = 0; score < 5; score++) {
+//   console.log(`Score: ${score}`);
+// }
 
 const playerScore = 0;
 const computerScore = 0;
 
-if (playerScore > computerScore) {
-  console.log("You won!");
-} else if (playerScore < computerScore) {
-  console.log("You lost!");
-} else if (playerScore === computerScore) {
-  console.log("It's a tie! Everyone wins!");
-}
-// throw an else error
-else {
-  throw new Error("Something went wrong!");
-}
-
-// ////////////
-// ////////////
-// ////////////
-// ////////////
-// ////////////
-// ////////////
-// ////////////
-// ////////////
-// ////////////
-// ////////////
-// ////////////
-// ////////////
-// ////////////
-// ////////////
-// ////////////
-// ////////////
-// ////////////
-// ////////////
-// ////////////
-// ////////////
-// ////////////
-// ////////////
-// ////////////
-// ////////////
-// ////////////
-// ////////////
-// ////////////
-// ////////////
-// ////////////
-// ////////////
-// ////////////
 // play a five round game with playRound function
 // for (let i = 0; i < 5; i++) {
 // add your code here...
