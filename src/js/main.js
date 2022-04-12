@@ -1,16 +1,11 @@
 // function to generate a random selection of the gameArray
 function computerPlay() {
-  let gameArray = ["Rock", "Paper", "Scissors"];
-
-  let today = new Date();
-  let updateTime = `${today.getHours()}:${today.getMinutes()}:${today.getSeconds()}`;
+  const gameArray = ["Rock", "Paper", "Scissors"];
 
   // random number generator to select the index of the gameArray
-  let randomGameSelection =
+  const randomGameSelection =
     gameArray[Math.floor(Math.random() * gameArray.length)];
-  let computerPlayChoice = `${updateTime} | Computer played ${randomGameSelection}`;
-
-  computerPlayChoice = computerPlayChoice.toLowerCase();
+  randomGameSelection;
 
   return randomGameSelection;
 }
@@ -20,10 +15,16 @@ computerPlay(); /* can call function above function definition */
 
 // function that plays a single round of the game
 function playRound(playerSelection, computerSelection) {
-  computerSelection = computerPlay().toLowerCase();
+  let computerRandomSelection = computerPlay();
+  computerRandomSelection;
+
+  // make computerRandomSelection to lowercase
+  computerSelection = computerRandomSelection.toLowerCase();
+  computerSelection;
 
   // playerSelection prompts the user to enter a selection
-  playerSelectionPrompt = prompt("Rock, Paper, or Scissors?");
+  let playerSelectionPrompt = prompt("Rock, Paper, or Scissors?");
+  playerSelectionPrompt;
 
   // alert the user about their selections
   console.log(`You chose ${playerSelectionPrompt}`);
@@ -33,34 +34,28 @@ function playRound(playerSelection, computerSelection) {
     )}` /* convert the first string letter to uppercase */
   );
 
+  // make playerSelection to lower case
   playerSelection = playerSelectionPrompt.toLowerCase();
-  console.log(
-    "🚀 ~ file: main.js ~ line 37 ~ playRound ~ playerSelection",
-    playerSelection
-  );
-
-  playRoundResult = `${playerSelection}, ${computerSelection}`; /* array generated at each round */
-  console.log(
-    "🚀 ~ file: main.js ~ line 39 ~ playRound ~ playRoundResult",
-    playRoundResult
-  );
+  const playRoundResult = `${playerSelection}, ${computerSelection}`; /* string generated at each round */
 
   // it then returns a string to declare a winner of the round
-  let statementSuccess = `You had a better hand than the computer!\n${playerSelection} beats ${computerSelection}!`;
-  let statementFailure = `The computer had a better hand!\n${playerSelection} beats ${computerSelection}!`;
+  const statementSuccess = `You had a better hand than the computer!\n${playerSelection} beats ${computerSelection}!`;
+  const statementFailure = `The computer had a better hand!\n${computerSelection} beats ${playerSelection}!`;
+  const statementTie = `It's a tie!\n${playerSelection} ties ${computerSelection}!`;
 
+  // declare game rules
   const rockBeatsScissors = "rock, scissors";
   const paperBeatsRock = "paper, rock";
   const scissorsBeatsPaper = "scissors, paper";
-  console.log(
-    "🚀 ~ file: main.js ~ line 47 ~ playRound ~ scissorsBeatsPaper",
-    scissorsBeatsPaper
-  );
+
+  rockBeatsScissors;
+  paperBeatsRock;
+  scissorsBeatsPaper;
 
   // add game logic here...
   if (playerSelection === computerSelection) {
-    // return "It's a tie!";
-    console.log("It's a tie!");
+    // return statementTie;
+    console.log(statementTie);
   } else if (playRoundResult === rockBeatsScissors) {
     // return statementSuccess;
     console.log(`${statementSuccess}`);
@@ -76,7 +71,7 @@ function playRound(playerSelection, computerSelection) {
   }
 
   // return the results of the playRound functions call
-  return playRoundResult; /* typeof strin  */
+  return playRoundResult; /* typeof string  */
 }
 
 // playRound(playerSelection, computerSelection);
