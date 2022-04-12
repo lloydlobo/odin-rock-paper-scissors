@@ -9,12 +9,23 @@ function computerPlay() {
 }
 computerPlay();
 
+// function to prompt the player to select Rock, Paper, or Scissors
 function promptPlayer() {
   let playerSelectionPrompt = prompt("Rock, Paper, or Scissors?");
-  console.log(`Player Selection: ${playerSelectionPrompt}`);
+  // console.log(`Player Selection: ${playerSelectionPrompt}`);
   return playerSelectionPrompt;
 }
-promptPlayer();
+// promptPlayer(); /* if you run a function here and elsewhere you get it two times+ */
+
+// console.log("🚀 ~ file: main.js ~ line 18 ~ promptPlayer", promptPlayer());
+
+// function to compare the player and computer selections
+function fiveRoundGame() {
+  for (let i = 0; i < 5; i++) {
+    promptPlayer();
+  }
+}
+fiveRoundGame();
 
 // function playRound(playerSelection, computerSelection) {
 //   const computerSelection = computerPlay();
