@@ -37,6 +37,7 @@ function playRound(playerSelection, computerSelection) {
   // make playerSelection to lower case
   playerSelection = playerSelectionPrompt.toLowerCase();
 
+  // * playRound() result
   const playRoundResult = `${playerSelection}, ${computerSelection}`; /* string generated at each round */
 
   // it then returns a string to declare a winner of the round
@@ -62,23 +63,29 @@ function playRound(playerSelection, computerSelection) {
     console.log(`${statementFailure}`);
   }
 
-  return playRoundResult; /* typeof string  */
+  // return results of each round
+  console.log(playRoundResult);
 }
 
-playRound();
-
-// function that plays a single round of the game
-
-// function game(rounds) {
+// [  ] helper function WIP
+// function playRoundResult() {
+//   // declare variables
+//   let playerScore = 0;
+//   let computerScore = 0;
+//   let round = 0;
 // }
-// game();
+
+// function that plays 5 rounds of function playRound()
+function game() {
+  for (let i = 0; i < 5; i++) {
+    playRound();
+  }
+}
+game();
 
 // for (let score = 0; score < 5; score++) {
 //   console.log(`Score: ${score}`);
 // }
-
-const playerScore = 0;
-const computerScore = 0;
 
 // play a five round game with playRound function
 // for (let i = 0; i < 5; i++) {
