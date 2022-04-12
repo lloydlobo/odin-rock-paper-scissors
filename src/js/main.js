@@ -11,19 +11,53 @@ computerPlay();
 
 // function to prompt the player to select Rock, Paper, or Scissors
 function playRound(playerSelection, computerSelection) {
-  computerSelection = computerPlay().toLowerCase();
   playerSelectionPrompt = prompt("Rock, Paper, or Scissors?");
-  // console.log(`Player Selection: ${playerSelectionPrompt}`);
+
   playerSelection = playerSelectionPrompt.toLowerCase();
-  result = [playerSelection, computerSelection];
-  // console.log(`result is ${result}`);
+  computerSelection = computerPlay().toLowerCase();
+  roundResult = [playerSelection, computerSelection];
+
+  return roundResult; /* can add multiple items to the roundResult and destructure individually later on */
+}
+
+// rock paper scissors game logic
+function playRoundResults() {
+  const [playerSelection, computerSelection] = playRound();
+
+  if (playerSelection === computerSelection) {
+    console.log("Tie!");
+    const everyoneWinsNumber = 0;
+    return everyoneWinsNumber;
+  } else if (
+    (playerSelection === "rock" && computerSelection === "scissors") ||
+    (playerSelection === "paper" && computerSelection === "rock") ||
+    (playerSelection === "scissors" && computerSelection === "paper")
+  ) {
+    const playerWins = `You win! ${playerSelection} beats ${computerSelection}`;
+    // console.log(playerWins);
+    const playerWinsNumber = 1;
+    return [playerWinsNumber, playerWins];
+  } else {
+    const computerWins = `You lose! ${computerSelection} beats ${playerSelection}`;
+    // console.log(computerWins);
+    const computerWinsNumber = -1;
+    return [computerWinsNumber, computerWins];
+  }
+}
+playRoundResults();
+
+// splice out a number for each (win, lose, and tie)
+// get all round result statements
+function playRoundResultsPointStatement() {
+  const result = playRoundResults();
+  const [point, roundStatement] = result;
+  point;
+  roundStatement;
+  // console.log(`Result is ${point}\n${roundStatement}`);
   return result;
 }
-// promptPlayer(); /* if you run a function here and elsewhere you get it two times+ */
 
-// console.log("🚀 ~ file: main.js ~ line 18 ~ promptPlayer", promptPlayer());
-
-// function to compare the player and computer selections
+// runs the game 5 times + declare scores and winner
 function game() {
   scorePlayer = 0;
   scoreComputer = 0;
@@ -36,6 +70,23 @@ function game() {
     console.log(
       `playerSelection: ${playerSelection}\ncomputerSelection: ${computerSelection}`
     );
+    //
+    const [point, roundStatement] = playRoundResultsPointStatement();
+    if (point === 1) {
+      scorePlayer++;
+      console.log(
+        `scorePlayer: ${scorePlayer} scoreComputer: ${scoreComputer}\n${roundStatement}`
+      );
+    } else if (point === -1) {
+      scoreComputer++;
+      console.log(
+        `scorePlayer: ${scorePlayer} scoreComputer: ${scoreComputer}\n${roundStatement}`
+      );
+    } else if (point === 0) {
+      console.log(
+        `scorePlayer: ${scorePlayer} scoreComputer: ${scoreComputer}\n${roundStatement}`
+      );
+    }
   }
 }
 game();
