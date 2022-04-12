@@ -26,7 +26,7 @@ function playRound(playerSelection, computerSelection) {
 
   // * playRound() result
   const playRoundResult = `${playerSelection}, ${computerSelection}`; /* string generated at each round */
-
+  //  return playRoundResult as after the round is over as a function
   // statements to determine the round result
   const statementSuccess = `You had a better hand than the computer!\n${playerSelection} beats ${computerSelection}!`;
   const statementFailure = `The computer had a better hand!\n${computerSelection} beats ${playerSelection}!`;
@@ -45,27 +45,40 @@ function playRound(playerSelection, computerSelection) {
   function gameTies() {
     playerScore;
     computerScore;
-    console.log(`${statementTie}`);
-    console.log(`Player Score: ${playerScore}`);
-    console.log(`Computer Score: ${computerScore}`);
+    console.log(
+      `${statementTie}\nPlayer Score: ${playerScore}\nComputer Score: ${computerScore}`
+    );
+
+    const result = JSON.stringify(playRoundResult);
+    console.log(result);
+    return result;
   }
 
   // runs when the player wins
   function playerWins() {
     playerScore++;
     computerScore;
-    console.log(`${statementSuccess}`);
-    console.log(`Player Score: ${playerScore}`);
-    console.log(`Computer Score: ${computerScore}`);
+    console.log(
+      `${statementSuccess}\nPlayer Score: ${playerScore}\nComputer Score: ${computerScore}`
+    );
+    const result = JSON.stringify(playRoundResult);
+    console.log(result);
+    return result;
+    // check if result is an array in the console
+
+    return result;
   }
 
   // runs when the computer wins
   function computerWins() {
     computerScore++;
     playerScore;
-    console.log(`${statementFailure}`);
-    console.log(`Player Score: ${playerScore}`);
-    console.log(`Computer Score: ${computerScore}`);
+    console.log(
+      `${statementFailure}\nPlayer Score: ${playerScore}\nComputer Score: ${computerScore}`
+    );
+    const result = JSON.stringify(playRoundResult);
+    console.log(result);
+    return result;
   }
 
   // add game logic here...
@@ -80,10 +93,9 @@ function playRound(playerSelection, computerSelection) {
   } else {
     return computerWins();
   }
-
-  // return results of each round
-  console.log(playRoundResult);
 }
+
+// fetch the playRoundResult function result
 
 // [  ] helper function WIP
 // function playRoundResult() {
@@ -95,9 +107,18 @@ function playRound(playerSelection, computerSelection) {
 
 // function that plays 5 rounds of function playRound()
 function game() {
+  // declare variables
+  let playerScore = 0;
+  let computerScore = 0;
+  let round = 0;
+
   for (let i = 0; i < 5; i++) {
     playRound();
+    round++;
+    console.log(`Round no. ${round}`);
   }
+  // keep score of the game and declare a winner at the end of each round - for each i++
+  // map the round result to the console from playRound()
 }
 game();
 
