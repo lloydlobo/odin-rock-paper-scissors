@@ -11,7 +11,6 @@ function userPlay() {
   userChoice = prompt("Pick rock, paper, or scissors");
   userChoice = userChoice.toLowerCase();
   computerChoice = computerPlay();
-
   return userChoice;
 }
 
@@ -62,6 +61,7 @@ function game() {
       `Round ${round}: ${roundResult}\nUser score: ${userScore} Computer score: ${computerScore}\nYou chose ${userChoice} Computer chose ${computerChoice}`
     );
   }
+
   // announce final results of 5 round game
   if (userScore > computerScore) {
     console.log(
