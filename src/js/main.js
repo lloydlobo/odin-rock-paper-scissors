@@ -1,5 +1,3 @@
-console.log("Hello World");
-
 // computer picks randomly from rock, paper, and scissors
 function computerPlay() {
   const rockPaperScissors = ["rock", "paper", "scissors"];
@@ -9,7 +7,6 @@ function computerPlay() {
   computerRandom = rockPaperScissors[Math.floor(randomNumber)];
   return computerRandom;
 }
-// computerPlay();
 
 // user picks rock, paper, or scissors
 function userPlay() {
@@ -21,7 +18,6 @@ function userPlay() {
 
   return userChoice;
 }
-// userPlay();
 
 // compare user and computer choices
 function playRound(userChoice, computerChoice) {
@@ -47,8 +43,6 @@ function playRound(userChoice, computerChoice) {
     }
   }
 }
-// playRound(userChoice, computerRandom);
-// console.log(`Round result: ${playRound(userChoice, computerRandom)}`);
 
 // includes "you win" or "you lose"
 function game() {
