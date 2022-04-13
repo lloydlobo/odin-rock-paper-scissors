@@ -9,7 +9,7 @@ function computerPlay() {
 // user picks rock, paper, or scissors
 function userPlay() {
   userChoice = prompt("Pick rock, paper, or scissors");
-  // ! userChoice = userChoice.toLowerCase();
+  userChoice = userChoice.toLowerCase();
   computerChoice = computerPlay();
 
   return userChoice;
