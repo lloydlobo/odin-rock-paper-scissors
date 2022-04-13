@@ -54,9 +54,9 @@ function playRound(userChoice, computerChoice) {
 
 // includes "you win" or "you lose"
 function game() {
-  let userScore = 0;
-  let computerScore = 0;
-  let round = 0;
+  let userScore = 0; /* sets to 0 and resets the value when restarted */
+  let computerScore = 0; /* sets to 0 and resets the value when restarted */
+  let round = 0; /* sets to 0 and resets the value when restarted */
   const win = "win";
   const lose = "lose";
   const tie = "tie";
@@ -95,13 +95,14 @@ function game() {
 }
 game();
 
-// reset game
-function resetGame() {
-  const reset = prompt("Would you like to play again? (y/n)");
+// restart game
+function restartGame() {
+  const promptMessageRestart = `Would you like to play again? (y/n)`;
+  const reset = prompt(promptMessageRestart, `y`);
   if (reset === "y") {
-    game();
+    game(); /* [] can add a loop here */
   } else {
     console.log("Thanks for playing!");
   }
 }
-resetGame();
+restartGame();
