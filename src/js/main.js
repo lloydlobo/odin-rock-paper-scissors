@@ -73,23 +73,19 @@ function game() {
     );
   }
 
-  // announce final results of 5 round game
-  if (userScore > computerScore) {
-    console.log(
-      `Game over! You win!\nFinal score: userScore: ${userScore} to computerScore: ${computerScore}`
-    );
-    return `Game over! You win!`;
-  } else if (userScore < computerScore) {
-    console.log(
-      `Game over! You lose!\nFinal score: userScore: ${userScore} to computerScore: ${computerScore}`
-    );
-    return `Game over! You lose!`;
-  } else {
-    console.log(
-      `Game over! It's a tie!\nFinal score: userScore: ${userScore} to computerScore: ${computerScore}`
-    );
-    return `Game over! It's a tie!`;
-  }
+  // Game Over Results
+  const successUser = `Game over! You succeeded!\nFinal score:\nuserScore: ${userScore} to computerScore: ${computerScore}`;
+  const successComputer = `Game over! Computer succeeded!\nFinal score:\nuserScore: ${userScore} to computerScore: ${computerScore}`;
+  const successUserComputer = `Game over! It's a tie! Everyone succeeded!\nFinal score:\nuserScore: ${userScore} to computerScore: ${computerScore}`;
+
+  let gameResult =
+    userScore > computerScore
+      ? successUser
+      : userScore < computerScore
+      ? successComputer
+      : successUserComputer;
+
+  return console.log(gameResult);
 }
 game();
 

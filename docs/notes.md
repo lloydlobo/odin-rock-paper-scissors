@@ -6,9 +6,9 @@
 
 ## DOING
 
-- [ ] 20220413122852 - convert restart() if conditionals to ternary operators
-
 ## DONE
+
+- [x] 20220413122852 - convert restart() if conditionals to ternary operators - done at 20220413132032
 
 - [x] Update verbiage of statements at 20220413124947
 
