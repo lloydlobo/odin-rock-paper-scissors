@@ -1,13 +1,3 @@
-// workarounds for alert and prompt messages (confirm too)
-// const customAlertMessage = `Something happened!`;
-const customPrompt = `Pick rock, paper, or scissors`;
-
-// alerts/updates the user
-// function alertMessage() {
-//   alert(customAlertMessage);
-// }
-// alertMessage();
-
 // computer picks randomly from rock, paper, and scissors
 function computerPlay() {
   const rockPaperScissors = ["rock", "paper", "scissors"];
@@ -16,19 +6,26 @@ function computerPlay() {
   return computerRandom;
 }
 
+// prompt message for the user
+const customPrompt = `Pick rock, paper, or scissors`;
+
 // prompts the user
 function promptMessage() {
-  const userInput = prompt(customPrompt);
+  const computerRandomValue = computerPlay();
+  const userInput = prompt(
+    customPrompt,
+    `${computerRandomValue}`
+  ); /* message is customPrompt and default value is generated randomly by computerPlay() => `${computerRandom} */
   const userInputMessage = userInput;
   return userInputMessage;
 }
 
-// user picks rock, paper, or scissors
+// fetches user and computer choices values
 function fetchUserComputerSelection() {
-  const result = promptMessage();
+  const userChoiceValue = promptMessage();
   // userChoice = prompt();
   // userChoice = prompt("Pick rock, paper, or scissors");
-  let userChoice = result.toLowerCase();
+  let userChoice = userChoiceValue.toLowerCase();
   const computerRandomResult = computerPlay();
   let computerChoice = computerRandomResult;
 
