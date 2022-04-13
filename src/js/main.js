@@ -1,92 +1,91 @@
-// function to generate a random selection of the gameArray
+console.log("Hello World");
+
+// computer picks randomly from rock, paper, and scissors
 function computerPlay() {
-  const gameArray = ["Rock", "Paper", "Scissors"];
-  // random number generator to select the index of the gameArray
-  const randomGameSelection =
-    gameArray[Math.floor(Math.random() * gameArray.length)];
-
-  return randomGameSelection;
+  const rockPaperScissors = ["rock", "paper", "scissors"];
+  // console.log(rockPaperScissors);
+  const randomNumber = Math.random() * rockPaperScissors.length;
+  // console.log(randomNumber);
+  computerRandom = rockPaperScissors[Math.floor(randomNumber)];
+  return computerRandom;
 }
-computerPlay();
+// computerPlay();
 
-// function to prompt the player to select Rock, Paper, or Scissors
-function playRound(playerSelection, computerSelection) {
-  playerSelectionPrompt = prompt("Rock, Paper, or Scissors?");
+// user picks rock, paper, or scissors
+function userPlay() {
+  userChoice = prompt("Pick rock, paper, or scissors");
+  // userChoice = userChoice.toLowerCase();
+  computerChoice = computerPlay();
+  console.log(`You chose ${userChoice}`);
+  console.log(`Computer chose ${computerChoice}`);
 
-  playerSelection = playerSelectionPrompt.toLowerCase();
-  computerSelection = computerPlay().toLowerCase();
-  roundResult = [playerSelection, computerSelection];
-
-  return roundResult; /* can add multiple items to the roundResult and destructure individually later on */
+  return userChoice;
 }
+// userPlay();
 
-// rock paper scissors game logic
-function playRoundResults() {
-  const [playerSelection, computerSelection] = playRound();
-
-  if (playerSelection === computerSelection) {
-    console.log("Tie!");
-    const everyoneWinsNumber = 0;
-    return everyoneWinsNumber;
-  } else if (
-    (playerSelection === "rock" && computerSelection === "scissors") ||
-    (playerSelection === "paper" && computerSelection === "rock") ||
-    (playerSelection === "scissors" && computerSelection === "paper")
-  ) {
-    const playerWins = `You win! ${playerSelection} beats ${computerSelection}`;
-    // console.log(playerWins);
-    const playerWinsNumber = 1;
-    return [playerWinsNumber, playerWins];
-  } else {
-    const computerWins = `You lose! ${computerSelection} beats ${playerSelection}`;
-    // console.log(computerWins);
-    const computerWinsNumber = -1;
-    return [computerWinsNumber, computerWins];
+// compare user and computer choices
+function playRound(userChoice, computerChoice) {
+  if (userChoice === computerChoice) {
+    return "It's a tie!";
+  } else if (userChoice === "rock") {
+    if (computerChoice === "paper") {
+      return "You lose! Paper beats rock.";
+    } else {
+      return "You win! Rock beats scissors.";
+    }
+  } else if (userChoice === "paper") {
+    if (computerChoice === "scissors") {
+      return "You lose! Scissors beats paper.";
+    } else {
+      return "You win! Paper beats rock.";
+    }
+  } else if (userChoice === "scissors") {
+    if (computerChoice === "rock") {
+      return "You lose! Rock beats scissors.";
+    } else {
+      return "You win! Scissors beats paper.";
+    }
   }
 }
-playRoundResults();
+// playRound(userChoice, computerRandom);
+// console.log(`Round result: ${playRound(userChoice, computerRandom)}`);
 
-// splice out a number for each (win, lose, and tie)
-// get all round result statements
-function playRoundResultsPointStatement() {
-  const result = playRoundResults();
-  const [point, roundStatement] = result;
-  point;
-  roundStatement;
-  // console.log(`Result is ${point}\n${roundStatement}`);
-  return result;
-}
-
-// runs the game 5 times + declare scores and winner
+// includes "you win" or "you lose"
 function game() {
-  scorePlayer = 0;
-  scoreComputer = 0;
-  round = 0;
+  let userScore = 0;
+  let computerScore = 0;
+  let round = 0;
+  const win = "win";
+  const lose = "lose";
+  const tie = "tie";
   for (let i = 0; i < 5; i++) {
+    userPlay();
+    const roundResult = playRound(userChoice, computerRandom);
     round++;
-    console.log(`Round: ${round}`);
-    // es6 destructuring of function playRound() to two variables
-    const [playerSelection, computerSelection] = playRound();
+    if (roundResult.includes(win)) {
+      userScore++;
+    } else if (roundResult.includes(lose)) {
+      computerScore++;
+    } else roundResult.includes(tie);
     console.log(
-      `playerSelection: ${playerSelection}\ncomputerSelection: ${computerSelection}`
+      `Round ${round}: ${roundResult}\nUser score: ${userScore}\nComputer score: ${computerScore}`
     );
-    //
-    const [point, roundStatement] = playRoundResultsPointStatement();
-    if (point === 1) {
-      scorePlayer++;
-      console.log(
-        `scorePlayer: ${scorePlayer} scoreComputer: ${scoreComputer}\n${roundStatement}`
-      );
-    } else if (point === -1) {
-      scoreComputer++;
-      console.log(
-        `scorePlayer: ${scorePlayer} scoreComputer: ${scoreComputer}\n${roundStatement}`
-      );
-    } else if (point === 0) {
-      console.log(
-        `scorePlayer: ${scorePlayer} scoreComputer: ${scoreComputer}\n${roundStatement}`
-      );
-    }
+  }
+  if (userScore > computerScore) {
+    console.log(
+      `Game over! You win!\nFinal score: userScore: ${userScore} to computerScore: ${computerScore}`
+    );
+    return `Game over! You win!`;
+  } else if (userScore < computerScore) {
+    console.log(
+      `Game over! You lose!\nFinal score: userScore: ${userScore} to computerScore: ${computerScore}`
+    );
+    return `Game over! You lose!`;
+  } else {
+    console.log(
+      `Game over! It's a tie!\nFinal score: userScore: ${userScore} to computerScore: ${computerScore}`
+    );
+    return `Game over! It's a tie!`;
   }
 }
 game();
