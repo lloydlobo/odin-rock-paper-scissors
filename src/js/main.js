@@ -62,6 +62,7 @@ function game() {
       `Round ${round}: ${roundResult}\nUser score: ${userScore} Computer score: ${computerScore}\nYou chose ${userChoice} Computer chose ${computerChoice}`
     );
   }
+  // announce final results of 5 round game
   if (userScore > computerScore) {
     console.log(
       `Game over! You win!\nFinal score: userScore: ${userScore} to computerScore: ${computerScore}`
@@ -80,3 +81,14 @@ function game() {
   }
 }
 game();
+
+// reset game
+function resetGame() {
+  const reset = prompt("Would you like to play again? (y/n)");
+  if (reset === "y") {
+    game();
+  } else {
+    console.log("Thanks for playing!");
+  }
+}
+resetGame();
