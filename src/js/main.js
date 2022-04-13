@@ -6,11 +6,9 @@ function computerPlay() {
   return computerRandom;
 }
 
-// prompt message for the user
-const customPrompt = `Pick rock, paper, or scissors`;
-
 // prompts the user
 function promptMessage() {
+  const customPrompt = `Pick rock, paper, or scissors`;
   const computerRandomValue = computerPlay();
   const userInput = prompt(
     customPrompt,
