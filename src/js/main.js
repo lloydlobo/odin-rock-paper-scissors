@@ -1,27 +1,19 @@
-console.log("Hello World");
-
 // computer picks randomly from rock, paper, and scissors
 function computerPlay() {
   const rockPaperScissors = ["rock", "paper", "scissors"];
-  // console.log(rockPaperScissors);
   const randomNumber = Math.random() * rockPaperScissors.length;
-  // console.log(randomNumber);
   computerRandom = rockPaperScissors[Math.floor(randomNumber)];
   return computerRandom;
 }
-// computerPlay();
 
 // user picks rock, paper, or scissors
 function userPlay() {
   userChoice = prompt("Pick rock, paper, or scissors");
-  // userChoice = userChoice.toLowerCase();
+  userChoice = userChoice.toLowerCase();
   computerChoice = computerPlay();
-  console.log(`You chose ${userChoice}`);
-  console.log(`Computer chose ${computerChoice}`);
 
   return userChoice;
 }
-// userPlay();
 
 // compare user and computer choices
 function playRound(userChoice, computerChoice) {
@@ -47,8 +39,6 @@ function playRound(userChoice, computerChoice) {
     }
   }
 }
-// playRound(userChoice, computerRandom);
-// console.log(`Round result: ${playRound(userChoice, computerRandom)}`);
 
 // includes "you win" or "you lose"
 function game() {
@@ -67,10 +57,12 @@ function game() {
     } else if (roundResult.includes(lose)) {
       computerScore++;
     } else roundResult.includes(tie);
+
     console.log(
-      `Round ${round}: ${roundResult}\nUser score: ${userScore}\nComputer score: ${computerScore}`
+      `Round ${round}: ${roundResult}\nUser score: ${userScore} Computer score: ${computerScore}\nYou chose ${userChoice} Computer chose ${computerChoice}`
     );
   }
+  // announce final results of 5 round game
   if (userScore > computerScore) {
     console.log(
       `Game over! You win!\nFinal score: userScore: ${userScore} to computerScore: ${computerScore}`
@@ -89,3 +81,14 @@ function game() {
   }
 }
 game();
+
+// reset game
+function resetGame() {
+  const reset = prompt("Would you like to play again? (y/n)");
+  if (reset === "y") {
+    game();
+  } else {
+    console.log("Thanks for playing!");
+  }
+}
+resetGame();
