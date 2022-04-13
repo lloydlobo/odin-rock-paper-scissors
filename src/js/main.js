@@ -25,9 +25,9 @@ function fetchUserComputerSelection() {
   const userChoiceValue = promptMessage();
   // userChoice = prompt();
   // userChoice = prompt("Pick rock, paper, or scissors");
-  let userChoice = userChoiceValue.toLowerCase();
+  const userChoice = userChoiceValue.toLowerCase();
   const computerRandomResult = computerPlay();
-  let computerChoice = computerRandomResult;
+  const computerChoice = computerRandomResult;
 
   return [userChoice, computerChoice];
 }
