@@ -14,23 +14,24 @@ function userPlay() {
   return userChoice;
 }
 
+// play a single round
 // compare user and computer choices
 function playRound(userChoice, computerChoice) {
-  return userChoice === computerChoice
-    ? `It's a tie!`
-    : userChoice === "rock" && computerChoice === "scissors"
-    ? `You win!`
+  return userChoice === "rock" && computerChoice === "scissors"
+    ? `You win! ${userChoice} beats ${computerChoice}`
     : userChoice === "paper" && computerChoice === "rock"
-    ? `You win!`
+    ? `You win! ${userChoice} beats ${computerChoice}`
     : userChoice === "scissors" && computerChoice === "paper"
-    ? `You win!`
+    ? `You win! ${userChoice} beats ${computerChoice}`
     : userChoice === "rock" && computerChoice === "paper"
-    ? `You lose!`
+    ? `You lose! ${computerChoice} beats ${userChoice}`
     : userChoice === "paper" && computerChoice === "scissors"
-    ? `You lose!`
+    ? `You lose! ${computerChoice} beats ${userChoice}`
     : userChoice === "scissors" && computerChoice === "rock"
-    ? `You lose!`
-    : `You didn't pick rock, paper, or scissors. Try again.`;
+    ? `You lose! ${computerChoice} beats ${userChoice}`
+    : userChoice === computerChoice
+    ? `It's a tie! ${userChoice} ties ${computerChoice}`
+    : `You didn't pick rock, paper, or scissors.\nYou chose ${userChoice} Computer chose ${computerChoice}`; // if user doesn't pick rock, paper, or scissors
 }
 
 // includes "you win" or "you lose"
