@@ -32,19 +32,19 @@ function fetchUserComputerSelection() {
 // compare user and computer choices
 function playRound(userChoice, computerChoice) {
   return userChoice === "rock" && computerChoice === "scissors"
-    ? `You win! ${userChoice} crushes ${computerChoice}`
+    ? `You win!\n${userChoice} crushes ${computerChoice}`
     : userChoice === "paper" && computerChoice === "rock"
-    ? `You win! ${userChoice} covers ${computerChoice}`
+    ? `You win!\n${userChoice} covers ${computerChoice}`
     : userChoice === "scissors" && computerChoice === "paper"
-    ? `You win! ${userChoice} cuts ${computerChoice}`
+    ? `You win!\n${userChoice} cuts ${computerChoice}`
     : userChoice === "rock" && computerChoice === "paper"
-    ? `You lose! ${computerChoice} covers ${userChoice}`
+    ? `You lose!\n${computerChoice} covers ${userChoice}`
     : userChoice === "paper" && computerChoice === "scissors"
-    ? `You lose! ${computerChoice} cuts ${userChoice}`
+    ? `You lose!\n${computerChoice} cuts ${userChoice}`
     : userChoice === "scissors" && computerChoice === "rock"
-    ? `You lose! ${computerChoice} crushes ${userChoice}`
+    ? `You lose!\n${computerChoice} crushes ${userChoice}`
     : userChoice === computerChoice
-    ? `It's a tie! ${userChoice} ties ${computerChoice}`
+    ? `It's a tie!\n${userChoice} ties ${computerChoice}`
     : "";
 }
 
@@ -68,9 +68,9 @@ function game() {
       computerScore++;
     } else roundResult.includes(tie);
 
-    console.log(
-      `Round ${round}: ${roundResult}\nUser score: ${userScore} Computer score: ${computerScore}\nYou chose ${userChoice} Computer chose ${computerChoice}`
-    );
+    const gameRoundResult = `Round ${round}: ${roundResult}\nUser score: ${userScore} Computer score: ${computerScore}\nYou chose ${userChoice} Computer chose ${computerChoice}`;
+
+    console.log(`${gameRoundResult}`);
   }
 
   // Game Over Results
@@ -78,14 +78,14 @@ function game() {
   const successComputer = `Game over! Computer succeeded!\nFinal score:\nuserScore: ${userScore} to computerScore: ${computerScore}`;
   const successUserComputer = `Game over! It's a tie! Everyone succeeded!\nFinal score:\nuserScore: ${userScore} to computerScore: ${computerScore}`;
 
-  let gameResult =
+  let gameFinalResult =
     userScore > computerScore
       ? successUser
       : userScore < computerScore
       ? successComputer
       : successUserComputer;
 
-  return console.log(gameResult);
+  return console.log(gameFinalResult);
 }
 game();
 
