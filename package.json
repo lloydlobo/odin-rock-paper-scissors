@@ -1,0 +1,23 @@
+{
+  "name": "odin-rock-paper-scissors",
+  "version": "1.0.0",
+  "description": "A simple implementation of grade-school classic “rock paper scissors” for The Odin Project (TOP) web development curriculum.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lloydlobo/odin-rock-paper-scissors.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lloydlobo/odin-rock-paper-scissors/issues"
+  },
+  "homepage": "https://github.com/lloydlobo/odin-rock-paper-scissors#readme"
+}
