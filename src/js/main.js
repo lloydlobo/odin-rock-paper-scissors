@@ -1,9 +1,7 @@
 // computer picks randomly from rock, paper, and scissors
 function computerPlay() {
   const rockPaperScissors = ["rock", "paper", "scissors"];
-  // console.log(rockPaperScissors);
   const randomNumber = Math.random() * rockPaperScissors.length;
-  // console.log(randomNumber);
   computerRandom = rockPaperScissors[Math.floor(randomNumber)];
   return computerRandom;
 }
@@ -11,10 +9,8 @@ function computerPlay() {
 // user picks rock, paper, or scissors
 function userPlay() {
   userChoice = prompt("Pick rock, paper, or scissors");
-  // userChoice = userChoice.toLowerCase();
+  // ! userChoice = userChoice.toLowerCase();
   computerChoice = computerPlay();
-  console.log(`You chose ${userChoice}`);
-  console.log(`Computer chose ${computerChoice}`);
 
   return userChoice;
 }
@@ -61,8 +57,9 @@ function game() {
     } else if (roundResult.includes(lose)) {
       computerScore++;
     } else roundResult.includes(tie);
+
     console.log(
-      `Round ${round}: ${roundResult}\nUser score: ${userScore}\nComputer score: ${computerScore}`
+      `Round ${round}: ${roundResult}\nUser score: ${userScore} Computer score: ${computerScore}\nYou chose ${userChoice} Computer chose ${computerChoice}`
     );
   }
   if (userScore > computerScore) {
