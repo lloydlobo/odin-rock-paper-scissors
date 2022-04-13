@@ -68,7 +68,7 @@ function game() {
       computerScore++;
     } else roundResult.includes(tie);
 
-    const gameRoundResult = `Round ${round}: ${roundResult}\nUser score: ${userScore} Computer score: ${computerScore}\nYou chose ${userChoice} Computer chose ${computerChoice}`;
+    const gameRoundResult = `Round ${round}: ${roundResult}\nYou chose ${userChoice} Computer chose ${computerChoice}\nUser score: ${userScore} Computer score: ${computerScore}`;
 
     console.log(`${gameRoundResult}`);
   }
