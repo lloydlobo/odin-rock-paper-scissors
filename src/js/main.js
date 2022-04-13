@@ -1,3 +1,13 @@
+// workarounds for alert and prompt messages (confirm too)
+// const customAlertMessage = `Something happened!`;
+const customPrompt = `Pick rock, paper, or scissors`;
+
+// alerts/updates the user
+// function alertMessage() {
+//   alert(customAlertMessage);
+// }
+// alertMessage();
+
 // computer picks randomly from rock, paper, and scissors
 function computerPlay() {
   const rockPaperScissors = ["rock", "paper", "scissors"];
@@ -6,12 +16,23 @@ function computerPlay() {
   return computerRandom;
 }
 
+// prompts the user
+function promptMessage() {
+  const userInput = prompt(customPrompt);
+  const userInputMessage = userInput;
+  return userInputMessage;
+}
+
 // user picks rock, paper, or scissors
-function userPlay() {
-  userChoice = prompt("Pick rock, paper, or scissors");
-  userChoice = userChoice.toLowerCase();
-  computerChoice = computerPlay();
-  return userChoice;
+function fetchUserComputerSelection() {
+  const result = promptMessage();
+  // userChoice = prompt();
+  // userChoice = prompt("Pick rock, paper, or scissors");
+  let userChoice = result.toLowerCase();
+  const computerRandomResult = computerPlay();
+  let computerChoice = computerRandomResult;
+
+  return [userChoice, computerChoice];
 }
 
 // play a single round
@@ -31,7 +52,7 @@ function playRound(userChoice, computerChoice) {
     ? `You lose! ${computerChoice} beats ${userChoice}`
     : userChoice === computerChoice
     ? `It's a tie! ${userChoice} ties ${computerChoice}`
-    : `You didn't pick rock, paper, or scissors.\nYou chose ${userChoice} Computer chose ${computerChoice}`; // if user doesn't pick rock, paper, or scissors
+    : "";
 }
 
 // includes "you win" or "you lose"
@@ -43,8 +64,8 @@ function game() {
   const lose = "lose";
   const tie = "tie";
   for (let i = 0; i < 5; i++) {
-    userPlay();
-    const roundResult = playRound(userChoice, computerRandom);
+    const [userChoice, computerChoice] = fetchUserComputerSelection();
+    const roundResult = playRound(userChoice, computerChoice);
     round++;
     if (roundResult.includes(win)) {
       userScore++;
