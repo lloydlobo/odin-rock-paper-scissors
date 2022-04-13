@@ -2,11 +2,50 @@
 ::before,
 ::after {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+  /* margin: 0; */
+  /* padding: 0; */
 }
 
 body {
-  background-color: black;
-  color: white;
+  /* background-color: #212121; */
+  background-color: #1e1c1c;
+  color: #f1f1f1;
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  text-align: center;
+}
+
+.card {
+  border-radius: 5px;
+  padding: 1.8em;
+  max-width: clamp(300px, 20vw, 40vw);
+}
+
+.card--neumorphic-300 {
+  border-radius: 50px;
+  background: #1e1c1c;
+  box-shadow: 20px 20px 60px #1a1818, -20px -20px 60px #232020;
+}
+
+.card--neumorphic-700 {
+  border-radius: 50px;
+  background: #1e1c1c;
+  box-shadow: 28px 28px 21px #1a1818, -28px -28px 21px #232020;
+}
+
+.card--neumorphic__dip-300 {
+  border-radius: 52px;
+  background: linear-gradient(145deg, #1b1919, #201e1e);
+  box-shadow: 5px 5px 33px #1d1b1b, -5px -5px 33px #1f1d1d;
+}
+
+.card--neumorphic__dip-700 {
+  border-radius: 50px;
+  background: linear-gradient(145deg, #1b1919, #201e1e);
+  box-shadow: 28px 28px 21px #1a1818, -28px -28px 21px #232020;
+}
+
+code {
+  color: #ff4545;
 }
