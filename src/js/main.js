@@ -21,8 +21,6 @@ function promptMessage() {
 // fetches user and computer choices values
 function fetchUserComputerSelection() {
   const userChoiceValue = promptMessage();
-  // userChoice = prompt();
-  // userChoice = prompt("Pick rock, paper, or scissors");
   const userChoice = userChoiceValue.toLowerCase();
   const computerRandomResult = computerPlay();
   const computerChoice = computerRandomResult;
@@ -55,9 +53,11 @@ function game() {
   let userScore = 0; /* sets to 0 and resets the value when restarted */
   let computerScore = 0; /* sets to 0 and resets the value when restarted */
   let round = 0; /* sets to 0 and resets the value when restarted */
+
   const win = "win";
   const lose = "lose";
   const tie = "tie";
+
   for (let i = 0; i < 5; i++) {
     const [userChoice, computerChoice] = fetchUserComputerSelection();
     const roundResult = playRound(userChoice, computerChoice);
@@ -94,7 +94,7 @@ function restartGame() {
   const promptMessageRestart = `Would you like to play again? (y/n)`;
   const reset = prompt(promptMessageRestart, `y`);
   if (reset === "y") {
-    game(); /* [] can add a loop here */
+    game();
     restartGame(); /* prompts user again when game() ends 2nd time */
   } else {
     console.log("Thanks for playing!");
