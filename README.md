@@ -44,7 +44,7 @@
 
 ## 🎥 &nbsp;Preview
 
-🪨 📰 ✂️ 
+🪨 📰 ✂️
 
 [![odin rock paper scissors website](https://github.com/lloydlobo/lloydlobo/blob/main/assets/projects/web-development/odin-rock-paper-scissors.gif)](https://lloydlobo.github.io/odin-rock-paper-scissors/)
 
