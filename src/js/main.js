@@ -99,6 +99,7 @@ function restartGame() {
   const reset = prompt(promptMessageRestart, `y`);
   if (reset === "y") {
     game(); /* [] can add a loop here */
+    restartGame(); /* prompts user again when game() ends 2nd time */
   } else {
     console.log("Thanks for playing!");
   }
