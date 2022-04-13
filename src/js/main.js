@@ -34,17 +34,17 @@ function fetchUserComputerSelection() {
 // compare user and computer choices
 function playRound(userChoice, computerChoice) {
   return userChoice === "rock" && computerChoice === "scissors"
-    ? `You win! ${userChoice} beats ${computerChoice}`
+    ? `You win! ${userChoice} crushes ${computerChoice}`
     : userChoice === "paper" && computerChoice === "rock"
-    ? `You win! ${userChoice} beats ${computerChoice}`
+    ? `You win! ${userChoice} covers ${computerChoice}`
     : userChoice === "scissors" && computerChoice === "paper"
-    ? `You win! ${userChoice} beats ${computerChoice}`
+    ? `You win! ${userChoice} cuts ${computerChoice}`
     : userChoice === "rock" && computerChoice === "paper"
-    ? `You lose! ${computerChoice} beats ${userChoice}`
+    ? `You lose! ${computerChoice} covers ${userChoice}`
     : userChoice === "paper" && computerChoice === "scissors"
-    ? `You lose! ${computerChoice} beats ${userChoice}`
+    ? `You lose! ${computerChoice} cuts ${userChoice}`
     : userChoice === "scissors" && computerChoice === "rock"
-    ? `You lose! ${computerChoice} beats ${userChoice}`
+    ? `You lose! ${computerChoice} crushes ${userChoice}`
     : userChoice === computerChoice
     ? `It's a tie! ${userChoice} ties ${computerChoice}`
     : "";
