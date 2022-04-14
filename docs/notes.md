@@ -8,27 +8,27 @@
 
 ## DONE
 
--   [x] 20220413122852 - convert restart() if conditionals to ternary operators - done at 20220413132032
+- [x] 20220413122852 - convert restart() if conditionals to ternary operators - done at 20220413132032
 
--   [x] Update verbiage of statements at 20220413124947
+- [x] Update verbiage of statements at 20220413124947
 
-    -   [x] Update rock "crushes" scissors
-    -   [x] Update paper "covers" rock
-    -   [x] Update scissors "cuts" paper
+  - [x] Update rock "crushes" scissors
+  - [x] Update paper "covers" rock
+  - [x] Update scissors "cuts" paper
 
--   [x] 20220413124018 20220413122943 Put the the restart() function after the game() function inside the restart() function <!-- is this recursion? -->
+- [x] 20220413124018 20220413122943 Put the the restart() function after the game() function inside the restart() function <!-- is this recursion? -->
 
--   [x] fix/preferTernaryOperator-JS-D009 @96b70e8 PR#6
+- [x] fix/preferTernaryOperator-JS-D009 @96b70e8 PR#6
 
 ## Ideas
 
--   see if you can unify playRound(playerSelection, computerSelection) with promptUserComputerValues()
-    -   As one has to use multiple lines of code to bring in the returns of each functions you
-    -   although right now to me it seems that it knows them separate and cleaner.
-    -   I think it would be better to have one function that returns the values of both the player and computer
-    -   If this is incorrect then what would be a better solution?
+- see if you can unify playRound(playerSelection, computerSelection) with promptUserComputerValues()
+  - As one has to use multiple lines of code to bring in the returns of each functions you
+  - although right now to me it seems that it knows them separate and cleaner.
+  - I think it would be better to have one function that returns the values of both the player and computer
+  - If this is incorrect then what would be a better solution?
 
 ## Archive
 
--   keep naming conventions sme across all variables. either choose user or player
-    -   Update: 20220413124316 It already was consistent.
+- keep naming conventions sme across all variables. either choose user or player
+  - Update: 20220413124316 It already was consistent.

@@ -52,8 +52,8 @@
 
 ## 📰  Documentation
 
--   For deep knowledge about this project, [check out the documentation here](https://lloydlobo.github.io/odin-rock-paper-scissors-docs/).
--   For a quick read about the project details, you may want to head over to the [Wiki](https://github.com/lloydlobo/odin-rock-paper-scissors/wiki) section here on GitHub.
+- For deep knowledge about this project, [check out the documentation here](https://lloydlobo.github.io/odin-rock-paper-scissors-docs/).
+- For a quick read about the project details, you may want to head over to the [Wiki](https://github.com/lloydlobo/odin-rock-paper-scissors/wiki) section here on GitHub.
 
 ## ⬇️  Downloads
 
@@ -81,8 +81,8 @@ You may want to download the latest Source Files as a ZIP folder from [here](htt
 
 ## 📂  Releases
 
--   You'll find all 👉 [releases](https://github.com/lloydlobo/odin-rock-paper-scissors/releases) 👈 here.
--   Also you can learn how [Semantic Versioning 2.0.0](https://semver.org/) works .
+- You'll find all 👉 [releases](https://github.com/lloydlobo/odin-rock-paper-scissors/releases) 👈 here.
+- Also you can learn how [Semantic Versioning 2.0.0](https://semver.org/) works .
 
 ## 🤝  Contributing
 
