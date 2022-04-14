@@ -2,7 +2,7 @@
 function computerPlay() {
   const rockPaperScissors = ["rock", "paper", "scissors"];
   const randomNumber = Math.random() * rockPaperScissors.length;
-  computerRandom = rockPaperScissors[Math.floor(randomNumber)];
+  const computerRandom = rockPaperScissors[Math.floor(randomNumber)];
   return computerRandom;
 }
 
