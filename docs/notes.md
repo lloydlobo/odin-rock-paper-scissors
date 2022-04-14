@@ -17,6 +17,7 @@
   - [x] Update scissors "cuts" paper
 
 - [x] 20220413124018 20220413122943 Put the the restart() function after the game() function inside the restart() function <!-- is this recursion? -->
+
 - [x] fix/preferTernaryOperator-JS-D009 @96b70e8 PR#6
 
 ## Ideas
