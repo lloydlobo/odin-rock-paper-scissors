@@ -86,7 +86,7 @@ function game() {
   const successComputer = `Game over! Computer succeeded!\nFinal score:\nuserScore: ${userScore} to computerScore: ${computerScore}`;
   const successUserComputer = `Game over! It's a tie! Everyone succeeded!\nFinal score:\nuserScore: ${userScore} to computerScore: ${computerScore}`;
 
-  let gameFinalResult =
+  const gameFinalResult =
     userScore > computerScore
       ? successUser
       : userScore < computerScore
