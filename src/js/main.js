@@ -48,34 +48,37 @@ function playRound(userChoice, computerChoice) {
     : "";
 }
 
-// game logic and plays 5 rounds of rock paper scissors
-function game() {
-  let userScore = 0; /* sets to 0 and resets the value when restarted */
-  let computerScore = 0; /* sets to 0 and resets the value when restarted */
-  let round = 0; /* sets to 0 and resets the value when restarted */
-
-  // combine constants win, lose, tie as "win", "lose", "tie"
+// function calls statements
+function declareStatement() {
   const win = "win";
   const lose = "lose";
   const tie = "tie";
+  return [win, lose, tie];
+}
 
-  // loops 5 times fetchUserComputerSelection() & playRound()
+// game logic and plays 5 rounds of rock paper scissors
+function game() {
+  let userScore = 0;
+  let computerScore = 0;
+  let round = 0;
+
   for (let i = 0; i < 5; i++) {
-    const [userChoice, computerChoice] =
-      fetchUserComputerSelection(); /* prompts and fetches input/selection */
-    // play a round
-    const roundResult = playRound(
-      userChoice,
-      computerChoice
-    ); /* takes in input and declares result statement */
-    round++; /* increments round from 0 till it matches i < 5 */
+    const [userChoice, computerChoice] = fetchUserComputerSelection();
+    const roundResult = playRound(userChoice, computerChoice);
+    round++;
 
-    // win - lose - tie criteria
-    if (roundResult.includes(win)) {
-      userScore++;
-    } else if (roundResult.includes(lose)) {
-      computerScore++;
-    } else roundResult.includes(tie);
+    // adds to scores when one wins
+    function addScore() {
+      const [win, lose, tie] = declareStatement();
+
+      let score = roundResult.includes(win)
+        ? userScore++
+        : roundResult.includes(lose)
+        ? computerScore++
+        : roundResult.includes(tie);
+      return score;
+    }
+    addScore();
 
     const gameRoundResult = `Round ${round}: ${roundResult}\nYou chose ${userChoice} Computer chose ${computerChoice}\nUser score: ${userScore} Computer score: ${computerScore}`;
     console.log(`${gameRoundResult}`);
