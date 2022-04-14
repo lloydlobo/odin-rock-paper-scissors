@@ -2,6 +2,8 @@
 ::before,
 ::after {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
@@ -15,9 +17,17 @@ body {
 }
 
 .card {
+  display: flex;
+  flex-direction: column;
   border-radius: 5px;
+  gap: 1em;
   padding: 1.8em;
   max-width: clamp(300px, 20vw, 40vw);
+}
+
+h1.card {
+  line-height: 1.2;
+  margin-block: 0;
 }
 
 .card--neumorphic-300 {
