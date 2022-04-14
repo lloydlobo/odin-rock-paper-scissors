@@ -13,7 +13,6 @@
       <section>
         <div class="card card--neumorphic__dip-300">
           <h1>ROCK PAPER SCISSORS</h1>
-          <!-- <p id="result"></p> -->
           <p id="console-message">
             <strong>
               Please open the browser developer console to see the results.
@@ -23,16 +22,50 @@
             <label for="keyboard-shortcut">Keyboard shortcut is:</label><br />
             <code>CMD(Ctrl) + Option(alt) + J</code>.
           </div>
-          <!-- <dialog></dialog> -->
-          <div><button id="startGameModalBtn">Start Game!</button></div>
+          <!-- add "open" attribute to <dialog open id=""> for testing without JS -->
+
           <p>
             <sub
               >Tip: Reload your browser to <strong>reset</strong> the game.
               Enjoy!</sub
             >
           </p>
+          <div class="modal">
+            <div><button id="btnStartGame" value="">Start Game</button></div>
+            <output aria-live="polite"></output>
+          </div>
         </div>
+        <dialog open class="modal__dialog" id="dialogModalGame">
+          <div class="dialog-form__wrapper">
+            <form method="dialog">
+              <p>
+                <label
+                  >Pick difficulty:
+                  <select>
+                    <option value="default">Choose...</option>
+                    <option>Noob</option>
+                    <option>Amateur</option>
+                    <option>Boss</option>
+                  </select>
+                </label>
+              </p>
+              <div>
+                <button value="cancel">Cancel</button>
+                <!-- <button id="confirmBtn" value="default">Confirm</button> -->
+              </div>
+              <hr />
+            </form>
+            <!-- restart game button -->
+            <button id="btnRestartGame" value="restart">Restart</button>
+            <div class="modal__form-choices">
+              <button id="btnRock" value="rock">Rock</button>
+              <button id="btnPaper" value="paper">Paper</button>
+              <button id="btnScissors" value="scissors">Scissors</button>
+            </div>
+          </div>
+        </dialog>
       </section>
+      <!-- Simple modal dialog containing a form -->
     </article>
   </body>
 </html>
