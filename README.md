@@ -14,7 +14,7 @@
   <a href="https://app.codiga.io/public/project/32333/odin-rock-paper-scissors/dashboard">
     <img src="https://api.codiga.io/project/32333/status/svg" alt="Codiga Code Grade" style="max-width: 100%;">
   </a>
-   <a href="https://www.codacy.com/gh/lloydlobo/odin-rock-paper-scissors/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=lloydlobo/odin-rock-paper-scissors&amp;utm_campaign=Badge_Grade"><img src="https://app.codacy.com/project/badge/Grade/9f3f644bd59a42f1a5b13d0e6b1a8646"/ alt="Codacy Code Quality Score"></a>
+  <a href="https://www.codacy.com/gh/lloydlobo/odin-rock-paper-scissors/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=lloydlobo/odin-rock-paper-scissors&amp;utm_campaign=Badge_Grade"><img alt="Codacy Code Qualit Score Badge" src="https://app.codacy.com/project/badge/Grade/109c343079ec45f9bee7f6c4040dfe97"/></a>
   <a href="https://github.com/lloydlobo/odin-rock-paper-scissors/actions/workflows/compliance.yml">
     <img src="https://github.com/lloydlobo/odin-rock-paper-scissors/actions/workflows/compliance.yml/badge.svg" alt="Compliance" style="max-width: 100%;">
   </a>
