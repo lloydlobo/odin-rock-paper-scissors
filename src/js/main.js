@@ -66,25 +66,15 @@ function game() {
     const [userChoice, computerChoice] = fetchUserComputerSelection();
     const roundResult = playRound(userChoice, computerChoice);
     round++;
-
-    // adds to scores when one wins
-    function addScore() {
-      const [win, lose, tie] = declareStatement();
-
-      let score = roundResult.includes(win)
-        ? userScore++
-        : roundResult.includes(lose)
-        ? computerScore++
-        : roundResult.includes(tie);
-      return score;
-    }
-    addScore();
-
+    const [win, lose, tie] = declareStatement();
+    if (roundResult.includes(win)) {
+      userScore++;
+    } else if (roundResult.includes(lose)) {
+      computerScore++;
+    } else roundResult.includes(tie);
     const gameRoundResult = `Round ${round}: ${roundResult}\nYou chose ${userChoice} Computer chose ${computerChoice}\nUser score: ${userScore} Computer score: ${computerScore}`;
     console.log(`${gameRoundResult}`);
   }
-
-  // Game Over Results
   const successUser = `Game over! You succeeded!\nFinal score:\nuserScore: ${userScore} to computerScore: ${computerScore}`;
   const successComputer = `Game over! Computer succeeded!\nFinal score:\nuserScore: ${userScore} to computerScore: ${computerScore}`;
   const successUserComputer = `Game over! It's a tie! Everyone succeeded!\nFinal score:\nuserScore: ${userScore} to computerScore: ${computerScore}`;
