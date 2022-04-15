@@ -64,7 +64,7 @@ body {
     "footer";
   grid-template-rows: 1fr auto;
   grid-auto-flow: row;
-  place-content: center;
+  /* place-content: center; */
 }
 
 main {
@@ -91,8 +91,14 @@ colors
 composition
 ********************** */
 .container {
-  max-width: var(--container-width);
+  /* max-width: var(--container-width); */
+  max-width: 61.8vw;
   margin: 0 auto;
+}
+
+.footer-primary {
+  width: 61.8vw;
+  justify-content: space-around;
 }
 
 /* **********************
@@ -101,6 +107,10 @@ utility classes
 /* grid utitlity */
 .grid {
   display: grid;
+}
+
+.grid--column {
+  grid-auto-flow: column;
 }
 
 .grid--place-center {
@@ -262,6 +272,17 @@ dialog.modal__dialog {
 components/lists
 *********** */
 
+/* footer lists */
+/* add data-state attribute */
+ul[data-state="navListStyleNone"] {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* align-items: center; */
+}
 /* ***********
 components/lists
 *********** */
@@ -277,6 +298,13 @@ components/text
 /* ***********
 components/typography
 *********** */
+
+/* exceptions */
+.footer-nav-heading {
+  font-size: var(--font-size-fluid-1);
+  font-weight: var(--font-weight-7);
+  color: var(--grey-9);
+}
 
 /* ***********
 components/utilities
