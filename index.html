@@ -21,28 +21,6 @@
           <div
             class="card card--neumorphic__dip-300 | gap--f1 | flex--align-center"
           >
-            <div class="wrapper-lottie-animations">
-              <lottie-player
-                src="https://assets10.lottiefiles.com/packages/lf20_jNEOSb.json"
-                background="transparent"
-                speed="1"
-                style="width: 185px; height: 185px"
-                class="lottie lottie-win"
-                id="lottieWin"
-                autoplay
-              ></lottie-player
-              ><!-- add autoplay attribute to test -->
-              <!-- 2. animate results - cross mark -->
-              <lottie-player
-                src="https://assets10.lottiefiles.com/packages/lf20_slGFhN.json"
-                background="transparent"
-                speed="1"
-                style="width: 185px; height: 185px"
-                class="lottie lottie-lose"
-                id="lottieLose"
-                autoplay
-              ></lottie-player>
-            </div>
             <h1>ROCK PAPER SCISSORS</h1>
             <p id="console-message">
               <strong>
@@ -73,16 +51,37 @@
               <div
                 class="btn-selections-start-settings | flex flex--wrap | gap--f1"
               >
+                <button id="btnRestartGame" value="restart">Restart</button>
                 <button id="btnStartGame" value="">Start Game</button>
                 <!-- opens modal -->
                 <button id="btnSettings" value="">Settings</button>
               </div>
             </div>
             <output aria-live="polite"></output>
+
             <!-- progress bar -->
             <!-- <ul>
               <li><a href="#embedded__progress">Progress</a></li>
             </ul> -->
+          </div>
+          <div class="wrapper-lottie-animations">
+            <lottie-player
+              src="https://assets10.lottiefiles.com/packages/lf20_slGFhN.json"
+              background="transparent"
+              speed="1"
+              style="width: 100px; height: 100px"
+              class="lottie lottie-lose"
+              id="lottieLose"
+            ></lottie-player>
+            <lottie-player
+              src="https://assets10.lottiefiles.com/packages/lf20_jNEOSb.json"
+              background="transparent"
+              speed="1"
+              style="width: 100px; height: 100px"
+              class="lottie lottie-win"
+              id="lottieWin"
+            ></lottie-player
+            ><!-- add autoplay attribute to test -->
           </div>
         </div>
         <!-- * modal -->
@@ -108,7 +107,7 @@
               <hr />
             </form>
             <!-- restart game button -->
-            <button id="btnRestartGame" value="restart">Restart</button>
+            <button id="btnRestartGameModal" value="restart">Restart</button>
           </div>
         </dialog>
       </section>
