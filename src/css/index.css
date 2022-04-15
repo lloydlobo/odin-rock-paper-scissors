@@ -1,13 +1,6 @@
 /* import open props */
-/* Open Props: A new CSS library by the amazing @argyleink. It's Tailwind but with CSS variables. — https://twitter.com/_davideast/status/1466110686128488450 */
 
-/* index.css */
-@import "https://unpkg.com/open-props";
-@import "https://unpkg.com/open-props/normalize.min.css";
-@import "https://unpkg.com/open-props/animations.min.css";
-@import "https://unpkg.com/open-props/easings.min.css";
-@import "https://unpkg.com/open-props/toc.min.css";
-@import "https://unpkg.com/open-props/buttons.min.css";
+/* Open Props: A new CSS library by the amazing @argyleink. It's Tailwind but with CSS variables. — https://twitter.com/_davideast/status/1466110686128488450 */
 
 /* table of contents */
 /* **************** */
