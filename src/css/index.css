@@ -136,8 +136,9 @@ utility classes
 }
 
 /* align utility */
-
-
+.flex--align-center {
+  align-items: center;
+}
 
 /* **********************
 components

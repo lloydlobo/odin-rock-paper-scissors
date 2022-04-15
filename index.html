@@ -30,21 +30,27 @@
                 Enjoy!</sub
               >
             </p>
-            <div class="modal__form-choices">
-              <button id="btnRock" value="rock">Rock</button>
-              <button id="btnPaper" value="paper">Paper</button>
-              <button id="btnScissors" value="scissors">Scissors</button>
+            <div
+              class="wrapper-btn-selections | flex flex--column flex--wrap | gap--f1 flex--align-center"
+            >
+              <div class="btn-selections | flex flex--wrap | gap--f1">
+                <button id="btnRock" value="rock">Rock</button>
+                <button id="btnPaper" value="paper">Paper</button>
+                <button id="btnScissors" value="scissors">Scissors</button>
+              </div>
+              <div
+                class="btn-selections-start-settings | flex flex--wrap | gap--f1"
+              >
+                <button id="btnStartGame" value="">Start Game</button>
+                <!-- opens modal -->
+                <button id="btnSettings" value="">Settings</button>
+              </div>
             </div>
+            <output aria-live="polite"></output>
             <!-- progress bar -->
             <!-- <ul>
               <li><a href="#embedded__progress">Progress</a></li>
             </ul> -->
-            <div><button id="btnStartGame" value="">Start Game</button></div>
-            <!-- opens modal -->
-            <div>
-              <button id="btnSettings" value="">Settings</button>
-            </div>
-            <output aria-live="polite"></output>
           </div>
         </div>
         <!-- * modal -->
@@ -79,7 +85,7 @@
     <footer>
       <div class="container | grid | grid--place-center | gap--f1">
         <div class="footer-primary | grid grid--column | gap--f1 |">
-          <div class="footer-nav-col-1 | ">
+          <div class="footer-nav-col-1 |">
             <h2 class="footer-nav-heading">Getting Started</h2>
             <ul class="footer-primary__items" data-state="navListStyleNone">
               <li class="footer-primary__item">
