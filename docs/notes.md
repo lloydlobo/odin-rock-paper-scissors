@@ -28,16 +28,39 @@
     -   I think it would be better to have one function that returns the values of both the player and computer
     -   If this is incorrect then what would be a better solution?
 
+### Accessibility font size A A- A+
+
+```js
+function makeSizer(size) {
+  return function () {
+    document.body.style.fontSize = size + "px";
+  };
+}
+
+const fontSizeDecrease = makeSizer(14);
+const fontSizeReset = makeSizer(16);
+const fontSizeIncrease = makeSizer(24);
+
+const btnFontSizeIncrease = document.getElementById("fontSizeIncrease");
+const btnFontSizeDecrease = document.getElementById("fontSizeDecrease");
+const btnFontSizeReset = document.getELementById("fontSizeReset");
+
+btnFontSizeIncrease.onclick = fontSizeIncrease;
+btnFontSizeDecrease.onclick = fontSizeDecrease;
+btnFontSizeReset.onclick = fontSizeReset;
+```
+
 ## Archive
 
 -   keep naming conventions sme across all variables. either choose user or player
     -   Update: 20220413124316 It already was consistent.
 
-
-
 ## INFO
-Source: https://dzone.com/articles/rule-30-%E2%80%93-when-method-class-or
-Rule of 30
+
+### Rule of 30
+
+> [Source](https://dzone.com/articles/rule-30-%E2%80%93-when-method-class-or) — [dzone](https://dzone.com/)
+
 Looking for guidelines like this led me to the “Rule of 30” in Refactoring in Large Software Projects by Martin Lippert and Stephen Roock:
 
 If an element consists of more than 30 subelements, it is highly probable that there is a serious problem:
