@@ -44,7 +44,7 @@
           <div
             class="card card--neumorphic__dip-300 | gap--f1 | flex--align-center"
           >
-            <h1 class="card__heading">ROCK PAPER SCISSORS</h1>
+            <h1 class="card__heading |">ROCK PAPER SCISSORS</h1>
             <p id="console-message">
               <strong>
                 Please open the browser developer console to see the results.
@@ -54,7 +54,7 @@
               class="flex flex--wrap | gap--f1 | justify-content--center align-items--center"
             >
               <span>Keyboard shortcut is:</span>
-              <code>CMD(Ctrl) + Option(alt) + J</code>.
+              <code class="gradient-text">CMD(Ctrl) + Option(alt) + J</code>.
             </div>
             <!-- add "open" attribute to <dialog open id=""> for testing without JS -->
             <p>
@@ -137,7 +137,7 @@
     </main>
     <!-- Simple modal dialog containing a form -->
     <footer>
-      <div class="container | grid | grid--place-center | gap--f1">
+      <div class="container | grid | | gap--f2">
         <div class="footer-primary | grid grid--column | gap--f1 |">
           <div class="footer-nav-col-1 |">
             <h2 class="footer-nav-heading">Getting Started</h2>
@@ -239,9 +239,7 @@
             </ul>
           </div>
         </div>
-        <div
-          class="footer-secondary | flex flex--wrap | grid--place-center gap--f1"
-        >
+        <div class="footer-secondary | flex flex--wrap | gap--f1">
           <p>
             <strong>Copyright &copy; 2022</strong>
           </p>
