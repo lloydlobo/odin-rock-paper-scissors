@@ -14,6 +14,7 @@
  components
  components/buttons
  components/cards
+ components/circle
  components/forms
  components/lists
  components/tables
@@ -54,17 +55,55 @@ footer {
 typography
 ********************** */
 
+h1 {
+  max-inline-size: var(--size-header-2);
+}
+
+small {
+  max-inline-size: var(--size-header-1);
+}
+
+p {
+  max-inline-size: var(--size-content-3);
+}
+
+aside {
+  max-inline-size: var(--size-content-2);
+}
+
+li.footer-primary__item {
+  font-size: var(--font-size-fluid-00);
+  font-weight: var(--font-weight-4);
+  /* color: var(--color-text-primary); */
+}
+
+.footer-nav-heading {
+  font-size: var(--font-size-fluid-0);
+  font-weight: var(--font-weight-7);
+  margin-bottom: var(--size-fluid-1);
+}
+
+.footer-secondary > * {
+  font-size: var(--font-size-0);
+}
+
 /* **********************
 colors
 ********************** */
+
+/* change visited a links color */
+a:visited {
+  color: var(--indigo-4);
+}
 
 /* **********************
 composition
 ********************** */
 
 .container {
-  max-width: 61.8vw;
+  max-width: 60em;
   margin: 0 auto;
+  padding: 0 var(--size-fluid-3);
 }
 
 .footer-primary {
@@ -181,19 +220,17 @@ components/cards
 .card {
   display: flex;
   flex-direction: column;
-  border-radius: var(--radius-2);
+  border-radius: var(--radius-conditional-3);
+  /* border: var(--border-size-1) solid var(--gray-1); */
   padding: var(--size-fluid-3);
   box-shadow: var(--shadow-2);
   position: relative;
+  animation: var(--animation-fade-in) 1s;
 }
 
 .card:hover {
   box-shadow: var(--shadow-3);
   transition: box-shadow 0.2s ease-in-out;
-}
-
-.card {
-  animation: var(--animation-fade-in) 1s;
 }
 
 /* @media (--motionOK) {
@@ -206,26 +243,21 @@ components/cards
   line-height: 1.2;
   margin-block: 0;
   margin-inline: 0;
-  font-size: var(--font-size-fluid-2);
+  font-size: var(--font-size-fluid-3);
 }
 
-/* https://neumorphism.io/#e0e0e0 */
-/* .card--neumorphic__dip-300 {
-  border-radius: 50px;
-  background: linear-gradient(145deg, #cacaca, #f0f0f0);
-  box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #fff;
-} */
-
-/* .card--neumorphic__dip-700 {
-  border-radius: 50px;
-  background: linear-gradient(145deg, #cacaca, #f0f0f0);
-  box-shadow: 20px 20px 60px #9d9d9d, -20px -20px 60px #fff;
-} */
+/* ***********
+components/circle
+*********** */
+.circle {
+  inline-size: var(--size-5);
+  aspect-ratio: var(--ratio-square);
+  border-radius: var(--radius-round);
+}
 
 /* ***********
 components/forms
 *********** */
-
 .modal__dialog {
   background-color: var(--surface-2);
 }
@@ -251,10 +283,6 @@ ul[data-state="navListStyleNone"] li {
 }
 
 /* ***********
-components/lists
-*********** */
-
-/* ***********
 components/tables
 *********** */
 
@@ -267,11 +295,6 @@ components/typography
 *********** */
 
 /* exceptions */
-.footer-nav-heading {
-  font-size: var(--font-size-fluid-1);
-  font-weight: var(--font-weight-7);
-  color: var(--grey-9);
-}
 
 /* ***********
 components/utilities
@@ -289,7 +312,7 @@ components/utilities
   position: absolute;
   width: 100%;
   height: 100%;
-  z-index: -1;
+  z-index: var(--layer-1);
 }
 
 .lottie-win {
