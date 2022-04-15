@@ -3,7 +3,7 @@
 /* Open Props: A new CSS library by the amazing @argyleink. It's Tailwind but with CSS variables. — https://twitter.com/_davideast/status/1466110686128488450 */
 
 /* table of contents */
-/* **************** */
+
 /* ***************
  root global styles
  layout
@@ -20,7 +20,7 @@
  components/text
  components/typography
  components/utilities
-*/
+**************** */
 
 /* **********************
 root global styles
@@ -42,8 +42,7 @@ body {
 
 main {
   grid-area: main;
-  place-self: center;
-  place-items: center;
+  align-self: center;
 }
 
 footer {
@@ -190,13 +189,18 @@ components/cards
 
 .card:hover {
   box-shadow: var(--shadow-3);
+  transition: box-shadow 0.2s ease-in-out;
 }
 
-@media (--motionOK) {
+.card {
+  animation: var(--animation-fade-in) 1s;
+}
+
+/* @media (--motionOK) {
   .card {
     animation: var(--animation-fade-in) 1s;
   }
-}
+} */
 
 .card__heading {
   line-height: 1.2;
