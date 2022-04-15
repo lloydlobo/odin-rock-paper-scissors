@@ -9,69 +9,93 @@
     <script defer src="./src/js/main.js"></script>
   </head>
   <body>
-    <section>
-      <div class="container | grid grid--place-center">
-        <div class="card card--neumorphic__dip-300">
-          <h1>ROCK PAPER SCISSORS</h1>
-          <p id="console-message">
-            <strong>
-              Please open the browser developer console to see the results.
-            </strong>
-          </p>
-          <div>
-            <label for="keyboard-shortcut">Keyboard shortcut is:</label><br />
-            <code>CMD(Ctrl) + Option(alt) + J</code>.
-          </div>
-          <!-- add "open" attribute to <dialog open id=""> for testing without JS -->
-          <p>
-            <sub
-              >Tip: Reload your browser to <strong>reset</strong> the game.
-              Enjoy!</sub
-            >
-          </p>
-          <div class="modal__form-choices">
-            <button id="btnRock" value="rock">Rock</button>
-            <button id="btnPaper" value="paper">Paper</button>
-            <button id="btnScissors" value="scissors">Scissors</button>
-          </div>
-          <!-- progress bar -->
-          <!-- <ul>
-            <li><a href="#embedded__progress">Progress</a></li>
-          </ul> -->
-          <div><button id="btnStartGame" value="">Start Game</button></div>
-          <!-- opens modal -->
-          <div>
-            <button id="btnSettings" value="">Settings</button>
-          </div>
-          <output aria-live="polite"></output>
-        </div>
-      </div>
-      <div class="modal"></div>
-      <dialog class="modal__dialog" id="dialogModalGame">
-        <div class="dialog-form__wrapper">
-          <form method="dialog">
-            <p>
-              <label
-                >Pick difficulty:
-                <select>
-                  <option value="default">Choose...</option>
-                  <option>Noob</option>
-                  <option>Amateur</option>
-                  <option>Boss</option>
-                </select>
-              </label>
+    <main>
+      <section>
+        <div class="container | grid grid--place-center">
+          <div class="card card--neumorphic__dip-300">
+            <h1>ROCK PAPER SCISSORS</h1>
+            <p id="console-message">
+              <strong>
+                Please open the browser developer console to see the results.
+              </strong>
             </p>
             <div>
-              <button value="cancel">Cancel</button>
-              <!-- <button id="confirmBtn" value="default">Confirm</button> -->
+              <label for="keyboard-shortcut">Keyboard shortcut is:</label><br />
+              <code>CMD(Ctrl) + Option(alt) + J</code>.
             </div>
-            <hr />
-          </form>
-          <!-- restart game button -->
-          <button id="btnRestartGame" value="restart">Restart</button>
+            <!-- add "open" attribute to <dialog open id=""> for testing without JS -->
+            <p>
+              <sub
+                >Tip: Reload your browser to <strong>reset</strong> the game.
+                Enjoy!</sub
+              >
+            </p>
+            <div class="modal__form-choices">
+              <button id="btnRock" value="rock">Rock</button>
+              <button id="btnPaper" value="paper">Paper</button>
+              <button id="btnScissors" value="scissors">Scissors</button>
+            </div>
+            <!-- progress bar -->
+            <!-- <ul>
+              <li><a href="#embedded__progress">Progress</a></li>
+            </ul> -->
+            <div><button id="btnStartGame" value="">Start Game</button></div>
+            <!-- opens modal -->
+            <div>
+              <button id="btnSettings" value="">Settings</button>
+            </div>
+            <output aria-live="polite"></output>
+          </div>
         </div>
-      </dialog>
-    </section>
+        <!-- * modal -->
+        <div class="modal"></div>
+        <dialog class="modal__dialog" id="dialogModalGame">
+          <div class="dialog-form__wrapper">
+            <form method="dialog">
+              <p>
+                <label
+                  >Pick difficulty:
+                  <select>
+                    <option value="default">Choose...</option>
+                    <option>Noob</option>
+                    <option>Amateur</option>
+                    <option>Boss</option>
+                  </select>
+                </label>
+              </p>
+              <div>
+                <button value="cancel">Cancel</button>
+                <!-- <button id="confirmBtn" value="default">Confirm</button> -->
+              </div>
+              <hr />
+            </form>
+            <!-- restart game button -->
+            <button id="btnRestartGame" value="restart">Restart</button>
+          </div>
+        </dialog>
+      </section>
+    </main>
     <!-- Simple modal dialog containing a form -->
+    <footer>
+      <div class="container grid grid--place-center">
+        <div class="footer-primary"></div>
+        <div class="footer-secondary | flex flex--wrap | gap--f1">
+          <!-- add copyright -->
+          <p>
+            <strong>Copyright &copy; 2022</strong>
+          </p>
+          <!-- add MIT License -->
+          <p>
+            <strong
+              ><a
+                target="_blank"
+                href="http://opensource.org/licenses/://github.com/lloydlobo/odin-rock-paper-scissors/blob/main/LICENSE"
+                >MIT License</a
+              ></strong
+            >
+          </p>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
