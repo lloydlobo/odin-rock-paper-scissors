@@ -1,3 +1,42 @@
+const btnStartGame = document.getElementById("btnStartGame");
+const btnSettings = document.getElementById("btnSettings"); /* opens modal */
+const dialogModalGame = document.getElementById("dialogModalGame");
+const gameUpdateOutput = document.querySelector("output");
+const optionSelectDifficulty = dialogModalGame.querySelector("select");
+// const confirmBtn = dialogModalGame.querySelector("#confirmBtn");
+
+// If a browser doesn't support the dialog, then hide the
+// dialog contents by default.
+if (typeof dialogModalGame.showModal !== "function") {
+  dialogModalGame.hidden = true;
+  /* a fallback script to allow this dialog/form to function
+     for legacy browsers that do not support <dialog>
+     could be provided here.
+  */
+}
+// "Update details" button opens the <dialog> modally
+btnSettings.addEventListener("click", function onOpen() {
+  if (typeof dialogModalGame.showModal === "function") {
+    dialogModalGame.showModal();
+  } else {
+    gameUpdateOutput.value =
+      "Sorry, the <dialog> API is not supported by this browser.";
+  }
+});
+// "Favorite animal" input sets the value of the submit button
+optionSelectDifficulty.addEventListener("change", function onSelect(e) {
+  confirmBtn.value = optionSelectDifficulty.value;
+});
+// "Confirm" button of form triggers "close" on dialog because of [method="dialog"]
+dialogModalGame.addEventListener("close", function onClose() {
+  gameUpdateOutput.value =
+    dialogModalGame.returnValue + " button clicked - " + new Date().toString();
+});
+
+const btnRock = document.getElementById("btnRock");
+const btnPaper = document.getElementById("btnPaper");
+const btnScissors = document.getElementById("btnScissors");
+
 // computer picks randomly from rock, paper, and scissors
 function computerPlay() {
   const rockPaperScissors = ["rock", "paper", "scissors"];
@@ -6,22 +45,27 @@ function computerPlay() {
   return computerRandom;
 }
 
-// prompts the user
-function promptMessage() {
-  const customPrompt = `Pick rock, paper, or scissors`;
-  const computerRandomValue = computerPlay();
-  const userInput = prompt(
-    customPrompt,
-    `${computerRandomValue}`
-  ); /* message is customPrompt and default value is generated randomly by computerPlay() => `${computerRandom} */
-  const userInputMessage = userInput;
-  return userInputMessage;
+// if user clicks btnRock, btnPaper, or btnScissors, then the value of the button is returned
+function chooseButton() {
+  let btnRockClick = btnRock.addEventListener("click", function (e) {
+    const userChoice = e.target.value;
+    console.log(userChoice);
+  });
+  let btnPaperClick = btnPaper.addEventListener("click", function (e) {
+    const userChoice = e.target.value;
+    console.log(userChoice);
+  });
+  let btnScissorsClick = btnScissors.addEventListener("click", function (e) {
+    const userChoice = e.target.value;
+    console.log(userChoice);
+  });
+  let result = [btnRockClick, btnPaperClick, btnScissorsClick];
+  return result;
 }
 
 // fetches user and computer choices values
 function fetchUserComputerSelection() {
-  const userChoiceValue = promptMessage();
-  const userChoice = userChoiceValue.toLowerCase();
+  const userChoice = chooseButton();
   const computerRandomResult = computerPlay();
   const computerChoice = computerRandomResult;
 
@@ -90,15 +134,22 @@ function game() {
 }
 game();
 
+const btnRestartGame = document.getElementById("btnRestartGame");
+
 // restart game
-function restartGame() {
-  const promptMessageRestart = `Would you like to play again? (y/n)`;
-  const reset = prompt(promptMessageRestart, `y`);
-  if (reset === "y") {
-    game();
-    restartGame(); /* prompts user again when game() ends 2nd time */
-  } else {
-    console.log("Thanks for playing!");
-  }
-}
+const restart = btnRestartGame.addEventListener("click", function (e) {
+  console.log(`You chose ${e.target.id}`);
+  game();
+  restartGame();
+});
+
+// function restartGame() {
+//   outputBox.textContent = `Would you like to play again?`;
+//   // const reset = prompt(promptMessageRestart, `y`);
+//   //
+//   if restart
+//   else {
+//     outputBox.textContent = "Thanks for playing!";
+//   }
+// }
 restartGame();
