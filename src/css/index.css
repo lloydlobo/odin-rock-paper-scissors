@@ -332,3 +332,49 @@ components/typography
 /* ***********
 components/utilities
 *********** */
+
+/* lottie animations */
+.wrapper-lottie-animations {
+  display: grid;
+  place-items: center;
+  grid-template-columns: 1fr 1fr;
+  position: absolute;
+  gap: clamp(var(--size-fluid-3), 61.8vw - var(--size-fluid-1), 50vw);
+}
+
+.lottie {
+  --something: something;
+}
+
+.lottie-win,
+.lottie-lose {
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  justify-self: center;
+}
+
+.lottie-win {
+  animation: var(--animation-lottie-win) 1s;
+  transition: all 0.5s ease-in;
+}
+
+.lottie-lose {
+  animation: var(--animation-lottie-lose) 1s;
+  transition: all 0.5s ease-in;
+}
+
+/* set animation keyframes to hide .lottie through opacity */
+@keyframes lottie {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+* {
+  box-sizing: border-box;
+  /* border: 1px solid red; */
+}

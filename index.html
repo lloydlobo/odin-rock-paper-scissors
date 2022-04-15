@@ -7,14 +7,42 @@
     <title>Odin Rock Paper Scissors</title>
     <link rel="stylesheet" href="./src/css/index.css" />
     <script defer src="./src/js/main.js"></script>
+    <script
+      defer
+      src="https://unpkg.com/@lottiefiles/lottie-player@0.4.0/dist/lottie-player.js"
+    ></script>
   </head>
   <body>
     <main>
       <section>
         <div class="container | grid grid--place-center">
+          <!-- 1. animate results - tick mark -->
+
           <div
             class="card card--neumorphic__dip-300 | gap--f1 | flex--align-center"
           >
+            <div class="wrapper-lottie-animations">
+              <lottie-player
+                src="https://assets10.lottiefiles.com/packages/lf20_jNEOSb.json"
+                background="transparent"
+                speed="1"
+                style="width: 185px; height: 185px"
+                class="lottie lottie-win"
+                id="lottieWin"
+                autoplay
+              ></lottie-player
+              ><!-- add autoplay attribute to test -->
+              <!-- 2. animate results - cross mark -->
+              <lottie-player
+                src="https://assets10.lottiefiles.com/packages/lf20_slGFhN.json"
+                background="transparent"
+                speed="1"
+                style="width: 185px; height: 185px"
+                class="lottie lottie-lose"
+                id="lottieLose"
+                autoplay
+              ></lottie-player>
+            </div>
             <h1>ROCK PAPER SCISSORS</h1>
             <p id="console-message">
               <strong>
