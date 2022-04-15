@@ -1,4 +1,5 @@
 const btnStartGame = document.getElementById("btnStartGame");
+const btnSettings = document.getElementById("btnSettings"); /* opens modal */
 const dialogModalGame = document.getElementById("dialogModalGame");
 const gameUpdateOutput = document.querySelector("output");
 const optionSelectDifficulty = dialogModalGame.querySelector("select");
@@ -14,7 +15,7 @@ if (typeof dialogModalGame.showModal !== "function") {
   */
 }
 // "Update details" button opens the <dialog> modally
-btnStartGame.addEventListener("click", function onOpen() {
+btnSettings.addEventListener("click", function onOpen() {
   if (typeof dialogModalGame.showModal === "function") {
     dialogModalGame.showModal();
   } else {

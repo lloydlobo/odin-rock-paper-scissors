@@ -5,12 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Odin Rock Paper Scissors</title>
-    <link rel="stylesheet" href="./src/css/main.css" />
+    <link rel="stylesheet" href="./src/css/index.css" />
     <script defer src="./src/js/main.js"></script>
   </head>
   <body>
-    <article>
-      <section>
+    <section>
+      <div class="container | grid grid--place-center">
         <div class="card card--neumorphic__dip-300">
           <h1>ROCK PAPER SCISSORS</h1>
           <p id="console-message">
@@ -23,49 +23,55 @@
             <code>CMD(Ctrl) + Option(alt) + J</code>.
           </div>
           <!-- add "open" attribute to <dialog open id=""> for testing without JS -->
-
           <p>
             <sub
               >Tip: Reload your browser to <strong>reset</strong> the game.
               Enjoy!</sub
             >
           </p>
-          <div class="modal">
-            <div><button id="btnStartGame" value="">Start Game</button></div>
-            <output aria-live="polite"></output>
+          <div class="modal__form-choices">
+            <button id="btnRock" value="rock">Rock</button>
+            <button id="btnPaper" value="paper">Paper</button>
+            <button id="btnScissors" value="scissors">Scissors</button>
           </div>
+          <!-- progress bar -->
+          <!-- <ul>
+            <li><a href="#embedded__progress">Progress</a></li>
+          </ul> -->
+          <div><button id="btnStartGame" value="">Start Game</button></div>
+          <!-- opens modal -->
+          <div>
+            <button id="btnSettings" value="">Settings</button>
+          </div>
+          <output aria-live="polite"></output>
         </div>
-        <dialog open class="modal__dialog" id="dialogModalGame">
-          <div class="dialog-form__wrapper">
-            <form method="dialog">
-              <p>
-                <label
-                  >Pick difficulty:
-                  <select>
-                    <option value="default">Choose...</option>
-                    <option>Noob</option>
-                    <option>Amateur</option>
-                    <option>Boss</option>
-                  </select>
-                </label>
-              </p>
-              <div>
-                <button value="cancel">Cancel</button>
-                <!-- <button id="confirmBtn" value="default">Confirm</button> -->
-              </div>
-              <hr />
-            </form>
-            <!-- restart game button -->
-            <button id="btnRestartGame" value="restart">Restart</button>
-            <div class="modal__form-choices">
-              <button id="btnRock" value="rock">Rock</button>
-              <button id="btnPaper" value="paper">Paper</button>
-              <button id="btnScissors" value="scissors">Scissors</button>
+      </div>
+      <div class="modal"></div>
+      <dialog class="modal__dialog" id="dialogModalGame">
+        <div class="dialog-form__wrapper">
+          <form method="dialog">
+            <p>
+              <label
+                >Pick difficulty:
+                <select>
+                  <option value="default">Choose...</option>
+                  <option>Noob</option>
+                  <option>Amateur</option>
+                  <option>Boss</option>
+                </select>
+              </label>
+            </p>
+            <div>
+              <button value="cancel">Cancel</button>
+              <!-- <button id="confirmBtn" value="default">Confirm</button> -->
             </div>
-          </div>
-        </dialog>
-      </section>
-      <!-- Simple modal dialog containing a form -->
-    </article>
+            <hr />
+          </form>
+          <!-- restart game button -->
+          <button id="btnRestartGame" value="restart">Restart</button>
+        </div>
+      </dialog>
+    </section>
+    <!-- Simple modal dialog containing a form -->
   </body>
 </html>
