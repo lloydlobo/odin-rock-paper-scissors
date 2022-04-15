@@ -24,11 +24,16 @@
       rel="stylesheet"
       href="https://unpkg.com/open-props/buttons.min.css"
     />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/open-props/colors-hsl.min.css"
+    />
+
     <script defer src="./src/js/main.js"></script>
-    <script
+    <!-- <script
       defer
       src="https://unpkg.com/@lottiefiles/lottie-player@0.4.0/dist/lottie-player.js"
-    ></script>
+    ></script> -->
   </head>
   <body>
     <main>
@@ -39,7 +44,7 @@
           <div
             class="card card--neumorphic__dip-300 | gap--f1 | flex--align-center"
           >
-            <h1 class="card__heading">ROCK PAPER SCISSORS</h1>
+            <h1 class="card__heading |">ROCK PAPER SCISSORS</h1>
             <p id="console-message">
               <strong>
                 Please open the browser developer console to see the results.
@@ -49,7 +54,7 @@
               class="flex flex--wrap | gap--f1 | justify-content--center align-items--center"
             >
               <span>Keyboard shortcut is:</span>
-              <code>CMD(Ctrl) + Option(alt) + J</code>.
+              <code class="gradient-text">CMD(Ctrl) + Option(alt) + J</code>.
             </div>
             <!-- add "open" attribute to <dialog open id=""> for testing without JS -->
             <p>
@@ -112,15 +117,15 @@
                   >Pick difficulty:
                   <select>
                     <option value="default">Choose...</option>
-                    <option>Noob</option>
+                    <option>Beginner</option>
                     <option>Amateur</option>
-                    <option>Boss</option>
+                    <option>Pro</option>
                   </select>
                 </label>
               </p>
               <div>
                 <button value="cancel">Cancel</button>
-                <button id="confirmBtn" value="default">Confirm</button>
+                <button id="confirmBtn" value="confirm">Confirm</button>
               </div>
               <hr />
             </form>
@@ -132,7 +137,7 @@
     </main>
     <!-- Simple modal dialog containing a form -->
     <footer>
-      <div class="container | grid | grid--place-center | gap--f1">
+      <div class="container | grid | | gap--f2">
         <div class="footer-primary | grid grid--column | gap--f1 |">
           <div class="footer-nav-col-1 |">
             <h2 class="footer-nav-heading">Getting Started</h2>
@@ -234,14 +239,10 @@
             </ul>
           </div>
         </div>
-        <div
-          class="footer-secondary | flex flex--wrap | grid--place-center gap--f1"
-        >
-          <!-- add copyright -->
+        <div class="footer-secondary | flex flex--wrap | gap--f1">
           <p>
             <strong>Copyright &copy; 2022</strong>
           </p>
-          <!-- add MIT License -->
           <p>
             <strong
               ><a
@@ -254,5 +255,15 @@
         </div>
       </div>
     </footer>
+    <script id="__bs_script__">
+      //<![CDATA[
+      document.write(
+        "<script async src='http://HOST:3000/browser-sync/browser-sync-client.js?v=2.27.9'><\/script>".replace(
+          "HOST",
+          location.hostname
+        )
+      );
+      //]]>
+    </script>
   </body>
 </html>

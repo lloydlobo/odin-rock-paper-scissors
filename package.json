@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/lloydlobo/odin-rock-paper-scissors/issues"
   },
-  "homepage": "https://github.com/lloydlobo/odin-rock-paper-scissors#readme"
+  "homepage": "https://github.com/lloydlobo/odin-rock-paper-scissors#readme",
+  "devDependencies": {
+    "browser-sync": "^2.27.9"
+  }
 }
