@@ -135,6 +135,10 @@ utility classes
   gap: var(--size-fluid-1);
 }
 
+/* align utility */
+
+
+
 /* **********************
 components
 ********************** */
@@ -281,6 +285,14 @@ ul[data-state="navListStyleNone"] {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  /* align-items: center; */
+}
+ul[data-state="navListStyleNone"] li {
+  /* margin: 0; */
+  padding-inline-start: 0;
+  /* display: flex;
+  flex-direction: column;
+  justify-content: center; */
   /* align-items: center; */
 }
 /* ***********
