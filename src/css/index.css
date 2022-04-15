@@ -140,6 +140,14 @@ utility classes
   align-items: center;
 }
 
+.align-items--center {
+  align-items: center;
+}
+
+.justify-content--center {
+  justify-content: center;
+}
+
 /* **********************
 components
 ********************** */
@@ -236,10 +244,12 @@ components/cards
   }
 }
 
-/* h1.card {
+.card > h1 {
   line-height: 1.2;
   margin-block: 0;
-} */
+  margin-inline: 0;
+  font-size: var(--font-size-fluid-2);
+}
 
 /* https://neumorphism.io/#e0e0e0 */
 .card--neumorphic__dip-300 {

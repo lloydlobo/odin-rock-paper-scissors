@@ -12,15 +12,19 @@
     <main>
       <section>
         <div class="container | grid grid--place-center">
-          <div class="card card--neumorphic__dip-300">
+          <div
+            class="card card--neumorphic__dip-300 | gap--f1 | flex--align-center"
+          >
             <h1>ROCK PAPER SCISSORS</h1>
             <p id="console-message">
               <strong>
                 Please open the browser developer console to see the results.
               </strong>
             </p>
-            <div>
-              <label for="keyboard-shortcut">Keyboard shortcut is:</label><br />
+            <div
+              class="flex flex--wrap | gap--f1 | justify-content--center align-items--center"
+            >
+              <span>Keyboard shortcut is:</span>
               <code>CMD(Ctrl) + Option(alt) + J</code>.
             </div>
             <!-- add "open" attribute to <dialog open id=""> for testing without JS -->
