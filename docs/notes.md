@@ -1,12 +1,29 @@
-# Notes
+# Prototype Notes
 
-## TODO
+**Table Of Contents**
 
-## BACKLOG
+- [Prototype Notes](#prototype-notes)
+  - [Notes](#notes)
+    - [TODO](#todo)
+    - [BACKLOG](#backlog)
+    - [DOING](#doing)
+    - [DONE](#done)
+  - [Ideas](#ideas)
+    - [Accessibility font size A A- A+](#accessibility-font-size-a-a--a)
+  - [Archive](#archive)
+  - [Information](#information)
+    - [Rule of 30](#rule-of-30)
+  - [Attributions](#attributions)
 
-## DOING
+## Notes
 
-## DONE
+### TODO
+
+### BACKLOG
+
+### DOING
+
+### DONE
 
 -   [x] 20220413122852 - convert restart() if conditionals to ternary operators - done at 20220413132032
 
@@ -19,6 +36,8 @@
 -   [x] 20220413124018 20220413122943 Put the the restart() function after the game() function inside the restart() function <!-- is this recursion? -->
 
 -   [x] fix/preferTernaryOperator-JS-D009 @96b70e8 PR#6
+
+* * *
 
 ## Ideas
 
@@ -55,7 +74,7 @@ btnFontSizeReset.onclick = fontSizeReset;
 -   keep naming conventions sme across all variables. either choose user or player
     -   Update: 20220413124316 It already was consistent.
 
-## INFO
+## Information
 
 ### Rule of 30
 
@@ -73,3 +92,9 @@ c) A package shouldn’t contain more than 30 classes, thus comprising up to 27,
 d) Subsystems with more than 30 packages should be avoided. Such a subsystem would count up to 900 classes with up to 810,000 lines of code.
 
 e) A system with 30 subsystems would thus possess 27,000 classes and 24.3 million code lines.
+
+* * *
+
+## Attributions
+
+-   <https://lottiefiles.com/Dahish>
