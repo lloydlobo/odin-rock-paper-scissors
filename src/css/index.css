@@ -9,9 +9,6 @@
 @import "https://unpkg.com/open-props/toc.min.css";
 @import "https://unpkg.com/open-props/buttons.min.css";
 
-@use "postcss-preset-env";
-
-/* ****************** */
 /* table of contents */
 /* **************** */
 /* ***************
@@ -36,35 +33,18 @@
 root global styles
 ********************** */
 
-:root {
-}
-
-*,
-::before,
-::after {
-  --something: something;
-  /* border: 1px solid var(--yellow-2); */
-}
-
 /* **********************
 layout
 ********************** */
 
-html {
-  color-scheme: dark light;
-  block-size: 100%;
-}
-
 body {
   min-height: 100vh;
-  min-block-size: 100%;
   display: grid;
   grid-template-areas:
     "main"
     "footer";
   grid-template-rows: 1fr auto;
   grid-auto-flow: row;
-  /* place-content: center; */
 }
 
 main {
@@ -75,10 +55,9 @@ main {
 
 footer {
   grid-area: footer;
-  place-self: center;
-  place-items: center;
   padding-block: var(--size-fluid-3);
 }
+
 /* **********************
 typography
 ********************** */
@@ -90,8 +69,8 @@ colors
 /* **********************
 composition
 ********************** */
+
 .container {
-  /* max-width: var(--container-width); */
   max-width: 61.8vw;
   margin: 0 auto;
 }
@@ -104,6 +83,7 @@ composition
 /* **********************
 utility classes
 ********************** */
+
 /* grid utitlity */
 .grid {
   display: grid;
@@ -114,7 +94,7 @@ utility classes
 }
 
 .grid--place-center {
-  place-content: center;
+  place-items: center;
 }
 
 /* flex utility */
@@ -155,14 +135,6 @@ components
 /* ***********
 components/buttons
 *********** */
-button {
-  /*
-    using `reverse` means we dont have to put
-    opacity: 0 or scale(.8) anywhere
-  */
-}
-
-/* */
 
 button {
   animation: var(--animation-scale-down) reverse,
@@ -174,13 +146,10 @@ button {
 .button {
   display: inline-flex;
   white-space: nowrap;
-
   font-size: var(--font-size-fluid-1);
   font-weight: var(--font-weight-7);
-
   padding-inline: var(--size-6);
   padding-block: var(--size-3);
-
   color: var(--blue-9);
   border: var(--border-size-2) solid var(--blue-5);
   background-color: transparent;
@@ -194,22 +163,22 @@ button {
 }
 
 /* prefers light theme button */
-.button.light {
+.button .light {
   text-shadow: 0 1px 0 var(--blue-8);
 }
 
-.button.light:active {
+.button .light:active {
   position: relative;
   inset-block-start: 2px;
 }
 
 /* prefers dark theme button */
-.button.dark {
+.button .dark {
   border-color: var(--blue-3);
   color: var(--blue-1);
 }
 
-.button.dark:hover {
+.button .dark:hover {
   background-color: var(--blue-3);
   color: black;
 }
@@ -223,7 +192,6 @@ components/cards
   border-radius: var(--radius-2);
   padding: var(--size-fluid-3);
   box-shadow: var(--shadow-2);
-  /* min-width: clamp(300px, 20vw, 40vw); */
   position: relative;
 }
 
@@ -237,7 +205,7 @@ components/cards
   }
 }
 
-.card > h1 {
+.card__heading {
   line-height: 1.2;
   margin-block: 0;
   margin-inline: 0;
@@ -248,32 +216,21 @@ components/cards
 .card--neumorphic__dip-300 {
   border-radius: 50px;
   background: linear-gradient(145deg, #cacaca, #f0f0f0);
-  box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
+  box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #fff;
 }
 
 .card--neumorphic__dip-700 {
   border-radius: 50px;
   background: linear-gradient(145deg, #cacaca, #f0f0f0);
-  box-shadow: 20px 20px 60px #9d9d9d, -20px -20px 60px #ffffff;
+  box-shadow: 20px 20px 60px #9d9d9d, -20px -20px 60px #fff;
 }
 
 /* ***********
 components/forms
 *********** */
-dialog.modal__dialog {
-  background-color: var(--surface-2);
 
-  /* margin: auto;
-  position: fixed;
-  max-height: calc((100% - 6vw) - 2em);
-  max-width: 50ch;
-  height: clamp(20ch, 20ch + 20vw, 50ch);
-  background-color: #212121;
-  border: 0;
-  border-radius: 10px;
-  box-shadow: 0 0 10px #000;
-  padding: 1.8em; */
-  --something: something;
+.modal__dialog {
+  background-color: var(--surface-2);
 }
 
 /* ***********
@@ -281,6 +238,7 @@ components/lists
 *********** */
 
 /* footer lists */
+
 /* add data-state attribute */
 ul[data-state="navListStyleNone"] {
   list-style: none;
@@ -289,16 +247,12 @@ ul[data-state="navListStyleNone"] {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  /* align-items: center; */
 }
+
 ul[data-state="navListStyleNone"] li {
-  /* margin: 0; */
   padding-inline-start: 0;
-  /* display: flex;
-  flex-direction: column;
-  justify-content: center; */
-  /* align-items: center; */
 }
+
 /* ***********
 components/lists
 *********** */
@@ -329,20 +283,13 @@ components/utilities
 /* lottie animations */
 .wrapper-lottie-animations {
   display: flex;
-  /* align-items: center; */
   justify-content: center;
   position: relative;
-}
-
-.lottie {
-  --something: something;
 }
 
 .lottie-win,
 .lottie-lose {
   position: absolute;
-  /* top: 0; */
-  /* left: 0; */
   width: 100%;
   height: 100%;
   z-index: -1;
@@ -363,12 +310,8 @@ components/utilities
   0% {
     opacity: 1;
   }
+
   100% {
     opacity: 0;
   }
-}
-
-* {
-  box-sizing: border-box;
-  /* border: 1px solid red; */
 }
