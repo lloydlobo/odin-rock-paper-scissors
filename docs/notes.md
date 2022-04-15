@@ -13,6 +13,7 @@
   - [Archive](#archive)
   - [Information](#information)
     - [Rule of 30](#rule-of-30)
+    - [SASS](#sass)
   - [Attributions](#attributions)
 
 ## Notes
@@ -94,6 +95,96 @@ d) Subsystems with more than 30 packages should be avoided. Such a subsystem wou
 e) A system with 30 subsystems would thus possess 27,000 classes and 24.3 million code lines.
 
 * * *
+
+### SASS
+
+/_ Main: it should ONLY contain the imports for the above files.
+ _/
+
+/_ Note: There’s no need to include the \_ or .scss file extension when importing. _/
+
+@import "abstracts/variables";
+@import "abstracts/functions";
+@import "abstracts/mixins";
+
+@import "vendors/bootstrap";
+@import "vendors/jquery-ui";
+
+@import "base/reset";
+@import "base/typography";
+
+@import "layout/navigation";
+@import "layout/grid";
+@import "layout/header";
+@import "layout/footer";
+@import "layout/sidebar";
+@import "layout/forms";
+
+@import "components/buttons";
+@import "components/carousel";
+@import "components/slider";
+
+@import "pages/home";
+@import "pages/about";
+@import "pages/contact";
+
+@import "themes/theme";
+@import "themes/admin";
+/_ If any file grows too cluttered or disorganized, it’s time to expand our structure. Consider adding a folder for your components for example, and breaking it up into individual files such as \_button.scss & \_carousel.scss. _/
+/_ The 7–1 Pattern _/
+/_ Source: <https://itnext.io/structuring-your-sass-projects-c8d41fa55ed4#:~:text=Simple%20Structure&text=scss%20.,buttons%2C%20navbars%2C%20cards%20etc>. _/
+
+/_ sass/
+\|
+|– abstracts/ (or utilities/)
+|   |– \_variables.scss    // Sass Variables
+|   |– \_functions.scss    // Sass Functions
+|   |– \_mixins.scss       // Sass Mixins
+\|
+|– base/
+|   |– \_reset.scss        // Reset/normalize
+|   |– \_typography.scss   // Typography rules
+\|
+|– components/ (or modules/)
+|   |– \_buttons.scss      // Buttons
+|   |– \_carousel.scss     // Carousel
+|   |– \_slider.scss       // Slider
+\|
+|– layout/
+|   |– \_navigation.scss   // Navigation
+|   |– \_grid.scss         // Grid system
+|   |– \_header.scss       // Header
+|   |– \_footer.scss       // Footer
+|   |– \_sidebar.scss      // Sidebar
+|   |– \_forms.scss        // Forms
+\|
+|– pages/
+|   |– \_home.scss         // Home specific styles
+|   |– \_about.scss        // About specific styles
+|   |– \_contact.scss      // Contact specific styles
+\|
+|– themes/
+|   |– \_theme.scss        // Default theme
+|   |– \_admin.scss        // Admin theme
+\|
+|– vendors/
+|   |– \_bootstrap.scss    // Bootstrap
+|   |– \_jquery-ui.scss    // jQuery UI
+\|
+\`– main.scss              // Main Sass file _/
+
+/_ other references: <https://matthewelsom.com/blog/simple-scss-playbook.html> _/
+
+
+/_ Layout: contains all the CSS that handles the layout, such as the container and any grid systems.
+ _/
+
+/* Components: anything reusable such as buttons, navbars, cards etc.
+ */
+
+ /_ Base: contained within this file are all your resets, variables, mixins, and any utility classes.
+ _/
+
 
 ## Attributions
 

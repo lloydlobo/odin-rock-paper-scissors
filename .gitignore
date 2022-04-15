@@ -207,4 +207,10 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# macOs cache?
 .dccache
+
+# root folders
+src/sass/
+src/sass/_layout.scss
