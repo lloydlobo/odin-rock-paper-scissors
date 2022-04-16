@@ -109,7 +109,12 @@
                 </ul>
               </div>
             </div>
-            <output aria-live="polite"></output>
+            <output
+              for="resultGame"
+              id="resultGame"
+              title="Game Results"
+              aria-live="polite"
+            ></output>
 
             <!-- progress bar -->
             <!-- <ul>
@@ -149,6 +154,7 @@
     <footer>
       <div class="container | grid | | gap--f2">
         <div class="footer-primary | grid grid--column | gap--f1 |">
+          <!-- use modals for link items in col-1 -->
           <div class="footer-nav-col-1 |">
             <h2 class="footer-nav-heading">Getting Started</h2>
             <ul class="footer-primary__items" data-state="listStyleNoneNav">
@@ -167,16 +173,14 @@
                 >
               </li>
               <li class="footer-primary__item">
-                <a
-                  target="_blank"
-                  href="https://github.com/lloydlobo/odin-rock-paper-scissors"
-                  >Algorithms</a
-                >
+                <a target="_blank" href="#">Scoreboard</a>
               </li>
               <li class="footer-primary__item">
                 <a
-                  target="_blank"
                   href="https://lloydlobo.github.io/odin-rock-paper-scissors-docs/docs/gameplay/cheatsheet"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="footer__link-item"
                   >CheatSheet</a
                 >
               </li>
@@ -187,31 +191,79 @@
             <ul class="footer-primary__items" data-state="listStyleNoneNav">
               <li class="footer-primary__item">
                 <a
-                  target="_blank"
                   href="https://lloydlobo.github.io/odin-rock-paper-scissors-docs/"
-                  >Docs</a
-                >
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="footer__link-item"
+                  >Docs<svg
+                    width="13.5"
+                    height="13.5"
+                    aria-hidden="true"
+                    viewbox="0 0 24 24"
+                    class="iconExternalLink_wwR_"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"
+                    ></path></svg
+                ></a>
               </li>
               <li class="footer-primary__item">
                 <a
+                  href="https://lloydlobo.github.io/odin-rock-paper-scissors-docs/docs/programing-logic"
                   target="_blank"
-                  href="https://lloydlobo.github.io/odin-rock-paper-scissors-docs/docs/gameplay"
-                  >Gameplay</a
-                >
+                  rel="noopener noreferrer"
+                  class="footer__link-item"
+                  >Programming Logic<svg
+                    width="13.5"
+                    height="13.5"
+                    aria-hidden="true"
+                    viewbox="0 0 24 24"
+                    class="iconExternalLink_wwR_"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"
+                    ></path></svg
+                ></a>
               </li>
               <li class="footer-primary__item">
                 <a
+                  href="https://lloydlobo.github.io/odin-rock-paper-scissors-docs/docs/algorithms"
                   target="_blank"
+                  rel="noopener noreferrer"
+                  class="footer__link-item"
+                  >Algorithms<svg
+                    width="13.5"
+                    height="13.5"
+                    aria-hidden="true"
+                    viewbox="0 0 24 24"
+                    class="iconExternalLink_wwR_"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"
+                    ></path></svg
+                ></a>
+              </li>
+              <li class="footer-primary__item">
+                <a
                   href="https://github.com/lloydlobo/odin-rock-paper-scissors"
-                  >GitHub</a
-                >
-              </li>
-              <li class="footer-primary__item">
-                <a
                   target="_blank"
-                  href="https://lloydlobo.github.io/odin-rock-paper-scissors-docs/docs/gameplay/cheatsheet"
-                  >CheatSheet</a
-                >
+                  rel="noopener noreferrer"
+                  class="footer__link-item"
+                  >GitHub<svg
+                    width="13.5"
+                    height="13.5"
+                    aria-hidden="true"
+                    viewbox="0 0 24 24"
+                    class="iconExternalLink_wwR_"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"
+                    ></path></svg
+                ></a>
               </li>
             </ul>
           </div>
@@ -220,31 +272,62 @@
             <ul class="footer-primary__items" data-state="listStyleNoneNav">
               <li class="footer-primary__item">
                 <a
+                  href="https://instagram.com/@thelloydlobo"
                   target="_blank"
-                  href="https://lloydlobo.github.io/odin-rock-paper-scissors-docs/"
-                  >GitHub</a
-                >
+                  rel="noopener noreferrer"
+                  class="footer__link-item"
+                  >Instagram<svg
+                    width="13.5"
+                    height="13.5"
+                    aria-hidden="true"
+                    viewbox="0 0 24 24"
+                    class="iconExternalLink_wwR_"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"
+                    ></path></svg
+                ></a>
               </li>
               <li class="footer-primary__item">
                 <a
+                  href="https://codepen.com/"
                   target="_blank"
-                  href="https://lloydlobo.github.io/odin-rock-paper-scissors-docs/docs/gameplay"
-                  >Discord</a
-                >
+                  rel="noopener noreferrer"
+                  class="footer__link-item"
+                  >CodePen<svg
+                    width="13.5"
+                    height="13.5"
+                    aria-hidden="true"
+                    viewbox="0 0 24 24"
+                    class="iconExternalLink_wwR_"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"
+                    ></path></svg
+                ></a>
               </li>
               <li class="footer-primary__item">
                 <a
-                  target="_blank"
-                  href="https://github.com/lloydlobo/odin-rock-paper-scissors"
-                  >CodePen</a
-                >
-              </li>
-              <li class="footer-primary__item">
-                <a
-                  target="_blank"
                   href="https://lloydlobo.github.io/odin-rock-paper-scissors-docs/docs/gameplay/cheatsheet"
-                  >Twitter</a
-                >
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="footer__link-item"
+                  >Twitter
+                  <svg
+                    width="13.5"
+                    height="13.5"
+                    aria-hidden="true"
+                    viewbox="0 0 24 24"
+                    class="iconExternalLink_wwR_"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"
+                    ></path>
+                  </svg>
+                </a>
               </li>
             </ul>
           </div>
@@ -253,10 +336,22 @@
           <small>&copy;2022</small>
           <small>
             <a
-              target="_blank"
               href="http://opensource.org/licenses/://github.com/lloydlobo/odin-rock-paper-scissors/blob/main/LICENSE"
-              >MIT License</a
-            >
+              target="_blank"
+              rel="noopener noreferrer"
+              class="footer__link-item"
+              >MIT License<svg
+                width="13.5"
+                height="13.5"
+                aria-hidden="true"
+                viewbox="0 0 24 24"
+                class="iconExternalLink_wwR_"
+              >
+                <path
+                  fill="currentColor"
+                  d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"
+                ></path></svg
+            ></a>
           </small>
         </div>
       </div>
