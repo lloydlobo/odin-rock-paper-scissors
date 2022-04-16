@@ -428,14 +428,17 @@ components/cards
 .card {
   display: flex;
   flex-direction: column;
-  border-radius: var(--radius-conditional-4);
-  padding: var(--size-fluid-4);
-  box-shadow: var(--shadow-4);
-  /* position: relative; */
-  animation: var(--animation-fade-in) 1s;
-  background-color: var(--surface-2);
-  block-size: var(--size-content-3);
+
+  block-size: var(--size-content-2);
   aspect-ratio: var(--ratio-golden);
+
+  padding: var(--size-fluid-4);
+  border-radius: var(--radius-conditional-4);
+
+  background-color: var(--surface-2);
+
+  box-shadow: var(--shadow-4);
+  animation: var(--animation-fade-in) 1s;
 }
 
 .card:hover {
