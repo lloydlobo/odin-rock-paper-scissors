@@ -5,6 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Odin Rock Paper Scissors</title>
+
+    <!-- meta for Open Graph base -->
+
+    <!-- <meta property="og:image" content="https://example.com/thumbnail.jpg" /> -->
+
+    <!-- base url comes before any link -->
+
+    <!-- <base href="https://www.example.com/" />
+    <base target="_blank" />
+    <base target="_top" href="https://example.com/" /> -->
+
     <link rel="stylesheet" href="./src/css/index.css" />
     <link rel="stylesheet" href="https://unpkg.com/open-props" />
     <link
@@ -29,7 +40,8 @@
       href="https://unpkg.com/open-props/colors-hsl.min.css"
     />
 
-    <script defer src="./src/js/main.js"></script>
+    <!-- <script defer src="./src/js/main.js"></script> -->
+    <script defer src="./src/js/button.js"></script>
     <!-- <script
       defer
       src="https://unpkg.com/@lottiefiles/lottie-player@0.4.0/dist/lottie-player.js"
@@ -53,8 +65,13 @@
             <div
               class="flex flex--wrap | gap--f1 | justify-content--center align-items--center"
             >
-              <span>Keyboard shortcut is:</span>
-              <code class="gradient-text">CMD(Ctrl) + Option(alt) + J</code>.
+              <dd>Keyboard shortcut is:</dd>
+              <span class="card__shortcuts"
+                ><abbr title="Command">CMD</abbr>/<abbr title="Control"
+                  >Ctrl</abbr
+                >
+                + Option/alt + J</span
+              >.
             </div>
             <!-- add "open" attribute to <dialog open id=""> for testing without JS -->
             <p>
@@ -78,10 +95,15 @@
               <div
                 class="btn-selections-start-settings | flex flex--wrap | gap--f1"
               >
-                <button id="btnRestartGame" value="restart">Restart</button>
-                <button id="btnStartGame" value="">Start Game</button>
-                <!-- opens modal -->
-                <button id="btnSettings" value="">Settings</button>
+                <ul data-state="listStyleNoneBtn">
+                  <li>
+                    <button id="btnRestartGame" value="restart">Restart</button>
+                  </li>
+                  <li>
+                    <button id="btnStartGame" value="">Start Game</button>
+                  </li>
+                  <li><button id="btnSettings" value="">Settings</button></li>
+                </ul>
               </div>
             </div>
             <output aria-live="polite"></output>
@@ -145,7 +167,7 @@
         <div class="footer-primary | grid grid--column | gap--f1 |">
           <div class="footer-nav-col-1 |">
             <h2 class="footer-nav-heading">Getting Started</h2>
-            <ul class="footer-primary__items" data-state="navListStyleNone">
+            <ul class="footer-primary__items" data-state="listStyleNoneNav">
               <li class="footer-primary__item">
                 <a
                   target="_blank"
@@ -178,7 +200,7 @@
           </div>
           <div class="footer-nav-col-2">
             <h2 class="footer-nav-heading">Documentation</h2>
-            <ul class="footer-primary__items" data-state="navListStyleNone">
+            <ul class="footer-primary__items" data-state="listStyleNoneNav">
               <li class="footer-primary__item">
                 <a
                   target="_blank"
@@ -211,7 +233,7 @@
           </div>
           <div class="footer-nav-col-3">
             <h2 class="footer-nav-heading">Connect</h2>
-            <ul class="footer-primary__items" data-state="navListStyleNone">
+            <ul class="footer-primary__items" data-state="listStyleNoneNav">
               <li class="footer-primary__item">
                 <a
                   target="_blank"
@@ -244,18 +266,14 @@
           </div>
         </div>
         <div class="footer-secondary | flex flex--wrap | gap--f1">
-          <p>
-            <strong>Copyright &copy; 2022</strong>
-          </p>
-          <p>
-            <strong
-              ><a
-                target="_blank"
-                href="http://opensource.org/licenses/://github.com/lloydlobo/odin-rock-paper-scissors/blob/main/LICENSE"
-                >MIT License</a
-              ></strong
+          <small>&copy;2022</small>
+          <small>
+            <a
+              target="_blank"
+              href="http://opensource.org/licenses/://github.com/lloydlobo/odin-rock-paper-scissors/blob/main/LICENSE"
+              >MIT License</a
             >
-          </p>
+          </small>
         </div>
       </div>
     </footer>
