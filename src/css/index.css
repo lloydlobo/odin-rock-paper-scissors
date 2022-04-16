@@ -255,7 +255,7 @@ composition
 ********************** */
 
 .container {
-  max-inline-size: min(100% - 2em, 50em); /* max-width: 60em; */
+  max-inline-size: min(100% - 2em, 60em); /* max-width: 60em; */
   margin-inline: auto; /* padding: 0 var(--size-fluid-3); */
 }
 
@@ -417,7 +417,7 @@ components/cards
   position: relative;
   animation: var(--animation-fade-in) 1s;
   background-color: var(--surface-2);
-  block-size: 480px;
+  block-size: var(--size-content-3);
   aspect-ratio: var(--ratio-golden);
 }
 
