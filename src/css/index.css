@@ -488,6 +488,11 @@ components/tables
 components/text
 *********** */
 
+.card__shortcuts {
+  font-weight: var(--font-weight-6);
+  z-index: var(--layer-2);
+}
+
 /* ***********
 components/typography
 *********** */
