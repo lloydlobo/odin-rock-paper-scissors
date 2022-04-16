@@ -92,7 +92,7 @@ html {
   color: var(--text1);
   accent-color: var(--link);
 
-  --brand-light: var(--orange-6);
+  --brand-light: var(--red-6);
 
   --text1-light: var(--gray-8);
   --text2-light: var(--gray-7);
@@ -176,7 +176,6 @@ dd {
 
 h1 {
   max-inline-size: var(--size-header-2);
-  color: var(--brand);
 }
 
 small {
@@ -447,6 +446,7 @@ components/cards
   margin-block: 0;
   margin-inline: 0;
   font-size: var(--font-size-fluid-3);
+  color: var(--blue-4);
 }
 
 /* ***********
