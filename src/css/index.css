@@ -163,6 +163,9 @@ body {
 
 header {
   grid-area: header;
+  padding-block: var(--size-fluid-2);
+
+  box-shadow: var(--shadow-2);
 }
 
 main {
