@@ -417,6 +417,11 @@ ul[data-state="listStyleNoneBtn"] li {
   padding-inline-start: 0;
 }
 
+.btn-selections-start-settings > ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--size-fluid-1);
+}
 /* ***********
 components/cards
 *********** */
