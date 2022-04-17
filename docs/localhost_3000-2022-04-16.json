@@ -1,0 +1,873 @@
+{
+  "url": "http://localhost:3000/",
+  "extensionVersion": "4.25.1",
+  "axeVersion": "4.4.1",
+  "standard": "WCAG 2.1 AAA",
+  "testingStartDate": "2022-04-16T04:41:23.176Z",
+  "testingEndDate": "2022-04-16T04:41:23.176Z",
+  "bestPracticesEnabled": true,
+  "issueSummary": {
+    "critical": 0,
+    "moderate": 0,
+    "minor": 1,
+    "serious": 13,
+    "bestPractices": 0,
+    "needsReview": 4
+  },
+  "igtSummary": [],
+  "failedRules": [
+    {
+      "name": "color-contrast",
+      "count": 16,
+      "mode": "automated"
+    },
+    {
+      "name": "duplicate-id",
+      "count": 1,
+      "mode": "automated"
+    },
+    {
+      "name": "identical-links-same-purpose",
+      "count": 1,
+      "mode": "automated"
+    }
+  ],
+  "needsReview": [
+    {
+      "name": "color-contrast",
+      "count": 3,
+      "mode": "automated"
+    },
+    {
+      "name": "identical-links-same-purpose",
+      "count": 1,
+      "mode": "automated"
+    }
+  ],
+  "allIssues": [
+    {
+      "id": "color-contrast",
+      "impact": "serious",
+      "tags": [
+        "cat.color",
+        "wcag2aa",
+        "wcag143"
+      ],
+      "description": "Ensures the contrast between foreground and background colors meets WCAG 2 AA contrast ratio thresholds",
+      "help": "Elements must have sufficient color contrast",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.4/color-contrast?application=AxeChrome",
+      "node": {
+        "any": [
+          {
+            "id": "color-contrast",
+            "data": {
+              "fgColor": "#4dabf7",
+              "bgColor": "#e9ecef",
+              "contrastRatio": 2.08,
+              "fontSize": "42.0pt (56px)",
+              "fontWeight": "bold",
+              "messageKey": null,
+              "expectedContrastRatio": "3:1"
+            },
+            "relatedNodes": [
+              {
+                "html": "<div class=\"card card--neumorphic__dip-300 | gap--f1 | flex--align-center\">",
+                "target": [
+                  ".card"
+                ]
+              }
+            ],
+            "impact": "serious",
+            "message": "Element has insufficient color contrast of 2.08 (foreground color: #4dabf7, background color: #e9ecef, font size: 42.0pt (56px), font weight: bold). Expected contrast ratio of 3:1"
+          }
+        ],
+        "all": [],
+        "none": [],
+        "impact": "serious",
+        "html": "<h1 class=\"card__heading |\">Rock Paper Scissors</h1>",
+        "target": [
+          "h1"
+        ],
+        "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 2.08 (foreground color: #4dabf7, background color: #e9ecef, font size: 42.0pt (56px), font weight: bold). Expected contrast ratio of 3:1"
+      },
+      "is_manual": false
+    },
+    {
+      "id": "color-contrast",
+      "impact": "serious",
+      "tags": [
+        "cat.color",
+        "wcag2aa",
+        "wcag143"
+      ],
+      "description": "Ensures the contrast between foreground and background colors meets WCAG 2 AA contrast ratio thresholds",
+      "help": "Elements must have sufficient color contrast",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.4/color-contrast?application=AxeChrome",
+      "node": {
+        "any": [
+          {
+            "id": "color-contrast",
+            "data": {
+              "fgColor": "#4263eb",
+              "bgColor": "#e9ecef",
+              "contrastRatio": 4.2,
+              "fontSize": "12.0pt (16px)",
+              "fontWeight": "normal",
+              "messageKey": null,
+              "expectedContrastRatio": "4.5:1"
+            },
+            "relatedNodes": [
+              {
+                "html": "<footer>",
+                "target": [
+                  "footer"
+                ]
+              }
+            ],
+            "impact": "serious",
+            "message": "Element has insufficient color contrast of 4.2 (foreground color: #4263eb, background color: #e9ecef, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+          }
+        ],
+        "all": [],
+        "none": [],
+        "impact": "serious",
+        "html": "<a target=\"_blank\" href=\"https://lloydlobo.github.io/odin-rock-paper-scissors-docs/\">Rules</a>",
+        "target": [
+          ".footer-nav-col-1 > ul > li:nth-child(1) > a"
+        ],
+        "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 4.2 (foreground color: #4263eb, background color: #e9ecef, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+      },
+      "is_manual": false
+    },
+    {
+      "id": "color-contrast",
+      "impact": "serious",
+      "tags": [
+        "cat.color",
+        "wcag2aa",
+        "wcag143"
+      ],
+      "description": "Ensures the contrast between foreground and background colors meets WCAG 2 AA contrast ratio thresholds",
+      "help": "Elements must have sufficient color contrast",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.4/color-contrast?application=AxeChrome",
+      "node": {
+        "any": [
+          {
+            "id": "color-contrast",
+            "data": {
+              "fgColor": "#4263eb",
+              "bgColor": "#e9ecef",
+              "contrastRatio": 4.2,
+              "fontSize": "12.0pt (16px)",
+              "fontWeight": "normal",
+              "messageKey": null,
+              "expectedContrastRatio": "4.5:1"
+            },
+            "relatedNodes": [
+              {
+                "html": "<footer>",
+                "target": [
+                  "footer"
+                ]
+              }
+            ],
+            "impact": "serious",
+            "message": "Element has insufficient color contrast of 4.2 (foreground color: #4263eb, background color: #e9ecef, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+          }
+        ],
+        "all": [],
+        "none": [],
+        "impact": "serious",
+        "html": "<a target=\"_blank\" href=\"https://lloydlobo.github.io/odin-rock-paper-scissors-docs/docs/gameplay\">Gameplay</a>",
+        "target": [
+          ".footer-nav-col-1 > ul > li:nth-child(2) > a"
+        ],
+        "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 4.2 (foreground color: #4263eb, background color: #e9ecef, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+      },
+      "is_manual": false
+    },
+    {
+      "id": "color-contrast",
+      "impact": "serious",
+      "tags": [
+        "cat.color",
+        "wcag2aa",
+        "wcag143"
+      ],
+      "description": "Ensures the contrast between foreground and background colors meets WCAG 2 AA contrast ratio thresholds",
+      "help": "Elements must have sufficient color contrast",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.4/color-contrast?application=AxeChrome",
+      "node": {
+        "any": [
+          {
+            "id": "color-contrast",
+            "data": {
+              "fgColor": "#4263eb",
+              "bgColor": "#e9ecef",
+              "contrastRatio": 4.2,
+              "fontSize": "12.0pt (16px)",
+              "fontWeight": "normal",
+              "messageKey": null,
+              "expectedContrastRatio": "4.5:1"
+            },
+            "relatedNodes": [
+              {
+                "html": "<footer>",
+                "target": [
+                  "footer"
+                ]
+              }
+            ],
+            "impact": "serious",
+            "message": "Element has insufficient color contrast of 4.2 (foreground color: #4263eb, background color: #e9ecef, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+          }
+        ],
+        "all": [],
+        "none": [],
+        "impact": "serious",
+        "html": "<a target=\"_blank\" href=\"https://github.com/lloydlobo/odin-rock-paper-scissors\">Algorithms</a>",
+        "target": [
+          ".footer-nav-col-1 > ul > li:nth-child(3) > a"
+        ],
+        "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 4.2 (foreground color: #4263eb, background color: #e9ecef, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+      },
+      "is_manual": false
+    },
+    {
+      "id": "color-contrast",
+      "impact": "serious",
+      "tags": [
+        "cat.color",
+        "wcag2aa",
+        "wcag143"
+      ],
+      "description": "Ensures the contrast between foreground and background colors meets WCAG 2 AA contrast ratio thresholds",
+      "help": "Elements must have sufficient color contrast",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.4/color-contrast?application=AxeChrome",
+      "node": {
+        "any": [
+          {
+            "id": "color-contrast",
+            "data": {
+              "fgColor": "#4263eb",
+              "bgColor": "#e9ecef",
+              "contrastRatio": 4.2,
+              "fontSize": "12.0pt (16px)",
+              "fontWeight": "normal",
+              "messageKey": null,
+              "expectedContrastRatio": "4.5:1"
+            },
+            "relatedNodes": [
+              {
+                "html": "<footer>",
+                "target": [
+                  "footer"
+                ]
+              }
+            ],
+            "impact": "serious",
+            "message": "Element has insufficient color contrast of 4.2 (foreground color: #4263eb, background color: #e9ecef, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+          }
+        ],
+        "all": [],
+        "none": [],
+        "impact": "serious",
+        "html": "<a target=\"_blank\" href=\"https://lloydlobo.github.io/odin-rock-paper-scissors-docs/docs/gameplay/cheatsheet\">CheatSheet</a>",
+        "target": [
+          ".footer-nav-col-1 > ul > li:nth-child(4) > a"
+        ],
+        "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 4.2 (foreground color: #4263eb, background color: #e9ecef, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+      },
+      "is_manual": false
+    },
+    {
+      "id": "color-contrast",
+      "impact": "serious",
+      "tags": [
+        "cat.color",
+        "wcag2aa",
+        "wcag143"
+      ],
+      "description": "Ensures the contrast between foreground and background colors meets WCAG 2 AA contrast ratio thresholds",
+      "help": "Elements must have sufficient color contrast",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.4/color-contrast?application=AxeChrome",
+      "node": {
+        "any": [
+          {
+            "id": "color-contrast",
+            "data": {
+              "fgColor": "#4263eb",
+              "bgColor": "#e9ecef",
+              "contrastRatio": 4.2,
+              "fontSize": "12.0pt (16px)",
+              "fontWeight": "normal",
+              "messageKey": null,
+              "expectedContrastRatio": "4.5:1"
+            },
+            "relatedNodes": [
+              {
+                "html": "<footer>",
+                "target": [
+                  "footer"
+                ]
+              }
+            ],
+            "impact": "serious",
+            "message": "Element has insufficient color contrast of 4.2 (foreground color: #4263eb, background color: #e9ecef, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+          }
+        ],
+        "all": [],
+        "none": [],
+        "impact": "serious",
+        "html": "<a target=\"_blank\" href=\"https://lloydlobo.github.io/odin-rock-paper-scissors-docs/docs/gameplay\">Gameplay</a>",
+        "target": [
+          ".footer-nav-col-2 > ul > li:nth-child(2) > a"
+        ],
+        "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 4.2 (foreground color: #4263eb, background color: #e9ecef, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+      },
+      "is_manual": false
+    },
+    {
+      "id": "color-contrast",
+      "impact": "serious",
+      "tags": [
+        "cat.color",
+        "wcag2aa",
+        "wcag143"
+      ],
+      "description": "Ensures the contrast between foreground and background colors meets WCAG 2 AA contrast ratio thresholds",
+      "help": "Elements must have sufficient color contrast",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.4/color-contrast?application=AxeChrome",
+      "node": {
+        "any": [
+          {
+            "id": "color-contrast",
+            "data": {
+              "fgColor": "#4263eb",
+              "bgColor": "#e9ecef",
+              "contrastRatio": 4.2,
+              "fontSize": "12.0pt (16px)",
+              "fontWeight": "normal",
+              "messageKey": null,
+              "expectedContrastRatio": "4.5:1"
+            },
+            "relatedNodes": [
+              {
+                "html": "<footer>",
+                "target": [
+                  "footer"
+                ]
+              }
+            ],
+            "impact": "serious",
+            "message": "Element has insufficient color contrast of 4.2 (foreground color: #4263eb, background color: #e9ecef, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+          }
+        ],
+        "all": [],
+        "none": [],
+        "impact": "serious",
+        "html": "<a target=\"_blank\" href=\"https://github.com/lloydlobo/odin-rock-paper-scissors\">GitHub</a>",
+        "target": [
+          ".footer-nav-col-2 > ul > li:nth-child(3) > a"
+        ],
+        "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 4.2 (foreground color: #4263eb, background color: #e9ecef, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+      },
+      "is_manual": false
+    },
+    {
+      "id": "color-contrast",
+      "impact": "serious",
+      "tags": [
+        "cat.color",
+        "wcag2aa",
+        "wcag143"
+      ],
+      "description": "Ensures the contrast between foreground and background colors meets WCAG 2 AA contrast ratio thresholds",
+      "help": "Elements must have sufficient color contrast",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.4/color-contrast?application=AxeChrome",
+      "node": {
+        "any": [
+          {
+            "id": "color-contrast",
+            "data": {
+              "fgColor": "#4263eb",
+              "bgColor": "#e9ecef",
+              "contrastRatio": 4.2,
+              "fontSize": "12.0pt (16px)",
+              "fontWeight": "normal",
+              "messageKey": null,
+              "expectedContrastRatio": "4.5:1"
+            },
+            "relatedNodes": [
+              {
+                "html": "<footer>",
+                "target": [
+                  "footer"
+                ]
+              }
+            ],
+            "impact": "serious",
+            "message": "Element has insufficient color contrast of 4.2 (foreground color: #4263eb, background color: #e9ecef, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+          }
+        ],
+        "all": [],
+        "none": [],
+        "impact": "serious",
+        "html": "<a target=\"_blank\" href=\"https://lloydlobo.github.io/odin-rock-paper-scissors-docs/docs/gameplay/cheatsheet\">CheatSheet</a>",
+        "target": [
+          ".footer-nav-col-2 > ul > li:nth-child(4) > a"
+        ],
+        "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 4.2 (foreground color: #4263eb, background color: #e9ecef, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+      },
+      "is_manual": false
+    },
+    {
+      "id": "color-contrast",
+      "impact": "serious",
+      "tags": [
+        "cat.color",
+        "wcag2aa",
+        "wcag143"
+      ],
+      "description": "Ensures the contrast between foreground and background colors meets WCAG 2 AA contrast ratio thresholds",
+      "help": "Elements must have sufficient color contrast",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.4/color-contrast?application=AxeChrome",
+      "node": {
+        "any": [
+          {
+            "id": "color-contrast",
+            "data": {
+              "fgColor": "#4263eb",
+              "bgColor": "#e9ecef",
+              "contrastRatio": 4.2,
+              "fontSize": "12.0pt (16px)",
+              "fontWeight": "normal",
+              "messageKey": null,
+              "expectedContrastRatio": "4.5:1"
+            },
+            "relatedNodes": [
+              {
+                "html": "<footer>",
+                "target": [
+                  "footer"
+                ]
+              }
+            ],
+            "impact": "serious",
+            "message": "Element has insufficient color contrast of 4.2 (foreground color: #4263eb, background color: #e9ecef, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+          }
+        ],
+        "all": [],
+        "none": [],
+        "impact": "serious",
+        "html": "<a target=\"_blank\" href=\"https://lloydlobo.github.io/odin-rock-paper-scissors-docs/\">GitHub</a>",
+        "target": [
+          ".footer-nav-col-3 > ul > li:nth-child(1) > a"
+        ],
+        "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 4.2 (foreground color: #4263eb, background color: #e9ecef, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+      },
+      "is_manual": false
+    },
+    {
+      "id": "color-contrast",
+      "impact": "serious",
+      "tags": [
+        "cat.color",
+        "wcag2aa",
+        "wcag143"
+      ],
+      "description": "Ensures the contrast between foreground and background colors meets WCAG 2 AA contrast ratio thresholds",
+      "help": "Elements must have sufficient color contrast",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.4/color-contrast?application=AxeChrome",
+      "node": {
+        "any": [
+          {
+            "id": "color-contrast",
+            "data": {
+              "fgColor": "#4263eb",
+              "bgColor": "#e9ecef",
+              "contrastRatio": 4.2,
+              "fontSize": "12.0pt (16px)",
+              "fontWeight": "normal",
+              "messageKey": null,
+              "expectedContrastRatio": "4.5:1"
+            },
+            "relatedNodes": [
+              {
+                "html": "<footer>",
+                "target": [
+                  "footer"
+                ]
+              }
+            ],
+            "impact": "serious",
+            "message": "Element has insufficient color contrast of 4.2 (foreground color: #4263eb, background color: #e9ecef, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+          }
+        ],
+        "all": [],
+        "none": [],
+        "impact": "serious",
+        "html": "<a target=\"_blank\" href=\"https://lloydlobo.github.io/odin-rock-paper-scissors-docs/docs/gameplay\">Discord</a>",
+        "target": [
+          ".footer-nav-col-3 > ul > li:nth-child(2) > a"
+        ],
+        "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 4.2 (foreground color: #4263eb, background color: #e9ecef, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+      },
+      "is_manual": false
+    },
+    {
+      "id": "color-contrast",
+      "impact": "serious",
+      "tags": [
+        "cat.color",
+        "wcag2aa",
+        "wcag143"
+      ],
+      "description": "Ensures the contrast between foreground and background colors meets WCAG 2 AA contrast ratio thresholds",
+      "help": "Elements must have sufficient color contrast",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.4/color-contrast?application=AxeChrome",
+      "node": {
+        "any": [
+          {
+            "id": "color-contrast",
+            "data": {
+              "fgColor": "#4263eb",
+              "bgColor": "#e9ecef",
+              "contrastRatio": 4.2,
+              "fontSize": "12.0pt (16px)",
+              "fontWeight": "normal",
+              "messageKey": null,
+              "expectedContrastRatio": "4.5:1"
+            },
+            "relatedNodes": [
+              {
+                "html": "<footer>",
+                "target": [
+                  "footer"
+                ]
+              }
+            ],
+            "impact": "serious",
+            "message": "Element has insufficient color contrast of 4.2 (foreground color: #4263eb, background color: #e9ecef, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+          }
+        ],
+        "all": [],
+        "none": [],
+        "impact": "serious",
+        "html": "<a target=\"_blank\" href=\"https://github.com/lloydlobo/odin-rock-paper-scissors\">CodePen</a>",
+        "target": [
+          ".footer-nav-col-3 > ul > li:nth-child(3) > a"
+        ],
+        "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 4.2 (foreground color: #4263eb, background color: #e9ecef, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+      },
+      "is_manual": false
+    },
+    {
+      "id": "color-contrast",
+      "impact": "serious",
+      "tags": [
+        "cat.color",
+        "wcag2aa",
+        "wcag143"
+      ],
+      "description": "Ensures the contrast between foreground and background colors meets WCAG 2 AA contrast ratio thresholds",
+      "help": "Elements must have sufficient color contrast",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.4/color-contrast?application=AxeChrome",
+      "node": {
+        "any": [
+          {
+            "id": "color-contrast",
+            "data": {
+              "fgColor": "#4263eb",
+              "bgColor": "#e9ecef",
+              "contrastRatio": 4.2,
+              "fontSize": "12.0pt (16px)",
+              "fontWeight": "normal",
+              "messageKey": null,
+              "expectedContrastRatio": "4.5:1"
+            },
+            "relatedNodes": [
+              {
+                "html": "<footer>",
+                "target": [
+                  "footer"
+                ]
+              }
+            ],
+            "impact": "serious",
+            "message": "Element has insufficient color contrast of 4.2 (foreground color: #4263eb, background color: #e9ecef, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+          }
+        ],
+        "all": [],
+        "none": [],
+        "impact": "serious",
+        "html": "<a target=\"_blank\" href=\"https://lloydlobo.github.io/odin-rock-paper-scissors-docs/docs/gameplay/cheatsheet\">Twitter</a>",
+        "target": [
+          ".footer-nav-col-3 > ul > li:nth-child(4) > a"
+        ],
+        "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 4.2 (foreground color: #4263eb, background color: #e9ecef, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+      },
+      "is_manual": false
+    },
+    {
+      "id": "color-contrast",
+      "impact": "serious",
+      "tags": [
+        "cat.color",
+        "wcag2aa",
+        "wcag143"
+      ],
+      "description": "Ensures the contrast between foreground and background colors meets WCAG 2 AA contrast ratio thresholds",
+      "help": "Elements must have sufficient color contrast",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.4/color-contrast?application=AxeChrome",
+      "node": {
+        "any": [
+          {
+            "id": "color-contrast",
+            "data": {
+              "fgColor": "#4263eb",
+              "bgColor": "#e9ecef",
+              "contrastRatio": 4.2,
+              "fontSize": "9.0pt (12px)",
+              "fontWeight": "bold",
+              "messageKey": null,
+              "expectedContrastRatio": "4.5:1"
+            },
+            "relatedNodes": [
+              {
+                "html": "<footer>",
+                "target": [
+                  "footer"
+                ]
+              }
+            ],
+            "impact": "serious",
+            "message": "Element has insufficient color contrast of 4.2 (foreground color: #4263eb, background color: #e9ecef, font size: 9.0pt (12px), font weight: bold). Expected contrast ratio of 4.5:1"
+          }
+        ],
+        "all": [],
+        "none": [],
+        "impact": "serious",
+        "html": "<a target=\"_blank\" href=\"http://opensource.org/licenses/://github.com/lloydlobo/odin-rock-paper-scissors/blob/main/LICENSE\">MIT License</a>",
+        "target": [
+          "strong > a"
+        ],
+        "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 4.2 (foreground color: #4263eb, background color: #e9ecef, font size: 9.0pt (12px), font weight: bold). Expected contrast ratio of 4.5:1"
+      },
+      "is_manual": false
+    },
+    {
+      "id": "duplicate-id",
+      "impact": "minor",
+      "tags": [
+        "cat.parsing",
+        "wcag2a",
+        "wcag411"
+      ],
+      "description": "Ensures every id attribute value is unique",
+      "help": "id attribute value must be unique",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.4/duplicate-id?application=AxeChrome",
+      "node": {
+        "any": [
+          {
+            "id": "duplicate-id",
+            "data": "__bs_script__",
+            "relatedNodes": [
+              {
+                "html": "<script id=\"__bs_script__\">\n      //<![CDATA[\n      document.write(\n        \"<script async src='http://HOST:3000/browser-sync/browser-sync-client.js?v=2.27.9'><\\/script>\".replace(\n          \"HOST\",\n          location.hostname\n        )\n      );\n      //]]>\n    </script>",
+                "target": [
+                  "script:nth-child(5)"
+                ]
+              }
+            ],
+            "impact": "minor",
+            "message": "Document has multiple static elements with the same id attribute: __bs_script__"
+          }
+        ],
+        "all": [],
+        "none": [],
+        "impact": "minor",
+        "html": "<script id=\"__bs_script__\">//<![CDATA[\n    document.write(\"<script async src='/browser-sync/browser-sync-client.js?v=2.27.9'><\\/script>\".replace(\"HOST\", location.hostname));\n//]]></script>",
+        "target": [
+          "script:nth-child(1)"
+        ],
+        "failureSummary": "Fix any of the following:\n  Document has multiple static elements with the same id attribute: __bs_script__"
+      },
+      "is_manual": false
+    },
+    {
+      "id": "color-contrast",
+      "tags": [
+        "cat.color",
+        "wcag2aa",
+        "wcag143"
+      ],
+      "description": "Ensures the contrast between foreground and background colors meets WCAG 2 AA contrast ratio thresholds",
+      "help": "Elements must have sufficient color contrast",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.4/color-contrast?application=AxeChrome",
+      "needs_review": true,
+      "node": {
+        "any": [
+          {
+            "id": "color-contrast",
+            "data": {
+              "fgColor": "#343a40",
+              "contrastRatio": 0,
+              "fontSize": "12.0pt (16px)",
+              "fontWeight": "normal",
+              "messageKey": "bgGradient",
+              "expectedContrastRatio": "4.5:1"
+            },
+            "relatedNodes": [
+              {
+                "html": "<code class=\"gradient-text\">CMD(Ctrl) + Option(alt) + J</code>",
+                "target": [
+                  "code"
+                ]
+              }
+            ],
+            "impact": "serious",
+            "message": "Element's background color could not be determined due to a background gradient"
+          }
+        ],
+        "all": [],
+        "none": [],
+        "impact": "serious",
+        "html": "<code class=\"gradient-text\">CMD(Ctrl) + Option(alt) + J</code>",
+        "target": [
+          "code"
+        ],
+        "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+      },
+      "is_manual": false
+    },
+    {
+      "id": "color-contrast",
+      "tags": [
+        "cat.color",
+        "wcag2aa",
+        "wcag143"
+      ],
+      "description": "Ensures the contrast between foreground and background colors meets WCAG 2 AA contrast ratio thresholds",
+      "help": "Elements must have sufficient color contrast",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.4/color-contrast?application=AxeChrome",
+      "needs_review": true,
+      "node": {
+        "any": [
+          {
+            "id": "color-contrast",
+            "data": {
+              "fgColor": "#343a40",
+              "contrastRatio": 0,
+              "fontSize": "12.0pt (16px)",
+              "fontWeight": "bold",
+              "messageKey": "bgOverlap",
+              "expectedContrastRatio": "4.5:1"
+            },
+            "relatedNodes": [],
+            "impact": "serious",
+            "message": "Element's background color could not be determined because it is overlapped by another element"
+          }
+        ],
+        "all": [],
+        "none": [],
+        "impact": "serious",
+        "html": "<h2 class=\"footer-nav-heading\">Documentation</h2>",
+        "target": [
+          ".footer-nav-col-2 > h2"
+        ],
+        "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+      },
+      "is_manual": false
+    },
+    {
+      "id": "color-contrast",
+      "tags": [
+        "cat.color",
+        "wcag2aa",
+        "wcag143"
+      ],
+      "description": "Ensures the contrast between foreground and background colors meets WCAG 2 AA contrast ratio thresholds",
+      "help": "Elements must have sufficient color contrast",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.4/color-contrast?application=AxeChrome",
+      "needs_review": true,
+      "node": {
+        "any": [
+          {
+            "id": "color-contrast",
+            "data": {
+              "fgColor": "#4263eb",
+              "contrastRatio": 0,
+              "fontSize": "12.0pt (16px)",
+              "fontWeight": "normal",
+              "messageKey": "bgOverlap",
+              "expectedContrastRatio": "4.5:1"
+            },
+            "relatedNodes": [],
+            "impact": "serious",
+            "message": "Element's background color could not be determined because it is overlapped by another element"
+          }
+        ],
+        "all": [],
+        "none": [],
+        "impact": "serious",
+        "html": "<a target=\"_blank\" href=\"https://lloydlobo.github.io/odin-rock-paper-scissors-docs/\">Docs</a>",
+        "target": [
+          ".footer-nav-col-2 > ul > li:nth-child(1) > a"
+        ],
+        "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+      },
+      "is_manual": false
+    },
+    {
+      "id": "identical-links-same-purpose",
+      "tags": [
+        "cat.semantics",
+        "wcag2aaa",
+        "wcag249"
+      ],
+      "description": "Ensure that links with the same accessible name serve a similar purpose",
+      "help": "Links with the same name must have a similar purpose",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.4/identical-links-same-purpose?application=AxeChrome",
+      "needs_review": true,
+      "node": {
+        "any": [],
+        "all": [
+          {
+            "id": "identical-links-same-purpose",
+            "data": {
+              "name": "github",
+              "urlProps": {
+                "protocol": "http:",
+                "hostname": "github.com",
+                "port": "",
+                "pathname": "/lloydlobo/odin-rock-paper-scissors/",
+                "search": {},
+                "hash": "",
+                "filename": ""
+              }
+            },
+            "relatedNodes": [
+              {
+                "html": "<a target=\"_blank\" href=\"https://lloydlobo.github.io/odin-rock-paper-scissors-docs/\">GitHub</a>",
+                "target": [
+                  ".footer-nav-col-3 > ul > li:nth-child(1) > a"
+                ]
+              }
+            ],
+            "impact": "minor",
+            "message": "Check that links have the same purpose, or are intentionally ambiguous."
+          }
+        ],
+        "none": [],
+        "impact": "minor",
+        "html": "<a target=\"_blank\" href=\"https://github.com/lloydlobo/odin-rock-paper-scissors\">GitHub</a>",
+        "target": [
+          ".footer-nav-col-2 > ul > li:nth-child(3) > a"
+        ],
+        "failureSummary": "Fix all of the following:\n  Check that links have the same purpose, or are intentionally ambiguous."
+      },
+      "is_manual": false
+    }
+  ]
+}
