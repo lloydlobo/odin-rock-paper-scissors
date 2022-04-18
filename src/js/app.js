@@ -21,25 +21,25 @@ let userChoice;
 // grab the buttons and for each possible choice
 btnPossibleChoices.forEach((btnPossibleChoice) =>
   btnPossibleChoice.addEventListener("click", (e) => {
-    userChoice = e.target.id; /* don't need to declare it again -> see l21 */
-    console.log(userChoice); /* # => btnScissors */ /* clicked scissors btn */
+    userChoice = e.target.value; /* change it to value or id? */
     // add btnchoice text id to the DOM when clicked
     userChoiceDisplay.textContent = userChoice;
   })
 );
 
-// console.log(userChoice.id);
+let computerChoice = () => {
+  let randomNumber = Math.random();
+  console.log(randomNumber);
+  const randomChoice = Math.floor(randomNumber * btnPossibleChoices.length);
+  return randomChoice;
+};
+console.log(computerChoice());
 
 // listen to key strokes 'a' 's' 'd'
 // a = inline-start(rock); b = center(paper); d = inline-end(scissors
 // let userKeyStrokes;
 
-// Grouping the elements of an array
-/*
-  Array.prototype.groupBy()
-  https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array
-*/
-
+// pseudo code
 // let keys = [a,s,d];
 // keys.value.append = {rock, paper, scissors}
 // const choices = [
