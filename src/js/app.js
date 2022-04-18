@@ -14,10 +14,8 @@ const resultDisplay = document.getElementById("resultDisplay");
 
 // select all buttons with className of buttons
 const btnPossibleChoices = document.querySelectorAll(".buttonChoice");
+/* # => NodeList(3) [button#btnRock.buttonChoice, button#btnPaper.buttonChoice, button#btnScissors.buttonChoice] */
 
-console.log(
-  btnPossibleChoices
-); /* # => NodeList(3) [button#btnRock.buttonChoice, button#btnPaper.buttonChoice, button#btnScissors.buttonChoice] */
 let userChoice;
 
 // grab the buttons and for each possible choice
@@ -25,7 +23,8 @@ btnPossibleChoices.forEach((btnPossibleChoice) =>
   btnPossibleChoice.addEventListener("click", (e) => {
     userChoice = e.target.id; /* don't need to declare it again -> see l21 */
     console.log(userChoice); /* # => btnScissors */ /* clicked scissors btn */
-    // get userChoicesDisplay
+    // add btnchoice text id to the DOM when clicked
+    userChoiceDisplay.textContent = userChoice;
   })
 );
 
