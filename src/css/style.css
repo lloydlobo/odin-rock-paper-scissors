@@ -1,5 +1,14 @@
 /* Open Props: A new CSS library by the amazing @argyleink. It's Tailwind but with CSS variables. — https://twitter.com/_davideast/status/1466110686128488450 */
 
+:where(header, nav, footer) ul {
+  padding-inline-start: 0;
+}
+
+a:not([class]) {
+  -webkit-text-decoration-skip: ink;
+  text-decoration-skip-ink: auto;
+}
+
 /* table of contents */
 
 /* ***************
@@ -1603,4 +1612,41 @@ accessibility or a11y "ally"
   padding-block: var(--size-2);
   background: var(--surface-2);
   border-radius: var(--radius-2);
+}
+
+/* skip to main a11y `TAB` => credits: MDN */
+.a11y-nav {
+  position: absolute;
+  top: -20em;
+  width: 100%;
+  z-index: var(--layer-4);
+}
+
+:focus-visible {
+  outline-style: auto;
+  outline-color: var(--brand);
+  outline-offset: 1px;
+}
+
+:target {
+  scroll-margin-top: 0;
+  --sticky-header-height: 0;
+  scroll-margin-top: var(--sticky-header-height);
+}
+
+.a11y-nav a {
+  position: absolute;
+  left: 0; /* key to make it visible */
+  right: 0; /* key to make it visible */
+  padding: var(--font-size-0);
+  text-align: center;
+  font-weight: var(--font-weight-5);
+  background-color: hsla(0, 0%, 100%, 0.9);
+}
+
+.a11y-nav a:focus,
+.a11y-nav a:hover {
+  box-shadow: var(--shadow-1);
+  text-decoration: none;
+  top: 20em; /* brings the .a11y-nav element down from -20em */
 }
