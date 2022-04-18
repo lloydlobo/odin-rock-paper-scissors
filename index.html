@@ -34,7 +34,7 @@
     ************ -->
     <header>
       <!-- new nav -->
-      <nav>
+      <nav id="main-nav" aria-label="Main menu">
         <div class="navbar | container | flex flex--wrap gap--f1">
           <a class="logo-wrapper" href="/">
             <svg class="orps-icon" viewBox="0 0 200 200">
@@ -63,11 +63,11 @@
                 stroke-width="25"
               ></circle>
             </svg>
-            <span class="orps-logo">
-              <span id="logoText">Odin</span>
-              <span id="logoText">Rock</span>
-              <span id="logoText">Paper</span>
-              <span id="logoText">Scissors</span>
+            <span id="logoText" class="orps-logo">
+              <span>Odin</span>
+              <span>Rock</span>
+              <span>Paper</span>
+              <span>Scissors</span>
             </span>
           </a>
           <a href="#rules">Get Started</a>
@@ -98,6 +98,8 @@
             id="toggleTheme"
             title="Toggles light &amp; dark theme"
             aria-live="light"
+            aria-controls="themes-menu"
+            type="button"
           >
             <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24">
               <!-- https://feathericons.com/?query=sun -->
@@ -419,7 +421,7 @@
                 </blockquote>
               </header>
             </div>
-            <div class="contain-pre | flex flex--column gap--f1" id="matrix">
+            <div class="contain-pre | flex flex--column gap--f1">
               <header data-state="subHeader">
                 <h4>
                   <a
@@ -1469,7 +1471,11 @@
     ************ -->
     <footer>
       <div class="container | grid | | gap--f2">
-        <div class="footer-primary | grid grid--column | gap--f1 |">
+        <div
+          id="footer-nav"
+          aria-label="Footer"
+          class="footer-primary | grid grid--column | gap--f1 |"
+        >
           <!-- use modals for link items in col-1 -->
           <div class="footer-nav-col-1 |">
             <h2 class="footer-nav-heading">Getting Started</h2>
