@@ -1229,30 +1229,31 @@ components/lists
   background: var(--surface-1);
 }
 
-ul.guide-list {
+nav.guide-list {
   position: -webkit-sticky;
   position: sticky;
   bottom: 0;
   z-index: var(--layer-2);
-
+  padding-block-start: var(--size-3);
+  padding-inline: var(--size-2) var(--size-4);
+  padding-block: var(--size-5) var(--size-2);
+  -webkit-padding-before: var(--size-3);
+  background: var(--surface-1);
   margin-block: var(--size-fluid-3);
+}
 
+.guide-list > ul {
   display: flex;
   overflow: auto;
   white-space: nowrap;
-
-  -webkit-padding-before: var(--size-3);
-
-  padding-block-start: var(--size-3);
-  padding-block: var(--size-5) var(--size-2);
-  padding-inline: var(--size-2) var(--size-4);
-
   gap: var(--size-fluid-4);
   align-items: center;
-  justify-content: space-evenly;
-
-  background: var(--surface-1);
+  justify-content: space-between;
   list-style: none;
+
+  max-width: min(100% - 2em, 70em);
+  margin-inline: auto;
+  /* width: 100%; */
 
   /* margin-inline: auto; */
   /* margin-block-start: var(--size-8); */
