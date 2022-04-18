@@ -56,7 +56,18 @@ let userChoice;
 // grab the buttons and for each possible choice
 btnPossibleChoices.forEach((btnPossibleChoice) =>
   btnPossibleChoice.addEventListener("click", (e) => {
-    userChoice = e.target.value; /* change it to value or id? */
+    userChoiceValue = e.target.value; /* change it to value or id? */
+    console.log(
+      "🚀 ~ file: app.js ~ line 60 ~ btnPossibleChoice.addEventListener ~ userChoiceValue",
+      userChoiceValue
+    );
+    // if userChoice includes any of the choices[].name
+    choices.forEach((choice) => {
+      if (userChoiceValue.includes(choice.name)) {
+        userChoice = choice.image;
+        return userChoice;
+      }
+    });
     // add btnchoice text id to the DOM when clicked
     userChoiceDisplay.textContent = userChoice;
     // display computer choice in the DOM
@@ -64,7 +75,10 @@ btnPossibleChoices.forEach((btnPossibleChoice) =>
   })
 );
 
-console.log(choices[0].image);
+const added = [0, 1, 2, 3, 4].map((item) => item + 1);
+console.log(added); // prints "[1, 2, 3, 4, 5]"
+
+// console.log(choices[0].image);
 
 // listen to key strokes 'a' 's' 'd'
 // a = inline-start(rock); b = center(paper); d = inline-end(scissors
