@@ -86,7 +86,7 @@ You may want to download the latest Source Files as a ZIP folder from [here](htt
 
 ## 🤝  Contributing
 
-We encourage you to contribute to Homely Recipes!
+We encourage you to contribute to Odin Rock Papaer Scissors project!
 Please check out the [Contributing guide](https://github.com/lloydlobo/odin-rock-paper-scissors/blob/main/CONTRIBUTING.md) for guidelines about how to proceed.
 
 ## 🍕  Community
