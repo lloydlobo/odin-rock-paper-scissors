@@ -1,9 +1,9 @@
-// console.dir(document.body);
-//-------------------------------------------------------------\\
+// console.dir(document.body); -------------------------------------------------------------
 
 // const added = [0, 1, 2, 3, 4].map((item) => item + 1);
 // console.log(added); // prints "[1, 2, 3, 4, 5]"
 
+//-------------------------------------------------------------\\
 // get DOM elements by id
 const computerChoiceDisplay = document.getElementById("computerChoiceDisplay");
 const userChoiceDisplay = document.getElementById("userChoiceDisplay");
@@ -82,28 +82,22 @@ let userChoiceIndex;
 let userChoice;
 
 // -----------------------------------------------------------------------------
-window.addEventListener(
+/* window.addEventListener(
   "keydown",
   (event) => {
     let keydownChoiceKey = event.key;
     let keydownChoiceCode = event.code;
-
     const keydownPara = document.createElement("p");
-
     keydownPara.textContent = `Key Event => key: ${keydownChoiceKey} & code: ${keydownChoiceCode}`;
-
     const keydownOutputDisplay = document.getElementById(
       "keydownOutputDisplay"
     );
-
     keydownOutputDisplay.appendChild(keydownPara);
     // console.log("🚀 ~ keydownChoiceCode", keydownChoiceKey);
     return keydownChoiceKey;
   },
   true
-);
-
-// console.log("🚀 ~ keydownChoiceKey", keydownChoiceKey);
+); */
 
 // grab the buttons and for each possible choice
 btnPossibleChoices.forEach((btnPossibleChoice) =>
@@ -115,22 +109,136 @@ btnPossibleChoices.forEach((btnPossibleChoice) =>
       if (userChoiceValue.includes(choice.name || choice.key)) {
         userChoice = choice.image;
         userChoiceIndex = choice.index;
+
         return userChoice;
       }
     });
-    const p1 = userChoiceIndex; /* user Index */
-    const p2 = computerChoice(); /* computer Index */
-    // console.log(p1, p2);
+    const computerChoiceIndex = computerChoice(); /* computer Index */
     userChoiceDisplay.textContent = userChoice;
-    computerChoiceDisplay.textContent = choices[p2].image;
-    // declare single round result
-    // if (userChoice === computerChoice) {
-    // } else {
-    // }
+    computerChoiceDisplay.textContent = choices[computerChoiceIndex].image;
     resultDisplay.textContent = `${userChoice} vs ${computerChoiceDisplay.textContent}`;
+    // console.log(userChoiceIndex, computerChoiceIndex); /* !!!! uncomment to check */
+    // roundResult();
   })
 );
 
+// insert a <p> element below resultDisplay
+let roundResultInsert = document.createElement("p");
+
+// function to declare result of a single round
+const roundResult = (userChoiceIndex, computerChoiceIndex) => {
+  // 3 = choices.length
+  if ((userChoiceIndex + 1) % 3 === computerChoiceIndex) {
+    console.log(winComputer);
+    roundResultInsert.textContent = winComputer;
+    resultDisplay.appendChild(roundResultInsert);
+  } else if (userChoiceIndex === computerChoiceIndex) {
+    console.log(winAll);
+    roundResultInsert.textContent = winAll;
+    resultDisplay.appendChild(roundResultInsert);
+  } else {
+    console.log(winUser);
+    roundResultInsert.textContent = winUser;
+    resultDisplay.appendChild(roundResultInsert);
+  }
+};
+
+// scoring logic for scalability /* later replace 3 with choices.length */
+/*
+Rock = 0
+Paper = 1
+Scissors = 2
+ */
+/*
+else if ((userChoiceIndex + 1) % 3 === computerChoiceIndex)
+-----------------------------------------------------------
+#1. u: Rock(0) c: Paper(1)
+(0 + 1) % 3 === 1 # => winComputer
+1 modulo 3 => 1
+1 = (3 * 0) + 1
+
+#2. u: Paper(1) c: Scissors(2)
+(1 + 1) % 3 === 2  # => winComputer
+2 modulo 3 => 2
+2 = (3 * 0) + 2
+
+#3. u: Scissors(2) c: Rock(0)
+(2 + 1) % 3 === 0  # => winComputer
+3 modulo 3 => 0
+3 = (3 * 1) + 0
+*/
+/* const getRoundResult = (userChoice, computerChoice) => {
+}; */
+
+/* const getResults = (userChoice, computerChoice) => {
+  switch (userChoice + computerChoice) {
+    case "rockscissors":
+    case "scissorspaper":
+    case "paperrock":
+      choicesDisplayResult.innerHTML = `You chose: ${userChoice} & Computer chose: ${computerChoice}. YOU SUCCEEDED!`;
+      break;
+    case "rockpaper":
+    case "paperscissors":
+    case "scissorsrock":
+      choicesDisplayResult.innerHTML = `You chose: ${userChoice} & Computer chose: ${computerChoice}. COMPUTER SUCCEEDED!`;
+      break;
+    case "rockrock":
+    case "paperpaper":
+    case "scissorscissors":
+      choicesDisplayResult.innerHTML = `You chose: ${userChoice} & Computer chose: ${computerChoice}. EVERYONE SUCCEEDED!`;
+      break;
+  }
+}; */
+
+//-------------------------------------------------------------\\
+// 20220419161140
+/* const gameGrid = document.getElementById("gameGrid");
+gameGrid.append(userChoiceDisplay, computerChoiceDisplay, resultDisplay); */
+
+/* const handleClick = (e) => {
+  userChoice = e.target.innerHTML;
+  userChoiceDisplay.innerHTML = `User Choice: ${userChoice}`;
+  generateComputerChoice();
+  getResults();
+}; */
+
+/* const generateComputerChoice = () => {
+  const randomChoice = Math.floor(Math.random() * choices.length);
+  computerChoice = randomChoice;
+  computerChoiceDisplay.innerHTML = `Computer Choice: ${computerChoice}`;
+}; */
+
+/* for (let i = 0; i < choices.length; i++) {
+  const button = document.createElement("button");
+  button.id =
+    choices[i];
+    // delete id for using e.target.innerHTML in the hanleClick()
+  button.addEventListener("click", handleClick);
+  gameGrid.appendChild(button);
+} */
+
+// results
+/* const getResults = (userChoice, computerChoice) => {
+  switch (userChoice + computerChoice) {
+    case "rockscissors":
+    case "scissorspaper":
+    case "paperrock":
+      choicesDisplayResult.innerHTML = `You chose: ${userChoice} & Computer chose: ${computerChoice}. YOU SUCCEEDED!`;
+      break;
+    case "rockpaper":
+    case "paperscissors":
+    case "scissorsrock":
+      choicesDisplayResult.innerHTML = `You chose: ${userChoice} & Computer chose: ${computerChoice}. COMPUTER SUCCEEDED!`;
+      break;
+    case "rockrock":
+    case "paperpaper":
+    case "scissorscissors":
+      choicesDisplayResult.innerHTML = `You chose: ${userChoice} & Computer chose: ${computerChoice}. EVERYONE SUCCEEDED!`;
+      break;
+  }
+}; */
+
+//-------------------------------------------------------------\\
 // let roundsUserSelectValue;
 
 // roundsSelections.addEventListener("click", (e) => {
