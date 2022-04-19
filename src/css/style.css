@@ -808,6 +808,9 @@ ul[data-state="listStyleNoneBtn"] li {
 /* *
 style app.js .card choice results emojis
 */
+.card__choices {
+  text-align: center;
+}
 .card__choice-result {
   font-size: var(--size-fluid-4);
   /* transform: scale(0.60568603); */

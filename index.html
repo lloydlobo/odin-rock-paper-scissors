@@ -190,25 +190,25 @@
             <div id="gameContent" class="card-glass | grid grid--place-center">
               <div class="card | grid grid--place-center | gap--f1 |">
                 <h1 class="card__heading |" data-state="">Let's Play!</h1>
-                <div class="card__choices | flex flex--wrap |">
+                <div class="card__choices | grid grid--column">
                   <label for="userChoiceDisplay"
-                    >Your Choice:
-                    <span
+                    >Your Choice
+                    <div
                       class="card__choice-result"
                       id="userChoiceDisplay"
-                    ></span
+                    ></div
+                  ></label>
+                  <label for="resultDisplay"
+                    >Result
+                    <div class="card__choice-result" id="resultDisplay"></div
                   ></label>
                   <label for="computerChoiceDisplay">
-                    Computer Choice:
-                    <span
+                    Computer Choice
+                    <div
                       class="card__choice-result"
                       id="computerChoiceDisplay"
-                    ></span>
+                    ></div>
                   </label>
-                  <label for="resultDisplay"
-                    >Result:
-                    <span class="card__choice-result" id="resultDisplay"></span
-                  ></label>
                 </div>
                 <div
                   class="btn-selections-wrapper | flex flex--column flex--wrap | gap--f1 flex--align-center"
