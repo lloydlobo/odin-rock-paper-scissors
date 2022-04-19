@@ -804,6 +804,15 @@ ul[data-state="listStyleNoneBtn"] li {
   transform: scale(0.98);
   font-size: var(--size-fluid-6);
 }
+
+/* *
+style app.js .card choice results emojis
+*/
+.card__choice-result {
+  font-size: var(--size-fluid-4);
+  /* transform: scale(0.60568603); */
+}
+
 /* toggle theme src */
 
 @media (dynamic-range: high) {
@@ -900,7 +909,9 @@ ul[data-state="listStyleNoneBtn"] li {
   }
 }
 
-/* *** */
+/* *
+style app.js settings
+*/
 .btn-selections-start-settings > ul {
   display: flex;
   flex-wrap: wrap;
