@@ -67,7 +67,7 @@ choices.forEach((choice) => {
   const result = choice.key;
   const resultString = JSON.stringify(result);
   // const resultStringArray = resultString.map();
-  console.log("🚀 ~ choices.forEach ~ resultString", resultString);
+  // console.log("🚀 ~ choices.forEach ~ resultString", resultString);
 });
 
 // set result statement
@@ -82,20 +82,19 @@ let userChoiceIndex;
 let userChoice;
 
 // -----------------------------------------------------------------------------
-let keydownChoiceKey;
-let keydownChoiceCode;
-
 window.addEventListener(
   "keydown",
   (event) => {
-    keydownChoiceKey = event.key;
-    keydownChoiceCode = event.code;
+    let keydownChoiceKey = event.key;
+    let keydownChoiceCode = event.code;
 
     const keydownPara = document.createElement("p");
 
     keydownPara.textContent = `Key Event => key: ${keydownChoiceKey} & code: ${keydownChoiceCode}`;
 
-    let keydownOutputDisplay = document.getElementById("keydownOutputDisplay");
+    const keydownOutputDisplay = document.getElementById(
+      "keydownOutputDisplay"
+    );
 
     keydownOutputDisplay.appendChild(keydownPara);
     // console.log("🚀 ~ keydownChoiceCode", keydownChoiceKey);
@@ -104,7 +103,7 @@ window.addEventListener(
   true
 );
 
-console.log("🚀 ~ keydownChoiceKey", keydownChoiceKey);
+// console.log("🚀 ~ keydownChoiceKey", keydownChoiceKey);
 
 // grab the buttons and for each possible choice
 btnPossibleChoices.forEach((btnPossibleChoice) =>
@@ -121,7 +120,7 @@ btnPossibleChoices.forEach((btnPossibleChoice) =>
     });
     const p1 = userChoiceIndex; /* user Index */
     const p2 = computerChoice(); /* computer Index */
-    console.log(p1, p2);
+    // console.log(p1, p2);
     userChoiceDisplay.textContent = userChoice;
     computerChoiceDisplay.textContent = choices[p2].image;
     // declare single round result
