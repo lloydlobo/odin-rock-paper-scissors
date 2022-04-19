@@ -1,5 +1,8 @@
 console.dir(document.body);
 
+const added = [0, 1, 2, 3, 4].map((item) => item + 1);
+console.log(added); // prints "[1, 2, 3, 4, 5]"
+
 // shortcut for console.log
 let clg = (variable) => {
   console.log(variable);
@@ -57,10 +60,6 @@ let userChoice;
 btnPossibleChoices.forEach((btnPossibleChoice) =>
   btnPossibleChoice.addEventListener("click", (e) => {
     userChoiceValue = e.target.value; /* change it to value or id? */
-    console.log(
-      "🚀 ~ file: app.js ~ line 60 ~ btnPossibleChoice.addEventListener ~ userChoiceValue",
-      userChoiceValue
-    );
     // if userChoice includes any of the choices[].name
     choices.forEach((choice) => {
       if (userChoiceValue.includes(choice.name)) {
@@ -70,13 +69,16 @@ btnPossibleChoices.forEach((btnPossibleChoice) =>
     });
     // add btnchoice text id to the DOM when clicked
     userChoiceDisplay.textContent = userChoice;
-    // display computer choice in the DOM
+    // display computer choice in the DOM randomly from choices index items and send the image
     computerChoiceDisplay.textContent = choices[computerChoice()].image;
   })
 );
 
-const added = [0, 1, 2, 3, 4].map((item) => item + 1);
-console.log(added); // prints "[1, 2, 3, 4, 5]"
+const playGame = () => {
+  for (let index = 0; index < array.length; index++) {
+    const element = array[index];
+  }
+};
 
 // console.log(choices[0].image);
 
