@@ -1,4 +1,5 @@
 // console.dir(document.body);
+//-------------------------------------------------------------\\
 
 // const added = [0, 1, 2, 3, 4].map((item) => item + 1);
 // console.log(added); // prints "[1, 2, 3, 4, 5]"
@@ -49,6 +50,26 @@ const choices = [
   },
 ]; /* if user selects mode apart from traditional */ /* add that type's image as button innerHTML */
 
+/*
+https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/code
+*/
+// Key Event => key: a & code: KeyA
+// Key Event => key: s & code: KeyS
+// Key Event => key: d & code: KeyD
+
+// const choicesKeyboardKeys = [
+//   "a",
+//   "s",
+//   "d",
+// ]; /* quick keyboard shortcuts for web users */
+
+choices.forEach((choice) => {
+  const result = choice.key;
+  const resultString = JSON.stringify(result);
+  // const resultStringArray = resultString.map();
+  console.log("🚀 ~ choices.forEach ~ resultString", resultString);
+});
+
 // set result statement
 const winUser = "You win";
 const winComputer = "Computer wins";
@@ -60,13 +81,39 @@ let userChoiceValue;
 let userChoiceIndex;
 let userChoice;
 
+// -----------------------------------------------------------------------------
+let keydownChoiceKey;
+let keydownChoiceCode;
+
+window.addEventListener(
+  "keydown",
+  (event) => {
+    keydownChoiceKey = event.key;
+    keydownChoiceCode = event.code;
+
+    const keydownPara = document.createElement("p");
+
+    keydownPara.textContent = `Key Event => key: ${keydownChoiceKey} & code: ${keydownChoiceCode}`;
+
+    let keydownOutputDisplay = document.getElementById("keydownOutputDisplay");
+
+    keydownOutputDisplay.appendChild(keydownPara);
+    // console.log("🚀 ~ keydownChoiceCode", keydownChoiceKey);
+    return keydownChoiceKey;
+  },
+  true
+);
+
+console.log("🚀 ~ keydownChoiceKey", keydownChoiceKey);
+
 // grab the buttons and for each possible choice
 btnPossibleChoices.forEach((btnPossibleChoice) =>
-  btnPossibleChoice.addEventListener("click", (e) => {
-    userChoiceValue = e.target.value; /* change it to value or id? */
+  btnPossibleChoice.addEventListener("click" || "keydown", (e) => {
+    userChoiceValue =
+      e.target.value || e.target.code; /* change it to value or id? */
     // if userChoice includes any of the choices[].name
     choices.forEach((choice) => {
-      if (userChoiceValue.includes(choice.name)) {
+      if (userChoiceValue.includes(choice.name || choice.key)) {
         userChoice = choice.image;
         userChoiceIndex = choice.index;
         return userChoice;
