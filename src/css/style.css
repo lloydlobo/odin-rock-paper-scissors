@@ -805,17 +805,6 @@ ul[data-state="listStyleNoneBtn"] li {
   font-size: var(--size-fluid-6);
 }
 
-/* *
-style app.js .card choice results emojis
-*/
-.card__choices {
-  text-align: center;
-}
-.card__choice-result {
-  font-size: var(--size-fluid-4);
-  /* transform: scale(0.60568603); */
-}
-
 /* toggle theme src */
 
 @media (dynamic-range: high) {
@@ -1006,9 +995,12 @@ components/cards
   color: var(--gray-2);
 }
 
+/* rock, paper, scissors emojis */
 .card__choices {
+  text-align: center;
   gap: var(--size-fluid-4);
 }
+
 .card__choices > label {
   color: var(--yellow-3);
   font-size: var(--font-size-fluid-0);
@@ -1024,6 +1016,14 @@ components/cards
   font-weight: var(--font-weight-6);
   color: var(--yellow-4);
   font-size: var(--font-size-fluid-1);
+}
+
+/* *
+style app.js .card choice results emojis
+*/
+.card__choice-result {
+  font-size: var(--size-fluid-4);
+  /* transform: scale(0.60568603); */
 }
 
 /*
