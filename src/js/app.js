@@ -1,12 +1,7 @@
-console.dir(document.body);
+// console.dir(document.body);
 
 // const added = [0, 1, 2, 3, 4].map((item) => item + 1);
 // console.log(added); // prints "[1, 2, 3, 4, 5]"
-
-// shortcut for console.log
-let clg = (variable) => {
-  console.log(variable);
-};
 
 // get DOM elements by id
 const computerChoiceDisplay = document.getElementById("computerChoiceDisplay");
@@ -15,7 +10,7 @@ const resultDisplay = document.getElementById("resultDisplay");
 const roundsSelections = document.getElementById("roundsSelections");
 // select all buttons with className of buttons
 const btnPossibleChoices = document.querySelectorAll(".buttonChoice");
-/* # => NodeList(3) [button#btnRock.buttonChoice, button#btnPaper.buttonChoice, button#btnScissors.buttonChoice] */
+/* # => NodeList(3)=>[button#btnRock.buttonChoice, button#btnPaper.buttonChoice, button#btnScissors.buttonChoice] */
 
 // returns a random integer => 0<= i <=2
 /* 3 btns, Math.floor() returns Math.random() to the nearest positive integer value */
@@ -90,7 +85,7 @@ btnPossibleChoices.forEach((btnPossibleChoice) =>
   })
 );
 
-let roundsUserSelectValue;
+// let roundsUserSelectValue;
 
 // roundsSelections.addEventListener("click", (e) => {
 //   roundsUserSelectValue = e.target.value;
