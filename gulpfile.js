@@ -19,16 +19,19 @@ const gulpCleanCss = require('gulp-clean-css');
 /* function scssTask() {
   return (
     src('src/scss/style.scss', { sourcemaps: true })
-      .pipe(
-        sass({
-          includePaths: ['./node_modules'],
-          fiber: Fiber,
+    // .pipe(sass({ outputStyle: 'compressed' }))
+    .pipe(
+      sass({
+          outputStyle: 'nested',
         }).on('error', sass.logError)
-      )
-      .pipe(postcss([autoprefixer(), cssnano()]))
-      .pipe(dest('dist', { sourcemaps: '.' }))
-  );
-} */
+        )
+        .pipe(postcss([autoprefixer(), cssnano()]))
+        .pipe(dest('dist', { sourcemaps: '.' }))
+        );
+} */ /* enable when scss is ready */
+
+/* uses fiber — which seems out of date*/
+// .pipe(sass({includePaths: ['./node_modules'],fiber: Fiber,}).on('error', sass.logError))
 
 // Gulp Clean CSS Task
 function gulpCleanCssTask() {
