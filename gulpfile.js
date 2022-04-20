@@ -1,18 +1,18 @@
 // ------------------------------------------------------------------
 
 // 20220420122045
-const { src, dest, watch, series, parallel } = require("gulp");
-const browsersync = require("browser-sync").create();
+const { src, dest, watch, series, parallel } = require('gulp');
+const browsersync = require('browser-sync').create();
 // const cleanCss = require("clean-css"); // var input = "a{font-weight:bold;}"; // var options = {/* options */}; // var output = new CleanCSS(options).minify(input);
 // https://www.toptal.com/javascript/optimize-js-and-css-with-gulp
-const gulpCleanCss = require("gulp-clean-css");
+const gulpCleanCss = require('gulp-clean-css');
 // const concat = require("gulp-concat"); /* to be assigned */
 // const cssnano = require("cssnano"); /* to be assigned when using scssTask */
 
 // const gulp = require("gulp");
 // const postcss = require("gulp-postcss"); /* to be assigned when using scssTask */
 // const sass = require("gulp-sass")(require("sass")); /* to be assigned when using scssTask */
-const terser = require("gulp-terser");
+const terser = require('gulp-terser');
 
 // cleanCss task
 /* function cleanCssTask() {
@@ -23,16 +23,16 @@ const terser = require("gulp-terser");
 
 // gulp-clean-css task /* gulp recommends clean-css */
 function gulpCleanCssTask() {
-  return src("src/css/*.css", { sourcemaps: true })
+  return src('src/css/*.css', { sourcemaps: true })
     .pipe(gulpCleanCss())
-    .pipe(dest("dist", { sourcemaps: "." }));
+    .pipe(dest('dist', { sourcemaps: '.' }));
 }
 
 // javascript task
 function jsTask() {
-  return src("src/js/main.js", { sourcemaps: true })
+  return src('src/js/*.js', { sourcemaps: true })
     .pipe(terser()) /* minifies JavaScript Files */
-    .pipe(dest("dist", { sourcemaps: "." })); /* saces in dist folder */
+    .pipe(dest('dist', { sourcemaps: '.' })); /* saces in dist folder */
 }
 
 // sass task /* nodestream returned usein gsrc function called gulp and read app/style..... */
@@ -47,7 +47,7 @@ function jsTask() {
 function browsersyncServe(cb) {
   browsersync.init({
     server: {
-      baseDir: "./",
+      baseDir: './',
     },
   });
   cb();
@@ -60,9 +60,9 @@ function browsersyncReload(cb) {
 
 // watch task
 function watchTask() {
-  watch("**/*.html").on("change", browsersync.reload);
+  watch('**/*.html').on('change', browsersync.reload);
   watch(
-    ["src/css/**/*.css", "src/js/**/*.js"],
+    ['src/css/**/*.css', 'src/js/**/*.js'],
     series(gulpCleanCssTask, jsTask, browsersyncReload)
   ); /* add scssTask to the series() */
 }

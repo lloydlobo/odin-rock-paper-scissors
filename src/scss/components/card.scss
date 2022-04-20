@@ -1,0 +1,37 @@
+// import the utils files to use the rem() function
+@use '../util' as *; /* give it a "as *" namespace ... */
+/* ... allows to not use util/fonts.scss or util/mixins.scss etc. */
+/* can this be done with gulp? in build process? */
+
+.card {
+  --gradient-2: linear-gradient(to top right, #48005c, #8300e2, #a269ff);
+  background: var(--gradient-2);
+
+  min-block-size: var(--size-content-2);
+  aspect-ratio: var(--ratio-golden);
+
+  padding: var(--size-fluid-4, clamp(rem(32), 4vw, rem(48)));
+
+  border-radius: var(--radius-5);
+
+  background-clip: padding-box;
+
+  -webkit-animation: var(--animation-fade-in) 1s;
+  animation: var(--animation-fade-in) 1s;
+
+  max-inline-size: min(100%, 85em);
+  inline-size: 65em;
+}
+
+.card-glass {
+  background-clip: padding-box; /* The background-clip CSS property sets whether an element's background extends underneath its border box, padding box, or content box. */
+  border-radius: var(--radius-5);
+  border: 1.5px solid var(--gray-2);
+
+  padding: var(--size-8);
+
+  /* From https://css.glass */
+  background: rgba(255, 255, 255, 0.618);
+
+  z-index: var(--layer-2);
+}
