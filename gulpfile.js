@@ -18,9 +18,11 @@
 const { src, dest, watch, series, parallel } = require("gulp");
 const browsersync = require("browser-sync").create();
 const cleanCss = require("clean-css"); // var input = "a{font-weight:bold;}"; // var options = {/* options */}; // var output = new CleanCSS(options).minify(input);
+// https://www.toptal.com/javascript/optimize-js-and-css-with-gulp
 const gulpCleanCss = require("gulp-clean-css");
 const concat = require("gulp-concat");
 const cssnano = require("cssnano");
+
 // const gulp = require("gulp");
 const postcss = require("gulp-postcss");
 const sass = require("gulp-sass")(require("sass"));
@@ -81,3 +83,18 @@ function watchTask() {
 
 // * default gulp task
 exports.default = series(browsersyncServe, gulpCleanCssTask, jsTask, watchTask);
+
+// ------------------------------------------------------------------
+// archive
+
+// 20220420150031
+// /* https://betterprogramming.pub/getting-started-with-storybook-without-a-javascript-framework-c2968d3f3d9f */
+
+// 20220420145735
+/* // const fractal = require("./fractal.js");
+// const logger = fractal.cli.console;
+// const sassGlob = require("gulp-sass-glob");
+// const plumber = require("gulp-plumber");
+// const notify = require("gulp-notify");
+// const path = require("path"); */
+// /* https://www.smashingmagazine.com/2018/07/pattern-library-first-css/ */
