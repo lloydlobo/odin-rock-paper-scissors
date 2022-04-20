@@ -9,7 +9,8 @@ const cssnano = require('cssnano');
 const babel = require('gulp-babel');
 const terser = require('gulp-terser');
 const browsersync = require('browser-sync').create();
-// const concat = require("gulp-concat"); /* to be assigned */
+/* to be assigned — seems terser does this well for js, don't know about css @concat */
+// const concat = require("gulp-concat");
 const gulpCleanCss = require('gulp-clean-css');
 
 // Use dart-sass for @use
