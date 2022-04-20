@@ -2,10 +2,10 @@
 
 // Initialize modules
 const { src, dest, watch, series } = require('gulp');
-const sass = require('gulp-sass')(require('sass'));
+/* const sass = require('gulp-sass')(require('sass'));
 const postcss = require('gulp-postcss');
 const autoprefixer = require('autoprefixer');
-const cssnano = require('cssnano');
+const cssnano = require('cssnano'); */ /* enable when scss is ready */
 const babel = require('gulp-babel');
 const terser = require('gulp-terser');
 const browsersync = require('browser-sync').create();
@@ -48,7 +48,7 @@ function jsTask() {
     .pipe(dest('dist', { sourcemaps: '.' }));
 }
 
-// Browsersync
+// Browser-sync
 function browserSyncServe(cb) {
   browsersync.init({
     server: {
@@ -63,6 +63,8 @@ function browserSyncServe(cb) {
   });
   cb();
 }
+
+// Browser-sync Reload
 function browserSyncReload(cb) {
   browsersync.reload();
   cb();
