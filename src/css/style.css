@@ -9,15 +9,15 @@ a:not([class]) {
   text-decoration-skip-ink: auto;
 }
 
-/* table of contents */
+/* || table of contents */
 
 /* ***************
  root global styles
- layout
- typography
- colors
- composition
- utility classes
+ || general styles
+  typography
+  colors
+ || utilities
+ || sitewide
  components
  components/buttons
  components/cards
@@ -33,7 +33,7 @@ a:not([class]) {
 **************** */
 
 /* **********************
-root global styles
+|| root global styles
 ********************** */
 
 :root {
@@ -108,9 +108,7 @@ root global styles
   }
 } */
 
-/* **********************
-layout
-********************** */
+/* || GENERAL STYLES */
 
 body {
   height: 100vh;
@@ -280,9 +278,9 @@ footer a:visited {
   -webkit-text-fill-color: transparent;
 }
 
-/* **********************
-composition
-********************** */
+/* || SITEWIDE */
+
+/* composition */
 
 /* navigation */
 .navbar {
@@ -567,9 +565,8 @@ sections layout
   justify-content: space-between;
 }
 
-/* **********************
-utility classes
-********************** */
+/* || UTILITIES */
+
 .container {
   max-width: min(100% - 2em, 70em); /* max-width: 60em; */
   margin-inline: auto; /* padding: 0 var(--size-fluid-3); */
