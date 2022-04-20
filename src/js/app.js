@@ -1,20 +1,18 @@
-// console.dir(document.body); -------------------------------------------------------------
-// const added = [0, 1, 2, 3, 4].map((item) => item + 1);
-// console.log(added); // prints "[1, 2, 3, 4, 5]"
+// $ ./node_modules/.bin/eslint --fix src/js/app.js
+// use eslint in tandem with prettier
 
-//-------------------------------------------------------------\\
 // get DOM elements by id
-const computerChoiceDisplay = document.getElementById("computerChoiceDisplay");
-const userChoiceDisplay = document.getElementById("userChoiceDisplay");
-const resultDisplay = document.getElementById("resultDisplay");
-const roundsSelections = document.getElementById("roundsSelections");
+const computerChoiceDisplay = document.getElementById('computerChoiceDisplay');
+const userChoiceDisplay = document.getElementById('userChoiceDisplay');
+const resultDisplay = document.getElementById('resultDisplay');
+const roundsSelections = document.getElementById('roundsSelections');
 // select all buttons with class of buttonChoice
-const btnPossibleChoices = document.querySelectorAll(".buttonChoice");
+const btnPossibleChoices = document.querySelectorAll('.buttonChoice');
 
 // returns a random integer => 0<= i <=2
 /* 3 btns, Math.floor() returns Math.random() to the nearest positive integer value */
-let computerChoice = () => {
-  let randomNumber = Math.random();
+const computerChoice = () => {
+  const randomNumber = Math.random();
   const randomChoice = Math.floor(randomNumber * btnPossibleChoices.length);
   return randomChoice;
 };
@@ -22,53 +20,50 @@ let computerChoice = () => {
 // btnPossibleChoices.length can be set when something apart from type: "traditional" is set. /* [rock, paper, scissors, lizard, spock] */
 const choices = [
   {
-    name: "rock",
-    image: "✊",
-    key: "a",
-    value: "rock",
-    type: "traditional",
+    name: 'rock',
+    image: '✊',
+    key: 'a',
+    value: 'rock',
+    type: 'traditional',
     index: 0,
   },
   {
-    name: "paper",
-    image: "✋",
-    key: "s",
-    value: "paper",
-    type: "traditional",
+    name: 'paper',
+    image: '✋',
+    key: 's',
+    value: 'paper',
+    type: 'traditional',
     index: 1,
   },
   {
-    name: "scissors",
-    image: "✌️",
-    key: "d",
-    value: "scissors",
-    type: "traditional",
+    name: 'scissors',
+    image: '✌️',
+    key: 'd',
+    value: 'scissors',
+    type: 'traditional',
     index: 2,
   },
 ]; /* if user selects mode apart from traditional */ /* add that type's image as button innerHTML */
 
-console.log("🚀 ~ choices[0].key", choices[0].key);
+console.log('🚀 ~ choices[0].key', choices[0].key);
 // -----------------------------------------------------------------------------
 // set result statement
-const winUser = "You win";
-const winComputer = "Computer wins";
+const winUser = 'You win';
+const winComputer = 'Computer wins';
 const winAll = "It's a tie! Everyone Wins!";
-const tieAllImage = `🫶 `; /* https://emojipedia.org/heart-hands/ */
+const tieAllImage = '🫶 '; /* https://emojipedia.org/heart-hands/ */
 // -----------------------------------------------------------------------------
 let userChoiceValue;
 let userChoiceIndex;
 let userChoice;
 
 // grab the buttons and for each possible choice
-btnPossibleChoices.forEach((btnPossibleChoice) =>
-  btnPossibleChoice.addEventListener("click" || "keydown", (e) => {
-    userChoiceValue =
-      e.target.value || e.target.code; /* change it to value or id? */
-    fetchUserChoice();
-    playRound();
-    roundResult();
-  })
-);
+btnPossibleChoices.forEach((btnPossibleChoice) => btnPossibleChoice.addEventListener('click' || 'keydown', (e) => {
+  userChoiceValue = e.target.value || e.target.code; /* change it to value or id? */
+  fetchUserChoice();
+  playRound();
+  roundResult();
+}));
 
 // -----------------------------------------------------------------------------
 let userKeydownChoiceKey;
@@ -81,7 +76,7 @@ let userKeydownChoiceCode;
 
 // function listense to window keydown keyboard strokes /* [choices].key => [0] rock -a [1] paper -s [2] scissors - d */
 window.addEventListener(
-  "keydown",
+  'keydown',
   (e) => {
     userKeydownChoiceKey = e.key;
     userKeydownChoiceCode = e.code;
@@ -97,7 +92,7 @@ window.addEventListener(
     }); */
     // return userKeydownChoiceKey;
   },
-  true
+  true,
 );
 // -----------------------------------------------------------------------------
 const fetchUserChoice = () => {
@@ -112,8 +107,8 @@ const fetchUserChoice = () => {
 // -----------------------------------------------------------------------------
 const playRound = () => {
   const computerChoiceIndex = computerChoice(); /* generate computer Index */
-  const userChoicePara = document.createElement("p");
-  const computerChoicePara = document.createElement("p");
+  const userChoicePara = document.createElement('p');
+  const computerChoicePara = document.createElement('p');
 
   userChoicePara.textContent = userChoice;
   computerChoicePara.textContent = choices[computerChoiceIndex].image;
@@ -121,24 +116,22 @@ const playRound = () => {
   userChoiceDisplay.insertBefore(userChoicePara, userChoiceDisplay.firstChild);
   computerChoiceDisplay.insertBefore(
     computerChoicePara,
-    computerChoiceDisplay.firstChild
+    computerChoiceDisplay.firstChild,
   ); /* https://stackoverflow.com/questions/23749464/reverse-the-order-of-elements-added-to-dom-with-javascript */
 
   resultDisplay.textContent = `${userChoice} vs ${computerChoicePara.textContent}`;
 };
 
 // insert a <p> element below resultDisplay
-let roundResultInsert = document.createElement("p");
+const roundResultInsert = document.createElement('p');
 
 // -----------------------------------------------------------------------------
 // function to declare result of a single round
-const roundResult = (userChoiceIndex, computerChoiceIndex) => {
-  return userChoiceIndex === computerChoiceIndex
-    ? console.log(winAll)
-    : (userChoiceIndex + 1) % 3 === computerChoiceIndex
+const roundResult = (userChoiceIndex, computerChoiceIndex) => (userChoiceIndex === computerChoiceIndex
+  ? console.log(winAll)
+  : (userChoiceIndex + 1) % 3 === computerChoiceIndex
     ? console.log(winComputer)
-    : console.log(winUser);
-};
+    : console.log(winUser));
 
 // ! revise it to ternary operator
 /* const roundResult = (userChoiceIndex, computerChoiceIndex) => {
@@ -263,7 +256,7 @@ else if ((userChoiceIndex + 1) % 3 === computerChoiceIndex)
   }
 }; */
 
-//-------------------------------------------------------------\\
+// -------------------------------------------------------------\\
 // 20220419161140
 /* const gameGrid = document.getElementById("gameGrid");
 gameGrid.append(userChoiceDisplay, computerChoiceDisplay, resultDisplay); */
@@ -311,7 +304,7 @@ gameGrid.append(userChoiceDisplay, computerChoiceDisplay, resultDisplay); */
   }
 }; */
 
-//-------------------------------------------------------------\\
+// -------------------------------------------------------------\\
 // let roundsUserSelectValue;
 
 // roundsSelections.addEventListener("click", (e) => {
