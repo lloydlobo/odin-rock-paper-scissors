@@ -1,7 +1,10 @@
+@use 'sass:math';
+
 // Source: https://css-tricks.com/snippets/sass/px-to-em-functions/
 // function converts px To rem(px, base) {
 @function rem($pixels, $context: 16) {
-  @return ($pixels / $context) * 1rem;
+  // @return ($pixels / $context) * 1rem; /* deprecated */
+  @return (math.div($pixels, $context)) * 1rem;
 }
 
 /* example
