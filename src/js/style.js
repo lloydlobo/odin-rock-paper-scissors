@@ -1,4 +1,4 @@
-console.dir(document.body);
+// console.dir(document.body);
 
 const logoTextAll = document.querySelectorAll('#logoText');
 
@@ -6,7 +6,7 @@ const green = 'green';
 
 logoTextAll.style.setProperty('color', green);
 
-console.log(logoTextAll);
+// console.log(logoTextAll);
 
 function logoInnerText(n) {
   return logoTextAll[n].innerHTML;
@@ -27,7 +27,7 @@ const rock = logoInnerText([1]);
 const paper = logoInnerText([2]);
 const scissors = logoInnerText([3]);
 
-console.log(odin, rock, paper, scissors);
+// console.log(odin, rock, paper, scissors);
 const odin0 = odin.charAt(0);
-console.log(odin0);
+// console.log(odin0);
 odin.charAt(0).setProperty('font-weight', '900');
