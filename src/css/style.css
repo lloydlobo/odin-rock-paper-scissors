@@ -801,7 +801,6 @@ ul[data-state="listStyleNoneBtn"] li {
 
 .buttonChoice {
   background: none;
-  transform: scale(0.98);
   font-size: var(--size-fluid-6);
 }
 
