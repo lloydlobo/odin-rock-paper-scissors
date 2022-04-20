@@ -1,0 +1,72 @@
+/* toggle-theme.js src */
+@use '../util' as *; /* give it a "as *" namespace => to use rem()... */
+
+/* ... allows to not use util/fonts.scss or util/mixins.scss etc. */
+
+// ----------------------------------------------------------------------------
+
+/* toggleTheme */
+.toggle-theme {
+  background: none;
+
+  &__svg {
+    border-radius: unset;
+  }
+}
+
+@media (dynamic-range: high) {
+  [data-theme='light'] {
+    --link: color(display-p3 0 0.5 1);
+    --link-visited: color(display-p3 0.6 0.2 1);
+  }
+}
+
+#moon,
+#sun {
+  fill: var(--nav-icon);
+  stroke: none;
+}
+
+:hover > svg > #moon,
+:hover > svg > #sun {
+  fill: var(--nav-icon-hover);
+}
+
+#sun {
+  transition: transform 0.5s var(--ease-4);
+  transform-origin: center center;
+}
+
+#sun-beams {
+  --_opacity-dur: 0.15s;
+  stroke: var(--nav-icon);
+  stroke-width: 2px;
+  transform-origin: center center;
+  transition: transform 0.5s var(--ease-elastic-4),
+    opacity var(--_opacity-dur) var(--ease-3);
+}
+
+:hover > svg > #sun-beams {
+  stroke: var(--nav-icon-hover);
+}
+
+#moon > circle {
+  transition: transform 0.5s var(--ease-out-3);
+}
+
+[data-theme='light'] #sun {
+  transform: scale(0.5);
+}
+
+[data-theme='light'] #sun-beams {
+  transform: rotate(0.25turn);
+  --_opacity-dur: 0.5s;
+}
+
+[data-theme='dark'] #moon > circle {
+  transform: translate(-20px);
+}
+
+[data-theme='dark'] #sun-beams {
+  opacity: 0;
+}
