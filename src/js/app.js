@@ -50,6 +50,71 @@ const choices = [
   },
 ]; /* if user selects mode apart from traditional */ /* add that type's image as button innerHTML */
 
+// set result statement
+const winUser = "You win";
+const winComputer = "Computer wins";
+const winAll = "It's a tie! Everyone Wins!";
+
+const tieAllImage = `🫶 `; /* https://emojipedia.org/heart-hands/ */
+
+let userChoiceValue;
+let userChoiceIndex;
+let userChoice;
+
+// grab the buttons and for each possible choice
+btnPossibleChoices.forEach((btnPossibleChoice) =>
+  btnPossibleChoice.addEventListener("click" || "keydown", (e) => {
+    userChoiceValue =
+      e.target.value || e.target.code; /* change it to value or id? */
+    fetchUserChoice();
+    playRound();
+    roundResult();
+  })
+);
+
+const fetchUserChoice = () => {
+  choices.forEach((choice) => {
+    // if userChoice includes any of the choices[].name
+    if (userChoiceValue.includes(choice.name || choice.key)) {
+      userChoice = choice.image;
+      userChoiceIndex = choice.index;
+
+      return userChoice;
+    }
+  });
+};
+
+const playRound = () => {
+  const computerChoiceIndex = computerChoice(); /* computer Index */
+  userChoiceDisplay.textContent = userChoice;
+  computerChoiceDisplay.textContent = choices[computerChoiceIndex].image;
+  resultDisplay.textContent = `${userChoice} vs ${computerChoiceDisplay.textContent}`;
+  // console.log(userChoiceIndex, computerChoiceIndex);
+  // roundResult();
+};
+
+// insert a <p> element below resultDisplay
+let roundResultInsert = document.createElement("p");
+
+// function to declare result of a single round
+const roundResult = (userChoiceIndex, computerChoiceIndex) => {
+  // 3 = choices.length
+  /* console.log(userChoiceIndex, computerChoiceIndex); */
+  if (userChoiceIndex === computerChoiceIndex) {
+    console.log(winAll);
+    roundResultInsert.textContent = winAll;
+    resultDisplay.appendChild(roundResultInsert);
+  } else if ((userChoiceIndex + 1) % 3 === computerChoiceIndex) {
+    console.log(winComputer);
+    roundResultInsert.textContent = winComputer;
+    resultDisplay.appendChild(roundResultInsert);
+  } else {
+    console.log(winUser);
+    roundResultInsert.textContent = winUser;
+    resultDisplay.appendChild(roundResultInsert);
+  }
+};
+
 /*
 https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/code
 */
@@ -63,23 +128,12 @@ https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/code
 //   "d",
 // ]; /* quick keyboard shortcuts for web users */
 
-choices.forEach((choice) => {
+/* choices.forEach((choice) => {
   const result = choice.key;
   const resultString = JSON.stringify(result);
   // const resultStringArray = resultString.map();
-  // console.log("🚀 ~ choices.forEach ~ resultString", resultString);
-});
-
-// set result statement
-const winUser = "You win";
-const winComputer = "Computer wins";
-const winAll = "It's a tie! Everyone Wins!";
-
-const tieAllImage = `🫶 `; /* https://emojipedia.org/heart-hands/ */
-
-let userChoiceValue;
-let userChoiceIndex;
-let userChoice;
+  console.log("🚀 ~ choices.forEach ~ resultString", resultString);
+}); */
 
 // -----------------------------------------------------------------------------
 /* window.addEventListener(
@@ -98,50 +152,6 @@ let userChoice;
   },
   true
 ); */
-
-// grab the buttons and for each possible choice
-btnPossibleChoices.forEach((btnPossibleChoice) =>
-  btnPossibleChoice.addEventListener("click" || "keydown", (e) => {
-    userChoiceValue =
-      e.target.value || e.target.code; /* change it to value or id? */
-    // if userChoice includes any of the choices[].name
-    choices.forEach((choice) => {
-      if (userChoiceValue.includes(choice.name || choice.key)) {
-        userChoice = choice.image;
-        userChoiceIndex = choice.index;
-
-        return userChoice;
-      }
-    });
-    const computerChoiceIndex = computerChoice(); /* computer Index */
-    userChoiceDisplay.textContent = userChoice;
-    computerChoiceDisplay.textContent = choices[computerChoiceIndex].image;
-    resultDisplay.textContent = `${userChoice} vs ${computerChoiceDisplay.textContent}`;
-    // console.log(userChoiceIndex, computerChoiceIndex); /* !!!! uncomment to check */
-    // roundResult();
-  })
-);
-
-// insert a <p> element below resultDisplay
-let roundResultInsert = document.createElement("p");
-
-// function to declare result of a single round
-const roundResult = (userChoiceIndex, computerChoiceIndex) => {
-  // 3 = choices.length
-  if ((userChoiceIndex + 1) % 3 === computerChoiceIndex) {
-    console.log(winComputer);
-    roundResultInsert.textContent = winComputer;
-    resultDisplay.appendChild(roundResultInsert);
-  } else if (userChoiceIndex === computerChoiceIndex) {
-    console.log(winAll);
-    roundResultInsert.textContent = winAll;
-    resultDisplay.appendChild(roundResultInsert);
-  } else {
-    console.log(winUser);
-    roundResultInsert.textContent = winUser;
-    resultDisplay.appendChild(roundResultInsert);
-  }
-};
 
 // scoring logic for scalability /* later replace 3 with choices.length */
 /*
