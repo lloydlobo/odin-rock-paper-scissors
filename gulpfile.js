@@ -13,6 +13,8 @@ const gulpCleanCss = require('gulp-clean-css');
 // const postcss = require("gulp-postcss"); /* to be assigned when using scssTask */
 // const sass = require("gulp-sass")(require("sass")); /* to be assigned when using scssTask */
 const terser = require('gulp-terser');
+/* To improve Dart Sass compilation speed, we can use a package called fibers. */
+// const Fiber = require('fibers');
 
 // cleanCss task
 /* function cleanCssTask() {
@@ -38,7 +40,14 @@ function jsTask() {
 // sass task /* nodestream returned usein gsrc function called gulp and read app/style..... */
 // function scssTask() {
 //   return src("src/scss/style.scss", { sourcemaps: true })
-//     .pipe(sass())
+// //  .pipe(sass())
+//      .pipe(
+//            sass({
+//              includePaths: ['./node_modules'],
+//              fiber: Fiber
+//            })
+//              .on('error', sass.logError)
+//          )
 //     .pipe(postcss([cssnano()])) /* minifies it */
 //     .pipe(dest("dist", { sourcemaps: "." }));
 // }
