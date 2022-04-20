@@ -1,37 +1,41 @@
 /* Main: it should ONLY contain the imports for the above files.
  */
-
 /* Note: There’s no need to include the _ or .scss file extension when importing. */
+// ----------------------------------------------------------------------------
+@use "globals";
+@use "components";
+
+// ----------------------------------------------------------------------------
 /* abstracts */
-@import "abstracts/variables";
+/* @import "abstracts/variables";
 @import "abstracts/functions";
-@import "abstracts/mixins";
+@import "abstracts/mixins"; */
 
 /* vendors  */
-@import "vendors/bootstrap";
-@import "vendors/jquery-ui";
+/* @import "vendors/bootstrap";
+@import "vendors/jquery-ui"; */
 
 /* base  */
-@import "base/reset";
-@import "base/typography";
+/* @import "base/reset";
+@import "base/typography"; */
 
 /* layout */
-@import "layout/navigation";
+/* @import "layout/navigation";
 @import "layout/grid";
 @import "layout/header";
 @import "layout/footer";
 @import "layout/sidebar";
-@import "layout/forms";
+@import "layout/forms"; */
 
 /* components  */
-@import "components/buttons";
+/* @import "components/buttons";
 @import "components/carousel";
-@import "components/slider";
+@import "components/slider"; */
 
 /* pages */
-@import "pages/home";
+/* @import "pages/home";
 @import "pages/about";
-@import "pages/contact";
+@import "pages/contact"; */
 
 /* themes */
 @import "themes/theme";
