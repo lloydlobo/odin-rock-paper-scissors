@@ -26,34 +26,34 @@
 
 ### DONE
 
--   [x] 20220413122852 - convert restart() if conditionals to ternary operators - done at 20220413132032
+- [x] 20220413122852 - convert restart() if conditionals to ternary operators - done at 20220413132032
 
--   [x] Update verbiage of statements at 20220413124947
+- [x] Update verbiage of statements at 20220413124947
 
-    -   [x] Update rock "crushes" scissors
-    -   [x] Update paper "covers" rock
-    -   [x] Update scissors "cuts" paper
+  - [x] Update rock "crushes" scissors
+  - [x] Update paper "covers" rock
+  - [x] Update scissors "cuts" paper
 
--   [x] 20220413124018 20220413122943 Put the the restart() function after the game() function inside the restart() function <!-- is this recursion? -->
+- [x] 20220413124018 20220413122943 Put the the restart() function after the game() function inside the restart() function <!-- is this recursion? -->
 
--   [x] fix/preferTernaryOperator-JS-D009 @96b70e8 PR#6
+- [x] fix/preferTernaryOperator-JS-D009 @96b70e8 PR#6
 
-* * *
+---
 
 ## Ideas
 
--   see if you can unify playRound(playerSelection, computerSelection) with promptUserComputerValues()
-    -   As one has to use multiple lines of code to bring in the returns of each functions you
-    -   although right now to me it seems that it knows them separate and cleaner.
-    -   I think it would be better to have one function that returns the values of both the player and computer
-    -   If this is incorrect then what would be a better solution?
+- see if you can unify playRound(playerSelection, computerSelection) with promptUserComputerValues()
+  - As one has to use multiple lines of code to bring in the returns of each functions you
+  - although right now to me it seems that it knows them separate and cleaner.
+  - I think it would be better to have one function that returns the values of both the player and computer
+  - If this is incorrect then what would be a better solution?
 
 ### Accessibility font size A A- A+
 
 ```js
 function makeSizer(size) {
   return function () {
-    document.body.style.fontSize = size + "px";
+    document.body.style.fontSize = size + 'px';
   };
 }
 
@@ -61,9 +61,9 @@ const fontSizeDecrease = makeSizer(14);
 const fontSizeReset = makeSizer(16);
 const fontSizeIncrease = makeSizer(24);
 
-const btnFontSizeIncrease = document.getElementById("fontSizeIncrease");
-const btnFontSizeDecrease = document.getElementById("fontSizeDecrease");
-const btnFontSizeReset = document.getELementById("fontSizeReset");
+const btnFontSizeIncrease = document.getElementById('fontSizeIncrease');
+const btnFontSizeDecrease = document.getElementById('fontSizeDecrease');
+const btnFontSizeReset = document.getELementById('fontSizeReset');
 
 btnFontSizeIncrease.onclick = fontSizeIncrease;
 btnFontSizeDecrease.onclick = fontSizeDecrease;
@@ -72,8 +72,8 @@ btnFontSizeReset.onclick = fontSizeReset;
 
 ## Archive
 
--   keep naming conventions sme across all variables. either choose user or player
-    -   Update: 20220413124316 It already was consistent.
+- keep naming conventions sme across all variables. either choose user or player
+  - Update: 20220413124316 It already was consistent.
 
 ## Information
 
@@ -94,12 +94,12 @@ d) Subsystems with more than 30 packages should be avoided. Such a subsystem wou
 
 e) A system with 30 subsystems would thus possess 27,000 classes and 24.3 million code lines.
 
-* * *
+---
 
 ### SASS
 
 /_ Main: it should ONLY contain the imports for the above files.
- _/
+_/
 
 /_ Note: There’s no need to include the \_ or .scss file extension when importing. _/
 
@@ -137,55 +137,103 @@ e) A system with 30 subsystems would thus possess 27,000 classes and 24.3 millio
 /_ sass/
 \|
 |– abstracts/ (or utilities/)
-|   |– \_variables.scss    // Sass Variables
-|   |– \_functions.scss    // Sass Functions
-|   |– \_mixins.scss       // Sass Mixins
+| |– \_variables.scss // Sass Variables
+| |– \_functions.scss // Sass Functions
+| |– \_mixins.scss // Sass Mixins
 \|
 |– base/
-|   |– \_reset.scss        // Reset/normalize
-|   |– \_typography.scss   // Typography rules
+| |– \_reset.scss // Reset/normalize
+| |– \_typography.scss // Typography rules
 \|
 |– components/ (or modules/)
-|   |– \_buttons.scss      // Buttons
-|   |– \_carousel.scss     // Carousel
-|   |– \_slider.scss       // Slider
+| |– \_buttons.scss // Buttons
+| |– \_carousel.scss // Carousel
+| |– \_slider.scss // Slider
 \|
 |– layout/
-|   |– \_navigation.scss   // Navigation
-|   |– \_grid.scss         // Grid system
-|   |– \_header.scss       // Header
-|   |– \_footer.scss       // Footer
-|   |– \_sidebar.scss      // Sidebar
-|   |– \_forms.scss        // Forms
+| |– \_navigation.scss // Navigation
+| |– \_grid.scss // Grid system
+| |– \_header.scss // Header
+| |– \_footer.scss // Footer
+| |– \_sidebar.scss // Sidebar
+| |– \_forms.scss // Forms
 \|
 |– pages/
-|   |– \_home.scss         // Home specific styles
-|   |– \_about.scss        // About specific styles
-|   |– \_contact.scss      // Contact specific styles
+| |– \_home.scss // Home specific styles
+| |– \_about.scss // About specific styles
+| |– \_contact.scss // Contact specific styles
 \|
 |– themes/
-|   |– \_theme.scss        // Default theme
-|   |– \_admin.scss        // Admin theme
+| |– \_theme.scss // Default theme
+| |– \_admin.scss // Admin theme
 \|
 |– vendors/
-|   |– \_bootstrap.scss    // Bootstrap
-|   |– \_jquery-ui.scss    // jQuery UI
+| |– \_bootstrap.scss // Bootstrap
+| |– \_jquery-ui.scss // jQuery UI
 \|
-\`– main.scss              // Main Sass file _/
+\`– main.scss // Main Sass file _/
 
 /_ other references: <https://matthewelsom.com/blog/simple-scss-playbook.html> _/
 
-
 /_ Layout: contains all the CSS that handles the layout, such as the container and any grid systems.
- _/
+_/
 
-/* Components: anything reusable such as buttons, navbars, cards etc.
- */
+/_ Components: anything reusable such as buttons, navbars, cards etc.
+_/
 
- /_ Base: contained within this file are all your resets, variables, mixins, and any utility classes.
- _/
-
+/_ Base: contained within this file are all your resets, variables, mixins, and any utility classes.
+_/
 
 ## Attributions
 
--   <https://lottiefiles.com/Dahish>
+## Packages
+
+## NPM Installations
+
+<!-- npm WARN deprecated dart-sass@1.25.0: This package has been renamed to 'sass'. -->
+
+```bash
+npm install @babel/core @babel/preset-env postcss autoprefixer browser-sync cssnano dart-sass gulp gulp-babel gulp-postcss gulp-sass gulp-terser
+```
+
+### `npm install @babel/core @babel/preset-env`
+
+<!-- auto-prefixer and supports old browser -->
+
+- `@babel/core`
+  - `@babel/preset-env`
+
+### `npm install postcss autoprefixer`
+
+- postcss <!-- collection of plugins that autoprefixer is a part of -->
+  - autoprefixer
+
+### `npm install browser-sync`
+
+- browser-sync <!-- a browser sync server -->
+
+### `npm install cssnano`
+
+- cssnano <!-- a CSS minifier -->
+
+### `npm install dart-sass`
+
+<!-- npm WARN deprecated dart-sass@1.25.0: This package has been renamed to 'sass'.
+ -->
+
+- dart-sass <!-- a Sass compiler --> <!-- version of sass that supports new syntax ith @use @forward -->
+
+### `npm install gulp gulp-babel gulp-postcss gulp-sass gulp-terser`
+
+- gulp <!-- a task runner -->
+  - gulp-babel <!-- babel -->
+  - gulp-postcss <!-- postcss -->
+  - gulp-sass <!-- sass -->
+  - gulp-terser <!-- terser -->
+
+<!-- compile all the h3 heading concat into one single npm install command -->
+<!-- `npm install gulp-concat` -->
+
+### `npm install fibers --save-dev`
+
+> To improve Dart Sass compilation speed, we can use a package called `fibers`. <!-- https://zellwk.com/blog/dart-sass-gulp/ -->
