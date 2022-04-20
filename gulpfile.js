@@ -30,7 +30,7 @@ function gulpCleanCssTask() {
 
 // javascript task
 function jsTask() {
-  return src('src/js/*.js', { sourcemaps: true })
+  return src(['src/js/app.js', 'src/js/theme-toggle.js'], { sourcemaps: true })
     .pipe(terser()) /* minifies JavaScript Files */
     .pipe(dest('dist', { sourcemaps: '.' })); /* saces in dist folder */
 }
