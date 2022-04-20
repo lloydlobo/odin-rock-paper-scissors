@@ -4,7 +4,7 @@
 /**
  * @param  {} "toggleTheme"
  */
-const btnToggleTheme = document.getElementById("toggleTheme");
+const btnToggleTheme = document.getElementById('toggleTheme');
 
 // get user color preference
 /**
@@ -15,23 +15,17 @@ const btnToggleTheme = document.getElementById("toggleTheme");
  */
 const getUserColorPreference = () => {
   // fetch theme preference from local storage of user
-  if (localStorage.getItem("theme-preference"))
-    return localStorage.getItem("theme-preference");
-  else
-    return window.matchMedia("(prefers-color-scheme: dark)").matches
-      ? "dark"
-      : "light";
+  if (localStorage.getItem('theme-preference')) return localStorage.getItem('theme-preference');
+  return window.matchMedia('(prefers-color-scheme: dark)').matches
+    ? 'dark'
+    : 'light';
 };
 
-// function sets up color preference /*  */
 /**
- * @param  {} =>{localStorage.setItem("theme-preference"
- * @param  {} theme.value
- * @param  {} ;reflectPreference(
+ * @param  {} =>{theme.value=getUserColorPreference();
  */
-const updateColorPreference = () => {
-  localStorage.setItem("theme-preference", theme.value);
-  reflectPreference(); /* is this a return? arrow-function */
+const theme = {
+  value: getUserColorPreference(),
 };
 
 // sets data-theme to them.value, sets aria-live to 'light' or 'dark'
@@ -43,21 +37,20 @@ const updateColorPreference = () => {
  * @param  {} theme.value
  */
 const reflectPreference = () => {
-  document.firstElementChild.setAttribute("data-theme", theme.value);
-  btnToggleTheme?.setAttribute("aria-live", theme.value);
-};
-/**
- * @param  {} =>{theme.value=getUserColorPreference();
- */
-const theme = {
-  value: getUserColorPreference(),
+  document.firstElementChild.setAttribute('data-theme', theme.value);
+  btnToggleTheme?.setAttribute('aria-live', theme.value);
 };
 
-// avoid page flashes on load by setting preference early
+// function sets up color preference /*  */
 /**
- * @param  {} =>{theme.value=getUserColorPreference();
+ * @param  {} =>{localStorage.setItem("theme-preference"
+ * @param  {} theme.value
+ * @param  {} ;reflectPreference(
  */
-reflectPreference();
+const updateColorPreference = () => {
+  localStorage.setItem('theme-preference', theme.value);
+  reflectPreference(); /* is this a return? arrow-function */
+};
 
 // add event listener to toggleTheme button
 /**
@@ -70,12 +63,18 @@ window.onload = () => {
   // inform screen readers the button value on loading
   reflectPreference();
 
-  btnToggleTheme.addEventListener("click", (e) => {
-    theme.value = theme.value === "light" ? "dark" : "light";
+  btnToggleTheme.addEventListener('click', () => {
+    theme.value = theme.value === 'light' ? 'dark' : 'light';
 
     updateColorPreference();
   });
 };
+
+// avoid page flashes on load by setting preference early
+/**
+ * @param  {} =>{theme.value=getUserColorPreference();
+ */
+reflectPreference();
 
 // end toggle theme setup
 // add event listener to matchMedia
@@ -83,8 +82,8 @@ window.onload = () => {
  * @param  {dark} "(prefers-color-scheme
  */
 window
-  .matchMedia("(prefers-color-scheme: dark)")
-  .addEventListener("change", ({ matches: isDark }) => {
-    theme.value = isDark ? "dark" : "light";
+  .matchMedia('(prefers-color-scheme: dark)')
+  .addEventListener('change', ({ matches: isDark }) => {
+    theme.value = isDark ? 'dark' : 'light';
     updateColorPreference();
   });

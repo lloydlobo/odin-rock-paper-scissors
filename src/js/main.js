@@ -1,6 +1,6 @@
 // computer picks randomly from rock, paper, and scissors
 function computerPlay() {
-  const rockPaperScissors = ["rock", "paper", "scissors"];
+  const rockPaperScissors = ['rock', 'paper', 'scissors'];
   const randomNumber = Math.random() * rockPaperScissors.length;
   const computerRandom = rockPaperScissors[Math.floor(randomNumber)];
   return computerRandom;
@@ -8,11 +8,11 @@ function computerPlay() {
 
 // prompts the user
 function promptMessage() {
-  const customPrompt = `Pick rock, paper, or scissors`;
+  const customPrompt = 'Pick rock, paper, or scissors';
   const computerRandomValue = computerPlay();
   const userInput = prompt(
     customPrompt,
-    `${computerRandomValue}`
+    `${computerRandomValue}`,
   ); /* message is customPrompt and default value is generated randomly by computerPlay() => `${computerRandom} */
   const userInputMessage = userInput;
   return userInputMessage;
@@ -31,28 +31,28 @@ function fetchUserComputerSelection() {
 // play a single round
 // compare user and computer choices
 function playRound(userChoice, computerChoice) {
-  return userChoice === "rock" && computerChoice === "scissors"
+  return userChoice === 'rock' && computerChoice === 'scissors'
     ? `You win!\n${userChoice} crushes ${computerChoice}`
-    : userChoice === "paper" && computerChoice === "rock"
-    ? `You win!\n${userChoice} covers ${computerChoice}`
-    : userChoice === "scissors" && computerChoice === "paper"
-    ? `You win!\n${userChoice} cuts ${computerChoice}`
-    : userChoice === "rock" && computerChoice === "paper"
-    ? `You lose!\n${computerChoice} covers ${userChoice}`
-    : userChoice === "paper" && computerChoice === "scissors"
-    ? `You lose!\n${computerChoice} cuts ${userChoice}`
-    : userChoice === "scissors" && computerChoice === "rock"
-    ? `You lose!\n${computerChoice} crushes ${userChoice}`
-    : userChoice === computerChoice
-    ? `It's a tie!\n${userChoice} ties ${computerChoice}`
-    : "";
+    : userChoice === 'paper' && computerChoice === 'rock'
+      ? `You win!\n${userChoice} covers ${computerChoice}`
+      : userChoice === 'scissors' && computerChoice === 'paper'
+        ? `You win!\n${userChoice} cuts ${computerChoice}`
+        : userChoice === 'rock' && computerChoice === 'paper'
+          ? `You lose!\n${computerChoice} covers ${userChoice}`
+          : userChoice === 'paper' && computerChoice === 'scissors'
+            ? `You lose!\n${computerChoice} cuts ${userChoice}`
+            : userChoice === 'scissors' && computerChoice === 'rock'
+              ? `You lose!\n${computerChoice} crushes ${userChoice}`
+              : userChoice === computerChoice
+                ? `It's a tie!\n${userChoice} ties ${computerChoice}`
+                : '';
 }
 
 // function calls statements
 function declareStatement() {
-  const win = "win";
-  const lose = "lose";
-  const tie = "tie";
+  const win = 'win';
+  const lose = 'lose';
+  const tie = 'tie';
   return [win, lose, tie];
 }
 
@@ -79,10 +79,9 @@ function game() {
   const successComputer = `Game over! Computer succeeded!\nFinal score:\nuserScore: ${userScore} to computerScore: ${computerScore}`;
   const successUserComputer = `Game over! It's a tie! Everyone succeeded!\nFinal score:\nuserScore: ${userScore} to computerScore: ${computerScore}`;
 
-  const gameFinalResult =
-    userScore > computerScore
-      ? successUser
-      : userScore < computerScore
+  const gameFinalResult = userScore > computerScore
+    ? successUser
+    : userScore < computerScore
       ? successComputer
       : successUserComputer;
 
@@ -92,13 +91,13 @@ game();
 
 // restart game
 function restartGame() {
-  const promptMessageRestart = `Would you like to play again? (y/n)`;
-  const reset = prompt(promptMessageRestart, `y`);
-  if (reset === "y") {
+  const promptMessageRestart = 'Would you like to play again? (y/n)';
+  const reset = prompt(promptMessageRestart, 'y');
+  if (reset === 'y') {
     game();
     restartGame(); /* prompts user again when game() ends 2nd time */
   } else {
-    console.log("Thanks for playing!");
+    console.log('Thanks for playing!');
   }
 }
 restartGame();
