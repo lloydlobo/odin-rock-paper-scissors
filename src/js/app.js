@@ -11,7 +11,6 @@ const resultDisplay = document.getElementById("resultDisplay");
 const roundsSelections = document.getElementById("roundsSelections");
 // select all buttons with className of buttons
 const btnPossibleChoices = document.querySelectorAll(".buttonChoice");
-/* # => NodeList(3)=>[button#btnRock.buttonChoice, button#btnPaper.buttonChoice, button#btnScissors.buttonChoice] */
 
 // returns a random integer => 0<= i <=2
 /* 3 btns, Math.floor() returns Math.random() to the nearest positive integer value */
@@ -22,7 +21,6 @@ let computerChoice = () => {
 };
 
 // btnPossibleChoices.length can be set when something apart from type: "traditional" is set. /* [rock, paper, scissors, lizard, spock] */
-
 const choices = [
   {
     name: "rock",
@@ -98,8 +96,6 @@ let roundResultInsert = document.createElement("p");
 
 // function to declare result of a single round
 const roundResult = (userChoiceIndex, computerChoiceIndex) => {
-  // 3 = choices.length
-  /* console.log(userChoiceIndex, computerChoiceIndex); */
   if (userChoiceIndex === computerChoiceIndex) {
     console.log(winAll);
     roundResultInsert.textContent = winAll;
@@ -113,6 +109,7 @@ const roundResult = (userChoiceIndex, computerChoiceIndex) => {
     roundResultInsert.textContent = winUser;
     resultDisplay.appendChild(roundResultInsert);
   }
+  // console.log(userChoiceIndex, computerChoiceIndex); /* # => undefined, undefined */
 };
 
 /*
