@@ -21,10 +21,14 @@
   },
   "homepage": "https://github.com/lloydlobo/odin-rock-paper-scissors#readme",
   "devDependencies": {
-    "browser-sync": "^2.27.9",
     "stylelint": "^14.7.1"
   },
   "dependencies": {
-    "gulp": "^4.0.2"
+    "browser-sync": "^2.27.9",
+    "cssnano": "^5.1.7",
+    "gulp": "^4.0.2",
+    "gulp-postcss": "^9.0.1",
+    "gulp-sass": "^5.1.0",
+    "gulp-terser": "^2.1.0"
   }
 }
