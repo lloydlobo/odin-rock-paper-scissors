@@ -72,7 +72,6 @@ btnPossibleChoices.forEach((btnPossibleChoice) =>
 
 const fetchUserChoice = () => {
   choices.forEach((choice) => {
-    // if userChoice includes any of the choices[].name
     if (userChoiceValue.includes(choice.name || choice.key)) {
       userChoice = choice.image;
       userChoiceIndex = choice.index;
@@ -84,11 +83,21 @@ const fetchUserChoice = () => {
 
 const playRound = () => {
   const computerChoiceIndex = computerChoice(); /* computer Index */
-  userChoiceDisplay.textContent = userChoice;
-  computerChoiceDisplay.textContent = choices[computerChoiceIndex].image;
-  resultDisplay.textContent = `${userChoice} vs ${computerChoiceDisplay.textContent}`;
-  // console.log(userChoiceIndex, computerChoiceIndex);
-  // roundResult();
+  const userChoicePara = document.createElement("p");
+  userChoicePara.textContent = userChoice;
+  // userChoiceDisplay.textContent = userChoice;
+  /* const keydownPara = document.createElement("p");
+  keydownPara.textContent = `Key Event => key: ${keydownChoiceKey} & code: ${keydownChoiceCode}`;
+  const keydownOutputDisplay = document.getElementById(
+    "keydownOutputDisplay"
+    );
+    keydownOutputDisplay.appendChild(keydownPara); */
+  const computerChoicePara = document.createElement("p");
+  computerChoicePara.textContent = choices[computerChoiceIndex].image;
+  userChoiceDisplay.appendChild(userChoicePara);
+  computerChoiceDisplay.appendChild(computerChoicePara);
+  // computerChoiceDisplay.textContent = choices[computerChoiceIndex].image;
+  resultDisplay.textContent = `${userChoice} vs ${computerChoicePara.textContent}`;
 };
 
 // insert a <p> element below resultDisplay
