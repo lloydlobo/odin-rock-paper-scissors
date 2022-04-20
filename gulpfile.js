@@ -16,15 +16,22 @@
 
 // 20220420122045
 const { src, dest, watch, series, parallel } = require("gulp");
-const sass = require("gulp-sass");
-const postcss = require("gulp-postcss");
-const cssnano = require("cssnano");
-const terser = require("gulp-terser");
 const browsersync = require("browser-sync").create();
+const cleanCSS = require("clean-css");
+// // var input = "a{font-weight:bold;}";
+// // var options = {/* options */};
+// // var output = new CleanCSS(options).minify(input);
+const gulpCleanCSS = require("gulp-clean-css");
+const concat = require("gulp-concat");
+const cssnano = require("cssnano");
+// const gulp = require("gulp");
+const postcss = require("gulp-postcss");
+const sass = require("gulp-sass")(require("sass"));
+const terser = require("gulp-terser");
 
 // sass task /* nodestream returned usein gsrc function called gulp and read app/style..... */
 function scssTask() {
-  return src("app/scss/style.scss", { sourcemaps: true })
+  return src("src/scss/style.scss", { sourcemaps: true })
     .pipe(sass())
     .pipe(postcss([cssnano()])) /* minifies it */
     .pipe(dest("dist", { sourcemaps: "." }));
@@ -32,7 +39,7 @@ function scssTask() {
 
 // javascript task
 function jsTask() {
-  return src("app/js/main.js", { sourcemaps: true })
+  return src("src/js/main.js", { sourcemaps: true })
     .pipe(terser()) /* minifies JavaScript Files */
     .pipe(dest("dist", { sourcemaps: "." })); /* saces in dist folder */
 }
@@ -56,7 +63,7 @@ function browsersyncReload(cb) {
 function watchTask() {
   watch("**/*.html").on("change", browsersync.reload);
   watch(
-    ["app/scss/**/*.scss", "app/js/**/*.js"],
+    ["src/scss/**/*.scss", "src/js/**/*.js"],
     series(scssTask, jsTask, browsersyncReload)
   );
 }
