@@ -1,5 +1,4 @@
 // console.dir(document.body); -------------------------------------------------------------
-
 // const added = [0, 1, 2, 3, 4].map((item) => item + 1);
 // console.log(added); // prints "[1, 2, 3, 4, 5]"
 
@@ -9,7 +8,7 @@ const computerChoiceDisplay = document.getElementById("computerChoiceDisplay");
 const userChoiceDisplay = document.getElementById("userChoiceDisplay");
 const resultDisplay = document.getElementById("resultDisplay");
 const roundsSelections = document.getElementById("roundsSelections");
-// select all buttons with className of buttons
+// select all buttons with class of buttonChoice
 const btnPossibleChoices = document.querySelectorAll(".buttonChoice");
 
 // returns a random integer => 0<= i <=2
@@ -85,18 +84,13 @@ const playRound = () => {
   const computerChoiceIndex = computerChoice(); /* computer Index */
   const userChoicePara = document.createElement("p");
   userChoicePara.textContent = userChoice;
-  // userChoiceDisplay.textContent = userChoice;
-  /* const keydownPara = document.createElement("p");
-  keydownPara.textContent = `Key Event => key: ${keydownChoiceKey} & code: ${keydownChoiceCode}`;
-  const keydownOutputDisplay = document.getElementById(
-    "keydownOutputDisplay"
-    );
-    keydownOutputDisplay.appendChild(keydownPara); */
   const computerChoicePara = document.createElement("p");
   computerChoicePara.textContent = choices[computerChoiceIndex].image;
-  userChoiceDisplay.appendChild(userChoicePara);
-  computerChoiceDisplay.appendChild(computerChoicePara);
-  // computerChoiceDisplay.textContent = choices[computerChoiceIndex].image;
+  userChoiceDisplay.insertBefore(userChoicePara, userChoiceDisplay.firstChild);
+  computerChoiceDisplay.insertBefore(
+    computerChoicePara,
+    computerChoiceDisplay.firstChild
+  ); /* https://stackoverflow.com/questions/23749464/reverse-the-order-of-elements-added-to-dom-with-javascript */
   resultDisplay.textContent = `${userChoice} vs ${computerChoicePara.textContent}`;
 };
 
