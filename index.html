@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
   <!-- *********************
-  ******** head **********
-  ****************** -->
+  * ******* head **********
+  * ***************** -->
   <head>
     <meta charset="UTF-8" />
     <title>Odin Rock Paper Scissors: you can beat the odds</title>
@@ -22,13 +22,14 @@
     />
     <script defer src="./src/js/theme-toggle.js"></script>
     <script defer src="./src/js/app.js"></script>
+    <!-- <script defer src="./src/js/app-v2.js"></script> -->
     <!-- <script defer src="./src/js/main.js"></script> -->
     <!-- <script defer src="./src/js/style.js"></script> -->
   </head>
 
   <!-- *********************
-  ******** body **********
-  ****************** -->
+  * ******* body **********
+  * ***************** -->
   <body>
     <!-- *************
     **** header *****
@@ -154,12 +155,13 @@
     </header>
 
     <!-- *************
-    **** main *****
-    ************ -->
+    * ***** main *****
+    * *********** -->
     <main>
       <article>
         <section class="section-card | hero--clip section-card--padding-bottom">
-          <div class="blobs grid">
+          <!-- * disabled blobs -->
+          <!-- <div class="blobs grid">
             <div class="blob-clay blob-clay--blue"></div>
             <div class="blob-clay blob-clay--pink"></div>
             <div class="blob-clay blob-clay--purple"></div>
@@ -183,23 +185,32 @@
               class="blob-clay blob-clay--salmon blob--small-3 blob--circle-3"
             ></div>
             <div class="blob-clay blob-clay--pink blob--circle-2"></div>
-          </div>
+          </div> -->
           <div class="card-glass-wrapper | grid grid--place-center">
             <!-- 1. animate results - tick mark -->
 
             <div id="gameContent" class="card-glass | grid grid--place-center">
               <div class="card | grid grid--place-center | gap--f1 |">
                 <h1 class="card__heading |" data-state="">Let's Play!</h1>
-                <div class="card__choices | flex flex--wrap |">
+                <div class="card__choices | grid grid--column">
                   <label for="userChoiceDisplay"
-                    >Your Choice: <span id="userChoiceDisplay"></span
+                    >Your Choice
+                    <div
+                      class="card__choice-result"
+                      id="userChoiceDisplay"
+                    ></div
+                  ></label>
+                  <label for="resultDisplay"
+                    >Result
+                    <div class="card__choice-result" id="resultDisplay"></div
                   ></label>
                   <label for="computerChoiceDisplay">
-                    Computer Choice: <span id="computerChoiceDisplay"></span>
+                    Computer Choice
+                    <div
+                      class="card__choice-result"
+                      id="computerChoiceDisplay"
+                    ></div>
                   </label>
-                  <label for="resultDisplay"
-                    >Result: <span id="resultDisplay"></span
-                  ></label>
                 </div>
                 <div
                   class="btn-selections-wrapper | flex flex--column flex--wrap | gap--f1 flex--align-center"
@@ -250,6 +261,16 @@
                   title="Game Results"
                   aria-live="polite"
                 ></output>
+
+                <!-- 20220419161401 => app.js | v1.2 handleClick -->
+                <!-- middle ground code complexity -->
+                <!-- <div class="" id="gameGrid"></div> -->
+
+                <!-- * Advanced - less code less customizable
+                  * adds buttons from app-v2.js
+                * -->
+                <!-- <div class="" id="choicesDisplay"></div> -->
+                <!-- <div class="" id="choicesDisplayResult"></div> -->
                 <!-- progress bar -->
                 <!-- <ul>
                            <li><a href="#embedded__progress">Progress</a></li>
@@ -265,8 +286,8 @@
       </article>
 
       <!-- ***********
-        modal
-      ************ -->
+      *  modal
+      * *********** -->
 
       <div class="modal">
         <dialog class="modal__dialog" id="dialogModalGame">
@@ -294,13 +315,38 @@
           </div>
         </dialog>
       </div>
+
       <!-- ***********
-        gameplay article — nav + sections
-        ************ -->
+      * gameplay article — nav + sections
+      * ************ -->
 
       <article class="guide-article">
-        <!-- *
-        rules -->
+        <!-- <article class="wrapper-keydown | container">
+          <header class="wrapper-keydown__header">
+            <h1 class="wrapper-keydown__header__headline">Keyboard Events</h1>
+            <div
+              role="doc-subtitle"
+              class="wrapper-keydown__header__sub-headline"
+            >
+              Every key needs a
+              <strong class="wrappe-keydownr__header__sub-headline--code"
+                >Code</strong
+              >
+            </div>
+            <p class="wrapper-keydown__header__para">
+              Type something you goof! My pal from forever...
+            </p>
+          </header>
+          <form for="keydownOutputDisplay" class="keydown-output-wrapper">
+            <output
+              class="keydown-output-display | container"
+              id="keydownOutputDisplay"
+            >
+            </output>
+          </form>
+        </article> -->
+
+        <!-- * rules -->
 
         <section id="rules" class="container">
           <header data-state="subHeader">
@@ -384,8 +430,7 @@
           src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/5ddaa0137994881.62150f2eeac4c.png"
           alt=""
         /> -->
-        <!-- *
-        gameplay -->
+        <!-- * gameplay -->
         <section id="gameplay" class="container">
           <header data-state="subHeader">
             <h2>Gameplay</h2>
@@ -503,9 +548,7 @@
           </div>
         </section>
 
-        <!-- *
-        tips
-       -->
+        <!-- * tips -->
         <section
           id="tips"
           class="container | dogfood place-full block-wrap-flex"
@@ -565,9 +608,7 @@
             </div>
           </div>
         </section>
-        <!-- *
-        cheatsheet
-       -->
+        <!-- * cheatsheet -->
         <section id="cheatsheet" class="container">
           <header data-state="subHeader">
             <h2>Cheatsheet</h2>
@@ -1430,9 +1471,7 @@
           </article> -->
         </section>
 
-        <!-- *
-        about
-       -->
+        <!-- * about -->
         <section id="about" class="container">
           <header data-state="subHeader">
             <h2>About</h2>
@@ -1481,8 +1520,8 @@
     </main>
 
     <!-- *************
-    **** footer *****
-    ************ -->
+    * ***** footer *****
+    * ************ -->
     <footer>
       <div class="container | grid | | gap--f2">
         <div
