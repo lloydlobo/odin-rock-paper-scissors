@@ -57,7 +57,7 @@ a:not([class]) {
   --indigo-10: #324ebb; /* for <a></a> */
 }
 
-[data-theme="light"] {
+[data-theme='light'] {
   color-scheme: light;
   --brand: var(--pink-6);
   --link: var(--indigo-7);
@@ -75,7 +75,7 @@ a:not([class]) {
   --indigo-10: #324ebb; /* for <a></a> */
 }
 
-[data-theme="dark"] {
+[data-theme='dark'] {
   color-scheme: dark;
   --brand: var(--pink-4);
   --link: var(--indigo-3);
@@ -117,9 +117,9 @@ body {
   background-color: var(--surface-1);
   display: grid;
   grid-template-areas:
-    "header"
-    "main"
-    "footer";
+    'header'
+    'main'
+    'footer';
   grid-template-rows: auto 1fr auto;
   overflow-x: hidden;
 
@@ -136,7 +136,7 @@ header {
 }
 
 /* * exception for body heading para headers */
-header[data-state="subHeader"] {
+header[data-state='subHeader'] {
   grid-area: unset;
   padding-block: 0;
   box-shadow: none;
@@ -242,12 +242,12 @@ li.footer-primary__item {
 colors
 ********************** */
 
-[data-theme="light"] blockquote.icon-quote.indigo {
+[data-theme='light'] blockquote.icon-quote.indigo {
   --_bg: var(--indigo-0);
   --_ink: var(--indigo-9);
 }
 
-[data-theme="light"] blockquote.icon-quote {
+[data-theme='light'] blockquote.icon-quote {
   --_bg: white;
   --_ink: var(--lime-9);
 }
@@ -719,15 +719,15 @@ components
   gap: var(--size-2);
 }
 
-[data-theme="light"] .orps-logo {
+[data-theme='light'] .orps-logo {
   color: var(--indigo-7);
 }
 
-[data-theme="dark"] .orps-logo {
+[data-theme='dark'] .orps-logo {
   color: var(--indigo-3);
 }
 
-[data-theme="light"] a:hover .op-icon-o {
+[data-theme='light'] a:hover .op-icon-o {
   stroke: var(--indigo-6);
 }
 
@@ -785,13 +785,13 @@ button {
   animation-duration: 1s;
 }
 
-ul[data-state="listStyleNoneBtn"] {
+ul[data-state='listStyleNoneBtn'] {
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-ul[data-state="listStyleNoneBtn"] li {
+ul[data-state='listStyleNoneBtn'] li {
   -webkit-padding-start: 0;
   padding-inline-start: 0;
 }
@@ -804,7 +804,7 @@ ul[data-state="listStyleNoneBtn"] li {
 /* toggle theme src */
 
 @media (dynamic-range: high) {
-  [data-theme="light"] {
+  [data-theme='light'] {
     --link: color(display-p3 0 0.5 1);
     --link-visited: color(display-p3 0.6 0.2 1);
   }
@@ -836,17 +836,17 @@ ul[data-state="listStyleNoneBtn"] li {
 #moon > circle {
   transition: transform 0.5s var(--ease-out-3);
 }
-[data-theme="light"] #sun {
+[data-theme='light'] #sun {
   transform: scale(0.5);
 }
-[data-theme="light"] #sun-beams {
+[data-theme='light'] #sun-beams {
   transform: rotate(0.25turn);
   --_opacity-dur: 0.5s;
 }
-[data-theme="dark"] #moon > circle {
+[data-theme='dark'] #moon > circle {
   transform: translate(-20px);
 }
-[data-theme="dark"] #sun-beams {
+[data-theme='dark'] #sun-beams {
   opacity: 0;
 }
 
@@ -979,7 +979,7 @@ components/cards
 }
 
 /* rotate heading */
-[data-state="rotateText90"] .card__heading {
+[data-state='rotateText90'] .card__heading {
   align-self: flex-start;
   position: relative;
   transform: rotate(-90deg);
@@ -987,7 +987,7 @@ components/cards
   transform-origin: center;
 }
 
-[data-theme="dark"] .card__heading {
+[data-theme='dark'] .card__heading {
   color: var(--gray-2);
 }
 
@@ -1074,7 +1074,7 @@ components/circle
 
 @media screen and (min-width: 1024px) {
   .dogfood:before {
-    content: "";
+    content: '';
     position: absolute;
     z-index: -1;
     inset-block: 1%;
@@ -1084,7 +1084,7 @@ components/circle
   }
 }
 
-[data-theme="light"] .dogfood {
+[data-theme='light'] .dogfood {
   /* background-image: var(--gradient-18); */
   background-image: none;
 }
@@ -1179,7 +1179,7 @@ components/circle
 .blob-clay {
   position: absolute;
   top: 0;
-  content: "";
+  content: '';
   width: 400px;
   height: 400px;
 }
@@ -1241,7 +1241,7 @@ components/lists
   /* position: relative; */
 }
 
-[data-theme="light"] .guide-list {
+[data-theme='light'] .guide-list {
   -webkit-padding-before: var(--size-3);
   padding-block-start: var(--size-3);
   background: var(--surface-1);
@@ -1279,7 +1279,7 @@ nav.guide-list {
   /* border: 1px solid green; */
 }
 
-[data-theme="dark"] .guide-list {
+[data-theme='dark'] .guide-list {
   background: none;
 
   background-image: linear-gradient(
@@ -1296,23 +1296,23 @@ nav.guide-list {
   color: var(--gray-0);
 } */
 
-[data-theme="dark"] .guide-list__link {
+[data-theme='dark'] .guide-list__link {
   color: var(--gray-0);
 }
-[data-theme="dark"] .guide-list__link:hover {
+[data-theme='dark'] .guide-list__link:hover {
   color: var(--link);
 }
 
 /* footer lists */
 
 /* add data-state attribute */
-ul[data-state="listStyleNoneNav"] {
+ul[data-state='listStyleNoneNav'] {
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-ul[data-state="listStyleNoneNav"] li {
+ul[data-state='listStyleNoneNav'] li {
   -webkit-padding-start: 0;
   padding-inline-start: 0;
 }
@@ -1326,7 +1326,7 @@ table {
   background-image: var(--gradient-9);
 }
 
-[data-theme="dark"] table {
+[data-theme='dark'] table {
   background-image: var(--gradient-23);
 }
 
@@ -1413,7 +1413,7 @@ components/tags-badges.
 }
 
 .count-em:before {
-  content: "";
+  content: '';
   counter-reset: basic;
   position: absolute;
 }

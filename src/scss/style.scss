@@ -2,8 +2,8 @@
  */
 /* Note: There’s no need to include the _ or .scss file extension when importing. */
 // ----------------------------------------------------------------------------
-@use "globals";
-@use "components";
+@use 'globals';
+@use 'components';
 
 // ----------------------------------------------------------------------------
 /* abstracts */
@@ -38,8 +38,8 @@
 @import "pages/contact"; */
 
 /* themes */
-@import "themes/theme";
-@import "themes/admin";
+@import 'themes/theme';
+@import 'themes/admin';
 
 // ----------------------------------------------------------------------------
 
