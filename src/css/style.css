@@ -991,7 +991,10 @@ components/cards
   color: var(--gray-2);
 }
 
-/* rock, paper, scissors emojis */
+/* *
+* rock, paper, scissors emojis
+* */
+
 .card__choices {
   text-align: center;
   gap: var(--size-fluid-4);
@@ -1019,6 +1022,16 @@ style app.js .card choice results emojis
 */
 .card__choice-result {
   font-size: var(--size-fluid-4);
+}
+
+.card__choice-result p {
+  font-size: var(--size-fluid-3);
+  opacity: 0.618;
+}
+
+.card__choice-result > p.winner {
+  font-size: var(--size-fluid-4);
+  opacity: 1;
 }
 
 /*
