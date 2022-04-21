@@ -1,7 +1,9 @@
 // Credits: https://github.com/thecodercoder/fem-dklt-toggle/blob/main/gulpfile.js
 
 // Initialize modules
-const { src, dest, watch, series } = require('gulp');
+const {
+  src, dest, watch, series,
+} = require('gulp');
 /* const sass = require('gulp-sass')(require('sass'));
 const postcss = require('gulp-postcss');
 const autoprefixer = require('autoprefixer');
@@ -14,7 +16,7 @@ const browsersync = require('browser-sync').create();
 const gulpCleanCss = require('gulp-clean-css');
 
 // Use dart-sass for @use
-//sass.compiler = require('dart-sass');
+// sass.compiler = require('dart-sass');
 
 // Sass Task
 /* function scssTask() {
@@ -31,7 +33,7 @@ const gulpCleanCss = require('gulp-clean-css');
         );
 } */ /* enable when scss is ready */
 
-/* uses fiber — which seems out of date*/
+/* uses fiber — which seems out of date */
 // .pipe(sass({includePaths: ['./node_modules'],fiber: Fiber,}).on('error', sass.logError))
 
 // Gulp Clean CSS Task
@@ -75,26 +77,29 @@ function watchTask() {
   watch('*.html', browserSyncReload);
   watch(
     ['src/scss/**/*.scss', 'src/css/**/*.css', 'src/**/*.js'],
-    series(gulpCleanCssTask, jsTask, browserSyncReload)
+    series(gulpCleanCssTask, jsTask, browserSyncReload),
   ); /* add scssTask when ready */
 }
 
-// Default Gulp Task
+// Default Gulp Task /* $ gulp */
 exports.default = series(
   jsTask,
   gulpCleanCssTask,
   browserSyncServe,
-  watchTask
+  watchTask,
 ); /* add scssTask when ready */
 
-// Build Gulp Task
+// Build Gulp Task /* $ gulp build */
 exports.build = series(gulpCleanCssTask, jsTask); /* add scssTask when ready */
 
 // ------------------------------------------------------------------
 
 // const { src, dest, watch, series, parallel } = require('gulp');
 // const browsersync = require('browser-sync').create();
-// const cleanCss = require("clean-css"); // var input = "a{font-weight:bold;}"; // var options = {/* options */}; // var output = new CleanCSS(options).minify(input);
+// const cleanCss = require("clean-css");
+// var input = "a{font-weight:bold;}";
+// var options = {/* options */};
+// var output = new CleanCSS(options).minify(input);
 // https://www.toptal.com/javascript/optimize-js-and-css-with-gulp
 // const gulpCleanCss = require('gulp-clean-css');
 // const concat = require("gulp-concat"); /* to be assigned */
