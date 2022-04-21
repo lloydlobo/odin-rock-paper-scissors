@@ -1,51 +1,23 @@
 {
-    "labels": [
-        "dependencies"
+    "extends": [
+        "config:base",
+        ":semanticCommitType(chore)"
+    ],
+    "enabledManagers": [
+        "npm"
     ],
     "packageRules": [
         {
-            "matchPackagePatterns": [
-                "eslint"
+            "packagePatterns": [
+                "*"
             ],
-            "labels": [
-                "linting"
-            ]
+            "enabled": false
         },
         {
-            "matchDepTypes": [
-                "optionalDependencies"
+            "datasources": [
+                "npm"
             ],
-            "addLabels": [
-                "optional"
-            ]
-        },
-        {
-            "matchUpdateTypes": [
-                "minor",
-                "patch",
-                "pin",
-                "digest"
-            ],
-            "automerge": true
-        },
-        {
-            "matchDepTypes": [
-                "devDependencies"
-            ],
-            "automerge": true
+            "followTag": "prerelease"
         }
-    ],
-    "npm": {
-        "enabled": true
-    },
-    "semanticCommits": "enabled",
-    "extends": [
-        ":semanticCommitType(chore)"
-    ],
-    "additionalBranchPrefix": "{{parentDir}}-",
-    "ignoreTests": true,
-    "branchPrefix": "renovate/",
-    "prCreation": "not-pending",
-    "dependencyDashboard": true,
-    "dependencyDashboardApproval": true
+    ]
 }
