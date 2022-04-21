@@ -135,7 +135,6 @@ const playRound = () => {
     computerChoiceDisplay.firstChild,
   );
 
-  // todo
   // * Display result in the DOM UI
   resultDisplay.textContent = `${userChoiceResults[0]} vs ${computerChoiceResults[0]}`;
 
