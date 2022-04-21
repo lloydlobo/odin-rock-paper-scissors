@@ -44,7 +44,6 @@ const winComputer = 'Computer wins';
 const winAll = "It's a tie! Everyone Wins!";
 
 /* const tieAllImage = '🫶 '; */ /* https://emojipedia.org/heart-hands/ */
-
 /* let userChoiceIndex; */
 
 let userChoice;
@@ -137,7 +136,7 @@ const playRound = () => {
   );
 
   // * Display result in the DOM UI
-  resultDisplay.textContent = `${userChoiceResults[1]} vs ${computerChoiceResults[0].textContent}`; /* userChoiceResults[1] */
+  resultDisplay.textContent = `${userChoiceResults[0]} vs ${computerChoiceResults[0].textContent}`; /* userChoiceResults[1] */
 
   return roundResult(userChoiceResults[1], computerChoiceResults[1]);
 };
