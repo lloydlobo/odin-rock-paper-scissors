@@ -79,7 +79,7 @@ function watchTask() {
   ); /* add scssTask when ready */
 }
 
-// Default Gulp Task
+// Default Gulp Task /* $ gulp */
 exports.default = series(
   jsTask,
   gulpCleanCssTask,
@@ -87,7 +87,7 @@ exports.default = series(
   watchTask
 ); /* add scssTask when ready */
 
-// Build Gulp Task
+// Build Gulp Task /* $ gulp build */
 exports.build = series(gulpCleanCssTask, jsTask); /* add scssTask when ready */
 
 // ------------------------------------------------------------------
