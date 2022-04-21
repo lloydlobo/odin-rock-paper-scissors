@@ -1,18 +1,111 @@
+// Credits: https://github.com/thecodercoder/fem-dklt-toggle/blob/main/gulpfile.js
+
+// Initialize modules
+const { src, dest, watch, series } = require('gulp');
+/* const sass = require('gulp-sass')(require('sass'));
+const postcss = require('gulp-postcss');
+const autoprefixer = require('autoprefixer');
+const cssnano = require('cssnano'); */ /* enable when scss is ready */
+const babel = require('gulp-babel');
+const terser = require('gulp-terser');
+const browsersync = require('browser-sync').create();
+/* to be assigned — seems terser does this well for js, don't know about css @concat */
+// const concat = require("gulp-concat");
+const gulpCleanCss = require('gulp-clean-css');
+
+// Use dart-sass for @use
+//sass.compiler = require('dart-sass');
+
+// Sass Task
+/* function scssTask() {
+  return (
+    src('src/scss/style.scss', { sourcemaps: true })
+    // .pipe(sass({ outputStyle: 'compressed' }))
+    .pipe(
+      sass({
+          outputStyle: 'nested',
+        }).on('error', sass.logError)
+        )
+        .pipe(postcss([autoprefixer(), cssnano()]))
+        .pipe(dest('dist', { sourcemaps: '.' }))
+        );
+} */ /* enable when scss is ready */
+
+/* uses fiber — which seems out of date*/
+// .pipe(sass({includePaths: ['./node_modules'],fiber: Fiber,}).on('error', sass.logError))
+
+// Gulp Clean CSS Task
+function gulpCleanCssTask() {
+  return src('src/css/*.css', { sourcemaps: true })
+    .pipe(gulpCleanCss())
+    .pipe(dest('dist', { sourcemaps: '.' }));
+}
+// JavaScript Task
+function jsTask() {
+  return src(['src/js/app.js', 'src/js/theme-toggle.js'], { sourcemaps: true })
+    .pipe(babel({ presets: ['@babel/preset-env'] }))
+    .pipe(terser())
+    .pipe(dest('dist', { sourcemaps: '.' }));
+}
+
+// Browser-sync
+function browserSyncServe(cb) {
+  browsersync.init({
+    server: {
+      baseDir: '.',
+    },
+    notify: {
+      styles: {
+        top: 'auto',
+        bottom: '0',
+      },
+    },
+  });
+  cb();
+}
+
+// Browser-sync Reload
+function browserSyncReload(cb) {
+  browsersync.reload();
+  cb();
+}
+
+// Watch Task
+function watchTask() {
+  watch('*.html', browserSyncReload);
+  watch(
+    ['src/scss/**/*.scss', 'src/css/**/*.css', 'src/**/*.js'],
+    series(gulpCleanCssTask, jsTask, browserSyncReload)
+  ); /* add scssTask when ready */
+}
+
+// Default Gulp Task
+exports.default = series(
+  jsTask,
+  gulpCleanCssTask,
+  browserSyncServe,
+  watchTask
+); /* add scssTask when ready */
+
+// Build Gulp Task
+exports.build = series(gulpCleanCssTask, jsTask); /* add scssTask when ready */
+
 // ------------------------------------------------------------------
 
-// 20220420122045
-const { src, dest, watch, series, parallel } = require('gulp');
-const browsersync = require('browser-sync').create();
+// const { src, dest, watch, series, parallel } = require('gulp');
+// const browsersync = require('browser-sync').create();
 // const cleanCss = require("clean-css"); // var input = "a{font-weight:bold;}"; // var options = {/* options */}; // var output = new CleanCSS(options).minify(input);
 // https://www.toptal.com/javascript/optimize-js-and-css-with-gulp
-const gulpCleanCss = require('gulp-clean-css');
+// const gulpCleanCss = require('gulp-clean-css');
 // const concat = require("gulp-concat"); /* to be assigned */
 // const cssnano = require("cssnano"); /* to be assigned when using scssTask */
 
 // const gulp = require("gulp");
 // const postcss = require("gulp-postcss"); /* to be assigned when using scssTask */
 // const sass = require("gulp-sass")(require("sass")); /* to be assigned when using scssTask */
-const terser = require('gulp-terser');
+// const terser = require('gulp-terser');
+/* To improve Dart Sass compilation speed, we can use a package called fibers. */
+// const Fiber = require('fibers');
 
 // cleanCss task
 /* function cleanCssTask() {
@@ -22,53 +115,60 @@ const terser = require('gulp-terser');
 } */
 
 // gulp-clean-css task /* gulp recommends clean-css */
-function gulpCleanCssTask() {
+/* function gulpCleanCssTask() {
   return src('src/css/*.css', { sourcemaps: true })
     .pipe(gulpCleanCss())
     .pipe(dest('dist', { sourcemaps: '.' }));
-}
+} */
 
 // javascript task
-function jsTask() {
-  return src('src/js/*.js', { sourcemaps: true })
-    .pipe(terser()) /* minifies JavaScript Files */
-    .pipe(dest('dist', { sourcemaps: '.' })); /* saces in dist folder */
-}
+/* function jsTask() {
+  return src(['src/js/app.js', 'src/js/theme-toggle.js'], { sourcemaps: true })
+    .pipe(terser())
+    .pipe(dest('dist', { sourcemaps: '.' }));
+} */
 
 // sass task /* nodestream returned usein gsrc function called gulp and read app/style..... */
 // function scssTask() {
 //   return src("src/scss/style.scss", { sourcemaps: true })
-//     .pipe(sass())
+// //  .pipe(sass())
+//      .pipe(
+//            sass({
+//              includePaths: ['./node_modules'],
+//              fiber: Fiber
+//            })
+//              .on('error', sass.logError)
+//          )
 //     .pipe(postcss([cssnano()])) /* minifies it */
 //     .pipe(dest("dist", { sourcemaps: "." }));
 // }
 
 // browsersync serve task /* it's not a gulp () so manually init it */
-function browsersyncServe(cb) {
+/* function browsersyncServe(cb) {
   browsersync.init({
     server: {
       baseDir: './',
     },
   });
   cb();
-}
+} */
 // browsersync reload task
-function browsersyncReload(cb) {
+/* function browsersyncReload(cb) {
   browsersync.reload();
   cb();
-}
+} */
 
 // watch task
-function watchTask() {
-  watch('**/*.html').on('change', browsersync.reload);
-  watch(
-    ['src/css/**/*.css', 'src/js/**/*.js'],
-    series(gulpCleanCssTask, jsTask, browsersyncReload)
-  ); /* add scssTask to the series() */
-}
+// function watchTask() {
+//   watch('**/*.html').on('change', browsersync.reload);
+//   watch(
+//     ['src/css/**/*.css', 'src/js/**/*.js'],
+//     series(gulpCleanCssTask, jsTask, browsersyncReload)
+//   );
+// }
 
 // * default gulp task
-exports.default = series(browsersyncServe, gulpCleanCssTask, jsTask, watchTask);
+// exports.default = series(browsersyncServe, gulpCleanCssTask, jsTask, watchTask);
 
 // ------------------------------------------------------------------
 // archive

@@ -168,7 +168,7 @@ out
 
 # Nuxt.js build / generate output
 .nuxt
-dist
+# dist
 
 # Gatsby files
 .cache/
@@ -212,8 +212,5 @@ dist
 .dccache
 
 # root folders
-src/sass/
-src/sass/_layout.scss
 docs/notes.md
-docs/notes.md
-src/js/app-v2.js
+archive/
