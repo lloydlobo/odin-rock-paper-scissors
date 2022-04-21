@@ -12,8 +12,8 @@ const winAll = "It's a tie! Everyone Wins!";
 const userChoiceDisplay = document.getElementById('userChoiceDisplay');
 const computerChoiceDisplay = document.getElementById('computerChoiceDisplay');
 const resultDisplay = document.getElementById('resultDisplay');
-const dataUserScoreSpan = document.querySelector('[data-user-score]');
-const dataComputerScoreSpan = document.querySelector('[data-computer-score]');
+// const dataUserScoreSpan = document.querySelector('[data-user-score]');
+// const dataComputerScoreSpan = document.querySelector('[data-computer-score]');
 
 /* const roundsSelections = document.getElementById('roundsSelections'); */
 
@@ -79,7 +79,7 @@ function fetchUserChoice() {
   });
 }
 
-// ? insert this in roundResult() function
+// adds new paragraph choice emoji to DOM /* this can go at the top */
 const roundResultInsert = document.createElement('p'); // create a new <p> element
 
 // * Declare result of a single round
@@ -87,32 +87,46 @@ const roundResult = (userChoiceIndex, computerChoiceIndex) => {
   if (userChoiceIndex === computerChoiceIndex) {
     roundResultInsert.textContent = winAll;
     resultDisplay.appendChild(roundResultInsert);
-  }
-  if (userChoiceIndex === 0 && computerChoiceIndex === 1) {
+  } else if ((userChoiceIndex + 1) % 3 === computerChoiceIndex) {
     roundResultInsert.textContent = winComputer;
     resultDisplay.appendChild(roundResultInsert);
-  }
-  if (userChoiceIndex === 1 && computerChoiceIndex === 0) {
-    roundResultInsert.textContent = winUser;
-    resultDisplay.appendChild(roundResultInsert);
-  }
-  if (userChoiceIndex === 1 && computerChoiceIndex === 2) {
-    roundResultInsert.textContent = winComputer;
-    resultDisplay.appendChild(roundResultInsert);
-  }
-  if (userChoiceIndex === 2 && computerChoiceIndex === 1) {
-    roundResultInsert.textContent = winUser;
-    resultDisplay.appendChild(roundResultInsert);
-  }
-  if (userChoiceIndex === 2 && computerChoiceIndex === 0) {
-    roundResultInsert.textContent = winComputer;
-    resultDisplay.appendChild(roundResultInsert);
-  }
-  if (userChoiceIndex === 0 && computerChoiceIndex === 2) {
+  } else {
     roundResultInsert.textContent = winUser;
     resultDisplay.appendChild(roundResultInsert);
   }
 };
+
+// * Declare result of a single round
+// const roundResult = (userChoiceIndex, computerChoiceIndex) => {
+//   if (userChoiceIndex === computerChoiceIndex) {
+//     roundResultInsert.textContent = winAll;
+//     resultDisplay.appendChild(roundResultInsert);
+//   }
+//   if (userChoiceIndex === 0 && computerChoiceIndex === 1) {
+//     roundResultInsert.textContent = winComputer;
+//     resultDisplay.appendChild(roundResultInsert);
+//   }
+//   if (userChoiceIndex === 1 && computerChoiceIndex === 0) {
+//     roundResultInsert.textContent = winUser;
+//     resultDisplay.appendChild(roundResultInsert);
+//   }
+//   if (userChoiceIndex === 1 && computerChoiceIndex === 2) {
+//     roundResultInsert.textContent = winComputer;
+//     resultDisplay.appendChild(roundResultInsert);
+//   }
+//   if (userChoiceIndex === 2 && computerChoiceIndex === 1) {
+//     roundResultInsert.textContent = winUser;
+//     resultDisplay.appendChild(roundResultInsert);
+//   }
+//   if (userChoiceIndex === 2 && computerChoiceIndex === 0) {
+//     roundResultInsert.textContent = winComputer;
+//     resultDisplay.appendChild(roundResultInsert);
+//   }
+//   if (userChoiceIndex === 0 && computerChoiceIndex === 2) {
+//     roundResultInsert.textContent = winUser;
+//     resultDisplay.appendChild(roundResultInsert);
+//   }
+// };
 
 // addScoreUpdate = (dataScoreSpan) => {
 //   // pasrseInt(string, radix) returns the integer value represented by the specified string
@@ -171,7 +185,8 @@ const playRound = () => {
 // * Function => grab the buttons & for each choice - listen to event
 btnPossibleChoices.forEach((btnPossibleChoice) => btnPossibleChoice.addEventListener('click', (e) => {
   userChoiceValue = e.target.value; /* value || key */
-  /* console.clear(); */
+
+  // console.clear();
   // * filters the userChoice to match the choices array
   fetchUserChoice();
 
