@@ -133,7 +133,7 @@ const playRound = () => {
   userChoiceDisplay.insertBefore(userChoicePara, userChoiceDisplay.firstChild);
   computerChoiceDisplay.insertBefore(
     computerChoicePara,
-    computerChoiceDisplay.firstChild
+    computerChoiceDisplay.firstChild,
   );
 
   // * Display result in the DOM UI
@@ -143,17 +143,15 @@ const playRound = () => {
 };
 
 // * Function => grab the buttons & for each choice - listen to event
-btnPossibleChoices.forEach((btnPossibleChoice) =>
-  btnPossibleChoice.addEventListener('click', (e) => {
-    userChoiceValue = e.target.value; /* value || key */
-    /* console.clear(); */
-    // * filters the userChoice to match the choices array
-    fetchUserChoice();
+btnPossibleChoices.forEach((btnPossibleChoice) => btnPossibleChoice.addEventListener('click', (e) => {
+  userChoiceValue = e.target.value; /* value || key */
+  /* console.clear(); */
+  // * filters the userChoice to match the choices array
+  fetchUserChoice();
 
-    // * play round
-    playRound();
-  })
-);
+  // * play round
+  playRound();
+}));
 
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
