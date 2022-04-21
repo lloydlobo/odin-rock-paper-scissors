@@ -110,6 +110,7 @@ const roundResult = (userChoiceIndex, computerChoiceIndex) => {
   }
 };
 
+/* adds most recent choice history of both users */
 // * Function => Adds a new round result to the DOM
 const playRound = () => {
   // Create DOM result elements content <p>
@@ -122,12 +123,17 @@ const playRound = () => {
   // Retrieve results & map to computer's random number with choices[] array
   const computerChoiceResults = [computerChoices.image, computerChoices.index];
 
-  // Defeine the computer results image and index with choices[] array
+  // Define the computer results image and index with choices[] array
   /* const computerChoiceImage = computerChoiceResults[0]; */
   const computerChoiceIndex = computerChoiceResults[1];
 
+  // add text content & classList 'card__choice-result__choice'
   userChoicePara.textContent = userChoice;
+  userChoicePara.classList.add('card__choice-result__choice');
+
+  // add text content & classList 'card__choice-result__choice'
   computerChoicePara.textContent = choices[computerChoiceIndex].image;
+  computerChoicePara.classList.add('card__choice-result__choice');
 
   // * Insert DOM result elements content <p> before the last <p>
   userChoiceDisplay.insertBefore(userChoicePara, userChoiceDisplay.firstChild);
