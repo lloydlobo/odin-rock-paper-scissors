@@ -1043,7 +1043,8 @@ style app.js .card choice results emojis
   opacity: 0.618;
 }
 
-.card__choice-result__choice.winner {
+/* BEM modification for the winner */
+.card__choice-result__choice--win {
   font-size: var(--size-fluid-4);
   opacity: 1;
 }

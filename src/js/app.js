@@ -1,22 +1,20 @@
 /* $ ./node_modules/.bin/eslint --fix src/js/app.js */
 
+/* declare and intialize const variables => always const before let */
+
 // set result statement
-/* declare and intialize variables => always const before let */
 const winUser = 'You win';
 const winComputer = 'Computer wins';
 const winAll = "It's a tie! Everyone Wins!";
 /* const tieAllImage = '🫶 '; */ /* https://emojipedia.org/heart-hands/ */
 
-// declare variables
-let userChoice; /* "temporal dead zone" (TDZ) */
-let userChoiceValue;
-let userChoiceResults;
-/* let userChoiceIndex; */
-
 // get DOM elements by id
-const computerChoiceDisplay = document.getElementById('computerChoiceDisplay');
 const userChoiceDisplay = document.getElementById('userChoiceDisplay');
+const computerChoiceDisplay = document.getElementById('computerChoiceDisplay');
 const resultDisplay = document.getElementById('resultDisplay');
+const dataUserScoreSpan = document.querySelector('[data-user-score]');
+const dataComputerScoreSpan = document.querySelector('[data-computer-score]');
+
 /* const roundsSelections = document.getElementById('roundsSelections'); */
 
 // select all buttons with class of buttonChoice
@@ -50,6 +48,12 @@ const choices = [
     index: 2,
   },
 ];
+
+// declare let variables
+let userChoice; /* "temporal dead zone" (TDZ) */
+let userChoiceValue;
+let userChoiceResults;
+/* let userChoiceIndex; */
 
 // -----------------------------------------------------------------------------
 
@@ -110,6 +114,15 @@ const roundResult = (userChoiceIndex, computerChoiceIndex) => {
   }
 };
 
+// addScoreUpdate = (dataScoreSpan) => {
+//   // pasrseInt(string, radix) returns the integer value represented by the specified string
+//   dataScoreSpan.textContent = parseInt(dataScoreSpan.textContent) + 1;
+// }; /* don't need to declare variable in a function when it's the parameter? */
+
+// // increment the score for user & computer => addScoreUpdate(dataScoreSpan)
+// addScoreUpdate(dataUserScoreSpan);
+// addScoreUpdate(dataComputerScoreSpan);
+
 /* adds most recent choice history of both users */
 // * Function => Adds a new round result to the DOM
 const playRound = () => {
@@ -126,22 +139,29 @@ const playRound = () => {
   // Define the computer results image and index with choices[] array
   /* const computerChoiceImage = computerChoiceResults[0]; */
   const computerChoiceIndex = computerChoiceResults[1];
+  // ? would we need a forEach() loop here? if user's increase?
 
   // add text content & classList 'card__choice-result__choice'
   userChoicePara.textContent = userChoice;
   userChoicePara.classList.add('card__choice-result__choice');
 
+  // ! todo think over it
+  /* // add winnwe classList to the winner of the round()
+  if (userChoiceIndex === computerChoiceIndex) {
+    userChoicePara.classList.add('card__choice-result__choice--win');
+  } else {
+    computerChoicePara.classList.add('card__choice-result__choice--win');
+  } */
+
   // add text content & classList 'card__choice-result__choice'
   computerChoicePara.textContent = choices[computerChoiceIndex].image;
   computerChoicePara.classList.add('card__choice-result__choice');
-
   // * Insert DOM result elements content <p> before the last <p>
   userChoiceDisplay.insertBefore(userChoicePara, userChoiceDisplay.firstChild);
   computerChoiceDisplay.insertBefore(
     computerChoicePara,
     computerChoiceDisplay.firstChild,
   );
-
   // * Display result in the DOM UI
   resultDisplay.textContent = `${userChoiceResults[0]} vs ${computerChoiceResults[0]}`;
 
@@ -225,3 +245,10 @@ btnPossibleChoices.forEach((btnPossibleChoice) => btnPossibleChoice.addEventList
     resultDisplay.appendChild(roundResultInsert);
   }
 }; */
+
+/* https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt#a_stricter_parse_function */
+/* function parseInt(string: string, radix?: number): number */
+/* if radix is not specified, it defaults to base 10 (decimal) else base 16 (hexadecimal) */
+/* A value between 2 and 36 that specifies the base of the number in string.
+  If this argument is not supplied, strings with a prefix of '0x' are considered hexadecimal.
+  All other strings are considered decimal. */
