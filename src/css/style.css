@@ -998,6 +998,10 @@ components/cards
 .card__choices {
   text-align: center;
   gap: var(--size-fluid-4);
+
+  grid-template-columns: repeat(3, 1fr);
+
+  width: 100%;
 }
 
 .card__choices > label {
@@ -1022,14 +1026,24 @@ style app.js .card choice results emojis
 */
 .card__choice-result {
   font-size: var(--size-fluid-4);
+  display: grid;
+
+  align-items: center;
+  grid-template-rows: repeat(auto-fill, minmax(24px, 5vw));
 }
 
-.card__choice-result p {
+/* .card__choice-result p {
+  font-size: var(--size-fluid-3);
+  opacity: 0.618;
+} */
+
+/* * app.js adds this class to new choices appended */
+.card__choice-result__choice {
   font-size: var(--size-fluid-3);
   opacity: 0.618;
 }
 
-.card__choice-result > p.winner {
+.card__choice-result__choice.winner {
   font-size: var(--size-fluid-4);
   opacity: 1;
 }
