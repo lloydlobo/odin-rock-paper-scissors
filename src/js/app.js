@@ -1,24 +1,16 @@
-// $ ./node_modules/.bin/eslint --fix src/js/app.js
+/* $ ./node_modules/.bin/eslint --fix src/js/app.js */
 
 // get DOM elements by id
 const computerChoiceDisplay = document.getElementById('computerChoiceDisplay');
 const userChoiceDisplay = document.getElementById('userChoiceDisplay');
 const resultDisplay = document.getElementById('resultDisplay');
-// const roundsSelections = document.getElementById('roundsSelections');
+/* const roundsSelections = document.getElementById('roundsSelections'); */
 
 // select all buttons with class of buttonChoice
 const btnPossibleChoices = document.querySelectorAll('.buttonChoice');
 
-// returns a random integer => 0<= i <=2
-/* 3 btns, Math.floor() returns Math.random() to the nearest positive integer value */
-function computerChoice() {
-  const randomNumber = Math.random();
-  const randomChoice = Math.floor(randomNumber * btnPossibleChoices.length);
-  return randomChoice;
-}
-
-// btnPossibleChoices.length can be set when something apart from type: "traditional" is set.
-/* [rock, paper, scissors, lizard, spock] */
+/* set btnPossibleChoices.length when !type: "traditional" */
+// choices array to store all possible choices
 const choices = [
   {
     name: 'rock',
@@ -44,71 +36,49 @@ const choices = [
     type: 'traditional',
     index: 2,
   },
-]; /* if user selects mode apart from traditional */ /* add that type's image as button innerHTML */
+];
 
 // set result statement
 const winUser = 'You win';
 const winComputer = 'Computer wins';
 const winAll = "It's a tie! Everyone Wins!";
-// const tieAllImage = '🫶 '; /* https://emojipedia.org/heart-hands/ */
 
-let userChoiceValue;
-// let userChoiceIndex;
+/* const tieAllImage = '🫶 '; */ /* https://emojipedia.org/heart-hands/ */
+
+/* let userChoiceIndex; */
+
 let userChoice;
+let userChoiceValue;
 let userChoiceResults;
 
-// match result of userChoice if it includes the choice array's name/key
+// -----------------------------------------------------------------------------
+
+/* 3 btns, Math.floor() returns Math.random() to the nearest positive integer value */
+// * Returns a random integer => 0<= i <=2
+function computerChoice() {
+  const randomNumber = Math.random();
+  const randomChoice = Math.floor(randomNumber * btnPossibleChoices.length);
+  return randomChoice;
+}
+
+// * Filter choices array by user's choice
 function fetchUserChoice() {
   choices.forEach((choice) => {
     if (userChoiceValue.includes(choice.name || choice.key)) {
       userChoice = choice.image;
       const userChoiceIndex = choice.index;
       userChoiceResults = [userChoice, userChoiceIndex];
+
       return userChoiceResults;
     }
     return userChoiceResults;
   });
 }
-// -----------------------------------------------------------------------------
-const playRound = () => {
-  const computerChoiceIndex = computerChoice(); /* generate computer Index */
-  const userChoicePara = document.createElement('p');
-  const computerChoicePara = document.createElement('p');
 
-  userChoicePara.textContent = userChoice;
-  computerChoicePara.textContent = choices[computerChoiceIndex].image;
+// ? insert this in roundResult() function
+const roundResultInsert = document.createElement('p'); // create a new <p> element
 
-  userChoiceDisplay.insertBefore(userChoicePara, userChoiceDisplay.firstChild);
-  computerChoiceDisplay.insertBefore(
-    computerChoicePara,
-    computerChoiceDisplay.firstChild
-  ); /* https://stackoverflow.com/questions/23749464/reverse-the-order-of-elements-added-to-dom-with-javascript */
-
-  resultDisplay.textContent = `${userChoice} vs ${computerChoicePara.textContent}`;
-};
-
-// insert a <p> element below resultDisplay
-const roundResultInsert = document.createElement('p');
-
-// -----------------------------------------------------------------------------
-
-/* const roundResult = (userChoiceIndex, computerChoiceIndex) => {
-  if (userChoiceIndex === computerChoiceIndex) {
-    console.log(winAll);
-    roundResultInsert.textContent = winAll;
-    resultDisplay.appendChild(roundResultInsert);
-  }
-  if ((userChoiceIndex + 1) % 3 === computerChoiceIndex) {
-    console.log(winComputer);
-    roundResultInsert.textContent = winComputer;
-    resultDisplay.appendChild(roundResultInsert);
-  } else {
-    console.log(winUser);
-    roundResultInsert.textContent = winUser;
-    resultDisplay.appendChild(roundResultInsert);
-  }
-}; */
-// function to declare result of a single round
+// * Declare result of a single round
 const roundResult = (userChoiceIndex, computerChoiceIndex) => {
   if (userChoiceIndex === computerChoiceIndex) {
     roundResultInsert.textContent = winAll;
@@ -139,33 +109,84 @@ const roundResult = (userChoiceIndex, computerChoiceIndex) => {
     resultDisplay.appendChild(roundResultInsert);
   }
 };
-const computerChoices = choices[computerChoice()];
 
-// grab the buttons and for each possible choice
+// * Function => Adds a new round result to the DOM
+const playRound = () => {
+  // Create DOM result elements content <p>
+  const userChoicePara = document.createElement('p');
+  const computerChoicePara = document.createElement('p');
+
+  // * Run the random computer choice generator ONLY ONCE HERE
+  const computerChoices = choices[computerChoice()];
+
+  // Retrieve results & map to computer's random number with choices[] array
+  const computerChoiceResults = [computerChoices.image, computerChoices.index];
+
+  // Defeine the computer results image and index with choices[] array
+  /* const computerChoiceImage = computerChoiceResults[0]; */
+  const computerChoiceIndex = computerChoiceResults[1];
+
+  userChoicePara.textContent = userChoice;
+  computerChoicePara.textContent = choices[computerChoiceIndex].image;
+
+  // Insert DOM result elements content <p> before the last <p>
+  userChoiceDisplay.insertBefore(userChoicePara, userChoiceDisplay.firstChild);
+  computerChoiceDisplay.insertBefore(
+    computerChoicePara,
+    computerChoiceDisplay.firstChild
+  );
+
+  // * Display result in the DOM UI
+  resultDisplay.textContent = `${userChoiceResults[1]} vs ${computerChoiceResults[0].textContent}`; /* userChoiceResults[1] */
+
+  return roundResult(userChoiceResults[1], computerChoiceResults[1]);
+};
+
+// * Function => grab the buttons & for each choice - listen to event
 btnPossibleChoices.forEach((btnPossibleChoice) =>
-  btnPossibleChoice.addEventListener('click' || 'keydown', (e) => {
+  btnPossibleChoice.addEventListener('click', (e) => {
     userChoiceValue = e.target.value; /* value || key */
-
-    // fetch user and computer choice
+    /* console.clear(); */
+    // * filters the userChoice to match the choices array
     fetchUserChoice();
 
-    /* const computerChoiceResults = [
+    // * play round
+    playRound();
+  })
+);
+
+// -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+
+/* const computerChoiceResults = [
       choices[computerChoice()].image,
       choices[computerChoice()].index,
     ]; */
-
-    const computerChoiceResults = [
-      computerChoices.image,
-      computerChoices.index,
-    ];
-
-    // play round
-    playRound();
-
-    // * declare result of round /* this is key! */
-    roundResult(userChoiceResults[1], computerChoiceResults[1]);
-  })
-);
 
 // const computerChoiceIndexResult = choices[computerChoice()].index;
 // const computerChoiceImageResult = choices[computerChoice()].image;
@@ -183,3 +204,20 @@ btnPossibleChoices.forEach((btnPossibleChoice) =>
 } */
 
 //  --------------------------------------------------------------------
+
+/* const roundResult = (userChoiceIndex, computerChoiceIndex) => {
+  if (userChoiceIndex === computerChoiceIndex) {
+    console.log(winAll);
+    roundResultInsert.textContent = winAll;
+    resultDisplay.appendChild(roundResultInsert);
+  }
+  if ((userChoiceIndex + 1) % 3 === computerChoiceIndex) {
+    console.log(winComputer);
+    roundResultInsert.textContent = winComputer;
+    resultDisplay.appendChild(roundResultInsert);
+  } else {
+    console.log(winUser);
+    roundResultInsert.textContent = winUser;
+    resultDisplay.appendChild(roundResultInsert);
+  }
+}; */
