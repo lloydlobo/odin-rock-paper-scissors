@@ -1,5 +1,18 @@
 /* $ ./node_modules/.bin/eslint --fix src/js/app.js */
 
+// set result statement
+/* declare and intialize variables => always const before let */
+const winUser = 'You win';
+const winComputer = 'Computer wins';
+const winAll = "It's a tie! Everyone Wins!";
+/* const tieAllImage = '🫶 '; */ /* https://emojipedia.org/heart-hands/ */
+
+// declare variables
+let userChoice; /* "temporal dead zone" (TDZ) */
+let userChoiceValue;
+let userChoiceResults;
+/* let userChoiceIndex; */
+
 // get DOM elements by id
 const computerChoiceDisplay = document.getElementById('computerChoiceDisplay');
 const userChoiceDisplay = document.getElementById('userChoiceDisplay');
@@ -37,18 +50,6 @@ const choices = [
     index: 2,
   },
 ];
-
-// set result statement
-const winUser = 'You win';
-const winComputer = 'Computer wins';
-const winAll = "It's a tie! Everyone Wins!";
-
-/* const tieAllImage = '🫶 '; */ /* https://emojipedia.org/heart-hands/ */
-/* let userChoiceIndex; */
-
-let userChoice;
-let userChoiceValue;
-let userChoiceResults;
 
 // -----------------------------------------------------------------------------
 
