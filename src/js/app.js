@@ -96,38 +96,6 @@ const roundResult = (userChoiceIndex, computerChoiceIndex) => {
   }
 };
 
-// * Declare result of a single round
-// const roundResult = (userChoiceIndex, computerChoiceIndex) => {
-//   if (userChoiceIndex === computerChoiceIndex) {
-//     roundResultInsert.textContent = winAll;
-//     resultDisplay.appendChild(roundResultInsert);
-//   }
-//   if (userChoiceIndex === 0 && computerChoiceIndex === 1) {
-//     roundResultInsert.textContent = winComputer;
-//     resultDisplay.appendChild(roundResultInsert);
-//   }
-//   if (userChoiceIndex === 1 && computerChoiceIndex === 0) {
-//     roundResultInsert.textContent = winUser;
-//     resultDisplay.appendChild(roundResultInsert);
-//   }
-//   if (userChoiceIndex === 1 && computerChoiceIndex === 2) {
-//     roundResultInsert.textContent = winComputer;
-//     resultDisplay.appendChild(roundResultInsert);
-//   }
-//   if (userChoiceIndex === 2 && computerChoiceIndex === 1) {
-//     roundResultInsert.textContent = winUser;
-//     resultDisplay.appendChild(roundResultInsert);
-//   }
-//   if (userChoiceIndex === 2 && computerChoiceIndex === 0) {
-//     roundResultInsert.textContent = winComputer;
-//     resultDisplay.appendChild(roundResultInsert);
-//   }
-//   if (userChoiceIndex === 0 && computerChoiceIndex === 2) {
-//     roundResultInsert.textContent = winUser;
-//     resultDisplay.appendChild(roundResultInsert);
-//   }
-// };
-
 // addScoreUpdate = (dataScoreSpan) => {
 //   // pasrseInt(string, radix) returns the integer value represented by the specified string
 //   dataScoreSpan.textContent = parseInt(dataScoreSpan.textContent) + 1;
@@ -195,32 +163,6 @@ btnPossibleChoices.forEach((btnPossibleChoice) => btnPossibleChoice.addEventList
 }));
 
 // -----------------------------------------------------------------------------
-// -----------------------------------------------------------------------------
-// -----------------------------------------------------------------------------
-// -----------------------------------------------------------------------------
-// -----------------------------------------------------------------------------
-// -----------------------------------------------------------------------------
-// -----------------------------------------------------------------------------
-// -----------------------------------------------------------------------------
-// -----------------------------------------------------------------------------
-// -----------------------------------------------------------------------------
-// -----------------------------------------------------------------------------
-// -----------------------------------------------------------------------------
-// -----------------------------------------------------------------------------
-// -----------------------------------------------------------------------------
-// -----------------------------------------------------------------------------
-// -----------------------------------------------------------------------------
-// -----------------------------------------------------------------------------
-// -----------------------------------------------------------------------------
-// -----------------------------------------------------------------------------
-// -----------------------------------------------------------------------------
-// -----------------------------------------------------------------------------
-// -----------------------------------------------------------------------------
-// -----------------------------------------------------------------------------
-// -----------------------------------------------------------------------------
-// -----------------------------------------------------------------------------
-// -----------------------------------------------------------------------------
-// -----------------------------------------------------------------------------
 
 /* const computerChoiceResults = [
       choices[computerChoice()].image,
@@ -241,25 +183,6 @@ btnPossibleChoices.forEach((btnPossibleChoice) => btnPossibleChoice.addEventList
     playRound();
   }
 } */
-
-//  --------------------------------------------------------------------
-
-/* const roundResult = (userChoiceIndex, computerChoiceIndex) => {
-  if (userChoiceIndex === computerChoiceIndex) {
-    console.log(winAll);
-    roundResultInsert.textContent = winAll;
-    resultDisplay.appendChild(roundResultInsert);
-  }
-  if ((userChoiceIndex + 1) % 3 === computerChoiceIndex) {
-    console.log(winComputer);
-    roundResultInsert.textContent = winComputer;
-    resultDisplay.appendChild(roundResultInsert);
-  } else {
-    console.log(winUser);
-    roundResultInsert.textContent = winUser;
-    resultDisplay.appendChild(roundResultInsert);
-  }
-}; */
 
 /* https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt#a_stricter_parse_function */
 /* function parseInt(string: string, radix?: number): number */
