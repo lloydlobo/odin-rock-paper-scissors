@@ -128,15 +128,16 @@ const playRound = () => {
   userChoicePara.textContent = userChoice;
   computerChoicePara.textContent = choices[computerChoiceIndex].image;
 
-  // Insert DOM result elements content <p> before the last <p>
+  // * Insert DOM result elements content <p> before the last <p>
   userChoiceDisplay.insertBefore(userChoicePara, userChoiceDisplay.firstChild);
   computerChoiceDisplay.insertBefore(
     computerChoicePara,
     computerChoiceDisplay.firstChild,
   );
 
+  // todo
   // * Display result in the DOM UI
-  resultDisplay.textContent = `${userChoiceResults[0]} vs ${computerChoiceResults[0].textContent}`; /* userChoiceResults[1] */
+  resultDisplay.textContent = `${userChoiceResults[0]} vs ${computerChoiceResults[0]}`;
 
   return roundResult(userChoiceResults[1], computerChoiceResults[1]);
 };
