@@ -131,6 +131,12 @@ const fetchUserChoice = () => {
   });
 };
 
+// * Updates score with each win
+const addScoreUpdate = (dataScoreSpan) => {
+  const addScoreUpdateProperty = dataScoreSpan;
+  addScoreUpdateProperty.textContent = parseInt(dataScoreSpan.textContent) + 1;
+};
+
 // adds new paragraph choice emoji to DOM /* this can go at the top */
 const roundResultInsert = document.createElement('p'); // create a new <p> element
 
