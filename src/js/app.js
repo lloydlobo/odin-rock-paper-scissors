@@ -107,9 +107,7 @@ console.log('🚀 ~ scoreToWin', scoreToWin);
 
 // -----------------------------------------------------------------------------
 
-/* 3 btns, Math.floor() returns Math.random() to the nearest positive integer value */
-// * Returns a random integer => 0<= i <=2
-function computerChoice() {
+const computerChoice = () => {
   const randomNumber = Math.random();
   const randomChoice = Math.floor(randomNumber * btnPossibleChoices.length);
   return randomChoice;
