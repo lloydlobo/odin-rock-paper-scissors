@@ -91,7 +91,8 @@ const roundResultInsert = document.createElement('p'); // create a new <p> eleme
 
 // ! this is breaking everything
 function addScoreUpdate(dataScoreSpan) {
-  dataScoreSpan.textContent = parseInt(dataScoreSpan.textContent) + 1;
+  const addScoreUpdateProperty = dataScoreSpan;
+  addScoreUpdateProperty.textContent = parseInt(dataScoreSpan.textContent) + 1;
 }
 
 // todo playGame() could use this
