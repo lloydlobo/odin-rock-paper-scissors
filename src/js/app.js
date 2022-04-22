@@ -98,23 +98,29 @@ function addScoreUpdate(dataScoreSpan) {
 // todo playGame() could use this
 // * Declare result of a single round
 const roundResult = (userChoiceIndex, computerChoiceIndex) => {
-  if (userChoiceIndex === computerChoiceIndex) {
+  const choicesArrayLength = choices.length;
+  const choiceIndexIsSame = userChoiceIndex === computerChoiceIndex;
+  const choiceIndexUserModulo = (userChoiceIndex + 1) % choicesArrayLength;
+  const choiceIndexComputerWins = choiceIndexUserModulo === computerChoiceIndex;
+
+  if (choiceIndexIsSame) {
     roundResultInsert.textContent = winAll;
     resultDisplay.appendChild(roundResultInsert);
-  } else if ((userChoiceIndex + 1) % 3 === computerChoiceIndex) {
+    return 'tie';
+  }
+  if (choiceIndexComputerWins) {
     roundResultInsert.textContent = winComputer;
     resultDisplay.appendChild(roundResultInsert);
-
-    // dataScoreSpan.textContent = parseInt(dataScoreSpan.textContent) + 1;
-    dataComputerScoreSpan.textContent++; /* use parseInt() here LOL */
-    // computerChoicePara.classList.add('card__choice-result__choice--win');
-  } else {
+    addScoreUpdate(dataComputerScoreSpan);
+    return 'computer';
+  }
+  if (!choiceIndexComputerWins) {
     roundResultInsert.textContent = winUser;
     resultDisplay.appendChild(roundResultInsert);
-    dataUserScoreSpan.textContent++;
-    // addScoreUpdate(dataUserScoreSpan);
-    // userChoicePara.classList.add('card__choice-result__choice--win');
+    addScoreUpdate(dataUserScoreSpan);
+    return 'user';
   }
+  return 'error';
 };
 
 // increment the score for user & computer => addScoreUpdate(dataScoreSpan)
