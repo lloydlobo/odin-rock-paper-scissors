@@ -12,11 +12,10 @@ const winAll = "It's a tie! Everyone Wins!";
 const userChoiceDisplay = document.getElementById('userChoiceDisplay');
 const computerChoiceDisplay = document.getElementById('computerChoiceDisplay');
 const resultDisplay = document.getElementById('resultDisplay');
-// const dataUserScoreSpan = document.querySelector('[data-user-score]');
-// const dataComputerScoreSpan = document.querySelector('[data-computer-score]');
+const dataUserScoreSpan = document.querySelector('[data-user-score]');
+const dataComputerScoreSpan = document.querySelector('[data-computer-score]');
 
-/* const roundsSelections = document.getElementById('roundsSelections'); */
-
+const roundsSelections = document.getElementById('roundsSelections');
 // select all buttons with class of buttonChoice
 const btnPossibleChoices = document.querySelectorAll('.buttonChoice');
 
@@ -53,6 +52,9 @@ const choices = [
 let userChoice; /* "temporal dead zone" (TDZ) */
 let userChoiceValue;
 let userChoiceResults;
+// * scoreToWin for game to end
+let scoreToWin = roundsSelections.value;
+console.log('🚀 ~ scoreToWin', scoreToWin);
 /* let userChoiceIndex; */
 
 // -----------------------------------------------------------------------------
@@ -82,6 +84,17 @@ function fetchUserChoice() {
 // adds new paragraph choice emoji to DOM /* this can go at the top */
 const roundResultInsert = document.createElement('p'); // create a new <p> element
 
+/* const createNewPara = () => {
+  roundResultInsert.textContent = userChoice;
+  resultDisplay.appendChild(roundResultInsert);
+}; */
+
+// ! this is breaking everything
+function addScoreUpdate(dataScoreSpan) {
+  dataScoreSpan.textContent = parseInt(dataScoreSpan.textContent) + 1;
+}
+
+// todo playGame() could use this
 // * Declare result of a single round
 const roundResult = (userChoiceIndex, computerChoiceIndex) => {
   if (userChoiceIndex === computerChoiceIndex) {
@@ -90,20 +103,20 @@ const roundResult = (userChoiceIndex, computerChoiceIndex) => {
   } else if ((userChoiceIndex + 1) % 3 === computerChoiceIndex) {
     roundResultInsert.textContent = winComputer;
     resultDisplay.appendChild(roundResultInsert);
+
+    // dataScoreSpan.textContent = parseInt(dataScoreSpan.textContent) + 1;
+    dataComputerScoreSpan.textContent++; /* use parseInt() here LOL */
+    // computerChoicePara.classList.add('card__choice-result__choice--win');
   } else {
     roundResultInsert.textContent = winUser;
     resultDisplay.appendChild(roundResultInsert);
+    dataUserScoreSpan.textContent++;
+    // addScoreUpdate(dataUserScoreSpan);
+    // userChoicePara.classList.add('card__choice-result__choice--win');
   }
 };
 
-// addScoreUpdate = (dataScoreSpan) => {
-//   // pasrseInt(string, radix) returns the integer value represented by the specified string
-//   dataScoreSpan.textContent = parseInt(dataScoreSpan.textContent) + 1;
-// }; /* don't need to declare variable in a function when it's the parameter? */
-
-// // increment the score for user & computer => addScoreUpdate(dataScoreSpan)
-// addScoreUpdate(dataUserScoreSpan);
-// addScoreUpdate(dataComputerScoreSpan);
+// increment the score for user & computer => addScoreUpdate(dataScoreSpan)
 
 /* adds most recent choice history of both users */
 // * Function => Adds a new round result to the DOM
@@ -150,6 +163,19 @@ const playRound = () => {
   return roundResult(userChoiceResults[1], computerChoiceResults[1]);
 };
 
+// * reset the game when roundSelecions is changed
+const resetGame = () => {
+  // remove the appended <p> elements
+  userChoiceDisplay.innerHTML = '';
+  computerChoiceDisplay.innerHTML = '';
+  resultDisplay.textContent = '';
+  // * reset the score
+  dataUserScoreSpan.textContent = 0;
+  dataComputerScoreSpan.textContent = 0;
+  // * reset the round
+  roundResultInsert.textContent = '';
+};
+
 // * Function => grab the buttons & for each choice - listen to event
 btnPossibleChoices.forEach((btnPossibleChoice) => btnPossibleChoice.addEventListener('click', (e) => {
   userChoiceValue = e.target.value; /* value || key */
@@ -157,13 +183,62 @@ btnPossibleChoices.forEach((btnPossibleChoice) => btnPossibleChoice.addEventList
   // console.clear();
   // * filters the userChoice to match the choices array
   fetchUserChoice();
-
+  // ? todo think about it => playRound() could go in playGame()
+  // ? but playGame() is for calculating the score and reseting the game
   // * play round
   playRound();
 }));
 
+const playGame = () => {
+  // * play rounds
+  for (let i = 0; i < scoreToWin; i += 1) {
+    // add a if statment here for dataScoreSpan === scoreToWin
+    playRound();
+    if (dataUserScoreSpan.textContent === scoreToWin) {
+      resultDisplay.textContent = winUser;
+      break;
+    } else if (dataComputerScoreSpan.textContent === scoreToWin) {
+      resultDisplay.textContent = winComputer;
+      break;
+    } else {
+      resultDisplay.textContent = winAll;
+    }
+  }
+  resetGame();
+};
+
+// get rounds value set by the user (default is 5)
+roundsSelections.addEventListener('change', (e) => {
+  scoreToWin = e.target.value;
+  console.log('🚀 ~ scoreToWin', scoreToWin);
+  // * reset the game when scoreToWin value is changed
+  resetGame();
+  return scoreToWin;
+});
+
+// reset game when rounds are over
+/* const roundsNumber = parseInt(rounds); const roundsArray = [];
+for (let i = 0; i < roundsNumber; i++) {roundsArray.push playRound());} */
+
 // -----------------------------------------------------------------------------
 
+// function to play a game of round = rounds from user input in #roundsSelections
+// const game = () => {
+//   let round = 0;
+//   let userScore = 0;
+//   let computerScore = 0;
+//   for (let i = 0; i < 5; i++) {
+//     playRound();
+//     round++;
+//     if (round % 2 === 0) {
+//       userScore++;
+//     } else {
+//       computerScore++;
+//     }
+//   }
+// };
+
+// -----------------------------------------------------------------------------
 /* const computerChoiceResults = [
       choices[computerChoice()].image,
       choices[computerChoice()].index,
