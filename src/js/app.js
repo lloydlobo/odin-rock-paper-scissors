@@ -96,7 +96,7 @@ const resultStatements = [
   },
 ];
 
-// declare let variables
+// declare `let` variables
 let userChoice; /* "temporal dead zone" (TDZ) */
 let userChoiceValue;
 let userChoiceResults;
@@ -118,6 +118,7 @@ const computerChoice = () => {
   return randomChoice;
 };
 
+// * Function to Filter choices array by user's choice
 const fetchUserChoice = () => {
   choices.forEach((choice) => {
     if (userChoiceValue.includes(choice.name || choice.key)) {
@@ -220,7 +221,7 @@ const playRound = () => {
   // add text content & classList 'card__choice-result__choice'
   computerChoicePara.textContent = choices[computerChoiceIndex].image;
   computerChoicePara.classList.add('card__choice-result__choice');
-  // * Insert DOM result elements content <p> before the last <p>
+  // Insert DOM result elements content <p> before the last <p>
   userChoiceDisplay.insertBefore(userChoicePara, userChoiceDisplay.firstChild);
   computerChoiceDisplay.insertBefore(
     computerChoicePara,
@@ -244,15 +245,11 @@ const resetGame = () => {
 
 // * Function => grab the buttons & for each choice - listen to event
 btnPossibleChoices.forEach((btnPossibleChoice) => btnPossibleChoice.addEventListener('click', (e) => {
+  // Grab the user's choice from the button click event (e)
   userChoiceValue = e.target.value; /* value || key */
 
-  // console.clear();
-  // * filters the userChoice to match the choices array
-  fetchUserChoice();
-  // ? todo think about it => playRound() could go in playGame()
-  // ? but playGame() is for calculating the score and reseting the game
-  // * play round
-  playRound();
+  fetchUserChoice(); /* filters the userChoice to match the choices array */
+  playRound(); /* creates DOM elements after fetching */
 }));
 
 // * scoreToWin for game to end
