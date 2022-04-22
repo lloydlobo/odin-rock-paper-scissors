@@ -250,19 +250,23 @@
                       </li>
                     </ul>
                   </div>
-                  <label for="roundsSelections">Update no. of rounds:</label>
+                  <label for="roundsSelections">Score to win:</label>
                   <select name="rounds" id="roundsSelections">
-                    <option value="">Please select rounds</option>
-                    <option value="3">3 rounds</option>
-                    <option value="5" selected>5 rounds</option>
-                    <option value="8">8 rounds</option>
-                    <option value="13">13 rounds</option>
-                    <option value="21">21 rounds</option>
+                    <option value="">Please select</option>
+                    <option value="3">3 to win</option>
+                    <option value="5" selected>5 to win</option>
+                    <option value="8">8 to win</option>
+                    <option value="13">13 to win</option>
+                    <option value="21">21 to win</option>
                   </select>
                 </div>
                 <div class="card__choices | grid grid--column">
                   <label for="userChoiceDisplay"
                     >Your Choice
+                    <span data-user-score class="resultScoreDisplay">0</span>
+                    <!-- <span data-score value="user" class="resultScoreDisplay"
+                      >0</span
+                    > -->
                     <div
                       class="card__choice-result"
                       id="userChoiceDisplay"
@@ -274,6 +278,12 @@
                   ></label>
                   <label for="computerChoiceDisplay">
                     Computer Choice
+                    <span data-computer-score class="resultScoreDisplay"
+                      >0</span
+                    >
+                    <!-- <span data-score value="user" class="resultScoreDisplay"
+                      >0</span
+                    > -->
                     <div
                       class="card__choice-result"
                       id="computerChoiceDisplay"
