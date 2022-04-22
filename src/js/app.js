@@ -227,13 +227,10 @@ const playRound = () => {
 // * reset the game when roundSelecions is changed
 const resetGame = () => {
   // remove the appended <p> elements
-  userChoiceDisplay.innerHTML = '';
-  computerChoiceDisplay.innerHTML = '';
-  resultDisplay.textContent = '';
-  // * reset the score
-  dataUserScoreSpan.textContent = 0;
-  dataComputerScoreSpan.textContent = 0;
-  // * reset the round
+  [userChoiceDisplay.innerHTML, computerChoiceDisplay.innerHTML, resultDisplay.textContent] = '';
+  // reset the score
+  [dataUserScoreSpan.textContent, dataComputerScoreSpan.textContent] = 0;
+  // reset the round
   roundResultInsert.textContent = '';
 };
 
