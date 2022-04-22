@@ -255,6 +255,16 @@ btnPossibleChoices.forEach((btnPossibleChoice) => btnPossibleChoice.addEventList
   playRound();
 }));
 
+// * scoreToWin for game to end
+let scoreToWin = roundsSelections.value;
+
+// get rounds value set by the user (default is 5)
+roundsSelections.addEventListener('change', (e) => {
+  scoreToWin = e.target.value;
+  resetGame();
+  return scoreToWin;
+});
+
 const playGame = () => {
   // * play rounds
   for (let i = 0; i < scoreToWin; i += 1) {
