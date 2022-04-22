@@ -95,7 +95,13 @@ function addScoreUpdate(dataScoreSpan) {
   addScoreUpdateProperty.textContent = parseInt(dataScoreSpan.textContent) + 1;
 }
 
-// todo playGame() could use this
+// convert to function
+/* const insertRoundResult = (roundResultInsert) => {
+  roundResultInsert.textContent = userChoice;
+  roundResultInsert.textContent = winAll;
+  resultDisplay.appendChild(roundResultInsert);
+}; */
+
 // * Declare result of a single round
 const roundResult = (userChoiceIndex, computerChoiceIndex) => {
   const choicesArrayLength = choices.length;
