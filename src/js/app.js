@@ -118,8 +118,7 @@ const computerChoice = () => {
   return randomChoice;
 };
 
-// * Filter choices array by user's choice
-function fetchUserChoice() {
+const fetchUserChoice = () => {
   choices.forEach((choice) => {
     if (userChoiceValue.includes(choice.name || choice.key)) {
       userChoice = choice.image;
@@ -130,7 +129,7 @@ function fetchUserChoice() {
     }
     return userChoiceResults;
   });
-}
+};
 
 // adds new paragraph choice emoji to DOM /* this can go at the top */
 const roundResultInsert = document.createElement('p'); // create a new <p> element
