@@ -2,12 +2,6 @@
 
 /* declare and intialize const variables => always const before let */
 
-// set result statement
-const winUser = 'You win';
-const winComputer = 'Computer wins';
-const winAll = "It's a tie! Everyone Wins!";
-/* const tieAllImage = '🫶 '; */ /* https://emojipedia.org/heart-hands/ */
-
 // get DOM elements by id
 const userChoiceDisplay = document.getElementById('userChoiceDisplay');
 const computerChoiceDisplay = document.getElementById('computerChoiceDisplay');
@@ -100,10 +94,6 @@ const resultStatements = [
 let userChoice; /* "temporal dead zone" (TDZ) */
 let userChoiceValue;
 let userChoiceResults;
-// * scoreToWin for game to end
-let scoreToWin = roundsSelections.value;
-console.log('🚀 ~ scoreToWin', scoreToWin);
-/* let userChoiceIndex; */
 
 // -----------------------------------------------------------------------------
 
@@ -125,7 +115,6 @@ const fetchUserChoice = () => {
       userChoice = choice.image;
       const userChoiceIndex = choice.index;
       userChoiceResults = [userChoice, userChoiceIndex];
-
       return userChoiceResults;
     }
     return userChoiceResults;
@@ -140,17 +129,6 @@ const addScoreUpdate = (dataScoreSpan) => {
 
 // adds new paragraph choice emoji to DOM /* this can go at the top */
 const roundResultInsert = document.createElement('p'); // create a new <p> element
-
-/* const createNewPara = () => {
-  roundResultInsert.textContent = userChoice;
-  resultDisplay.appendChild(roundResultInsert);
-}; */
-
-// ! this is breaking everything
-function addScoreUpdate(dataScoreSpan) {
-  const addScoreUpdateProperty = dataScoreSpan;
-  addScoreUpdateProperty.textContent = parseInt(dataScoreSpan.textContent) + 1;
-}
 
 // convert to function
 /* const insertRoundResult = (roundResultInsert) => {
@@ -186,38 +164,18 @@ const roundResult = (userChoiceIndex, computerChoiceIndex) => {
   return 'error';
 };
 
-// increment the score for user & computer => addScoreUpdate(dataScoreSpan)
-
-/* adds most recent choice history of both users */
 // * Function => Adds a new round result to the DOM
 const playRound = () => {
-  // Create DOM result elements content <p>
   const userChoicePara = document.createElement('p');
   const computerChoicePara = document.createElement('p');
-
-  // * Run the random computer choice generator ONLY ONCE HERE
+  // Run the random computer choice generator ONLY ONCE HERE
   const computerChoices = choices[computerChoice()];
-
   // Retrieve results & map to computer's random number with choices[] array
   const computerChoiceResults = [computerChoices.image, computerChoices.index];
-
   // Define the computer results image and index with choices[] array
-  /* const computerChoiceImage = computerChoiceResults[0]; */
   const computerChoiceIndex = computerChoiceResults[1];
-  // ? would we need a forEach() loop here? if user's increase?
-
-  // add text content & classList 'card__choice-result__choice'
   userChoicePara.textContent = userChoice;
   userChoicePara.classList.add('card__choice-result__choice');
-
-  // ! todo think over it
-  /* // add winnwe classList to the winner of the round()
-  if (userChoiceIndex === computerChoiceIndex) {
-    userChoicePara.classList.add('card__choice-result__choice--win');
-  } else {
-    computerChoicePara.classList.add('card__choice-result__choice--win');
-  } */
-
   // add text content & classList 'card__choice-result__choice'
   computerChoicePara.textContent = choices[computerChoiceIndex].image;
   computerChoicePara.classList.add('card__choice-result__choice');
@@ -227,7 +185,6 @@ const playRound = () => {
     computerChoicePara,
     computerChoiceDisplay.firstChild,
   );
-  // * Display result in the DOM UI
   resultDisplay.textContent = `${userChoiceResults[0]} vs ${computerChoiceResults[0]}`;
 
   return roundResult(userChoiceResults[1], computerChoiceResults[1]);
@@ -265,7 +222,6 @@ roundsSelections.addEventListener('change', (e) => {
 const playGame = () => {
   // * play rounds
   for (let i = 0; i < scoreToWin; i += 1) {
-    // add a if statment here for dataScoreSpan === scoreToWin
     playRound();
     if (dataUserScoreSpan.textContent === scoreToWin) {
       resultDisplay.textContent = winUser;
@@ -280,18 +236,9 @@ const playGame = () => {
   resetGame();
 };
 
-// get rounds value set by the user (default is 5)
-roundsSelections.addEventListener('change', (e) => {
-  scoreToWin = e.target.value;
-  console.log('🚀 ~ scoreToWin', scoreToWin);
-  // * reset the game when scoreToWin value is changed
-  resetGame();
-  return scoreToWin;
-});
-
 // reset game when rounds are over
 /* const roundsNumber = parseInt(rounds); const roundsArray = [];
-for (let i = 0; i < roundsNumber; i++) {roundsArray.push playRound());} */
+  for (let i = 0; i < roundsNumber; i++) {roundsArray.push playRound());} */
 
 // -----------------------------------------------------------------------------
 
@@ -313,9 +260,9 @@ for (let i = 0; i < roundsNumber; i++) {roundsArray.push playRound());} */
 
 // -----------------------------------------------------------------------------
 /* const computerChoiceResults = [
-      choices[computerChoice()].image,
-      choices[computerChoice()].index,
-    ]; */
+        choices[computerChoice()].image,
+        choices[computerChoice()].index,
+      ]; */
 
 // const computerChoiceIndexResult = choices[computerChoice()].index;
 // const computerChoiceImageResult = choices[computerChoice()].image;
@@ -325,16 +272,16 @@ for (let i = 0; i < roundsNumber; i++) {roundsArray.push playRound());} */
 //  --------------------------------------------------------------------
 
 /* function game() {
-  const rounds = roundsSelections.value;
-  rounds = 3;
-  for (let i = 0; i < rounds; i++) {
-    playRound();
-  }
-} */
+    const rounds = roundsSelections.value;
+    rounds = 3;
+    for (let i = 0; i < rounds; i++) {
+      playRound();
+    }
+  } */
 
 /* https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt#a_stricter_parse_function */
 /* function parseInt(string: string, radix?: number): number */
 /* if radix is not specified, it defaults to base 10 (decimal) else base 16 (hexadecimal) */
 /* A value between 2 and 36 that specifies the base of the number in string.
-  If this argument is not supplied, strings with a prefix of '0x' are considered hexadecimal.
-  All other strings are considered decimal. */
+    If this argument is not supplied, strings with a prefix of '0x' are considered hexadecimal.
+    All other strings are considered decimal. */
