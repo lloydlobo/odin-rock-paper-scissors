@@ -107,11 +107,16 @@ console.log('🚀 ~ scoreToWin', scoreToWin);
 
 // -----------------------------------------------------------------------------
 
+/* 3 btns, Math.floor() returns Math.random() to the nearest +ve integer */
+// * Function to generate computer's random integer => 0<= i <=2
 const computerChoice = () => {
   const randomNumber = Math.random();
-  const randomChoice = Math.floor(randomNumber * btnPossibleChoices.length);
+  const numberOfButtons = btnPossibleChoices.length;
+  const randomChoiceNumber = randomNumber * numberOfButtons;
+  const randomChoice = Math.floor(randomChoiceNumber);
+
   return randomChoice;
-}
+};
 
 // * Filter choices array by user's choice
 function fetchUserChoice() {
