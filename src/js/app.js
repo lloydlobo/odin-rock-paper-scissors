@@ -50,7 +50,49 @@ const choices = [
     value: 'scissors',
   },
 ];
+
+// set result statement
+const tieAllImage = '🤝'; /* https://emojipedia.org/heart-hands/ */
+const winUserImage = '✨';
+const winComputerImage = '🔥';
+const winAll = `${tieAllImage} It's a Tie!`;
+const winUser = `${winUserImage} You Won!`;
+const winComputer = `${winComputerImage} Bot Won!`;
+
+// * array of possible result statements
+const resultStatements = [
+  {
+    name: winUser,
+    beats: [1, 2],
+    class: 'win',
+    gameType: 'twoPlayer',
+    image: '<img src="images/win.png" alt="win">',
+    index: 0,
+    type: ['traditional'],
+    value: 1,
+    who: 'user',
+  },
+  {
+    name: winComputer,
+    beats: [0, 2],
+    class: 'lose',
+    gameType: 'twoPlayer',
+    image: '<img src="images/lose.png" alt="lose">',
+    index: 1,
+    type: ['traditional'],
+    value: -1,
+    who: 'computer',
+  },
+  {
+    name: winAll,
+    beats: [0, 1, 2],
+    class: 'tie',
+    gameType: 'twoPlayer',
+    image: '<img src="images/tie.png" alt="tie">',
     index: 2,
+    type: ['traditional'],
+    value: 0,
+    who: 'tie',
   },
 ];
 
