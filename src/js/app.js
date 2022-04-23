@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* $ ./node_modules/.bin/eslint --fix src/js/app.js */
 
 /* declare and initialize const variables => always const before let */
@@ -5,12 +6,13 @@
 const userChoiceDisplay = document.getElementById('userChoiceDisplay');
 const computerChoiceDisplay = document.getElementById('computerChoiceDisplay');
 const resultDisplay = document.getElementById('resultDisplay');
-const dataUserScoreSpan = document.querySelector('[data-user-score]');
-const dataComputerScoreSpan = document.querySelector('[data-computer-score]');
+const dataScoreSpanUser = document.querySelector('[data-user-score]');
+const dataScoreSpanComputer = document.querySelector('[data-computer-score]');
 
 const roundsSelections = document.getElementById('roundsSelections');
 // select all buttons with class of buttonChoice
 const btnPossibleChoices = document.querySelectorAll('.buttonChoice');
+// console.dir(btnPossibleChoices);
 
 /* set btnPossibleChoices.length when !type: "traditional" */
 // choices array to store all possible choices
@@ -53,41 +55,41 @@ const winUser = `${winUserImage} You Won!`;
 const winComputer = `${winComputerImage} Bot Won!`;
 
 // * array of possible result statements
-const resultStatements = [
-  {
-    name: winUser,
-    beats: [1, 2],
-    class: 'win',
-    gameType: 'twoPlayer',
-    image: '<img src="images/win.png" alt="win">',
-    index: 0,
-    type: ['traditional'],
-    value: 1,
-    who: 'user',
-  },
-  {
-    name: winComputer,
-    beats: [0, 2],
-    class: 'lose',
-    gameType: 'twoPlayer',
-    image: '<img src="images/lose.png" alt="lose">',
-    index: 1,
-    type: ['traditional'],
-    value: -1,
-    who: 'computer',
-  },
-  {
-    name: winAll,
-    beats: [0, 1, 2],
-    class: 'tie',
-    gameType: 'twoPlayer',
-    image: '<img src="images/tie.png" alt="tie">',
-    index: 2,
-    type: ['traditional'],
-    value: 0,
-    who: 'tie',
-  },
-];
+// const resultStatements = [
+//   {
+//     name: winUser,
+//     beats: [1, 2],
+//     class: 'win',
+//     gameType: 'twoPlayer',
+//     image: '<img src="images/win.png" alt="win">',
+//     index: 0,
+//     type: ['traditional'],
+//     value: 1,
+//     who: 'user',
+//   },
+//   {
+//     name: winComputer,
+//     beats: [0, 2],
+//     class: 'lose',
+//     gameType: 'twoPlayer',
+//     image: '<img src="images/lose.png" alt="lose">',
+//     index: 1,
+//     type: ['traditional'],
+//     value: -1,
+//     who: 'computer',
+//   },
+//   {
+//     name: winAll,
+//     beats: [0, 1, 2],
+//     class: 'tie',
+//     gameType: 'twoPlayer',
+//     image: '<img src="images/tie.png" alt="tie">',
+//     index: 2,
+//     type: ['traditional'],
+//     value: 0,
+//     who: 'tie',
+//   },
+// ];
 
 // declare `let` variables
 let userChoice; /* "temporal dead zone" (TDZ) */
@@ -151,13 +153,13 @@ const roundResult = (userChoiceIndex, computerChoiceIndex) => {
   if (choiceIndexComputerWins) {
     roundResultInsert.textContent = winComputer;
     resultDisplay.appendChild(roundResultInsert);
-    addScoreUpdate(dataComputerScoreSpan);
+    addScoreUpdate(dataScoreSpanComputer);
     return 'computer';
   }
   if (!choiceIndexComputerWins) {
     roundResultInsert.textContent = winUser;
     resultDisplay.appendChild(roundResultInsert);
-    addScoreUpdate(dataUserScoreSpan);
+    addScoreUpdate(dataScoreSpanUser);
     return 'user';
   }
   return 'error';
@@ -193,77 +195,195 @@ const playRound = () => {
 // * reset the game when <select> element roundSelections is changed
 const resetGame = () => {
   // remove the appended <p> elements
-  // [
-  //   userChoiceDisplay.innerHTML,
-  //   computerChoiceDisplay.innerHTML,
-  //   resultDisplay.textContent,
-  // ] = '';
   [
     userChoiceDisplay.textContent,
     computerChoiceDisplay.textContent,
     resultDisplay.textContent,
   ] = '';
-  // reset the score
-  dataUserScoreSpan.textContent = '0';
-  dataComputerScoreSpan.textContent = '0';
-  // reset the round
+  dataScoreSpanUser.textContent = '0';
+  dataScoreSpanComputer.textContent = '0';
   roundResultInsert.textContent = '';
 };
 
-// * Function => grab the buttons & for each choice - listen to event
-btnPossibleChoices.forEach((btnPossibleChoice) => btnPossibleChoice.addEventListener('click', (e) => {
-  // Grab the user's choice from the button click event (e)
-  userChoiceValue = e.target.value; /* value || key */
-
-  fetchUserChoice(); /* filters the userChoice to match the choices array */
-  playRound(); /* creates DOM elements after fetching */
-}));
+// function to disable buttons
+function disableBtnPossibleChoices() {
+  btnPossibleChoices.forEach((btnPossibleChoice) => {
+    const btnToDisable = btnPossibleChoice;
+    btnToDisable.disabled = true;
+  });
+}
 
 // * scoreToWin for game to end
-let scoreToWin = roundsSelections.value;
+let scoreToWin = Number(roundsSelections.value);
 
 // get rounds value set by the user (default is 5)
 roundsSelections.addEventListener('change', (e) => {
-  scoreToWin = e.target.value;
+  scoreToWin = Number(e.target.value);
+  console.log('🚀 ~ scoreToWin', scoreToWin);
   resetGame();
   return scoreToWin;
 });
 
-const playGame = () => {
-  // * play rounds
-  for (let i = 0; i < scoreToWin; i += 1) {
-    playRound();
-    if (dataUserScoreSpan.textContent === scoreToWin) {
-      resultDisplay.textContent = winUser;
-      break;
-    } else if (dataComputerScoreSpan.textContent === scoreToWin) {
-      resultDisplay.textContent = winComputer;
-      break;
-    } else {
-      resultDisplay.textContent = winAll;
-    }
+// Function to set timeout to resetGame()
+function delayResetGameTimeOut() {
+  setTimeout(() => {
+    resetGame();
+    console.log('Game was reseted');
+  }, 3000);
+}
+
+function roundResultInsertWinGameUser() {
+  roundResultInsert.textContent = winUser;
+}
+
+function roundResultInsertWinGameComputer() {
+  roundResultInsert.textContent = winComputer;
+}
+
+// * Function => grab the buttons & for each choice - listen to event
+btnPossibleChoices.forEach((btnPossibleChoice) => btnPossibleChoice.addEventListener('click', (e) => {
+  userChoiceValue = e.target.value; /* value || key */
+  fetchUserChoice(); /* filters the userChoice to match the choices array */
+  playRound(); /* creates DOM elements after fetching */
+
+  // game win conditions
+  const dataScoreSpanInnerTextUser = dataScoreSpanUser.innerText;
+  const dataScoreSpanInnerTextComputer = dataScoreSpanComputer.innerText;
+  const scoreFinalUser = Number(dataScoreSpanInnerTextUser);
+  const scoreFinalComputer = Number(dataScoreSpanInnerTextComputer);
+  const winGameUser = scoreFinalUser === scoreToWin;
+  const winGameComputer = scoreFinalComputer === scoreToWin;
+
+  // final winner if conditionals
+  if (winGameUser) {
+    roundResultInsertWinGameUser();
+    disableBtnPossibleChoices();
+    // resultDisplay.textContent = winUser;
+    delayResetGameTimeOut();
+  } else if (winGameComputer) {
+    roundResultInsertWinGameComputer();
+    disableBtnPossibleChoices();
+    // resultDisplay.textContent = winComputer;
+    roundResultInsert.textContent = winComputer;
+    delayResetGameTimeOut();
   }
-  resetGame();
-};
+  console.log(`user score: ${dataScoreSpanUser.innerText} computer score: ${dataScoreSpanComputer.innerText}`);
+  console.log('🚀 ~ scoreFinalUser', scoreFinalUser);
+  console.log('🚀 ~ scoreFinalComputer', scoreFinalComputer);
+  console.log('🚀 ~ scoreToWin', scoreToWin);
+}));
+
+// const playGame = () => {
+//   const scoreFinalUser = Number(dataScoreSpanInnerTextUser);
+//   const scoreFinalComputer = Number(dataScoreSpanInnerTextComputer);
+//   console.log('🚀 ~ scoreFinalUser', scoreFinalUser);
+//   console.log('🚀 ~ scoreFinalComputer', scoreFinalComputer);
+//   console.log('🚀 ~ scoreToWin', scoreToWin);
+//   // final winner if conditionals
+//   if (scoreFinalUser === scoreToWin) {
+//     console.log('🚀 ~ (scoreFinalUser === scoreToWin)', (scoreFinalUser === scoreToWin));
+//     disableBtnPossibleChoices();
+//     resultDisplay.textContent = winUser;
+//     setTimeout(() => {
+//       resetGame();
+//     }, 3000);
+//   } else if (dataScoreSpanComputer.textContent === scoreToWin) {
+//     disableBtnPossibleChoices();
+//     resultDisplay.textContent = winComputer;
+//     setTimeout(() => {
+//       resetGame();
+//     }, 3000);
+//   } else {
+//     disableBtnPossibleChoices();
+//     resultDisplay.textContent = winAll;
+//     setTimeout(() => {
+//       resetGame();
+//     }, 3000);
+//   }
+// };
+// playGame();
 
 // reset game when rounds are over
 /* const roundsNumber = parseInt(rounds); const roundsArray = [];
   for (let i = 0; i < roundsNumber; i++) {roundsArray.push playRound());} */
 
 // -----------------------------------------------------------------------------
+// 20220423192830
+// ! main.js version1
+// * function calls statements
+// function declareGameWinner() {
+//   const win = 'win';
+//   const lose = 'lose';
+//   const tie = 'tie';
+//   return [win, lose, tie];
+// }
+
+// game logic and plays 5 rounds of rock paper scissors
+// function game() {
+//   const scoreFinalUser = dataScoreSpanInnerTextUser;
+//   const scoreFinalComputer = dataScoreSpanInnerTextComputer;
+//   // eslint-disable-next-line no-console
+//   console.log('🚀 ~ scoreFinalUser', scoreFinalUser);
+//   // eslint-disable-next-line no-console
+//   console.log('🚀 ~ scoreFinalComputer', scoreFinalComputer);
+//   let round = 0;
+
+//   for (let i = 0; i < 5; i += 1) {
+//     const [userChoice, computerChoice] = fetchUserComputerSelection();
+//     const roundResult = playRound(userChoice, computerChoice);
+//     round += 1;
+//     const [win, lose, tie] = declareStatement();
+//     if (roundResult.includes(win)) {
+//       scoreFinalUser += 1;
+//     } else if (roundResult.includes(lose)) {
+//       scoreFinalComputer += 1;
+//     } else roundResult.includes(tie);
+//     console.log(`${gameRoundResult}`);
+//   }
+//   const successUser = `Game over! You succeeded!
+// \nFinal score:\nuserScore: ${scoreFinalUser} to scoreFinalComputer: ${scoreFinalComputer}`;
+//   const successComputer = `Game over! Computer succeeded!\nFinal score:
+// \nuserScore: ${scoreFinalUser} to scoreFinalComputer: ${scoreFinalComputer}`;
+//   const successUserComputer = `Game over! It's a tie! Everyone succeeded!
+//    \nFinal score:\nuserScore: ${scoreFinalUser} to scoreFinalComputer: ${scoreFinalComputer}`;
+
+//   if (scoreFinalUser > scoreFinalComputer) {
+//     resultDisplay.textContent = successUser;
+//   } else if (scoreFinalUser < scoreFinalComputer) {
+//     resultDisplay.textContent = successComputer;
+//   } else if (scoreFinalUser === scoreFinalComputer) {
+//     resultDisplay.textContent = successUserComputer;
+//   }
+//   return resultDisplay.textContent;
+// }
+
+// game();
+
+// restart game
+// function restartGame() {
+//   const promptMessageRestart = 'Would you like to play again? (y/n)';
+//   const reset = prompt(promptMessageRestart, 'y');
+//   if (reset === 'y') {
+//     game();
+//     restartGame(); /* prompts user again when game() ends 2nd time */
+//   } else {
+//     console.log('Thanks for playing!');
+//   }
+// }
+// restartGame();
 
 // function to play a game of round = rounds from user input in #roundsSelections
 // const game = () => {
 //   let round = 0;
-//   let userScore = 0;
-//   let computerScore = 0;
+//   let scoreFinalUser = 0;
+//   let scoreFinalComputer = 0;
 //   for (let i = 0; i < 5; i++) {
 //     playRound();
 //     round++;
 //     if (round % 2 === 0) {
-//       userScore++;
+//       scoreFinalUser++;
 //     } else {
-//       computerScore++;
+//       scoreFinalComputer++;
 //     }
 //   }
 // };
