@@ -1004,7 +1004,7 @@ components/cards
   width: 100%;
 }
 
-.card__choices > label {
+.card__choices__title {
   color: var(--yellow-3);
   font-size: var(--font-size-fluid-0);
   text-transform: uppercase;
@@ -1012,10 +1012,10 @@ components/cards
   font-weight: var(--font-weight-5);
 }
 
-.card__choices > label::backdrop {
+.card__choices__title::backdrop {
   backdrop-filter: blur(2px);
 }
-.card__choices > label::first-letter {
+.card__choices__title::first-letter {
   font-weight: var(--font-weight-6);
   color: var(--yellow-4);
   font-size: var(--font-size-fluid-1);
@@ -1255,6 +1255,11 @@ components/circle
 /* ***********
 components/forms
 *********** */
+
+.score-label {
+  color: var(--gray-3);
+}
+
 .modal__dialog {
   background-color: var(--surface-2);
 }

@@ -1,0 +1,41 @@
+# Ignore distribution directory
+dist
+
+# Ignore development directory
+archive
+docs
+public
+
+# https://github.com/prettier/prettier-eslint/blob/master/.prettierignore
+node_modules
+dist
+tests/fixtures/
+# .nyc_output
+# coverage
+
+# Ignore artifacts:
+build
+coverage
+
+# Ignore all HTML files:
+# *.html
+
+# Ignore . files and directories:
+**/.git
+**/.svn
+**/.hg
+**/node_modules
+
+# Ignore .gitignore files
+.gitignore
+
+# Ignore .toml files - netlify, deepsource, etc
+*.toml
+.deepsource.toml
+
+# Ignore .json files (for now)
+*.json
+
+# Ignore browser-sync config files
+bs-config.js
+.browser-sync

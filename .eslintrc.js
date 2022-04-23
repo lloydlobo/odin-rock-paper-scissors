@@ -4,12 +4,21 @@ module.exports = {
     es2021: true,
   },
   extends: ['airbnb-base'],
+  // extends: ['airbnb-base', 'prettier'],
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
-  rules: {},
-}; /* Extending "prettier" turns off a bunch of core ESLint rules,
+  // plugins: ['prettier'],
+  rules: {
+    // 'prettier/prettier': 'error',
+  },
+};
+
+// ------------------------------------------------------------------
+
+// https://dev.to/saurabhggc/add-eslint-prettier-and-airbnb-to-your-project-3mo8
+/* Extending "prettier" turns off a bunch of core ESLint rules,
 as well as a few rules from these plugins:
 /* (Remember, "rules" always “wins” over "extends"!) — https://github.com/Fundamentals-Playground/eslint-config-prettier */
 // add "prettier" to the "extends" array in your .eslintrc.* file.

@@ -20,7 +20,7 @@ Don’t forget to commit early & often! You can reference the Commit Message les
       // your code here!
     }
 
-    const playerSelection = "rock";
+    const playerSelection = 'rock';
     const computerSelection = computerPlay();
     console.log(playRound(playerSelection, computerSelection));
     ```

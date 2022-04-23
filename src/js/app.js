@@ -1,7 +1,6 @@
 /* $ ./node_modules/.bin/eslint --fix src/js/app.js */
 
-/* declare and intialize const variables => always const before let */
-
+/* declare and initialize const variables => always const before let */
 // get DOM elements by id
 const userChoiceDisplay = document.getElementById('userChoiceDisplay');
 const computerChoiceDisplay = document.getElementById('computerChoiceDisplay');
@@ -97,7 +96,7 @@ let userChoiceResults;
 
 // -----------------------------------------------------------------------------
 
-/* 3 btns, Math.floor() returns Math.random() to the nearest +ve integer */
+/* 3 buttons, Math.floor() returns Math.random() to the nearest +ve integer */
 // * Function to generate computer's random integer => 0<= i <=2
 const computerChoice = () => {
   const randomNumber = Math.random();
@@ -124,7 +123,7 @@ const fetchUserChoice = () => {
 // * Updates score with each win
 const addScoreUpdate = (dataScoreSpan) => {
   const addScoreUpdateProperty = dataScoreSpan;
-  addScoreUpdateProperty.textContent = parseInt(dataScoreSpan.textContent) + 1;
+  addScoreUpdateProperty.textContent = parseInt(dataScoreSpan.textContent, 10) + 1;
 };
 
 // adds new paragraph choice emoji to DOM /* this can go at the top */
@@ -165,6 +164,7 @@ const roundResult = (userChoiceIndex, computerChoiceIndex) => {
 };
 
 // * Function => Adds a new round result to the DOM
+
 const playRound = () => {
   const userChoicePara = document.createElement('p');
   const computerChoicePara = document.createElement('p');
@@ -190,12 +190,22 @@ const playRound = () => {
   return roundResult(userChoiceResults[1], computerChoiceResults[1]);
 };
 
-// * reset the game when roundSelecions is changed
+// * reset the game when <select> element roundSelections is changed
 const resetGame = () => {
   // remove the appended <p> elements
-  [userChoiceDisplay.innerHTML, computerChoiceDisplay.innerHTML, resultDisplay.textContent] = '';
+  // [
+  //   userChoiceDisplay.innerHTML,
+  //   computerChoiceDisplay.innerHTML,
+  //   resultDisplay.textContent,
+  // ] = '';
+  [
+    userChoiceDisplay.textContent,
+    computerChoiceDisplay.textContent,
+    resultDisplay.textContent,
+  ] = '';
   // reset the score
-  [dataUserScoreSpan.textContent, dataComputerScoreSpan.textContent] = 0;
+  dataUserScoreSpan.textContent = '0';
+  dataComputerScoreSpan.textContent = '0';
   // reset the round
   roundResultInsert.textContent = '';
 };

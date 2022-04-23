@@ -7,7 +7,10 @@
     "doc": "docs"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint --ext .js,.json src test",
+    "lint -a": "eslint .",
+    "format": "prettier --ignore-path .prettierignore --write '**/*.{js,json,md}'"
   },
   "repository": {
     "type": "git",
@@ -32,14 +35,17 @@
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-prettier": "^4.0.0",
     "gulp": "^4.0.2",
     "gulp-babel": "^8.0.0",
     "gulp-clean-css": "^4.3.0",
     "gulp-concat": "^2.6.1",
+    "gulp-eslint": "^6.0.0",
     "gulp-postcss": "^9.0.1",
     "gulp-sass": "^5.1.0",
     "gulp-terser": "^2.1.0",
     "postcss": "^8.4.12",
+    "prettier": "^2.6.2",
     "sass": "^1.50.1",
     "stylelint": "^14.7.1"
   }
