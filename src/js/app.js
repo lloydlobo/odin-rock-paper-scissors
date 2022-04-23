@@ -124,7 +124,7 @@ const fetchUserChoice = () => {
 // * Updates score with each win
 const addScoreUpdate = (dataScoreSpan) => {
   const addScoreUpdateProperty = dataScoreSpan;
-  addScoreUpdateProperty.textContent = parseInt(dataScoreSpan.textContent) + 1;
+  addScoreUpdateProperty.textContent = parseInt(dataScoreSpan.textContent, 10) + 1;
 };
 
 // adds new paragraph choice emoji to DOM /* this can go at the top */
@@ -165,6 +165,7 @@ const roundResult = (userChoiceIndex, computerChoiceIndex) => {
 };
 
 // * Function => Adds a new round result to the DOM
+
 const playRound = () => {
   const userChoicePara = document.createElement('p');
   const computerChoicePara = document.createElement('p');
@@ -193,7 +194,11 @@ const playRound = () => {
 // * reset the game when roundSelecions is changed
 const resetGame = () => {
   // remove the appended <p> elements
-  [userChoiceDisplay.innerHTML, computerChoiceDisplay.innerHTML, resultDisplay.textContent] = '';
+  [
+    userChoiceDisplay.innerHTML,
+    computerChoiceDisplay.innerHTML,
+    resultDisplay.textContent,
+  ] = '';
   // reset the score
   [dataUserScoreSpan.textContent, dataComputerScoreSpan.textContent] = 0;
   // reset the round
