@@ -214,3 +214,5 @@ out
 # root folders
 docs/notes.md
 archive/
+## .eslintrc.js is the default config file for eslint
+.eslintrc
