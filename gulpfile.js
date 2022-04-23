@@ -4,20 +4,25 @@
 const {
   src, dest, watch, series,
 } = require('gulp');
-/* const sass = require('gulp-sass')(require('sass'));
+
+// backlog:
+/*
+const sass = require('gulp-sass')(require('sass'));
 const postcss = require('gulp-postcss');
 const autoprefixer = require('autoprefixer');
-const cssnano = require('cssnano'); */ /* enable when scss is ready */
+const cssnano = require('cssnano'); */ /* enable when scss is ready \
+*/
 const babel = require('gulp-babel');
 const terser = require('gulp-terser');
 const browsersync = require('browser-sync').create();
+const gulpCleanCss = require('gulp-clean-css');
 /* to be assigned — seems terser does this well for js, don't know about css @concat */
 // const concat = require("gulp-concat");
-const gulpCleanCss = require('gulp-clean-css');
 
 // Use dart-sass for @use
 // sass.compiler = require('dart-sass');
 
+// backlog:
 // Sass Task
 /* function scssTask() {
   return (
@@ -94,12 +99,54 @@ exports.build = series(gulpCleanCssTask, jsTask); /* add scssTask when ready */
 
 // ------------------------------------------------------------------
 
+// ------------------------------------------------------------------
+// archive
+// ------------------------------------------------------------------
+
+// ------------------------------------------------------------------
+// 20220423120450
+// Lint Task
+/* (－‸ლ) for your own sake, please ditch gulp and just invoke eslint using npm run-scripts :-) */
+/* https://githubhot.com/repo/airbnb/javascript/issues/2545 */
+// function lintTask() {
+//   return (
+//     gulp
+//       .src(['src/**/*.js', '!node_modules/**'])
+//       // eslint() attaches the lint output to the "eslint" property
+//       // of the file object so it can be used by other modules.
+//       .pipe(eslint({}))
+//       // eslint.format() outputs the lint results to the console.
+//       // Alternatively use eslint.formatEach() (see Docs).
+//       .pipe(eslint.format())
+//       // To have the process exit with an error code (1) on
+//       // lint error, return the stream and pipe to failAfterError last.
+//       .pipe(eslint.failAfterError())
+//   );
+// }
+
+// ------------------------------------------------------------------
+// 20220423103351
+// // const esLinters = [
+// //   'src/**/*.js',
+// //   '!src/js/vendor/**/*.js',
+// //   '!src/js/custom.js',
+// // ];
+/* const elLintFormatOnSave = () => {
+  return src(esLintFormatOnSave)
+    .pipe(babel())
+    .pipe(terser())
+    .pipe(dest('dist'));
+}; */
+
+// ------------------------------------------------------------------
+// 20220421043400
 // const { src, dest, watch, series, parallel } = require('gulp');
 // const browsersync = require('browser-sync').create();
 // const cleanCss = require("clean-css");
 // var input = "a{font-weight:bold;}";
 // var options = {/* options */};
 // var output = new CleanCSS(options).minify(input);
+
 // https://www.toptal.com/javascript/optimize-js-and-css-with-gulp
 // const gulpCleanCss = require('gulp-clean-css');
 // const concat = require("gulp-concat"); /* to be assigned */
@@ -118,21 +165,18 @@ exports.build = series(gulpCleanCssTask, jsTask); /* add scssTask when ready */
     .pipe(cleanCss())
     .pipe(dest("dist/css/", { sourcemaps: "." }));
 } */
-
 // gulp-clean-css task /* gulp recommends clean-css */
 /* function gulpCleanCssTask() {
   return src('src/css/*.css', { sourcemaps: true })
     .pipe(gulpCleanCss())
     .pipe(dest('dist', { sourcemaps: '.' }));
 } */
-
 // javascript task
 /* function jsTask() {
   return src(['src/js/app.js', 'src/js/theme-toggle.js'], { sourcemaps: true })
     .pipe(terser())
     .pipe(dest('dist', { sourcemaps: '.' }));
 } */
-
 // sass task /* nodestream returned usein gsrc function called gulp and read app/style..... */
 // function scssTask() {
 //   return src("src/scss/style.scss", { sourcemaps: true })
@@ -147,7 +191,6 @@ exports.build = series(gulpCleanCssTask, jsTask); /* add scssTask when ready */
 //     .pipe(postcss([cssnano()])) /* minifies it */
 //     .pipe(dest("dist", { sourcemaps: "." }));
 // }
-
 // browsersync serve task /* it's not a gulp () so manually init it */
 /* function browsersyncServe(cb) {
   browsersync.init({
@@ -162,22 +205,13 @@ exports.build = series(gulpCleanCssTask, jsTask); /* add scssTask when ready */
   browsersync.reload();
   cb();
 } */
-
 // watch task
-// function watchTask() {
-//   watch('**/*.html').on('change', browsersync.reload);
-//   watch(
-//     ['src/css/**/*.css', 'src/js/**/*.js'],
-//     series(gulpCleanCssTask, jsTask, browsersyncReload)
-//   );
-// }
-
-// * default gulp task
-// exports.default = series(browsersyncServe, gulpCleanCssTask, jsTask, watchTask);
-
-// ------------------------------------------------------------------
-// archive
-// // ------------------------------------------------------------------
+// // function watchTask()
+// // {watch('**/*.html').on('change', browsersync.reload);
+// // watch(['src/css/**/*.css', 'src/js/**/*.js'],
+// // series(gulpCleanCssTask, jsTask, browsersyncReload));}
+// default gulp task
+/* exports.default = series(browsersyncServe, gulpCleanCssTask, jsTask, watchTask); */
 
 // ------------------------------------------------------------------
 // 20220420150031
@@ -185,26 +219,28 @@ exports.build = series(gulpCleanCssTask, jsTask); /* add scssTask when ready */
 
 // ------------------------------------------------------------------
 // 20220420145735
-/* // const fractal = require("./fractal.js");
-// const logger = fractal.cli.console;
-// const sassGlob = require("gulp-sass-glob");
-// const plumber = require("gulp-plumber");
-// const notify = require("gulp-notify");
-// const path = require("path"); */
 // /* https://www.smashingmagazine.com/2018/07/pattern-library-first-css/ */
+/*
+  const fractal = require("./fractal.js");
+  const logger = fractal.cli.console;
+  const sassGlob = require("gulp-sass-glob");
+  const plumber = require("gulp-plumber");
+  const notify = require("gulp-notify");
+  const path = require("path");
+*/
 
 // ------------------------------------------------------------------
 // 20220419120000
-// var gulp = require("gulp");
-// var browserSync = require("browser-sync").create();
-// var reload = browserSync.reload;
+/*
+  var gulp = require("gulp");
+  var browserSync = require("browser-sync").create();
+  var reload = browserSync.reload;
+*/
 
-// gulp.task("default", function () {
-//   browserSync.init({
-//     server: {
-//       baseDir: "./",
-//     },
-//   });
-
-//   gulp.watch("**/*").on("change", reload);
-// });
+/* gulp.task("default", function () {
+  browserSync.init({
+    server: {
+      baseDir: "./",
+    },
+  }); */
+// // gulp.watch("**/*").on("change", reload);
