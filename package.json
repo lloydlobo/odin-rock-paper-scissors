@@ -8,7 +8,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint .",
+    "lint": "eslint --ext .js,.json src test",
+    "lint -a": "eslint .",
     "format": "prettier --ignore-path .prettierignore --write '**/*.{js,json,md}'"
   },
   "repository": {
