@@ -251,8 +251,8 @@
                       </li>
                     </ul>
                   </div>
-                  <label for="roundsSelections">Score to win:</label>
-                  <select name="rounds" id="roundsSelections">
+                  <label class="score-label" for="roundsSelections">Score to win:</label>
+                  <select name="score" id="roundsSelections">
                     <option value="">Please select</option>
                     <option value="3">3 to win</option>
                     <option value="5" selected>5 to win</option>
@@ -262,7 +262,7 @@
                   </select>
                 </div>
                 <div class="card__choices grid grid--column">
-                  <div for="userChoiceDisplay">
+                  <div class="card__choices__title">
                     Your Choice
                     <span data-user-score class="resultScoreDisplay">0</span>
                     <!-- <span data-score value="user" class="resultScoreDisplay"
@@ -273,11 +273,11 @@
                       id="userChoiceDisplay"
                     ></div>
                   </div>
-                  <div for="resultDisplay">
+                  <div class="card__choices__title">
                     Result
                     <div class="card__choice-result" id="resultDisplay"></div>
                   </div>
-                  <div for="computerChoiceDisplay">
+                  <div class="card__choices__title">
                     Computer Choice
                     <span data-computer-score class="resultScoreDisplay"
                       >0</span
