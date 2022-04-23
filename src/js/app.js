@@ -204,7 +204,8 @@ const resetGame = () => {
     resultDisplay.textContent,
   ] = '';
   // reset the score
-  [dataUserScoreSpan.textContent, dataComputerScoreSpan.textContent] = '0';
+  dataUserScoreSpan.textContent = '0';
+  dataComputerScoreSpan.textContent = '0';
   // reset the round
   roundResultInsert.textContent = '';
 };
