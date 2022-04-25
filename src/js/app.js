@@ -1,4 +1,6 @@
-/* $ ./node_modules/.bin/eslint --fix src/js/app.js */
+// console.log('Gloria In Excelsis Deo!');
+
+// ESLint run command /* $ `./node_modules/.bin/eslint --fix src/js/app.js` */
 
 /* declare and initialize const variables => always const before let */
 // get DOM elements by id
@@ -95,6 +97,9 @@ let userChoice; /* "temporal dead zone" (TDZ) */
 let userChoiceValue;
 let userChoiceResults;
 
+// 'a' = rock, 's' = paper, 'd' = scissors
+let keydownPossibleChoicesKey;
+
 // -----------------------------------------------------------------------------
 
 /* 3 buttons, Math.floor() returns Math.random() to the nearest +ve integer */
@@ -108,24 +113,42 @@ const computerChoice = () => {
   return randomChoice;
 };
 
-
 // Function to fetch keydown event
-function fetchKeydownEvent(event) {
+// function fetchKeydownEvent(event) {
+//   // add window event listener for keydown
+//   window.addEventListener('keydown', (event) => {
+//     const keydownKey = event.key;
+//     const keydownCode = event.code;
 
-  // add window event listener for keydown
-  window.addEventListener('keydown', (event) => {
-    const keydownKey = event.key;
-    const keydownCode = event.code;
+//     return {
+//       keydownKey,
+//       keydownCode,
+//     };
+//   });
+// }
+// fetchKeydownEvent();
 
-    return {
-      keydownKey,
-      keydownCode,
-    };
+const choicesKeydowns = [
+  {
+    name: 'rock',
+    key: 'a',
+  },
+  {
+    name: 'paper',
+    key: 's',
+  },
+  {
+    name: 'scissors',
+    key: 'd',
+  },
+];
+
+// * Function to Filter choicesKeydowns array by user's keydown keyboard presses
+const fetchUserChoiceKeydown = () => {
+  choicesKeydowns.forEach((choicesKeydown) => {
+    setTimeout(() => ({ choicesKeydown }), 3000);
   });
-}
-
-
-
+};
 
 // * Function to Filter choices array by user's choice
 const fetchUserChoice = () => {
@@ -293,6 +316,19 @@ function roundResultInsertWinGameComputer() {
   roundResultInsert.textContent = winComputer;
 }
 
+// ---
+
+// Functions listense to keydown or keyboard key presses
+const keydownPossibleChoices = window.addEventListener('keydown', (event) => {
+  keydownPossibleChoicesKey = event.key;
+  fetchUserChoiceKeydown();
+  // console.log({ keydownPossibleChoicesKey });
+  return keydownPossibleChoicesKey;
+});
+keydownPossibleChoices();
+
+// ---
+
 // * Function => grab the buttons & for each choice - listen to event
 btnPossibleChoices.forEach((btnPossibleChoice) => btnPossibleChoice.addEventListener('click', (e) => {
   userChoiceValue = e.target.value; /* value || key */
@@ -321,127 +357,3 @@ btnPossibleChoices.forEach((btnPossibleChoice) => btnPossibleChoice.addEventList
     delayResetGameTimeOut();
   }
 }));
-
-// -----------------------------------------------------------------------------
-// 20220423192830
-// ! main.js version1
-// * function calls statements
-// function declareGameWinner() {
-//   const win = 'win';
-//   const lose = 'lose';
-//   const tie = 'tie';
-//   return [win, lose, tie];
-// }
-
-// game logic and plays 5 rounds of rock paper scissors
-// function game() {
-//   const scoreFinalUser = dataScoreSpanInnerTextUser;
-//   const scoreFinalComputer = dataScoreSpanInnerTextComputer;
-//   // eslint-disable-next-line no-console
-//   console.log('🚀 ~ scoreFinalUser', scoreFinalUser);
-//   // eslint-disable-next-line no-console
-//   console.log('🚀 ~ scoreFinalComputer', scoreFinalComputer);
-//   let round = 0;
-
-//   for (let i = 0; i < 5; i += 1) {
-//     const [userChoice, computerChoice] = fetchUserComputerSelection();
-//     const roundResult = playRound(userChoice, computerChoice);
-//     round += 1;
-//     const [win, lose, tie] = declareStatement();
-//     if (roundResult.includes(win)) {
-//       scoreFinalUser += 1;
-//     } else if (roundResult.includes(lose)) {
-//       scoreFinalComputer += 1;
-//     } else roundResult.includes(tie);
-//     console.log(`${gameRoundResult}`);
-//   }
-//   const successUser = `Game over! You succeeded!
-// \nFinal score:\nuserScore: ${scoreFinalUser} to scoreFinalComputer: ${scoreFinalComputer}`;
-//   const successComputer = `Game over! Computer succeeded!\nFinal score:
-// \nuserScore: ${scoreFinalUser} to scoreFinalComputer: ${scoreFinalComputer}`;
-//   const successUserComputer = `Game over! It's a tie! Everyone succeeded!
-//    \nFinal score:\nuserScore: ${scoreFinalUser} to scoreFinalComputer: ${scoreFinalComputer}`;
-
-//   if (scoreFinalUser > scoreFinalComputer) {
-//     resultDisplay.textContent = successUser;
-//   } else if (scoreFinalUser < scoreFinalComputer) {
-//     resultDisplay.textContent = successComputer;
-//   } else if (scoreFinalUser === scoreFinalComputer) {
-//     resultDisplay.textContent = successUserComputer;
-//   }
-//   return resultDisplay.textContent;
-// }
-
-// game();
-
-// restart game
-// function restartGame() {
-//   const promptMessageRestart = 'Would you like to play again? (y/n)';
-//   const reset = prompt(promptMessageRestart, 'y');
-//   if (reset === 'y') {
-//     game();
-//     restartGame(); /* prompts user again when game() ends 2nd time */
-//   } else {
-//     console.log('Thanks for playing!');
-//   }
-// }
-// restartGame();
-
-// function to play a game of round = rounds from user input in #roundsSelections
-// const game = () => {
-//   let round = 0;
-//   let scoreFinalUser = 0;
-//   let scoreFinalComputer = 0;
-//   for (let i = 0; i < 5; i++) {
-//     playRound();
-//     round++;
-//     if (round % 2 === 0) {
-//       scoreFinalUser++;
-//     } else {
-//       scoreFinalComputer++;
-//     }
-//   }
-// };
-
-// -----------------------------------------------------------------------------
-/* const computerChoiceResults = [
-        choices[computerChoice()].image,
-        choices[computerChoice()].index,
-      ]; */
-
-// const computerChoiceIndexResult = choices[computerChoice()].index;
-// const computerChoiceImageResult = choices[computerChoice()].image;
-
-// resultDisplay.insertBefore(roundResultInsert, resultDisplay.firstChild); /* **** */
-
-//  --------------------------------------------------------------------
-
-/* function game() {
-    const rounds = roundsSelections.value;
-    rounds = 3;
-    for (let i = 0; i < rounds; i++) {
-      playRound();
-    }
-  } */
-
-/* https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt#a_stricter_parse_function */
-/* function parseInt(string: string, radix?: number): number */
-/* if radix is not specified, it defaults to base 10 (decimal) else base 16 (hexadecimal) */
-/* A value between 2 and 36 that specifies the base of the number in string.
-    If this argument is not supplied, strings with a prefix of '0x' are considered hexadecimal.
-    All other strings are considered decimal. */
-// const key = event.key;
-// const keyValue = event.code;
-// const keyName = event.key;
-// const keyLocation = event.location;
-// const keyAltKey = event.altKey;
-// const keyCtrlKey = event.ctrlKey;
-// const keyShiftKey = event.shiftKey;
-// const keyMetaKey = event.metaKey;
-// const keyRepeat = event.repeat;
-// const keyIsComposing = event.isComposing;
-// const keyLocale = event.locale;
-// const keyLocationCode = event.locationCode;
-// const keyModifierState = event.modifierState;
-// const keyRepeatCount = event.repeatCount;
-// const keyCodePoint = event.codePoint;
