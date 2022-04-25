@@ -212,7 +212,8 @@ out
 .dccache
 
 # root folders
-docs/drafts/*.md
+docs/drafts/**/*.md
+# docs/drafts/releases/*.md
 archive/
 ## .eslintrc.js is the default config file for eslint
 .eslintrc
