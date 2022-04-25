@@ -113,28 +113,28 @@ const computerChoice = () => {
   return randomChoice;
 };
 
+// // ! debug here !!!!!!
+// function choicesFilterOnKeydown() {
+//   choices.forEach((choice) => {
+//     if (keydownPossibleChoicesKey.includes(choice.key)) {
+//       // const userKeydownChoice = choice.key;
+//       userChoice = choice.image;
+//       const userChoiceIndex = choice.index;
+//       userChoiceResults = [userChoice, userChoiceIndex];
+//       // console.log({ keydownPossibleChoicesKey });
+//       return userChoiceResults;
+//     }
+//     return userChoiceResults;
+//   });
+// }
+
+// ! fetchUserChoice func seems to be an hindrance
+// ! it only runs when a button is pressed
+// ! Take away the power btnPossibleChoices has. -- stop complicating this
 // * Function to Filter choices array by user's choice
 const fetchUserChoice = () => {
-  // Functions listense to keydown or keyboard key presses
-// Event listener fetches keydown keyboard events
-  window.addEventListener('keydown', (event) => {
-    keydownPossibleChoicesKey = event.key;
-
-    choices.forEach((choice) => {
-      if (keydownPossibleChoicesKey.includes(choice.key)) {
-        // const userKeydownChoice = choice.key;
-        userChoice = choice.image;
-        const userChoiceIndex = choice.index;
-        userChoiceResults = [userChoice, userChoiceIndex];
-        // console.log({ keydownPossibleChoicesKey });
-        return userChoiceResults;
-      }
-      return userChoiceResults;
-    });
-  });
-
   choices.forEach((choice) => {
-    if (userChoiceValue.includes(choice.name)) {
+    if (userChoiceValue.includes(choice.name) || keydownPossibleChoicesKey.includes(choice.key)) {
       userChoice = choice.image;
       const userChoiceIndex = choice.index;
       userChoiceResults = [userChoice, userChoiceIndex];
@@ -351,8 +351,48 @@ function getUserChoice() {
   declareGameWinner();
 }
 
+// Functions listense to keydown or keyboard key presses
+// Event listener fetches keydown keyboard events
+window.addEventListener('keydown', (event) => {
+  keydownPossibleChoicesKey = event.key;
+  // !!!! todododdo also disable keydown inputs after score is reached
+  // choicesFilterOnKeydown();
+  // !bug - it's accepting all keys — lol
+  getUserChoice();
+});
+
 // * Function => grab the buttons & for each choice - listen to event
-btnPossibleChoices.forEach((btnPossibleChoice) => btnPossibleChoice.addEventListener('click', (e) => {
-  userChoiceValue = e.target.value; /* value || key */
+btnPossibleChoices.forEach((btnPossibleChoice) => btnPossibleChoice.addEventListener('click' || 'keydown', (e) => {
+  userChoiceValue = e.target.value || e.keydown.key; /* value || key */
   getUserChoice();
 }));
+
+// // pseudo code land
+// https://stackoverflow.com/questions/55931622/is-there-a-method-for-adding-both-an-onkeypress-and-onclick-eventlistener-togeth
+
+// function doWhatIWant() {
+//     // code here
+// }
+
+// input.addEventListener("keyup", () => {
+//    if (event.keyCode === 13) {
+//      doWhatIWant();
+// }
+
+// input.addEventListener("click", () => {
+//      doWhatIWant();
+// }
+
+// // --------------
+// var elem = document.querySelector('input')
+
+// elem.addEventListener('keyup', eventhandler, false);
+// //elem.addEventListener('click', eventhandler, false);// not sure about this event
+// elem.addEventListener('keydown', eventhandler, false);
+
+// function eventhandler(event) {
+//      if (event.keyCode === 13) { // you press enter you get alert
+
+//         alert("hi");
+//      }
+// }
