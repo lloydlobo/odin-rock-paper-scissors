@@ -362,8 +362,8 @@ window.addEventListener('keydown', (event) => {
 });
 
 // * Function => grab the buttons & for each choice - listen to event
-btnPossibleChoices.forEach((btnPossibleChoice) => btnPossibleChoice.addEventListener('click' || 'keydown', (e) => {
-  userChoiceValue = e.target.value || e.keydown.key; /* value || key */
+btnPossibleChoices.forEach((btnPossibleChoice) => btnPossibleChoice.addEventListener('click', (e) => {
+  userChoiceValue = e.target.value; /* value || key */
   getUserChoice();
 }));
 
