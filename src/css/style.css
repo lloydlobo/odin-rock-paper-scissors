@@ -911,16 +911,15 @@ components/cards
 *********** */
 
 .card-glass {
+  z-index: var(--layer-2);
   background-clip: padding-box; /* The background-clip CSS property sets whether an element's background extends underneath its border box, padding box, or content box. */
   border-radius: var(--radius-5);
-  border: 1.5px solid var(--gray-2);
+  border: 1.5px solid var(--gray-8);
 
   padding: var(--size-8);
 
   /* From https://css.glass */
-  background: rgba(255, 255, 255, 0.618);
-
-  z-index: var(--layer-2);
+  background-color: hsla(200, 6%, 10%, 0.62); /* background: rgba(255, 255, 255, 0.618); */
 }
 
 .card {
