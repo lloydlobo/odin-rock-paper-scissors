@@ -277,7 +277,7 @@ let scoreToWin = Number(roundsSelections.value);
 // get rounds value set by the user (default is 5)
 roundsSelections.addEventListener('change', (e) => {
   scoreToWin = Number(e.target.value);
-  console.log('🚀 ~ scoreToWin', scoreToWin);
+  
   resetGame();
   return scoreToWin;
 });
@@ -286,7 +286,7 @@ roundsSelections.addEventListener('change', (e) => {
 function delayResetGameTimeOut() {
   setTimeout(() => {
     resetGame();
-    console.log('Game was reset');
+    
   }, delayResetGameTimeoutDuration);
 }
 
@@ -325,10 +325,10 @@ btnPossibleChoices.forEach((btnPossibleChoice) => btnPossibleChoice.addEventList
     roundResultInsert.textContent = winComputer;
     delayResetGameTimeOut();
   }
-  console.log(`user score: ${dataScoreSpanUser.innerText} computer score: ${dataScoreSpanComputer.innerText}`);
-  console.log('🚀 ~ scoreFinalUser', scoreFinalUser);
-  console.log('🚀 ~ scoreFinalComputer', scoreFinalComputer);
-  console.log('🚀 ~ scoreToWin', scoreToWin);
+  
+  
+  
+  
 }));
 
 // const playGame = () => {
