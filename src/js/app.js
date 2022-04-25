@@ -113,52 +113,18 @@ const computerChoice = () => {
   return randomChoice;
 };
 
-// Function to fetch keydown event
-// function fetchKeydownEvent(event) {
-//   // add window event listener for keydown
-//   window.addEventListener('keydown', (event) => {
-//     const keydownKey = event.key;
-//     const keydownCode = event.code;
-
-//     return {
-//       keydownKey,
-//       keydownCode,
-//     };
-//   });
-// }
-// fetchKeydownEvent();
-
-const choicesKeydowns = [
-  {
-    name: 'rock',
-    key: 'a',
-  },
-  {
-    name: 'paper',
-    key: 's',
-  },
-  {
-    name: 'scissors',
-    key: 'd',
-  },
-];
-
-// * Function to Filter choicesKeydowns array by user's keydown keyboard presses
-const fetchUserChoiceKeydown = () => {
-  choicesKeydowns.forEach((choicesKeydown) => {
-    setTimeout(() => ({ choicesKeydown }), 3000);
-  });
-};
-
 // * Function to Filter choices array by user's choice
 const fetchUserChoice = () => {
+  // Functions listense to keydown or keyboard key presses
+
   choices.forEach((choice) => {
-    if (userChoiceValue.includes(choice.name || choice.key)) {
+    if (userChoiceValue.includes(choice.name)) {
       userChoice = choice.image;
       const userChoiceIndex = choice.index;
       userChoiceResults = [userChoice, userChoiceIndex];
       return userChoiceResults;
     }
+
     return userChoiceResults;
   });
 };
@@ -316,22 +282,10 @@ function roundResultInsertWinGameComputer() {
   roundResultInsert.textContent = winComputer;
 }
 
-// ---
-
-// Functions listense to keydown or keyboard key presses
-const keydownPossibleChoices = window.addEventListener('keydown', (event) => {
-  keydownPossibleChoicesKey = event.key;
-  fetchUserChoiceKeydown();
-  // console.log({ keydownPossibleChoicesKey });
-  return keydownPossibleChoicesKey;
-});
-keydownPossibleChoices();
-
-// ---
-
 // * Function => grab the buttons & for each choice - listen to event
 btnPossibleChoices.forEach((btnPossibleChoice) => btnPossibleChoice.addEventListener('click', (e) => {
   userChoiceValue = e.target.value; /* value || key */
+
   fetchUserChoice(); /* filters the userChoice to match the choices array */
   playRound(); /* creates DOM elements after fetching */
 
@@ -357,3 +311,20 @@ btnPossibleChoices.forEach((btnPossibleChoice) => btnPossibleChoice.addEventList
     delayResetGameTimeOut();
   }
 }));
+
+// Event listener fetches keydown keyboard events
+window.addEventListener('keydown', (event) => {
+  keydownPossibleChoicesKey = event.key;
+
+  choices.forEach((choice) => {
+    if (keydownPossibleChoicesKey.includes(choice.key)) {
+      const userKeydownChoice = choice.key;
+      userChoice = choice.image;
+      const userChoiceIndex = choice.index;
+      userChoiceResults = [userChoice, userChoiceIndex];
+      console.log({ keydownPossibleChoicesKey });
+      return userChoiceResults;
+    }
+  });
+  return userChoiceResults;
+});
