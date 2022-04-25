@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 /* $ ./node_modules/.bin/eslint --fix src/js/app.js */
 
 /* declare and initialize const variables => always const before let */
@@ -11,8 +10,7 @@ const dataScoreSpanComputer = document.querySelector('[data-computer-score]');
 
 const roundsSelections = document.getElementById('roundsSelections');
 // select all buttons with class of buttonChoice
-const btnPossibleChoices = document.querySelectorAll('.buttonChoice');
-// console.dir(btnPossibleChoices);
+const btnPossibleChoices = document.querySelectorAll('.buttonChoice'); // console.dir(btnPossibleChoices);
 const delayResetGameTimeoutDuration = Number(3000); /* 3 seconds */
 
 /* set btnPossibleChoices.length when !type: "traditional" */
@@ -167,7 +165,6 @@ const roundResult = (userChoiceIndex, computerChoiceIndex) => {
 };
 
 // * Function => Adds a new round result to the DOM
-
 const playRound = () => {
   const userChoicePara = document.createElement('p');
   const computerChoicePara = document.createElement('p');
@@ -233,28 +230,6 @@ const countdownTimer = () => {
   }, 5000);
 };
 
-// function countdownTimerToResetGame() {
-//   const countdownTimerRestartGame = document.createElement('p');
-//   countdownTimerRestartGame.textContent = '3';
-//   countdownTimerRestartGame.classList.add('countdownTimerRestartGame');
-//   resultDisplay.appendChild(countdownTimerRestartGame);
-//   setTimeout(() => {
-//     countdownTimerRestartGame.textContent = '3';
-//   }, 1000);
-//   setTimeout(() => {
-//     countdownTimerRestartGame.textContent = '2';
-//   }, 2000);
-//   setTimeout(() => {
-//     countdownTimerRestartGame.textContent = '1';
-//   }, 3000);
-//   setTimeout(() => {
-//     countdownTimerRestartGame.textContent = '0';
-//   }, 4000);
-//   setTimeout(() => {
-//     countdownTimerRestartGame.textContent = '';
-//   }, 5000);
-// }
-
 // * reset the game when <select> element roundSelections is changed
 const resetGame = () => {
   [
@@ -277,7 +252,7 @@ let scoreToWin = Number(roundsSelections.value);
 // get rounds value set by the user (default is 5)
 roundsSelections.addEventListener('change', (e) => {
   scoreToWin = Number(e.target.value);
-  
+
   resetGame();
   return scoreToWin;
 });
@@ -286,14 +261,15 @@ roundsSelections.addEventListener('change', (e) => {
 function delayResetGameTimeOut() {
   setTimeout(() => {
     resetGame();
-    
   }, delayResetGameTimeoutDuration);
 }
 
+// Function to insert result when user wins
 function roundResultInsertWinGameUser() {
   roundResultInsert.textContent = winUser;
 }
 
+// Function to insert result when computer wins
 function roundResultInsertWinGameComputer() {
   roundResultInsert.textContent = winComputer;
 }
@@ -325,45 +301,7 @@ btnPossibleChoices.forEach((btnPossibleChoice) => btnPossibleChoice.addEventList
     roundResultInsert.textContent = winComputer;
     delayResetGameTimeOut();
   }
-  
-  
-  
-  
 }));
-
-// const playGame = () => {
-//   const scoreFinalUser = Number(dataScoreSpanInnerTextUser);
-//   const scoreFinalComputer = Number(dataScoreSpanInnerTextComputer);
-//   console.log('🚀 ~ scoreFinalUser', scoreFinalUser);
-//   console.log('🚀 ~ scoreFinalComputer', scoreFinalComputer);
-//   console.log('🚀 ~ scoreToWin', scoreToWin);
-//   // final winner if conditionals
-//   if (scoreFinalUser === scoreToWin) {
-//     console.log('🚀 ~ (scoreFinalUser === scoreToWin)', (scoreFinalUser === scoreToWin));
-//     btnDisableBtnPossibleChoices();
-//     resultDisplay.textContent = winUser;
-//     setTimeout(() => {
-//       resetGame();
-//     }, 3000);
-//   } else if (dataScoreSpanComputer.textContent === scoreToWin) {
-//     btnDisableBtnPossibleChoices();
-//     resultDisplay.textContent = winComputer;
-//     setTimeout(() => {
-//       resetGame();
-//     }, 3000);
-//   } else {
-//     btnDisableBtnPossibleChoices();
-//     resultDisplay.textContent = winAll;
-//     setTimeout(() => {
-//       resetGame();
-//     }, 3000);
-//   }
-// };
-// playGame();
-
-// reset game when rounds are over
-/* const roundsNumber = parseInt(rounds); const roundsArray = [];
-  for (let i = 0; i < roundsNumber; i++) {roundsArray.push playRound());} */
 
 // -----------------------------------------------------------------------------
 // 20220423192830
