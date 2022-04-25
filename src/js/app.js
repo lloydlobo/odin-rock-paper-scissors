@@ -108,6 +108,25 @@ const computerChoice = () => {
   return randomChoice;
 };
 
+
+// Function to fetch keydown event
+function fetchKeydownEvent(event) {
+
+  // add window event listener for keydown
+  window.addEventListener('keydown', (event) => {
+    const keydownKey = event.key;
+    const keydownCode = event.code;
+
+    return {
+      keydownKey,
+      keydownCode,
+    };
+  });
+}
+
+
+
+
 // * Function to Filter choices array by user's choice
 const fetchUserChoice = () => {
   choices.forEach((choice) => {
@@ -411,3 +430,18 @@ btnPossibleChoices.forEach((btnPossibleChoice) => btnPossibleChoice.addEventList
 /* A value between 2 and 36 that specifies the base of the number in string.
     If this argument is not supplied, strings with a prefix of '0x' are considered hexadecimal.
     All other strings are considered decimal. */
+// const key = event.key;
+// const keyValue = event.code;
+// const keyName = event.key;
+// const keyLocation = event.location;
+// const keyAltKey = event.altKey;
+// const keyCtrlKey = event.ctrlKey;
+// const keyShiftKey = event.shiftKey;
+// const keyMetaKey = event.metaKey;
+// const keyRepeat = event.repeat;
+// const keyIsComposing = event.isComposing;
+// const keyLocale = event.locale;
+// const keyLocationCode = event.locationCode;
+// const keyModifierState = event.modifierState;
+// const keyRepeatCount = event.repeatCount;
+// const keyCodePoint = event.codePoint;
