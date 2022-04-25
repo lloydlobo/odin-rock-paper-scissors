@@ -776,14 +776,14 @@ a:hover .orps-icon-o {
 components/buttons
 *********** */
 
-button {
+/* button {
   animation: var(--animation-scale-down) reverse,
     var(--animation-fade-out) reverse;
   -webkit-animation-timing-function: var(--ease-squish-5);
   animation-timing-function: var(--ease-squish-5);
   -webkit-animation-duration: 1s;
   animation-duration: 1s;
-}
+} */
 
 ul[data-state='listStyleNoneBtn'] {
   list-style: none;
@@ -799,6 +799,13 @@ ul[data-state='listStyleNoneBtn'] li {
 .buttonChoice {
   background: none;
   font-size: var(--size-fluid-6);
+  transform-origin: center;
+}
+
+.buttonChoice:active {
+  animation: var(--animation-scale-down);
+  animation-duration: 50ms;
+  animation-timing-function: var(--ease-in-out-4);
 }
 
 /* toggle theme src */
