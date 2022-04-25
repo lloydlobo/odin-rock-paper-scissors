@@ -13,6 +13,7 @@ const roundsSelections = document.getElementById('roundsSelections');
 // select all buttons with class of buttonChoice
 const btnPossibleChoices = document.querySelectorAll('.buttonChoice');
 // console.dir(btnPossibleChoices);
+const delayResetGameTimeoutDuration = Number(3000); /* 3 seconds */
 
 /* set btnPossibleChoices.length when !type: "traditional" */
 // choices array to store all possible choices
@@ -192,26 +193,83 @@ const playRound = () => {
   return roundResult(userChoiceResults[1], computerChoiceResults[1]);
 };
 
-// * reset the game when <select> element roundSelections is changed
-const resetGame = () => {
-  // remove the appended <p> elements
-  [
-    userChoiceDisplay.textContent,
-    computerChoiceDisplay.textContent,
-    resultDisplay.textContent,
-  ] = '';
-  dataScoreSpanUser.textContent = '0';
-  dataScoreSpanComputer.textContent = '0';
-  roundResultInsert.textContent = '';
-};
-
-// function to disable buttons
-function disableBtnPossibleChoices() {
+// function to disable buttons when game is over
+function btnDisableBtnPossibleChoices() {
   btnPossibleChoices.forEach((btnPossibleChoice) => {
     const btnToDisable = btnPossibleChoice;
     btnToDisable.disabled = true;
   });
 }
+
+// function enables buttons after resetGame()
+function btnEnableBtnPossibleChoices() {
+  btnPossibleChoices.forEach((btnPossibleChoice) => {
+    const btnToEnable = btnPossibleChoice;
+    btnToEnable.disabled = false;
+  });
+}
+
+// Function displays the user when the next game will begin
+// It enables the disabled button choices again (avoids spamming)
+const countdownTimer = () => {
+  const countdownTimerStartGame = document.createElement('p');
+  countdownTimerStartGame.textContent = '3';
+  countdownTimerStartGame.classList.add('countdownTimerStartGame');
+  resultDisplay.appendChild(countdownTimerStartGame);
+  setTimeout(() => {
+    countdownTimerStartGame.textContent = '2';
+  }, 1000);
+  setTimeout(() => {
+    countdownTimerStartGame.textContent = '1';
+  }, 2000);
+  setTimeout(() => {
+    countdownTimerStartGame.textContent = 'GO!';
+  }, 3000);
+  setTimeout(() => {
+    countdownTimerStartGame.textContent = '';
+  }, 4000);
+  setTimeout(() => {
+    btnEnableBtnPossibleChoices(); // enables the disabled button choices again
+  }, 5000);
+};
+
+// function countdownTimerToResetGame() {
+//   const countdownTimerRestartGame = document.createElement('p');
+//   countdownTimerRestartGame.textContent = '3';
+//   countdownTimerRestartGame.classList.add('countdownTimerRestartGame');
+//   resultDisplay.appendChild(countdownTimerRestartGame);
+//   setTimeout(() => {
+//     countdownTimerRestartGame.textContent = '3';
+//   }, 1000);
+//   setTimeout(() => {
+//     countdownTimerRestartGame.textContent = '2';
+//   }, 2000);
+//   setTimeout(() => {
+//     countdownTimerRestartGame.textContent = '1';
+//   }, 3000);
+//   setTimeout(() => {
+//     countdownTimerRestartGame.textContent = '0';
+//   }, 4000);
+//   setTimeout(() => {
+//     countdownTimerRestartGame.textContent = '';
+//   }, 5000);
+// }
+
+// * reset the game when <select> element roundSelections is changed
+const resetGame = () => {
+  [
+    userChoiceDisplay.textContent,
+    computerChoiceDisplay.textContent,
+    resultDisplay.textContent,
+  ] = ''; // reset the appended <p> elements content
+  dataScoreSpanUser.textContent = '0';
+  dataScoreSpanComputer.textContent = '0';
+  // add a countdown countdownTimerStartGame
+  // Count as the Game restarts again
+  roundResultInsert.textContent = '';
+  // countdownTimerToResetGame();
+  countdownTimer();
+};
 
 // * scoreToWin for game to end
 let scoreToWin = Number(roundsSelections.value);
@@ -228,8 +286,8 @@ roundsSelections.addEventListener('change', (e) => {
 function delayResetGameTimeOut() {
   setTimeout(() => {
     resetGame();
-    console.log('Game was reseted');
-  }, 3000);
+    console.log('Game was reset');
+  }, delayResetGameTimeoutDuration);
 }
 
 function roundResultInsertWinGameUser() {
@@ -254,15 +312,15 @@ btnPossibleChoices.forEach((btnPossibleChoice) => btnPossibleChoice.addEventList
   const winGameUser = scoreFinalUser === scoreToWin;
   const winGameComputer = scoreFinalComputer === scoreToWin;
 
-  // final winner if conditionals
+  // * final winner — if conditionals
   if (winGameUser) {
     roundResultInsertWinGameUser();
-    disableBtnPossibleChoices();
+    btnDisableBtnPossibleChoices();
     // resultDisplay.textContent = winUser;
     delayResetGameTimeOut();
   } else if (winGameComputer) {
     roundResultInsertWinGameComputer();
-    disableBtnPossibleChoices();
+    btnDisableBtnPossibleChoices();
     // resultDisplay.textContent = winComputer;
     roundResultInsert.textContent = winComputer;
     delayResetGameTimeOut();
@@ -282,19 +340,19 @@ btnPossibleChoices.forEach((btnPossibleChoice) => btnPossibleChoice.addEventList
 //   // final winner if conditionals
 //   if (scoreFinalUser === scoreToWin) {
 //     console.log('🚀 ~ (scoreFinalUser === scoreToWin)', (scoreFinalUser === scoreToWin));
-//     disableBtnPossibleChoices();
+//     btnDisableBtnPossibleChoices();
 //     resultDisplay.textContent = winUser;
 //     setTimeout(() => {
 //       resetGame();
 //     }, 3000);
 //   } else if (dataScoreSpanComputer.textContent === scoreToWin) {
-//     disableBtnPossibleChoices();
+//     btnDisableBtnPossibleChoices();
 //     resultDisplay.textContent = winComputer;
 //     setTimeout(() => {
 //       resetGame();
 //     }, 3000);
 //   } else {
-//     disableBtnPossibleChoices();
+//     btnDisableBtnPossibleChoices();
 //     resultDisplay.textContent = winAll;
 //     setTimeout(() => {
 //       resetGame();
