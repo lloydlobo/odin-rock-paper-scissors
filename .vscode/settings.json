@@ -8,5 +8,9 @@
   "todo-tree.tree.showCountsInTree": true,
   "todo-tree.tree.showBadges": true,
   "conventionalCommits.scopes": ["a11y", "design", "dev"],
-  "favorites.sortDirection": "ASC"
+  "favorites.sortDirection": "ASC",
+  "cSpell.words": [
+    "renovaterc",
+    "spock"
+  ]
 }
