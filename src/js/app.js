@@ -116,6 +116,22 @@ const computerChoice = () => {
 // * Function to Filter choices array by user's choice
 const fetchUserChoice = () => {
   // Functions listense to keydown or keyboard key presses
+// Event listener fetches keydown keyboard events
+  window.addEventListener('keydown', (event) => {
+    keydownPossibleChoicesKey = event.key;
+
+    choices.forEach((choice) => {
+      if (keydownPossibleChoicesKey.includes(choice.key)) {
+        // const userKeydownChoice = choice.key;
+        userChoice = choice.image;
+        const userChoiceIndex = choice.index;
+        userChoiceResults = [userChoice, userChoiceIndex];
+        // console.log({ keydownPossibleChoicesKey });
+        return userChoiceResults;
+      }
+      return userChoiceResults;
+    });
+  });
 
   choices.forEach((choice) => {
     if (userChoiceValue.includes(choice.name)) {
@@ -172,21 +188,36 @@ const roundResult = (userChoiceIndex, computerChoiceIndex) => {
   return 'error';
 };
 
-// * Function => Adds a new round result to the DOM
-const playRound = () => {
+function createChoiceParas() {
   const userChoicePara = document.createElement('p');
   const computerChoicePara = document.createElement('p');
+  return { userChoicePara, computerChoicePara };
+}
+
+function createChoiceParasTextContent(userChoicePara, computerChoicePara, computerChoiceIndex) {
+  const [
+    createChoiceUser,
+    createChoiceComputer,
+  ] = [userChoicePara, computerChoicePara];
+
+  createChoiceUser.textContent = userChoice;
+  createChoiceComputer.textContent = choices[computerChoiceIndex].image;
+
+  userChoicePara.classList.add('card__choice-result__choice');
+  createChoiceComputer.classList.add('card__choice-result__choice');
+}
+
+function getComputerResultFromChoices() {
   // Run the random computer choice generator ONLY ONCE HERE
   const computerChoices = choices[computerChoice()];
   // Retrieve results & map to computer's random number with choices[] array
   const computerChoiceResults = [computerChoices.image, computerChoices.index];
   // Define the computer results image and index with choices[] array
   const computerChoiceIndex = computerChoiceResults[1];
-  userChoicePara.textContent = userChoice;
-  userChoicePara.classList.add('card__choice-result__choice');
-  // add text content & classList 'card__choice-result__choice'
-  computerChoicePara.textContent = choices[computerChoiceIndex].image;
-  computerChoicePara.classList.add('card__choice-result__choice');
+  return { computerChoiceIndex, computerChoiceResults };
+}
+
+function displayChoicesContentInDOM(userChoicePara, computerChoicePara, computerChoiceResults) {
   // Insert DOM result elements content <p> before the last <p>
   userChoiceDisplay.insertBefore(userChoicePara, userChoiceDisplay.firstChild);
   computerChoiceDisplay.insertBefore(
@@ -196,6 +227,14 @@ const playRound = () => {
   resultDisplay.textContent = `${userChoiceResults[0]} vs ${computerChoiceResults[0]}`;
 
   return roundResult(userChoiceResults[1], computerChoiceResults[1]);
+}
+
+// * Function => Adds a new round result to the DOM
+const playRound = () => {
+  const { userChoicePara, computerChoicePara } = createChoiceParas();
+  const { computerChoiceIndex, computerChoiceResults } = getComputerResultFromChoices();
+  createChoiceParasTextContent(userChoicePara, computerChoicePara, computerChoiceIndex);
+  return displayChoicesContentInDOM(userChoicePara, computerChoicePara, computerChoiceResults);
 };
 
 // function to disable buttons when game is over
@@ -233,8 +272,9 @@ const countdownTimer = () => {
   setTimeout(() => {
     countdownTimerStartGame.textContent = '';
   }, 4000);
+  // Enable the disabled button choices again
   setTimeout(() => {
-    btnEnableBtnPossibleChoices(); // enables the disabled button choices again
+    btnEnableBtnPossibleChoices();
   }, 5000);
 };
 
@@ -244,13 +284,13 @@ const resetGame = () => {
     userChoiceDisplay.textContent,
     computerChoiceDisplay.textContent,
     resultDisplay.textContent,
-  ] = ''; // reset the appended <p> elements content
-  dataScoreSpanUser.textContent = '0';
-  dataScoreSpanComputer.textContent = '0';
-  // add a countdown countdownTimerStartGame
+    roundResultInsert.textContent,
+  ] = '';
+  [
+    dataScoreSpanUser.textContent,
+    dataScoreSpanComputer.textContent,
+  ] = ['0', '0'];
   // Count as the Game restarts again
-  roundResultInsert.textContent = '';
-  // countdownTimerToResetGame();
   countdownTimer();
 };
 
@@ -282,14 +322,7 @@ function roundResultInsertWinGameComputer() {
   roundResultInsert.textContent = winComputer;
 }
 
-// * Function => grab the buttons & for each choice - listen to event
-btnPossibleChoices.forEach((btnPossibleChoice) => btnPossibleChoice.addEventListener('click', (e) => {
-  userChoiceValue = e.target.value; /* value || key */
-
-  fetchUserChoice(); /* filters the userChoice to match the choices array */
-  playRound(); /* creates DOM elements after fetching */
-
-  // game win conditions
+function declareGameWinner() {
   const dataScoreSpanInnerTextUser = dataScoreSpanUser.innerText;
   const dataScoreSpanInnerTextComputer = dataScoreSpanComputer.innerText;
   const scoreFinalUser = Number(dataScoreSpanInnerTextUser);
@@ -310,21 +343,16 @@ btnPossibleChoices.forEach((btnPossibleChoice) => btnPossibleChoice.addEventList
     roundResultInsert.textContent = winComputer;
     delayResetGameTimeOut();
   }
+}
+
+function getUserChoice() {
+  fetchUserChoice(); /* filters the userChoice to match the choices array */
+  playRound(); /* creates DOM elements after fetching */
+  declareGameWinner();
+}
+
+// * Function => grab the buttons & for each choice - listen to event
+btnPossibleChoices.forEach((btnPossibleChoice) => btnPossibleChoice.addEventListener('click', (e) => {
+  userChoiceValue = e.target.value; /* value || key */
+  getUserChoice();
 }));
-
-// Event listener fetches keydown keyboard events
-window.addEventListener('keydown', (event) => {
-  keydownPossibleChoicesKey = event.key;
-
-  choices.forEach((choice) => {
-    if (keydownPossibleChoicesKey.includes(choice.key)) {
-      const userKeydownChoice = choice.key;
-      userChoice = choice.image;
-      const userChoiceIndex = choice.index;
-      userChoiceResults = [userChoice, userChoiceIndex];
-      console.log({ keydownPossibleChoicesKey });
-      return userChoiceResults;
-    }
-  });
-  return userChoiceResults;
-});
