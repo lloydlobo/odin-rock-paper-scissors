@@ -1,24 +1,30 @@
-// eslint-disable-next-line no-console
 // console.log('Gloria In Excelsis Deo!');
 // ESLint run command /* $ `./node_modules/.bin/eslint --fix src/js/app.js` */
 
-// get DOM elements by id /* declare and initialize const variables => always const before let */
+/* declare and initialize const variables => always const before let */
+// get DOM elements by id
 const userChoiceDisplay = document.getElementById('userChoiceDisplay');
 const computerChoiceDisplay = document.getElementById('computerChoiceDisplay');
 const resultDisplay = document.getElementById('resultDisplay');
 const roundsSelections = document.getElementById('roundsSelections');
-
 const dataScoreSpanUser = document.querySelector('[data-user-score]');
 const dataScoreSpanComputer = document.querySelector('[data-computer-score]');
-
 // select all buttons with class of .buttonChoice
 const btnPossibleChoices = document.querySelectorAll('.buttonChoice');
-// adds new paragraph choice emoji to DOM /* this can go at the top */
-const roundResultInsert = document.createElement('p'); // create a new <p> element
+
+// adds new paragraph choice emoji to DOM
+const roundResultInsert = document.createElement('p');
 const delayResetGameTimeoutDuration = Number(3000); /* 3 seconds */
 
-/* set btnPossibleChoices.length when !type: "traditional" */
-// choices array to store all possible choices
+// set result statement
+const tieAllImage = '🤝'; /* https://emojipedia.org/heart-hands/ */
+const winUserImage = '✨';
+const winComputerImage = '🔥';
+const winAll = `${tieAllImage} It's a Tie!`;
+const winUser = `${winUserImage} You Won!`;
+const winComputer = `${winComputerImage} Bot Won!`;
+
+// * Array to store all possible choices
 const choices = [
   {
     name: 'rock',
@@ -49,58 +55,12 @@ const choices = [
   },
 ];
 
-// set result statement
-const tieAllImage = '🤝'; /* https://emojipedia.org/heart-hands/ */
-const winUserImage = '✨';
-const winComputerImage = '🔥';
-const winAll = `${tieAllImage} It's a Tie!`;
-const winUser = `${winUserImage} You Won!`;
-const winComputer = `${winComputerImage} Bot Won!`;
-
-// * array of possible result statements
-// const resultStatements = [
-//   {
-//     name: winUser,
-//     beats: [1, 2],
-//     class: 'win',
-//     gameType: 'twoPlayer',
-//     image: '<img src="images/win.png" alt="win">',
-//     index: 0,
-//     type: ['traditional'],
-//     value: 1,
-//     who: 'user',
-//   },
-//   {
-//     name: winComputer,
-//     beats: [0, 2],
-//     class: 'lose',
-//     gameType: 'twoPlayer',
-//     image: '<img src="images/lose.png" alt="lose">',
-//     index: 1,
-//     type: ['traditional'],
-//     value: -1,
-//     who: 'computer',
-//   },
-//   {
-//     name: winAll,
-//     beats: [0, 1, 2],
-//     class: 'tie',
-//     gameType: 'twoPlayer',
-//     image: '<img src="images/tie.png" alt="tie">',
-//     index: 2,
-//     type: ['traditional'],
-//     value: 0,
-//     who: 'tie',
-//   },
-// ];
-
 // declare `let` variables
-// 'a' = rock, 's' = paper, 'd' = scissors
-let keydownPossibleChoicesKey;
 let userChoice; /* "temporal dead zone" (TDZ) */
 let userChoiceValue;
 let userChoiceResults;
-
+let keydownPossibleChoicesKey; // 'a' = rock, 's' = paper, 'd' = scissors
+let scoreToWin = Number(roundsSelections.value);
 // -----------------------------------------------------------------------------
 
 /* 3 buttons, Math.floor() returns Math.random() to the nearest +ve integer */
@@ -114,42 +74,49 @@ const computerChoice = () => {
   return randomChoice;
 };
 
-/*
-! fetchUserChoice func seems to be an hindrance
-! it only runs when a button is pressed
-! Take away the power btnPossibleChoices has. -- stop complicating this
-*/
-
-// assigns user choice an image and returns userChoiceResults
+// Assigns user choice an image and returns userChoiceResults
 function userChoiceFilterChoices(choice) {
   userChoice = choice.image;
   const userChoiceIndex = choice.index;
   userChoiceResults = [userChoice, userChoiceIndex];
 }
 
-// ! bug here - it's only accepting whatever is clicked first
 // * Function to Filter choices array by user's choice
 function fetchUserChoice() {
   choices.forEach((choice) => {
     if (userChoiceValue === (choice.name)) {
       userChoiceFilterChoices(choice);
+
       return userChoiceResults;
     }
-    // if (keydownPossibleChoicesKey === (choice.key)) {
-    //   userChoiceFilterChoices(choice);
-    //   return userChoiceResults;
-    // }
+
     return userChoiceResults;
   });
 }
+
+// Pass this function when the user clicks a button
+const keydownController = new AbortController();
+const keydownAbortDisableBtn = document.createElement('button');
+keydownAbortDisableBtn.textContent = 'Disable Keyboard Shortcuts';
+keydownAbortDisableBtn.classList.add('keydownAbortDisableBtn');
+
+// OR disable keydown inputs after score is reached
+const keydownAbort = () => {
+  keydownController.abort();
+};
 
 // function to filter choices array with window.addeventlistener keydown
 function fetchKeydownPossibleChoicesKey() {
   choices.forEach((choice) => {
     if (keydownPossibleChoicesKey === (choice.key)) {
       userChoiceFilterChoices(choice);
+
       return userChoiceResults;
+    } if (keydownPossibleChoicesKey !== (choice.key)) {
+      // stop the function from running event listener keydown
+      keydownAbort(); // ! /* bug */
     }
+
     return userChoiceResults;
   });
 }
@@ -157,7 +124,10 @@ function fetchKeydownPossibleChoicesKey() {
 // * Updates score with each win
 const addScoreUpdate = (dataScoreSpan) => {
   const addScoreUpdateProperty = dataScoreSpan;
-  addScoreUpdateProperty.textContent = parseInt(dataScoreSpan.textContent, 10) + 1;
+  addScoreUpdateProperty.textContent = parseInt(
+    dataScoreSpan.textContent,
+    10,
+  ) + 1;
 };
 
 // * Declare result of a single round
@@ -224,12 +194,17 @@ function getComputerResultFromChoices() {
 // * Function to display results
 function displayChoicesContentInDOM(userChoicePara, computerChoicePara, computerChoiceResults) {
   // Insert DOM result elements content <p> before the last <p>
-  userChoiceDisplay.insertBefore(userChoicePara, userChoiceDisplay.firstChild);
+  userChoiceDisplay.insertBefore(
+    userChoicePara,
+    userChoiceDisplay.firstChild,
+  );
   computerChoiceDisplay.insertBefore(
     computerChoicePara,
     computerChoiceDisplay.firstChild,
   );
-  resultDisplay.textContent = `${userChoiceResults[0]} vs ${computerChoiceResults[0]}`;
+  resultDisplay.textContent = `
+    ${userChoiceResults[0]} vs ${computerChoiceResults[0]}
+  `;
 
   return roundResult(userChoiceResults[1], computerChoiceResults[1]);
 }
@@ -238,11 +213,13 @@ function displayChoicesContentInDOM(userChoicePara, computerChoicePara, computer
 const playRound = () => {
   const { userChoicePara, computerChoicePara } = createChoiceParas();
   const { computerChoiceIndex, computerChoiceResults } = getComputerResultFromChoices();
+
   createChoiceParasTextContent(userChoicePara, computerChoicePara, computerChoiceIndex);
+
   return displayChoicesContentInDOM(userChoicePara, computerChoicePara, computerChoiceResults);
 };
 
-// function to disable buttons when game is over
+// Disable buttons when game is over to avoid multiple clicks
 function btnDisableBtnPossibleChoices() {
   btnPossibleChoices.forEach((btnPossibleChoice) => {
     const btnToDisable = btnPossibleChoice;
@@ -250,7 +227,7 @@ function btnDisableBtnPossibleChoices() {
   });
 }
 
-// function enables buttons after resetGame()
+// Enable buttons after game is reset to allow user to play again
 function btnEnableBtnPossibleChoices() {
   btnPossibleChoices.forEach((btnPossibleChoice) => {
     const btnToEnable = btnPossibleChoice;
@@ -299,9 +276,6 @@ const resetGame = () => {
   countdownTimer();
 };
 
-// * scoreToWin for game to end
-let scoreToWin = Number(roundsSelections.value);
-
 // get rounds value set by the user (default is 5)
 roundsSelections.addEventListener('change', (e) => {
   scoreToWin = Number(e.target.value);
@@ -317,62 +291,50 @@ function delayResetGameTimeOut() {
   }, delayResetGameTimeoutDuration);
 }
 
-// Function to insert result when user wins
-function roundResultInsertWinGameUser() {
-  roundResultInsert.textContent = winUser;
-}
-
-// Function to insert result when computer wins
-function roundResultInsertWinGameComputer() {
-  roundResultInsert.textContent = winComputer;
-}
-
-// pass this function when the user clicks a button
-const keydownController = new AbortController();
-const keydownAbortDisableBtn = document.createElement('button');
-keydownAbortDisableBtn.textContent = 'Disable Keyboard Shortcuts';
-keydownAbortDisableBtn.classList.add('keydownAbortDisableBtn');
-
-// OR disable keydown inputs after score is reached
-const keydownAbort = () => {
-  keydownController.abort();
+// ? This remains a mystery to me
+// ? gameRoundResultInsertWinner() doesn't need this function
+// ? but only the method
+// Function to insert result when either user or computer wins
+const roundResultInsertWinGamer = (winner) => {
+  roundResultInsertWinGamer.textContent = winner;
 };
 
 // ****
-// **** GUI FUNCTION
+// **** GUI FUNCTIONS
 // ****
 
-// Function declare the winner of the game
-function declareGameWinner() {
-  const dataScoreSpanInnerTextUser = dataScoreSpanUser.innerText;
-  const dataScoreSpanInnerTextComputer = dataScoreSpanComputer.innerText;
-  const scoreFinalUser = Number(dataScoreSpanInnerTextUser);
-  const scoreFinalComputer = Number(dataScoreSpanInnerTextComputer);
+// function to disable buttons and keydown inputs and resetGame()
+function resetGameDisableBtnAndKeydown() {
+  btnDisableBtnPossibleChoices();
+  keydownAbort();
+  delayResetGameTimeOut();
+}
 
+// function to display & insert result when either winner wins
+function gameRoundResultInsertWinner(winner) {
+  //  roundResultInsertWinGamer.textContent = winner;
+  roundResultInsertWinGamer(winner);
+  resultDisplay.textContent = winner;
+}
+
+// * Function declare the winner of the game
+function declareGameWinner() {
+  const scoreFinalUser = Number(dataScoreSpanUser.innerText);
+  const scoreFinalComputer = Number(dataScoreSpanComputer.innerText);
+  // if conditions are met, then the game is over
   const winGameUser = scoreFinalUser === scoreToWin;
   const winGameComputer = scoreFinalComputer === scoreToWin;
-
-  // * final winner — if conditionals
   if (winGameUser) {
-    roundResultInsertWinGameUser();
-    btnDisableBtnPossibleChoices();
-    keydownAbort();
-    // resultDisplay.textContent = winUser;
-    delayResetGameTimeOut();
+    gameRoundResultInsertWinner(winUser);
+    resetGameDisableBtnAndKeydown();
   } else if (winGameComputer) {
-    roundResultInsertWinGameComputer();
-    btnDisableBtnPossibleChoices();
-    keydownAbort();
-    // resultDisplay.textContent = winComputer;
-    roundResultInsert.textContent = winComputer;
-    delayResetGameTimeOut();
+    gameRoundResultInsertWinner(winComputer);
+    resetGameDisableBtnAndKeydown();
   }
 }
 
 // ****
-// ****
-// **** PARENT FUNCTION
-// ****
+// **** FUNCTION RUNNER
 // ****
 
 // * Plays the game as user clicks a button or presses a key
@@ -396,19 +358,19 @@ function playGame() {
 // **** EVENT LISTENERS
 // ****
 
-// **** Functions listens to keydown or keyboard key presses
+// * Listens to keydown or keyboard key presses
 window.addEventListener('keydown', (event) => {
   keydownPossibleChoicesKey = event.key;
   keydownPossibleChoicesKey = keydownPossibleChoicesKey.toLowerCase();
+
   playGame();
 }, AbortSignal);
 
-// **** Function => grab the buttons & for each choice - listen to event
+// * Grab the buttons & for each choice & Listen to click event
 btnPossibleChoices.forEach((btnPossibleChoice) => btnPossibleChoice.addEventListener('click', (e) => {
-  userChoiceValue = e.target.value; /* value || key */
+  userChoiceValue = e.target.value;
+
   playGame();
 }));
 
-// -----------------------------------------------------------------------------
 // ---------------------------------FIN-----------------------------------------
-// -----------------------------------------------------------------------------
