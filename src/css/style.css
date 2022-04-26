@@ -931,8 +931,9 @@ components/cards
 
   transform-origin: center; /* helps when hovering scales it up */
 
-  animation: var(--animation-bounce) 3140ms;
-  animation-timing-function: var(--ease-elastic-4);
+  /* ! add function foo() => (), animation once;} */
+  /* animation: var(--animation-bounce) 3140ms;
+  animation-timing-function: var(--ease-elastic-4); */
 
 }
 
@@ -942,7 +943,8 @@ components/cards
 }
 
 .card-glass:hover {
-  animation: var(--animation-scale-up) 500ms forwards;
+  /* animation: fade-in 300ms var(--ease-1); */
+  animation: var(--animation-fade-in);
   animation-timing-function: var(--ease-squish-4);
 }
 
