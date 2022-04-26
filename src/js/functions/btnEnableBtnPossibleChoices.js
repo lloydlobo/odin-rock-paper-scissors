@@ -1,4 +1,4 @@
-import { btnPossibleChoices } from '../constants/constants';
+import btnPossibleChoices from '../constants/constants';
 
 // function enables buttons after resetGame()
 const btnEnableBtnPossibleChoices = () => {

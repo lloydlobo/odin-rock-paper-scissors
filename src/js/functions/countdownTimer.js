@@ -1,6 +1,7 @@
 // import resultDisplay, btnEnableBtnPossibleChoices
-import { resultDisplay } from '../constants/constants';
-import { btnEnableBtnPossibleChoices } from './btnEnableBtnPossibleChoices';
+import resultDisplay from '../constants/constants';
+import btnEnableBtnPossibleChoices from './btnEnableBtnPossibleChoices';
+
 // Function displays the user when the next game will begin
 // It enables the disabled button choices again (avoids spamming)
 const countdownTimer = () => {

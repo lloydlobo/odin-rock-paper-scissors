@@ -1,4 +1,4 @@
-import { btnPossibleChoices } from './btnEnableBtnPossibleChoices';
+import btnPossibleChoices from './btnEnableBtnPossibleChoices';
 
 /* 3 buttons, Math.floor() returns Math.random() to the nearest +ve integer */
 // * Function to generate computer's random integer => 0<= i <=2

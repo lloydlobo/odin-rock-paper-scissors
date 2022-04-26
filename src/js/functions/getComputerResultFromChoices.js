@@ -1,5 +1,5 @@
-import { choices } from '../constants/constants';
-import { computerChoice } from './computerChoice';
+import choices from '../constants/constants';
+import computerChoice from './computerChoice';
 
 // * Function to get computer's choice
 function getComputerResultFromChoices() {

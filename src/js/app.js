@@ -1,5 +1,5 @@
 // eslint-disable-next-line no-console
-console.log('Gloria In Excelsis Deo!');
+// console.log('Gloria In Excelsis Deo!');
 // ESLint run command /* $ `./node_modules/.bin/eslint --fix src/js/app.js` */
 
 // get DOM elements by id /* declare and initialize const variables => always const before let */
@@ -127,7 +127,6 @@ function userChoiceFilterChoices(choice) {
   userChoiceResults = [userChoice, userChoiceIndex];
 }
 
-// todo
 // ! bug here - it's only accepting whatever is clicked first
 // * Function to Filter choices array by user's choice
 function fetchUserChoice() {

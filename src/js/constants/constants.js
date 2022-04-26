@@ -1,23 +1,23 @@
 // ESLint run command /* $ `./node_modules/.bin/eslint --fix src/js/app.js` */
 /* declare and initialize const variables => always const before let */
 // get DOM elements by id
-export const userChoiceDisplay = document.getElementById('userChoiceDisplay');
-export const computerChoiceDisplay = document.getElementById('computerChoiceDisplay');
-export const resultDisplay = document.getElementById('resultDisplay');
+const userChoiceDisplay = document.getElementById('userChoiceDisplay');
+const computerChoiceDisplay = document.getElementById('computerChoiceDisplay');
+const resultDisplay = document.getElementById('resultDisplay');
 
-export const dataScoreSpanUser = document.querySelector('[data-user-score]');
-export const dataScoreSpanComputer = document.querySelector('[data-computer-score]');
+const dataScoreSpanUser = document.querySelector('[data-user-score]');
+const dataScoreSpanComputer = document.querySelector('[data-computer-score]');
 
-export const roundsSelections = document.getElementById('roundsSelections');
+const roundsSelections = document.getElementById('roundsSelections');
 
 // select all buttons with class of .buttonChoice
-export const btnPossibleChoices = document.querySelectorAll('.buttonChoice'); // console.dir(btnPossibleChoices);
+const btnPossibleChoices = document.querySelectorAll('.buttonChoice'); // console.dir(btnPossibleChoices);
 
-export const delayResetGameTimeoutDuration = Number(3000); /* 3 seconds */
+const delayResetGameTimeoutDuration = Number(3000); /* 3 seconds */
 
 /* set btnPossibleChoices.length when !type: "traditional" */
 // choices array to store all possible choices
-export const choices = [
+const choices = [
   {
     name: 'rock',
     gameType: ['twoPlayer'],
@@ -50,9 +50,9 @@ export const choices = [
 const tieAllImage = '🤝'; /* https://emojipedia.org/heart-hands/ */
 const winUserImage = '✨';
 const winComputerImage = '🔥';
-export const winAll = `${tieAllImage} It's a Tie!`;
-export const winUser = `${winUserImage} You Won!`;
-export const winComputer = `${winComputerImage} Bot Won!`;
+const winAll = `${tieAllImage} It's a Tie!`;
+const winUser = `${winUserImage} You Won!`;
+const winComputer = `${winComputerImage} Bot Won!`;
 
 // * array of possible result statements
 const resultStatements = [
@@ -91,10 +91,24 @@ const resultStatements = [
   },
 ];
 
-export const resultStatementsObject = resultStatements.reduce(
+const resultStatementsObject = resultStatements.reduce(
   (acc, curr) => {
     acc[curr.value] = curr;
     return acc;
   },
   {},
 );
+
+export default {
+  choices,
+  delayResetGameTimeoutDuration,
+  resultStatements,
+  resultStatementsObject,
+  userChoiceDisplay,
+  computerChoiceDisplay,
+  resultDisplay,
+  dataScoreSpanUser,
+  dataScoreSpanComputer,
+  roundsSelections,
+  btnPossibleChoices,
+};
