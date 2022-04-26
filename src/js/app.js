@@ -1,16 +1,20 @@
-/* $ ./node_modules/.bin/eslint --fix src/js/app.js */
+// eslint-disable-next-line no-console
+// console.log('Gloria In Excelsis Deo!');
+// ESLint run command /* $ `./node_modules/.bin/eslint --fix src/js/app.js` */
 
-/* declare and initialize const variables => always const before let */
-// get DOM elements by id
+// get DOM elements by id /* declare and initialize const variables => always const before let */
 const userChoiceDisplay = document.getElementById('userChoiceDisplay');
 const computerChoiceDisplay = document.getElementById('computerChoiceDisplay');
 const resultDisplay = document.getElementById('resultDisplay');
+const roundsSelections = document.getElementById('roundsSelections');
+
 const dataScoreSpanUser = document.querySelector('[data-user-score]');
 const dataScoreSpanComputer = document.querySelector('[data-computer-score]');
 
-const roundsSelections = document.getElementById('roundsSelections');
-// select all buttons with class of buttonChoice
-const btnPossibleChoices = document.querySelectorAll('.buttonChoice'); // console.dir(btnPossibleChoices);
+// select all buttons with class of .buttonChoice
+const btnPossibleChoices = document.querySelectorAll('.buttonChoice');
+// adds new paragraph choice emoji to DOM /* this can go at the top */
+const roundResultInsert = document.createElement('p'); // create a new <p> element
 const delayResetGameTimeoutDuration = Number(3000); /* 3 seconds */
 
 /* set btnPossibleChoices.length when !type: "traditional" */
@@ -91,6 +95,8 @@ const winComputer = `${winComputerImage} Bot Won!`;
 // ];
 
 // declare `let` variables
+// 'a' = rock, 's' = paper, 'd' = scissors
+let keydownPossibleChoicesKey;
 let userChoice; /* "temporal dead zone" (TDZ) */
 let userChoiceValue;
 let userChoiceResults;
@@ -108,18 +114,45 @@ const computerChoice = () => {
   return randomChoice;
 };
 
+/*
+! fetchUserChoice func seems to be an hindrance
+! it only runs when a button is pressed
+! Take away the power btnPossibleChoices has. -- stop complicating this
+*/
+
+// assigns user choice an image and returns userChoiceResults
+function userChoiceFilterChoices(choice) {
+  userChoice = choice.image;
+  const userChoiceIndex = choice.index;
+  userChoiceResults = [userChoice, userChoiceIndex];
+}
+
+// ! bug here - it's only accepting whatever is clicked first
 // * Function to Filter choices array by user's choice
-const fetchUserChoice = () => {
+function fetchUserChoice() {
   choices.forEach((choice) => {
-    if (userChoiceValue.includes(choice.name || choice.key)) {
-      userChoice = choice.image;
-      const userChoiceIndex = choice.index;
-      userChoiceResults = [userChoice, userChoiceIndex];
+    if (userChoiceValue === (choice.name)) {
+      userChoiceFilterChoices(choice);
+      return userChoiceResults;
+    }
+    // if (keydownPossibleChoicesKey === (choice.key)) {
+    //   userChoiceFilterChoices(choice);
+    //   return userChoiceResults;
+    // }
+    return userChoiceResults;
+  });
+}
+
+// function to filter choices array with window.addeventlistener keydown
+function fetchKeydownPossibleChoicesKey() {
+  choices.forEach((choice) => {
+    if (keydownPossibleChoicesKey === (choice.key)) {
+      userChoiceFilterChoices(choice);
       return userChoiceResults;
     }
     return userChoiceResults;
   });
-};
+}
 
 // * Updates score with each win
 const addScoreUpdate = (dataScoreSpan) => {
@@ -127,58 +160,69 @@ const addScoreUpdate = (dataScoreSpan) => {
   addScoreUpdateProperty.textContent = parseInt(dataScoreSpan.textContent, 10) + 1;
 };
 
-// adds new paragraph choice emoji to DOM /* this can go at the top */
-const roundResultInsert = document.createElement('p'); // create a new <p> element
-
-// convert to function
-/* const insertRoundResult = (roundResultInsert) => {
-  roundResultInsert.textContent = userChoice;
-  roundResultInsert.textContent = winAll;
-  resultDisplay.appendChild(roundResultInsert);
-}; */
-
 // * Declare result of a single round
 const roundResult = (userChoiceIndex, computerChoiceIndex) => {
+  // Function to insert under the round result in the DOM
+  const roundResultTextAppendWinner = (event) => {
+    roundResultInsert.textContent = event;
+    resultDisplay.appendChild(roundResultInsert);
+  };
+
   const choicesArrayLength = choices.length;
-  const choiceIndexIsSame = userChoiceIndex === computerChoiceIndex;
   const choiceIndexUserModulo = (userChoiceIndex + 1) % choicesArrayLength;
   const choiceIndexComputerWins = choiceIndexUserModulo === computerChoiceIndex;
+  const choiceIndexIsSame = userChoiceIndex === computerChoiceIndex;
 
   if (choiceIndexIsSame) {
-    roundResultInsert.textContent = winAll;
-    resultDisplay.appendChild(roundResultInsert);
+    roundResultTextAppendWinner(winAll);
     return 'tie';
   }
   if (choiceIndexComputerWins) {
-    roundResultInsert.textContent = winComputer;
-    resultDisplay.appendChild(roundResultInsert);
+    roundResultTextAppendWinner(winComputer);
     addScoreUpdate(dataScoreSpanComputer);
     return 'computer';
   }
   if (!choiceIndexComputerWins) {
-    roundResultInsert.textContent = winUser;
-    resultDisplay.appendChild(roundResultInsert);
+    roundResultTextAppendWinner(winUser);
     addScoreUpdate(dataScoreSpanUser);
     return 'user';
   }
   return 'error';
 };
 
-// * Function => Adds a new round result to the DOM
-const playRound = () => {
+// Function to insert user and computer choices into DOM
+function createChoiceParas() {
   const userChoicePara = document.createElement('p');
   const computerChoicePara = document.createElement('p');
+  return { userChoicePara, computerChoicePara };
+}
+
+// Function to create text content for choiceParas
+function createChoiceParasTextContent(userChoicePara, computerChoicePara, computerChoiceIndex) {
+  const [
+    createChoiceUser,
+    createChoiceComputer,
+  ] = [userChoicePara, computerChoicePara];
+
+  createChoiceUser.textContent = userChoice;
+  createChoiceComputer.textContent = choices[computerChoiceIndex].image;
+
+  userChoicePara.classList.add('card__choice-result__choice');
+  createChoiceComputer.classList.add('card__choice-result__choice');
+}
+// * Function to get computer's choice
+function getComputerResultFromChoices() {
   // Run the random computer choice generator ONLY ONCE HERE
   const computerChoices = choices[computerChoice()];
   // Retrieve results & map to computer's random number with choices[] array
   const computerChoiceResults = [computerChoices.image, computerChoices.index];
   // Define the computer results image and index with choices[] array
   const computerChoiceIndex = computerChoiceResults[1];
-  userChoicePara.textContent = userChoice;
-  userChoicePara.classList.add('card__choice-result__choice');
-  // add text content & classList 'card__choice-result__choice'
-  computerChoicePara.textContent = choices[computerChoiceIndex].image;
-  computerChoicePara.classList.add('card__choice-result__choice');
+  return { computerChoiceIndex, computerChoiceResults };
+}
+
+// * Function to display results
+function displayChoicesContentInDOM(userChoicePara, computerChoicePara, computerChoiceResults) {
   // Insert DOM result elements content <p> before the last <p>
   userChoiceDisplay.insertBefore(userChoicePara, userChoiceDisplay.firstChild);
   computerChoiceDisplay.insertBefore(
@@ -188,6 +232,14 @@ const playRound = () => {
   resultDisplay.textContent = `${userChoiceResults[0]} vs ${computerChoiceResults[0]}`;
 
   return roundResult(userChoiceResults[1], computerChoiceResults[1]);
+}
+
+// * Function => Adds a new round result to the DOM
+const playRound = () => {
+  const { userChoicePara, computerChoicePara } = createChoiceParas();
+  const { computerChoiceIndex, computerChoiceResults } = getComputerResultFromChoices();
+  createChoiceParasTextContent(userChoicePara, computerChoicePara, computerChoiceIndex);
+  return displayChoicesContentInDOM(userChoicePara, computerChoicePara, computerChoiceResults);
 };
 
 // function to disable buttons when game is over
@@ -225,8 +277,9 @@ const countdownTimer = () => {
   setTimeout(() => {
     countdownTimerStartGame.textContent = '';
   }, 4000);
+  // Enable the disabled button choices again
   setTimeout(() => {
-    btnEnableBtnPossibleChoices(); // enables the disabled button choices again
+    btnEnableBtnPossibleChoices();
   }, 5000);
 };
 
@@ -236,13 +289,13 @@ const resetGame = () => {
     userChoiceDisplay.textContent,
     computerChoiceDisplay.textContent,
     resultDisplay.textContent,
-  ] = ''; // reset the appended <p> elements content
-  dataScoreSpanUser.textContent = '0';
-  dataScoreSpanComputer.textContent = '0';
-  // add a countdown countdownTimerStartGame
+    roundResultInsert.textContent,
+  ] = '';
+  [
+    dataScoreSpanUser.textContent,
+    dataScoreSpanComputer.textContent,
+  ] = ['0', '0'];
   // Count as the Game restarts again
-  roundResultInsert.textContent = '';
-  // countdownTimerToResetGame();
   countdownTimer();
 };
 
@@ -252,8 +305,8 @@ let scoreToWin = Number(roundsSelections.value);
 // get rounds value set by the user (default is 5)
 roundsSelections.addEventListener('change', (e) => {
   scoreToWin = Number(e.target.value);
-
   resetGame();
+
   return scoreToWin;
 });
 
@@ -274,17 +327,28 @@ function roundResultInsertWinGameComputer() {
   roundResultInsert.textContent = winComputer;
 }
 
-// * Function => grab the buttons & for each choice - listen to event
-btnPossibleChoices.forEach((btnPossibleChoice) => btnPossibleChoice.addEventListener('click', (e) => {
-  userChoiceValue = e.target.value; /* value || key */
-  fetchUserChoice(); /* filters the userChoice to match the choices array */
-  playRound(); /* creates DOM elements after fetching */
+// pass this function when the user clicks a button
+const keydownController = new AbortController();
+const keydownAbortDisableBtn = document.createElement('button');
+keydownAbortDisableBtn.textContent = 'Disable Keyboard Shortcuts';
+keydownAbortDisableBtn.classList.add('keydownAbortDisableBtn');
 
-  // game win conditions
+// OR disable keydown inputs after score is reached
+const keydownAbort = () => {
+  keydownController.abort();
+};
+
+// ****
+// **** GUI FUNCTION
+// ****
+
+// Function declare the winner of the game
+function declareGameWinner() {
   const dataScoreSpanInnerTextUser = dataScoreSpanUser.innerText;
   const dataScoreSpanInnerTextComputer = dataScoreSpanComputer.innerText;
   const scoreFinalUser = Number(dataScoreSpanInnerTextUser);
   const scoreFinalComputer = Number(dataScoreSpanInnerTextComputer);
+
   const winGameUser = scoreFinalUser === scoreToWin;
   const winGameComputer = scoreFinalComputer === scoreToWin;
 
@@ -292,122 +356,59 @@ btnPossibleChoices.forEach((btnPossibleChoice) => btnPossibleChoice.addEventList
   if (winGameUser) {
     roundResultInsertWinGameUser();
     btnDisableBtnPossibleChoices();
+    keydownAbort();
     // resultDisplay.textContent = winUser;
     delayResetGameTimeOut();
   } else if (winGameComputer) {
     roundResultInsertWinGameComputer();
     btnDisableBtnPossibleChoices();
+    keydownAbort();
     // resultDisplay.textContent = winComputer;
     roundResultInsert.textContent = winComputer;
     delayResetGameTimeOut();
   }
+}
+
+// ****
+// ****
+// **** PARENT FUNCTION
+// ****
+// ****
+
+// * Plays the game as user clicks a button or presses a key
+/**
+ * @param  {} fetchUserChoice()
+ * @param  {} fetchKeydownPossibleChoicesKey()
+ * @param  {} playRound()
+ * @param  {} declareGameWinner()
+ */
+function playGame() {
+  // filters the userChoice to match the choices array
+  fetchUserChoice();
+  fetchKeydownPossibleChoicesKey();
+
+  // Adds a new round result to the DOM
+  playRound();
+  declareGameWinner();
+}
+
+// ****
+// **** EVENT LISTENERS
+// ****
+
+// **** Functions listens to keydown or keyboard key presses
+window.addEventListener('keydown', (event) => {
+  keydownPossibleChoicesKey = event.key;
+  keydownPossibleChoicesKey = keydownPossibleChoicesKey.toLowerCase();
+  playGame();
+}, AbortSignal);
+
+// **** Function => grab the buttons & for each choice - listen to event
+btnPossibleChoices.forEach((btnPossibleChoice) => btnPossibleChoice.addEventListener('click', (e) => {
+  userChoiceValue = e.target.value; /* value || key */
+  playGame();
 }));
 
 // -----------------------------------------------------------------------------
-// 20220423192830
-// ! main.js version1
-// * function calls statements
-// function declareGameWinner() {
-//   const win = 'win';
-//   const lose = 'lose';
-//   const tie = 'tie';
-//   return [win, lose, tie];
-// }
-
-// game logic and plays 5 rounds of rock paper scissors
-// function game() {
-//   const scoreFinalUser = dataScoreSpanInnerTextUser;
-//   const scoreFinalComputer = dataScoreSpanInnerTextComputer;
-//   // eslint-disable-next-line no-console
-//   console.log('🚀 ~ scoreFinalUser', scoreFinalUser);
-//   // eslint-disable-next-line no-console
-//   console.log('🚀 ~ scoreFinalComputer', scoreFinalComputer);
-//   let round = 0;
-
-//   for (let i = 0; i < 5; i += 1) {
-//     const [userChoice, computerChoice] = fetchUserComputerSelection();
-//     const roundResult = playRound(userChoice, computerChoice);
-//     round += 1;
-//     const [win, lose, tie] = declareStatement();
-//     if (roundResult.includes(win)) {
-//       scoreFinalUser += 1;
-//     } else if (roundResult.includes(lose)) {
-//       scoreFinalComputer += 1;
-//     } else roundResult.includes(tie);
-//     console.log(`${gameRoundResult}`);
-//   }
-//   const successUser = `Game over! You succeeded!
-// \nFinal score:\nuserScore: ${scoreFinalUser} to scoreFinalComputer: ${scoreFinalComputer}`;
-//   const successComputer = `Game over! Computer succeeded!\nFinal score:
-// \nuserScore: ${scoreFinalUser} to scoreFinalComputer: ${scoreFinalComputer}`;
-//   const successUserComputer = `Game over! It's a tie! Everyone succeeded!
-//    \nFinal score:\nuserScore: ${scoreFinalUser} to scoreFinalComputer: ${scoreFinalComputer}`;
-
-//   if (scoreFinalUser > scoreFinalComputer) {
-//     resultDisplay.textContent = successUser;
-//   } else if (scoreFinalUser < scoreFinalComputer) {
-//     resultDisplay.textContent = successComputer;
-//   } else if (scoreFinalUser === scoreFinalComputer) {
-//     resultDisplay.textContent = successUserComputer;
-//   }
-//   return resultDisplay.textContent;
-// }
-
-// game();
-
-// restart game
-// function restartGame() {
-//   const promptMessageRestart = 'Would you like to play again? (y/n)';
-//   const reset = prompt(promptMessageRestart, 'y');
-//   if (reset === 'y') {
-//     game();
-//     restartGame(); /* prompts user again when game() ends 2nd time */
-//   } else {
-//     console.log('Thanks for playing!');
-//   }
-// }
-// restartGame();
-
-// function to play a game of round = rounds from user input in #roundsSelections
-// const game = () => {
-//   let round = 0;
-//   let scoreFinalUser = 0;
-//   let scoreFinalComputer = 0;
-//   for (let i = 0; i < 5; i++) {
-//     playRound();
-//     round++;
-//     if (round % 2 === 0) {
-//       scoreFinalUser++;
-//     } else {
-//       scoreFinalComputer++;
-//     }
-//   }
-// };
-
+// ---------------------------------FIN-----------------------------------------
 // -----------------------------------------------------------------------------
-/* const computerChoiceResults = [
-        choices[computerChoice()].image,
-        choices[computerChoice()].index,
-      ]; */
-
-// const computerChoiceIndexResult = choices[computerChoice()].index;
-// const computerChoiceImageResult = choices[computerChoice()].image;
-
-// resultDisplay.insertBefore(roundResultInsert, resultDisplay.firstChild); /* **** */
-
-//  --------------------------------------------------------------------
-
-/* function game() {
-    const rounds = roundsSelections.value;
-    rounds = 3;
-    for (let i = 0; i < rounds; i++) {
-      playRound();
-    }
-  } */
-
-/* https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt#a_stricter_parse_function */
-/* function parseInt(string: string, radix?: number): number */
-/* if radix is not specified, it defaults to base 10 (decimal) else base 16 (hexadecimal) */
-/* A value between 2 and 36 that specifies the base of the number in string.
-    If this argument is not supplied, strings with a prefix of '0x' are considered hexadecimal.
-    All other strings are considered decimal. */
