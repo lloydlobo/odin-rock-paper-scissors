@@ -1,18 +1,20 @@
-// console.log('Gloria In Excelsis Deo!');
-
+// eslint-disable-next-line no-console
+console.log('Gloria In Excelsis Deo!');
 // ESLint run command /* $ `./node_modules/.bin/eslint --fix src/js/app.js` */
 
-/* declare and initialize const variables => always const before let */
-// get DOM elements by id
+// get DOM elements by id /* declare and initialize const variables => always const before let */
 const userChoiceDisplay = document.getElementById('userChoiceDisplay');
 const computerChoiceDisplay = document.getElementById('computerChoiceDisplay');
 const resultDisplay = document.getElementById('resultDisplay');
+const roundsSelections = document.getElementById('roundsSelections');
+
 const dataScoreSpanUser = document.querySelector('[data-user-score]');
 const dataScoreSpanComputer = document.querySelector('[data-computer-score]');
 
-const roundsSelections = document.getElementById('roundsSelections');
-// select all buttons with class of buttonChoice
-const btnPossibleChoices = document.querySelectorAll('.buttonChoice'); // console.dir(btnPossibleChoices);
+// select all buttons with class of .buttonChoice
+const btnPossibleChoices = document.querySelectorAll('.buttonChoice');
+// adds new paragraph choice emoji to DOM /* this can go at the top */
+const roundResultInsert = document.createElement('p'); // create a new <p> element
 const delayResetGameTimeoutDuration = Number(3000); /* 3 seconds */
 
 /* set btnPossibleChoices.length when !type: "traditional" */
@@ -93,12 +95,11 @@ const winComputer = `${winComputerImage} Bot Won!`;
 // ];
 
 // declare `let` variables
+// 'a' = rock, 's' = paper, 'd' = scissors
+let keydownPossibleChoicesKey;
 let userChoice; /* "temporal dead zone" (TDZ) */
 let userChoiceValue;
 let userChoiceResults;
-
-// 'a' = rock, 's' = paper, 'd' = scissors
-let keydownPossibleChoicesKey;
 
 // -----------------------------------------------------------------------------
 
@@ -113,37 +114,46 @@ const computerChoice = () => {
   return randomChoice;
 };
 
-// // ! debug here !!!!!!
-// function choicesFilterOnKeydown() {
-//   choices.forEach((choice) => {
-//     if (keydownPossibleChoicesKey.includes(choice.key)) {
-//       // const userKeydownChoice = choice.key;
-//       userChoice = choice.image;
-//       const userChoiceIndex = choice.index;
-//       userChoiceResults = [userChoice, userChoiceIndex];
-//       // console.log({ keydownPossibleChoicesKey });
-//       return userChoiceResults;
-//     }
-//     return userChoiceResults;
-//   });
-// }
+/*
+! fetchUserChoice func seems to be an hindrance
+! it only runs when a button is pressed
+! Take away the power btnPossibleChoices has. -- stop complicating this
+*/
 
-// ! fetchUserChoice func seems to be an hindrance
-// ! it only runs when a button is pressed
-// ! Take away the power btnPossibleChoices has. -- stop complicating this
+// assigns user choice an image and returns userChoiceResults
+function userChoiceFilterChoices(choice) {
+  userChoice = choice.image;
+  const userChoiceIndex = choice.index;
+  userChoiceResults = [userChoice, userChoiceIndex];
+}
+
+// todo
+// ! bug here - it's only accepting whatever is clicked first
 // * Function to Filter choices array by user's choice
-const fetchUserChoice = () => {
+function fetchUserChoice() {
   choices.forEach((choice) => {
-    if (userChoiceValue.includes(choice.name) || keydownPossibleChoicesKey.includes(choice.key)) {
-      userChoice = choice.image;
-      const userChoiceIndex = choice.index;
-      userChoiceResults = [userChoice, userChoiceIndex];
+    if (userChoiceValue === (choice.name)) {
+      userChoiceFilterChoices(choice);
       return userChoiceResults;
     }
-
+    // if (keydownPossibleChoicesKey === (choice.key)) {
+    //   userChoiceFilterChoices(choice);
+    //   return userChoiceResults;
+    // }
     return userChoiceResults;
   });
-};
+}
+
+// function to filter choices array with window.addeventlistener keydown
+function fetchKeydownPossibleChoicesKey() {
+  choices.forEach((choice) => {
+    if (keydownPossibleChoicesKey === (choice.key)) {
+      userChoiceFilterChoices(choice);
+      return userChoiceResults;
+    }
+    return userChoiceResults;
+  });
+}
 
 // * Updates score with each win
 const addScoreUpdate = (dataScoreSpan) => {
@@ -151,49 +161,44 @@ const addScoreUpdate = (dataScoreSpan) => {
   addScoreUpdateProperty.textContent = parseInt(dataScoreSpan.textContent, 10) + 1;
 };
 
-// adds new paragraph choice emoji to DOM /* this can go at the top */
-const roundResultInsert = document.createElement('p'); // create a new <p> element
-
-// convert to function
-/* const insertRoundResult = (roundResultInsert) => {
-  roundResultInsert.textContent = userChoice;
-  roundResultInsert.textContent = winAll;
-  resultDisplay.appendChild(roundResultInsert);
-}; */
-
 // * Declare result of a single round
 const roundResult = (userChoiceIndex, computerChoiceIndex) => {
+  // Function to insert under the round result in the DOM
+  const roundResultTextAppendWinner = (event) => {
+    roundResultInsert.textContent = event;
+    resultDisplay.appendChild(roundResultInsert);
+  };
+
   const choicesArrayLength = choices.length;
-  const choiceIndexIsSame = userChoiceIndex === computerChoiceIndex;
   const choiceIndexUserModulo = (userChoiceIndex + 1) % choicesArrayLength;
   const choiceIndexComputerWins = choiceIndexUserModulo === computerChoiceIndex;
+  const choiceIndexIsSame = userChoiceIndex === computerChoiceIndex;
 
   if (choiceIndexIsSame) {
-    roundResultInsert.textContent = winAll;
-    resultDisplay.appendChild(roundResultInsert);
+    roundResultTextAppendWinner(winAll);
     return 'tie';
   }
   if (choiceIndexComputerWins) {
-    roundResultInsert.textContent = winComputer;
-    resultDisplay.appendChild(roundResultInsert);
+    roundResultTextAppendWinner(winComputer);
     addScoreUpdate(dataScoreSpanComputer);
     return 'computer';
   }
   if (!choiceIndexComputerWins) {
-    roundResultInsert.textContent = winUser;
-    resultDisplay.appendChild(roundResultInsert);
+    roundResultTextAppendWinner(winUser);
     addScoreUpdate(dataScoreSpanUser);
     return 'user';
   }
   return 'error';
 };
 
+// Function to insert user and computer choices into DOM
 function createChoiceParas() {
   const userChoicePara = document.createElement('p');
   const computerChoicePara = document.createElement('p');
   return { userChoicePara, computerChoicePara };
 }
 
+// Function to create text content for choiceParas
 function createChoiceParasTextContent(userChoicePara, computerChoicePara, computerChoiceIndex) {
   const [
     createChoiceUser,
@@ -206,7 +211,7 @@ function createChoiceParasTextContent(userChoicePara, computerChoicePara, comput
   userChoicePara.classList.add('card__choice-result__choice');
   createChoiceComputer.classList.add('card__choice-result__choice');
 }
-
+// * Function to get computer's choice
 function getComputerResultFromChoices() {
   // Run the random computer choice generator ONLY ONCE HERE
   const computerChoices = choices[computerChoice()];
@@ -217,6 +222,7 @@ function getComputerResultFromChoices() {
   return { computerChoiceIndex, computerChoiceResults };
 }
 
+// * Function to display results
 function displayChoicesContentInDOM(userChoicePara, computerChoicePara, computerChoiceResults) {
   // Insert DOM result elements content <p> before the last <p>
   userChoiceDisplay.insertBefore(userChoicePara, userChoiceDisplay.firstChild);
@@ -300,8 +306,8 @@ let scoreToWin = Number(roundsSelections.value);
 // get rounds value set by the user (default is 5)
 roundsSelections.addEventListener('change', (e) => {
   scoreToWin = Number(e.target.value);
-
   resetGame();
+
   return scoreToWin;
 });
 
@@ -322,11 +328,28 @@ function roundResultInsertWinGameComputer() {
   roundResultInsert.textContent = winComputer;
 }
 
+// pass this function when the user clicks a button
+const keydownController = new AbortController();
+const keydownAbortDisableBtn = document.createElement('button');
+keydownAbortDisableBtn.textContent = 'Disable Keyboard Shortcuts';
+keydownAbortDisableBtn.classList.add('keydownAbortDisableBtn');
+
+// OR disable keydown inputs after score is reached
+const keydownAbort = () => {
+  keydownController.abort();
+};
+
+// ****
+// **** GUI FUNCTION
+// ****
+
+// Function declare the winner of the game
 function declareGameWinner() {
   const dataScoreSpanInnerTextUser = dataScoreSpanUser.innerText;
   const dataScoreSpanInnerTextComputer = dataScoreSpanComputer.innerText;
   const scoreFinalUser = Number(dataScoreSpanInnerTextUser);
   const scoreFinalComputer = Number(dataScoreSpanInnerTextComputer);
+
   const winGameUser = scoreFinalUser === scoreToWin;
   const winGameComputer = scoreFinalComputer === scoreToWin;
 
@@ -334,65 +357,59 @@ function declareGameWinner() {
   if (winGameUser) {
     roundResultInsertWinGameUser();
     btnDisableBtnPossibleChoices();
+    keydownAbort();
     // resultDisplay.textContent = winUser;
     delayResetGameTimeOut();
   } else if (winGameComputer) {
     roundResultInsertWinGameComputer();
     btnDisableBtnPossibleChoices();
+    keydownAbort();
     // resultDisplay.textContent = winComputer;
     roundResultInsert.textContent = winComputer;
     delayResetGameTimeOut();
   }
 }
 
-function getUserChoice() {
-  fetchUserChoice(); /* filters the userChoice to match the choices array */
-  playRound(); /* creates DOM elements after fetching */
+// ****
+// ****
+// **** PARENT FUNCTION
+// ****
+// ****
+
+// * Plays the game as user clicks a button or presses a key
+/**
+ * @param  {} fetchUserChoice()
+ * @param  {} fetchKeydownPossibleChoicesKey()
+ * @param  {} playRound()
+ * @param  {} declareGameWinner()
+ */
+function playGame() {
+  // filters the userChoice to match the choices array
+  fetchUserChoice();
+  fetchKeydownPossibleChoicesKey();
+
+  // Adds a new round result to the DOM
+  playRound();
   declareGameWinner();
 }
 
-// Functions listense to keydown or keyboard key presses
-// Event listener fetches keydown keyboard events
+// ****
+// **** EVENT LISTENERS
+// ****
+
+// **** Functions listens to keydown or keyboard key presses
 window.addEventListener('keydown', (event) => {
   keydownPossibleChoicesKey = event.key;
-  // !!!! todododdo also disable keydown inputs after score is reached
-  // choicesFilterOnKeydown();
-  // !bug - it's accepting all keys — lol
-  getUserChoice();
-});
+  keydownPossibleChoicesKey = keydownPossibleChoicesKey.toLowerCase();
+  playGame();
+}, AbortSignal);
 
-// * Function => grab the buttons & for each choice - listen to event
+// **** Function => grab the buttons & for each choice - listen to event
 btnPossibleChoices.forEach((btnPossibleChoice) => btnPossibleChoice.addEventListener('click', (e) => {
   userChoiceValue = e.target.value; /* value || key */
-  getUserChoice();
+  playGame();
 }));
 
-// // pseudo code land
-// https://stackoverflow.com/questions/55931622/is-there-a-method-for-adding-both-an-onkeypress-and-onclick-eventlistener-togeth
-
-// function doWhatIWant() {
-//     // code here
-// }
-
-// input.addEventListener("keyup", () => {
-//    if (event.keyCode === 13) {
-//      doWhatIWant();
-// }
-
-// input.addEventListener("click", () => {
-//      doWhatIWant();
-// }
-
-// // --------------
-// var elem = document.querySelector('input')
-
-// elem.addEventListener('keyup', eventhandler, false);
-// //elem.addEventListener('click', eventhandler, false);// not sure about this event
-// elem.addEventListener('keydown', eventhandler, false);
-
-// function eventhandler(event) {
-//      if (event.keyCode === 13) { // you press enter you get alert
-
-//         alert("hi");
-//      }
-// }
+// -----------------------------------------------------------------------------
+// ---------------------------------FIN-----------------------------------------
+// -----------------------------------------------------------------------------
